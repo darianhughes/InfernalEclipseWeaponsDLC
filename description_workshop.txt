@@ -1,0 +1,22 @@
+[h1]Infernal Eclipse of Ragnarok: Weapon DLC[/h1]
+[h3]An DLC Add-on to [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] Infernal Eclipse of Ragnarok[/url][/h3]
+[b]This mod can be played on its own and doesn't require the main mod to run.[/b]
+
+The Infernal Eclipse of Ragnarok: Weapon DLC is a mod that aims to fill in the weak spots of progression with new, exciting items.
+
+It currently adds the following:
+[list]
+	[*] 2 weapons
+[/list]
+
+It is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser[/url] to see how to obtain the new weapons.
+
+If you have any issues please report them in the [url=https://discord.gg/tc5nZdRvaU] Discord server[/url]. 
+
+Also check out:
+[list]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder]
+[/list]
+
+Created by the Infernal Ecllipse of Raganork Team

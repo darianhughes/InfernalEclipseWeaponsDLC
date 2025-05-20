@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons;
+using Terraria;
+using Terraria.ModLoader;
+using Terraria.GameContent.ItemDropRules;
+
+namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
+{
+    public class NPCDropChanges : GlobalNPC
+    {
+        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        {
+            // Try to get the Calamity Mod and Signus NPC type
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
+            {
+                if (calamity.Find<ModNPC>("Signus") is ModNPC signus)
+                {
+                    if (npc.type == signus.Type)
+                    {
+                        // Add your item with whatever drop rate you want (e.g., 1 in 5)
+                        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheParallel>(), 3));
+                    }
+                }
+            }
+        }
+    }
+}

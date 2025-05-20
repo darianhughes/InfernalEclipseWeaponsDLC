@@ -1,0 +1,19 @@
+Items: {
+	TwoPaths: {
+		DisplayName: Two Paths
+		Tooltip: ""
+	}
+
+	TheParallel: {
+		Tooltip: ""
+		DisplayName: The Parallel
+	}
+}
+
+Projectiles: {
+	TwoPathsPro.DisplayName: Two Paths Pro
+	BlackExplosion.DisplayName: Black Explosion
+	Magic.WhiteScythe.DisplayName: White Scythe
+	TwoPathsPro2.DisplayName: Two Paths Pro2
+	TheParallellPro.DisplayName: The Parallell Pro
+}
