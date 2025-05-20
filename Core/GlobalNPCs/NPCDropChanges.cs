@@ -21,7 +21,6 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 {
                     if (npc.type == signus.Type)
                     {
-                        // Add your item with whatever drop rate you want (e.g., 1 in 5)
                         npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheParallel>(), 3));
                     }
                 }
