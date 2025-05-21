@@ -34,7 +34,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Projectile.tileCollide = true;
             Projectile.timeLeft = 300;
             Projectile.extraUpdates = 2;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = 2;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 25;
@@ -42,16 +42,27 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         public override void AI()
         {
-            // Spin as it travels
-            Projectile.rotation += 0.4f * Projectile.direction;
+            // Start slow, accelerate up to a maximum spin speed
+            float lifeFraction = 1f - (Projectile.timeLeft / 300f); // 0 at spawn, 1 at death (if 300 timeLeft)
+            float minSpin = 0.04f;  // starting speed
+            float maxSpin = 0.4f;   // ending speed
+            float rotationSpeed = MathHelper.Lerp(minSpin, maxSpin, lifeFraction);
 
-            // Homing logic
-            NPC target = FindNearestTarget(600f);
-            if (target != null)
+            Projectile.rotation += rotationSpeed * Projectile.direction;
+
+            //// Delay homing by 20 frames (1/3 second at 60 FPS)
+            int homingDelay = 5;
+            Projectile.ai[0]++;
+
+            if (Projectile.ai[0] > homingDelay)
             {
-                Vector2 toTarget = target.Center - Projectile.Center;
-                float homingStrength = 0.06f;
-                Projectile.velocity = Vector2.Lerp(Projectile.velocity, toTarget.SafeNormalize(Vector2.UnitX) * Projectile.velocity.Length(), homingStrength);
+                NPC target = FindNearestTarget(200f);
+                if (target != null)
+                {
+                    Vector2 toTarget = target.Center - Projectile.Center;
+                    float homingStrength = 1.00f;
+                    Projectile.velocity = Vector2.Lerp(Projectile.velocity, toTarget.SafeNormalize(Vector2.UnitX) * Projectile.velocity.Length(), homingStrength);
+                }
             }
         }
 
@@ -61,8 +72,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Vector2 origin = texture.Size() / 2f;
             float fade = MathHelper.Min(1f, Projectile.timeLeft / 20f);
 
-            Color[] colorA = { new Color(198, 249, 251, 255), new Color(134, 109, 231, 255) };
-            Color[] colorB = { new Color(255, 221, 233, 255), new Color(227, 81, 171, 255) };
+            // Signus color palette (customize these as desired)
+            Color[] colorA = { new Color(84, 39, 89, 255), new Color(36, 16, 56, 160) };         // Main Signus body to tail
+            Color[] colorB = { new Color(218, 164, 255, 180), new Color(84, 39, 89, 100) };       // Magical highlight to deep purple
 
             // Trail: negative wave
             for (int i = 0; i < Projectile.oldPos.Length; i++)
@@ -90,7 +102,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                 }
             }
 
-            // Outward highlight trail (colorsB)
+            // Outward highlight trail (magical purple to deep purple)
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 Vector2 offset = Vector2.UnitY.RotatedBy(Projectile.oldRot[i]) * (float)(Math.Sin((Projectile.timeLeft + Projectile.whoAmI + i) * Math.PI / 5.0) * 12.0) * i / Projectile.oldPos.Length;
@@ -114,6 +126,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
             return false;
         }
+
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            Player owner = Main.player[Projectile.owner];
+            Vector2 toPlayer = owner.Center - Projectile.Center;
+            // Point the projectile's 'down' (texture's positive Y) towards the player
+            Projectile.rotation = toPlayer.ToRotation() + MathHelper.PiOver2;
+            // If you want the point to face away from the player (as if thrown from the player), use:
+            // Projectile.rotation = toPlayer.ToRotation() - MathHelper.PiOver2;
+        }
+
         private NPC FindNearestTarget(float range)
         {
             NPC closest = null;

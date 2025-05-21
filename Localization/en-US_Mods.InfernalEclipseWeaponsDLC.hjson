@@ -8,6 +8,11 @@ Items: {
 		Tooltip: ""
 		DisplayName: The Parallel
 	}
+
+	SuperShotgun: {
+		Tooltip: "'What? Never seen a blade on a shotgun before?'"
+		DisplayName: Triggerblade
+	}
 }
 
 Projectiles: {

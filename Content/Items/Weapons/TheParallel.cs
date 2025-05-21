@@ -38,7 +38,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons
             Item.useTime = 4;
             Item.useAnimation = 12;
             Item.reuseDelay = 20;
-            Item.damage = 120;
+            Item.damage = 83;
             Item.autoReuse = true;
             Item.knockBack = 1.5f;
             Item.noMelee = true;
@@ -77,6 +77,19 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons
                     Main.projectile[proj].ai[1] = phase; // If you want to use phase for trails or effect
             }
             return false; // Suppress vanilla projectile spawn
+        }
+
+        public override void BardModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Color lerpedColor = Color.Lerp(Color.White, new Color(255, 105, 180), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 4.0) * 0.5 + 0.5));
+
+            TooltipLine line1 = new(Mod, "ParallelLore1", "To his expectation, Fireteam P had slew the Storm Weaver. But Kos had another trick up his sleeve.");
+            line1.OverrideColor = Color.MediumPurple;
+            tooltips.Add(line1);
+
+            TooltipLine line2 = new(Mod, "ParallelLore2", "Suddenly, with no warning, Kos had transported everyone to the mirror realm and called upon his second servant: Signus.");
+            line2.OverrideColor = Color.MediumPurple;
+            tooltips.Add(line2);
         }
     }
 }
