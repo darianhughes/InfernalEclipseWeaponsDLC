@@ -13,6 +13,11 @@ Items: {
 		Tooltip: "'What? Never seen a blade on a shotgun before?'"
 		DisplayName: Triggerblade
 	}
+
+	BellBallad: {
+		DisplayName: Ballad of Bells
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -21,4 +26,8 @@ Projectiles: {
 	Magic.WhiteScythe.DisplayName: White Scythe
 	TwoPathsPro2.DisplayName: Two Paths Pro2
 	TheParallellPro.DisplayName: The Parallell Pro
+	BellBalladEleum.DisplayName: Ballad of Bells Eleum
+	BellBalladHavoc.DisplayName: Ballad of Bells Havoc
+	BellBalladSunlight.DisplayName: Ballad of Bells Sunlight
+	BellBalladSunlightLaser.DisplayName: Ballad of Bells Sunlight
 }

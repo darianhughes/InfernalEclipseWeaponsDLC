@@ -1,5 +1,5 @@
 displayName = Infernal Eclipse of Ragnarok: Weapon DLC
-author = Infernal Eclipse of Raganrok Team
+author = Infernal Eclipse of Ragnarok Team
 version = 0.1
 modReferences = CalamityMod, ThoriumMod
 hideCode = true
