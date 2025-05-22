@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using InfernalEclipseWeaponsDLC.Content.Items.Weapons;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {

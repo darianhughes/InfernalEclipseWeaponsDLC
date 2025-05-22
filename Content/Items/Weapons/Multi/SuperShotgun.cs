@@ -13,7 +13,7 @@ using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes;
 using CalamityMod.Items.Materials;
 using ThoriumMod.Buffs;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 {
     public class SuperShotgun : ModItem
     {
@@ -101,7 +101,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(12));
-                float scale = 1f - (Main.rand.NextFloat() * 0.1f);
+                float scale = 1f - Main.rand.NextFloat() * 0.1f;
                 perturbedSpeed *= scale;
                 Projectile.NewProjectile(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
             }

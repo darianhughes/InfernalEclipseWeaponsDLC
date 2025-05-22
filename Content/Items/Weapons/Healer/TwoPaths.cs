@@ -18,10 +18,9 @@ using rail;
 using CalamityMod.Projectiles.Magic;
 using ThoriumMod;
 using InfernalEclipseWeaponsDLC.Content.Projectiles;
-using InfernalEclipseWeaponsDLC;
 using ThoriumMod.Items.BossThePrimordials.Dream;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 {
     public class TwoPaths : ScytheItem
     {

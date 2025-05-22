@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria.GameContent.ItemDropRules;
 using Terraria;
 using Terraria.ModLoader;
-using InfernalEclipseWeaponsDLC.Content.Items.Weapons;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 {

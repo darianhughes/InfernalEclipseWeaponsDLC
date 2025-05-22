@@ -1,4 +1,4 @@
-﻿using InfernalEclipseWeaponsDLC.Content.Items.Weapons;
+﻿using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using Terraria;
 using Terraria.ModLoader;

@@ -16,7 +16,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.Localization;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
     public class TheParallel : BardItem
     {
@@ -83,7 +83,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons
         {
             Color lerpedColor = Color.Lerp(Color.White, new Color(255, 105, 180), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 4.0) * 0.5 + 0.5));
 
-            TooltipLine line1 = new(Mod, "ParallelLore1", "To his expectation, Fireteam P had slew the Storm Weaver. But Kos had another trick up his sleeve.");
+            TooltipLine line1 = new(Mod, "ParallelLore1", "To his expectation, they had slew the Storm Weaver. But Kos had another trick up his sleeve.");
             line1.OverrideColor = Color.MediumPurple;
             tooltips.Add(line1);
 

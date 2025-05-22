@@ -2,7 +2,7 @@
 [h3]An DLC Add-on to [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] Infernal Eclipse of Ragnarok[/url][/h3]
 [b]This mod can be played on its own and doesn't require the main mod to run.[/b]
 
-The Infernal Eclipse of Ragnarok: Weapon DLC is a mod that aims to fill in the weak spots of progression with new, exciting items.
+The Infernal Eclipse of Ragnarok: Weapon DLC is a mod that aims to fill in the weak spots of progression with new, exciting items, as well as to be an suitable extension of the [url=https://steamcommunity.com/workshop/filedetails/?id=3142064272] Unofficial Calamity Bard & Healer[/url] mod.
 
 It currently adds the following:
 [list]

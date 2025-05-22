@@ -18,7 +18,7 @@ using Terraria.Localization;
 using Terraria.ID;
 using InfernalEclipseWeaponsDLC.Core.Players;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
     public class BellBallad : BardItem
     {
