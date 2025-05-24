@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics.PackedVector;
+﻿using CalamityMod.NPCs.TownNPCs;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -13,9 +15,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
         {
             Projectile.width = 4;
             Projectile.height = 4;
-            Projectile.aiStyle = 1;
-            AIType = ProjectileID.GreenLaser;
-            Projectile.hostile = true;
+            Projectile.aiStyle = -1;
             Projectile.penetrate = -1;
             Projectile.alpha = 255;
             Projectile.extraUpdates = 2;
@@ -27,6 +27,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         public override void AI()
         {
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+
             if (Projectile.ai[1] == 0f)
             {
                 Projectile.ai[1] = 1f;
@@ -41,6 +43,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
                 if (Projectile.alpha < 0)
                     Projectile.alpha = 0;
+            }
+
+            Lighting.AddLight(Projectile.Center, new Color(252, 255, 61).ToVector3());
+            for (int i = 0; i < 5; i++)
+            {
+                Dust dust = Dust.NewDustDirect(Projectile.position + Projectile.velocity * 2f, Projectile.width, Projectile.height, DustID.Ichor, Projectile.velocity.X, Projectile.velocity.Y, 100);
+                dust.velocity = Vector2.Zero;
+                dust.position -= Projectile.velocity / 5f * i;
+                dust.noGravity = true;
+                dust.scale = 0.8f;
+                dust.noLight = true;
             }
         }
 

@@ -18,6 +18,16 @@ Items: {
 		DisplayName: Ballad of Bells
 		Tooltip: ""
 	}
+
+	BirbSaxophone: {
+		DisplayName: Birb Saxophone
+		Tooltip: ""
+	}
+
+	DogClarinet: {
+		DisplayName: Dog Clarinet
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -30,4 +40,8 @@ Projectiles: {
 	BellBalladHavoc.DisplayName: Ballad of Bells Havoc
 	BellBalladSunlight.DisplayName: Ballad of Bells Sunlight
 	BellBalladSunlightLaser.DisplayName: Ballad of Bells Sunlight
+	BellBalladEleumBolt.DisplayName: Bell Ballad Eleum Bolt
+	BellBalladHavocSlash.DisplayName: Bell Ballad Havoc Slash
+	BirbSaxophoneRedLightningFeather.DisplayName: Birb Saxophone Red Lightning Feather
+	DogClarinetSnipingBlast.DisplayName: Dog Clarinet Sniping Blast
 }

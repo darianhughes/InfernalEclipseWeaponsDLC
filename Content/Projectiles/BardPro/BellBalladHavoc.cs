@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
@@ -22,8 +23,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             if(Projectile.owner == Main.myPlayer)
             {
                 Vector2 velocity = (Main.MouseWorld - Projectile.Center).SafeNormalize(default) * 10f;
-                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ProjectileID.DD2SquireSonicBoom, Projectile.damage, Projectile.knockBack);
-                proj.tileCollide = false; // TODO: might require dedicated ModProjectile for MP compat
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<BellBalladHavocSlash>(), Projectile.damage, Projectile.knockBack);
             }
         }
     }

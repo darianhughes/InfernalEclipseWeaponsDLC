@@ -51,8 +51,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             if (Projectile.owner == Main.myPlayer)
             {
                 Vector2 velocity = (Main.MouseWorld - Projectile.Center).SafeNormalize(default) * 10f;
-                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ProjectileID.FrostBoltStaff, damage, knockBack);
-                proj.tileCollide = false; // TODO: might require dedicated ModProjectile for MP compat
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<BellBalladEleumBolt>(), damage, knockBack);
             }
         }
     }

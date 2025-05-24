@@ -41,7 +41,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.noMelee = true;
 
             Item.shoot = ProjectileID.None;
-            Item.DamageType = ThoriumDamageBase<BardDamage>.Instance;
             Item.UseSound = SoundID.Item35;
 
             // TBD
