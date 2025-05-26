@@ -86,8 +86,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
         {
             if (hit.Damage > 0)
             {
-                target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 60);
-                target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 60);
+                target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 120);
+                target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 120);
             }
         }
     }

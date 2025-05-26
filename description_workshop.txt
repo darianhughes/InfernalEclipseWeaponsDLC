@@ -6,7 +6,7 @@ The Infernal Eclipse of Ragnarok: Weapon DLC is a mod that aims to fill in the w
 
 It currently adds the following:
 [list]
-	[*] 3 weapons
+	[*] 7 weapons
 [/list]
 
 It is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser[/url] to see how to obtain the new weapons.

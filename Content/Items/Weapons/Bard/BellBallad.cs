@@ -51,8 +51,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.damage = 83;
             Item.shootSpeed = 14f;
 
-            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
+            Item.rare = ItemRarityID.Lime;
 
             InspirationCost = 2;
         }
@@ -103,6 +103,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                 .AddIngredient<EssenceofEleum>(3)
                 .AddIngredient<EssenceofHavoc>(3)
                 .AddIngredient<EssenceofSunlight>(3)
+                .AddIngredient<AshesofCalamity>(5)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
         }
