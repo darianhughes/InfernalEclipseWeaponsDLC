@@ -17,6 +17,7 @@ using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ID;
 using InfernalEclipseWeaponsDLC.Core.Players;
+using CalamityMod.Items.Materials;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -93,6 +94,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
         {
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ItemID.Bell, 1)
+                .AddIngredient<EssenceofEleum>(3)
+                .AddIngredient<EssenceofHavoc>(3)
+                .AddIngredient<EssenceofSunlight>(3)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

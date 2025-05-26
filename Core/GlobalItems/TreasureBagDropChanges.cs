@@ -23,6 +23,20 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                         itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheParallel>(), 3));
                     }
                 }
+                if (calamity.Find<ModItem>("DragonfollyBag") is ModItem dragonfollyBag)
+                {
+                    if (item.type ==  dragonfollyBag.Type)
+                    {
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BirbSaxophone>(), 3));
+                    }
+                }
+                if (calamity.Find<ModItem>("DevourerofGodsBag") is ModItem DoGBag)
+                {
+                    if (item.type == DoGBag.Type)
+                    {
+                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DogClarinet>(), 3));
+                    }
+                }
             }
         }
     }

@@ -46,7 +46,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.useTime = 60;
             Item.useAnimation = 60;
             Item.knockBack = 1.5f;
-            Item.damage = 83;
+            Item.damage = 400;
             Item.shootSpeed = 14f;
 
             Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
@@ -63,6 +63,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
         {
+            Color lerpedColor = Color.Lerp(Color.White, new Color(255, 105, 180), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 4.0) * 0.5 + 0.5));
+
+            TooltipLine line1 = new(Mod, "UniversalLore1", "Kos had made his final stand. Used all of his tricks up his sleeve. He had lost to them. However, it doesn't mean Eclipse had lost.");
+            line1.OverrideColor = Color.MediumPurple;
+            tooltips.Add(line1);
+
+            TooltipLine line2 = new(Mod, "UniversalLore2", "Using every inch of power he had remaining in his soul, he summoned the true god slayer: The Devourer of Gods.");
+            line2.OverrideColor = Color.MediumPurple;
+            tooltips.Add(line2);
         }
     }
 }

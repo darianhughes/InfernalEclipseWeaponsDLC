@@ -25,7 +25,7 @@ Items: {
 	}
 
 	DogClarinet: {
-		DisplayName: Dog Clarinet
+		DisplayName: Death's Whisper
 		Tooltip: ""
 	}
 }
@@ -44,4 +44,5 @@ Projectiles: {
 	BellBalladHavocSlash.DisplayName: Bell Ballad Havoc Slash
 	BirbSaxophoneRedLightningFeather.DisplayName: Birb Saxophone Red Lightning Feather
 	DogClarinetSnipingBlast.DisplayName: Dog Clarinet Sniping Blast
+	SulfurSpirit.DisplayName: Sulfur Spirit
 }
