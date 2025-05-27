@@ -32,7 +32,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            Item.damage = 550;
+            Item.damage = 475;
             scytheSoulCharge = 4;
             Item.width = 208;
             Item.height = 190;
@@ -100,7 +100,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             {
                 SetDefaultsToScythe();
                 Item.damage = 475;
-                scytheSoulCharge = 3;
+                scytheSoulCharge = 4;
                 Item.mana = 20;
                 Item.shoot = ModContent.ProjectileType<TwoPathsPro2>();
                 Item.shootSpeed = 10f;
@@ -112,7 +112,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 // Default scythe stats (TwoPathsPro logic)
                 SetDefaultsToScythe();
                 Item.damage = 1425;
-                scytheSoulCharge = 3;
+                scytheSoulCharge = 4;
                 Item.width = 86;
                 Item.height = 90;
                 Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
@@ -138,10 +138,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                     Projectile.NewProjectile(source, player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle) * 2f), (float)(Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<WhiteScythe>(), damage, knockback, Main.myPlayer, 0f, 0f);
                     Projectile.NewProjectile(source, player.Center.X, player.Center.Y, (float)(-Math.Sin(offsetAngle) * 2f), (float)(-Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<WhiteScythe>(), damage, knockback, Main.myPlayer, 0f, 0f);
                 }
-                return base.Shoot(player, source, position, velocity, type, damage, knockback);
+                return base.Shoot(player, source, position, velocity, type, 150, knockback);
             }
             // Default behavior (left click)
-            return base.Shoot(player, source, position, velocity, type, 150, knockback);
+            return base.Shoot(player, source, position, velocity, type, damage, knockback);
         }
     }
 }

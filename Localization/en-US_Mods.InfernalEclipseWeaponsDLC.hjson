@@ -20,8 +20,8 @@ Items: {
 	}
 
 	BirbSaxophone: {
-		DisplayName: Birb Saxophone
-		Tooltip: ""
+		DisplayName: Birb Call
+		Tooltip: "'Call upon the Bumblebirb's power!'"
 	}
 
 	DogClarinet: {

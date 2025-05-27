@@ -48,7 +48,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
             if (player.altFunctionUse == 2) // Right click - melee
             {
                 // Melee setup
-                Item.damage = 25;
+                Item.damage = 30;
                 Item.DamageType = DamageClass.Melee;
                 Item.useTime = 12;
                 Item.useAnimation = 12;
