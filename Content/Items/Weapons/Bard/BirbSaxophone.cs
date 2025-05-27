@@ -42,11 +42,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.shoot = ModContent.ProjectileType<BirbSaxophoneRedLightningFeather>();
             Item.UseSound = ThoriumSounds.Saxophone_Sound;
 
-            // TBD
             Item.useTime = 12;
             Item.useAnimation = 12;
             Item.knockBack = 1.5f;
-            Item.damage = 150;
+            Item.damage = 80;
             Item.shootSpeed = 14f;
 
             Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;

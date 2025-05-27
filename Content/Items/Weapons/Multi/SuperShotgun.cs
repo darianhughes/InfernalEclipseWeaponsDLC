@@ -19,7 +19,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
     {
         public override void SetDefaults()
         {
-            Item.damage = 15; // Base damage
+            Item.damage = 7; // Base damage
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 34; // How fast the weapon is used.
             Item.useAnimation = 34;
@@ -63,7 +63,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
             }
             else // Left click - shotgun
             {
-                Item.damage = 15;
+                Item.damage = 7;
                 Item.DamageType = DamageClass.Ranged;
                 Item.useTime = 34;
                 Item.useAnimation = 34;

@@ -38,7 +38,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.useTime = 4;
             Item.useAnimation = 12;
             Item.reuseDelay = 20;
-            Item.damage = 83;
+            Item.damage = 131;
             Item.autoReuse = true;
             Item.knockBack = 1.5f;
             Item.noMelee = true;

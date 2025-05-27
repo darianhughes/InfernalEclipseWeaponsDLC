@@ -44,11 +44,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.shoot = ProjectileID.None;
             Item.UseSound = SoundID.Item35;
 
-            // TBD
             Item.useTime = 12;
             Item.useAnimation = 12;
             Item.knockBack = 1.5f;
-            Item.damage = 83;
+            Item.damage = 114;
             Item.shootSpeed = 14f;
 
             Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
