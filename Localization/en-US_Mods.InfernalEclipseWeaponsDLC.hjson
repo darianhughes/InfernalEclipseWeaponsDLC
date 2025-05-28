@@ -28,6 +28,11 @@ Items: {
 		DisplayName: Death's Whisper
 		Tooltip: ""
 	}
+
+	DeepSeaDrawl: {
+		DisplayName: Deep Sea Drawl
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -45,4 +50,6 @@ Projectiles: {
 	BirbSaxophoneRedLightningFeather.DisplayName: Birb Saxophone Red Lightning Feather
 	DogClarinetSnipingBlast.DisplayName: Dog Clarinet Sniping Blast
 	SulfurSpirit.DisplayName: Sulfur Spirit
+	DeepSeaDrawlHomingPlankton.DisplayName: Deep Sea Drawl Homing Plankton
+	DeepSeaDrawlProjectile.DisplayName: Deep Sea Drawl Projectile
 }

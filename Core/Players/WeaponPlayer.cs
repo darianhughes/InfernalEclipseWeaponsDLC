@@ -19,12 +19,23 @@ namespace InfernalEclipseWeaponsDLC.Core.Players
                 bool bellBalladEquipped = Player.HeldItem.type == ModContent.ItemType<BellBallad>() || Main.mouseItem.type == ModContent.ItemType<BellBallad>();
                 if (!bellBalladEquipped) 
                 {
-                    BellBalladEleum?.Projectile.Kill();
-                    BellBalladEleum = null;
-                    BellBalladHavoc?.Projectile.Kill();
-                    BellBalladHavoc = null;
-                    BellBalladSunlight?.Projectile.Kill();
-                    BellBalladSunlight = null;  
+                    if(BellBalladEleum != null)
+                    {
+                        BellBalladEleum.Projectile.timeLeft = 20;
+                        BellBalladEleum = null;
+                    }
+
+                    if (BellBalladHavoc != null)
+                    {
+                        BellBalladHavoc.Projectile.timeLeft = 20;
+                        BellBalladHavoc = null;
+                    }
+
+                    if (BellBalladSunlight != null)
+                    {
+                        BellBalladSunlight.Projectile.timeLeft = 20;
+                        BellBalladSunlight = null;
+                    }
                 }
             }
         }

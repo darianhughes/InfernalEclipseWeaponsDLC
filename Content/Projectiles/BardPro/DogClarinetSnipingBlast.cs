@@ -34,18 +34,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         public override void AI()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 10; i++)
             {
-                int dustType = ModContent.DustType<CalamityMod.Dusts.AstralOrange>();
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, dustType, Projectile.velocity.X, Projectile.velocity.Y, 50, default, 1.2f);
-                dust.noGravity = true;
-                dust.velocity *= 0.3f;
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                int dustType = ModContent.DustType<CalamityMod.Dusts.AstralBlue>();
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, dustType);
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.PinkTorch);
                 if (!Main.rand.NextBool(3))
                 {
                     dust.velocity /= 2f;
@@ -56,6 +47,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                 {
                     dust.scale *= 0.5f;
                 }
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.BlueFairy, Projectile.velocity.X, Projectile.velocity.Y, 50, default, 1.2f);
+                dust.noGravity = true;
+                dust.velocity *= 0.3f;
             }
 
             if (Main.player[Projectile.owner].GetModPlayer<ThoriumPlayer>().accWindHoming)

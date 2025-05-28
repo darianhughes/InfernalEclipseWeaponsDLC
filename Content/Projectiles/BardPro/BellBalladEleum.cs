@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod.Items.Weapons.Ranged;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Projectile.width = 22;
             Projectile.height = 26;
             Projectile.tileCollide = false;
+            Projectile.timeLeft = int.MaxValue;
+            Projectile.Opacity = 0f;
         }
 
         public override bool? CanHitNPC(NPC target) => false;
@@ -39,11 +42,26 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         public override void AI()
         {
-            Projectile.timeLeft = 2;
             AI_Timer++;
-            float radians = (AI_Timer * 0.01f) % MathHelper.TwoPi + (MathHelper.TwoPi / 3f * BellIndex);
-            Projectile.Center = Vector2.Lerp(Projectile.Center, Player.Center + new Vector2(0, Player.gfxOffY) + new Vector2(75, 0).RotatedBy(radians), AI_Timer < 20 ? 0.1f : 0.4f);
             Projectile.rotation = 0f;
+            float movementProgress;
+
+            if (Projectile.timeLeft == int.MaxValue - 1)
+            {
+                Projectile.timeLeft = int.MaxValue;
+                movementProgress = MathHelper.Clamp(AI_Timer / 20f, 0, 1);
+
+                if (Projectile.Opacity < 1f)
+                    Projectile.Opacity += 0.1f;
+            }
+            else
+            {
+                Projectile.Opacity -= 0.05f;
+                movementProgress = MathHelper.Clamp(Projectile.timeLeft / 20f, 0, 1);
+            }
+
+            float radians = (AI_Timer * 0.01f) % MathHelper.TwoPi + (MathHelper.TwoPi / 3f * BellIndex);
+            Projectile.Center = Player.Center + new Vector2(0, Player.gfxOffY) + new Vector2(75 * movementProgress, 0).RotatedBy(radians);
         }
 
         public virtual void Shoot(int damage, float knockBack)

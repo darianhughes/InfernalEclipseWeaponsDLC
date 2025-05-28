@@ -61,6 +61,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             player.itemLocation.Y += 10;
         }
 
+        //public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+        //{
+        //}
+
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
         {
             Color lerpedColor = Color.Lerp(Color.White, new Color(255, 105, 180), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 4.0) * 0.5 + 0.5));
