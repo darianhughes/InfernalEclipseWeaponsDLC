@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ThoriumMod.Items;
 using ThoriumMod.Empowerments;
 using ThoriumMod.Sounds;
@@ -13,14 +10,12 @@ using CalamityMod.Rarities;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.Localization;
 using Terraria.ID;
-using InfernalEclipseWeaponsDLC.Core.Players;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
-    public class DogClarinet : BardItem
+    [LegacyName("DogClarinet")]
+    public class DeathsWhisper : BardItem
     {
         public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
 
@@ -39,7 +34,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.autoReuse = true;
             Item.noMelee = true;
 
-            Item.shoot = ModContent.ProjectileType<DogClarinetSnipingBlast>();
+            Item.shoot = ModContent.ProjectileType<DeathsWhisperPro>();
             Item.UseSound = ThoriumSounds.Clarinet_Sound;
 
             // TBD
@@ -61,14 +56,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             player.itemLocation.Y += 10;
         }
 
-        //public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
-        //{
-        //}
+        public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+        {
+        }
 
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
         {
-            Color lerpedColor = Color.Lerp(Color.White, new Color(255, 105, 180), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 4.0) * 0.5 + 0.5));
-
             TooltipLine line1 = new(Mod, "UniversalLore1", "Kos had made his final stand. Used all of his tricks up his sleeve. He had lost to them. However, it doesn't mean Eclipse had lost.");
             line1.OverrideColor = Color.MediumPurple;
             tooltips.Add(line1);

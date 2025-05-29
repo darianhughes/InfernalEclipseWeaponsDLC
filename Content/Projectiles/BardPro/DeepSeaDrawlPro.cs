@@ -9,7 +9,7 @@ using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
-    public class DeepSeaDrawlProjectile : BardProjectile
+    public class DeepSeaDrawlPro : BardProjectile
     {
         public override void SetStaticDefaults()
         {

@@ -39,7 +39,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.autoReuse = true;
             Item.noMelee = true;
 
-            Item.shoot = ModContent.ProjectileType<BirbSaxophoneRedLightningFeather>();
+            Item.shoot = ModContent.ProjectileType<BirbSaxophonePro>();
             Item.UseSound = ThoriumSounds.Saxophone_Sound;
 
             Item.useTime = 12;

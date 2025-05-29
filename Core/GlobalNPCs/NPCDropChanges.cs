@@ -7,6 +7,9 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
+using CalamityMod.NPCs.Bumblebirb;
+using CalamityMod.NPCs.DevourerofGods;
+using CalamityMod.NPCs.Signus;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -14,29 +17,21 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
     {
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            // Try to get the Calamity Mod and Signus NPC type
-            if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
+            if (ModLoader.TryGetMod("CalamityMod", out _))
             {
-                if (calamity.Find<ModNPC>("Signus") is ModNPC signus)
+                if (npc.type == ModContent.NPCType<Signus>())
                 {
-                    if (npc.type == signus.Type)
-                    {
-                        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheParallel>(), 3));
-                    }
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheParallel>(), 3));
                 }
-                if (calamity.Find<ModNPC>("Bumblefuck") is ModNPC dragonfolly)
+
+                if (npc.type == ModContent.NPCType<Bumblefuck>())
                 {
-                    if (npc.type == dragonfolly.Type)
-                    {
-                        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BirbSaxophone>(), 3));
-                    }
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BirbSaxophone>(), 3));
                 }
-                if (calamity.Find<ModNPC>("DevourerofGodsHead") is ModNPC DoG)
+
+                if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
                 {
-                    if (npc.type == DoG.Type)
-                    {
-                        npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DogClarinet>(), 3));
-                    }
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathsWhisper>(), 3));
                 }
             }
         }

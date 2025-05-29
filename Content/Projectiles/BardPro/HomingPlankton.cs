@@ -11,7 +11,7 @@ using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
-    public class DeepSeaDrawlHomingPlankton : BardProjectile
+    public class HomingPlankton : BardProjectile
     {
         public override void SetStaticDefaults()
         {

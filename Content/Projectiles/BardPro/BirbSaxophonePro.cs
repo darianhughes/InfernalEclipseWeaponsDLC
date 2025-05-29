@@ -12,7 +12,7 @@ using ThoriumMod.Projectiles.Bard;
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     // Adapted from CalamityMod.Projectiles.Boss.RedLightningFeather
-    public class BirbSaxophoneRedLightningFeather : BardProjectile
+    public class BirbSaxophonePro : BardProjectile
     {
         public override string Texture => ModContent.GetInstance<CalamityMod.Projectiles.Boss.RedLightningFeather>().Texture;
 
@@ -43,10 +43,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                 Projectile.frameCounter = 0;
             }
 
-            if (Projectile.frame > 3)
-            {
+            if (Projectile.frame >= Main.projFrames[Projectile.type])
                 Projectile.frame = 0;
-            }
 
             if (Projectile.velocity.X < 0f)
             {

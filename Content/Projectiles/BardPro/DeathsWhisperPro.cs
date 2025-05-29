@@ -13,7 +13,7 @@ using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
-    public class DogClarinetSnipingBlast : BardProjectile
+    public class DeathsWhisperPro : BardProjectile
     {
         public override string Texture => $"Terraria/Images/Item_{ItemID.None}";
 

@@ -7,6 +7,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria;
 using Terraria.ModLoader;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
+using CalamityMod.Items.TreasureBags;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 {
@@ -14,28 +15,21 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
     {
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
-            if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
+            if (ModLoader.TryGetMod("CalamityMod", out _))
             {
-                if (calamity.Find<ModItem>("SignusBag") is ModItem signusBag)
+                if (item.type == ModContent.ItemType<SignusBag>())
                 {
-                    if (item.type == signusBag.Type)
-                    {
-                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheParallel>(), 3));
-                    }
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheParallel>(), 3));
                 }
-                if (calamity.Find<ModItem>("DragonfollyBag") is ModItem dragonfollyBag)
+
+                if (item.type == ModContent.ItemType<DragonfollyBag>())
                 {
-                    if (item.type ==  dragonfollyBag.Type)
-                    {
-                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BirbSaxophone>(), 3));
-                    }
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BirbSaxophone>(), 3));
                 }
-                if (calamity.Find<ModItem>("DevourerofGodsBag") is ModItem DoGBag)
+
+                if (item.type == ModContent.ItemType<DevourerofGodsBag>())
                 {
-                    if (item.type == DoGBag.Type)
-                    {
-                        itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DogClarinet>(), 3));
-                    }
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathsWhisper>(), 3));
                 }
             }
         }

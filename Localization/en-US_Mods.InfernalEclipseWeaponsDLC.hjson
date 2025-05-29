@@ -24,32 +24,38 @@ Items: {
 		Tooltip: "'Call upon the Bumblebirb's power!'"
 	}
 
-	DogClarinet: {
-		DisplayName: Death's Whisper
-		Tooltip: ""
-	}
-
 	DeepSeaDrawl: {
 		DisplayName: Deep Sea Drawl
 		Tooltip: ""
 	}
+
+	DeathsWhisper: {
+		Tooltip: ""
+		DisplayName: Death's Whisper
+	}
+
+	BrimstoneHarp: {
+		Tooltip: ""
+		DisplayName: Brimstone Harp
+	}
 }
 
 Projectiles: {
-	TwoPathsPro.DisplayName: Two Paths Pro
+	TwoPathsPro.DisplayName: Two Paths
 	BlackExplosion.DisplayName: Black Explosion
 	Magic.WhiteScythe.DisplayName: White Scythe
-	TwoPathsPro2.DisplayName: Two Paths Pro2
-	TheParallellPro.DisplayName: The Parallell Pro
+	TwoPathsPro2.DisplayName: Two Paths
+	TheParallellPro.DisplayName: The Parallell
 	BellBalladEleum.DisplayName: Ballad of Bells Eleum
 	BellBalladHavoc.DisplayName: Ballad of Bells Havoc
 	BellBalladSunlight.DisplayName: Ballad of Bells Sunlight
-	BellBalladSunlightLaser.DisplayName: Ballad of Bells Sunlight
-	BellBalladEleumBolt.DisplayName: Bell Ballad Eleum Bolt
-	BellBalladHavocSlash.DisplayName: Bell Ballad Havoc Slash
-	BirbSaxophoneRedLightningFeather.DisplayName: Birb Saxophone Red Lightning Feather
-	DogClarinetSnipingBlast.DisplayName: Dog Clarinet Sniping Blast
+	BellBalladSunlightLaser.DisplayName: Ballad of Bells Laser
+	BellBalladEleumBolt.DisplayName: Ballad of Bells Frost Bolt
+	BellBalladHavocSlash.DisplayName: Ballad of Bells Brimstone Slash
 	SulfurSpirit.DisplayName: Sulfur Spirit
-	DeepSeaDrawlHomingPlankton.DisplayName: Deep Sea Drawl Homing Plankton
-	DeepSeaDrawlProjectile.DisplayName: Deep Sea Drawl Projectile
+	DeepSeaDrawlPro.DisplayName: Deep Sea Drawl
+	HomingPlankton.DisplayName: Homing Plankton
+	DeathsWhisperPro.DisplayName: Death's Whisper
+	BrimstoneHarpPro.DisplayName: Brimstone Harp Skull
+	BirbSaxophonePro.DisplayName: Red Lightning Feather
 }
