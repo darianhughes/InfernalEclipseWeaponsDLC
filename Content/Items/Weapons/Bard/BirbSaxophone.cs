@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ThoriumMod.Items;
-using ThoriumMod.Empowerments;
-using ThoriumMod.Sounds;
-using ThoriumMod;
-using CalamityMod.Items;
-using Terraria.ModLoader;
-using CalamityMod.Rarities;
+﻿using CalamityMod.Items;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.Localization;
 using Terraria.ID;
-using InfernalEclipseWeaponsDLC.Core.Players;
+using Terraria.ModLoader;
+using ThoriumMod;
+using ThoriumMod.Empowerments;
+using ThoriumMod.Items;
+using ThoriumMod.Sounds;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {

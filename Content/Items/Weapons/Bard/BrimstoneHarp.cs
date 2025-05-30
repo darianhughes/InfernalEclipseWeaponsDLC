@@ -61,6 +61,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             player.itemLocation.Y += 10;
         }
 
+        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Vector2 perturbedSpeed = velocity.RotatedBy(MathHelper.ToRadians(-10 + i * 10) + MathHelper.ToRadians(Main.rand.NextFloat(-3f, 3f)));
+                Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI);
+            }
+            return false;
+        }
+
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
         {
         }
