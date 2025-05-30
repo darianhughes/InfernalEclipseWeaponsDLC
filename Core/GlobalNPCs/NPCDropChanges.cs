@@ -10,6 +10,9 @@ using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 using CalamityMod.NPCs.Bumblebirb;
 using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.NPCs.Signus;
+using CalamityMod.Items.TreasureBags;
+using Terraria.UI;
+using CalamityMod.NPCs.BrimstoneElemental;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -19,6 +22,10 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
         {
             if (ModLoader.TryGetMod("CalamityMod", out _))
             {
+                if (npc.type == ModContent.NPCType<BrimstoneElemental>())
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimstoneHarp>(), 3));
+                }
                 if (npc.type == ModContent.NPCType<Signus>())
                 {
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheParallel>(), 3));

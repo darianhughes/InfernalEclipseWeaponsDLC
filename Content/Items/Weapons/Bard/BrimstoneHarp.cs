@@ -17,6 +17,7 @@ using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ID;
 using ThoriumMod.Items.BardItems;
+using CalamityMod.Items.Placeables;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -49,8 +50,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.damage = 80;
             Item.shootSpeed = 14f;
 
-            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
-            Item.rare = ItemRarityID.Purple;
+            Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
+            Item.rare = ItemRarityID.Pink;
 
             InspirationCost = 3;
         }
@@ -62,6 +63,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         }
 
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
+        {
+        }
+
+        public override void AddRecipes()
         {
         }
     }
