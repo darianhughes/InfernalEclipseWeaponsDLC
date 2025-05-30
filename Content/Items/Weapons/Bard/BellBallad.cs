@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ThoriumMod.Items;
-using ThoriumMod.Empowerments;
-using ThoriumMod.Sounds;
-using ThoriumMod;
-using CalamityMod.Items;
-using Terraria.ModLoader;
-using CalamityMod.Rarities;
+﻿using CalamityMod.Items;
+using CalamityMod.Items.Materials;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.Localization;
 using Terraria.ID;
-using InfernalEclipseWeaponsDLC.Core.Players;
-using CalamityMod.Items.Materials;
+using Terraria.ModLoader;
+using ThoriumMod;
+using ThoriumMod.Empowerments;
+using ThoriumMod.Items;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -58,13 +49,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void BardHoldItem(Player player)
         {
-            if(player.whoAmI == Main.myPlayer)
+            if (player.whoAmI == Main.myPlayer)
             {
-                // Spawn and bind projectiles if not bound
-                WeaponPlayer weaponPlayer = player.GetModPlayer<WeaponPlayer>();
-                weaponPlayer.BellBalladEleum ??= Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<BellBalladEleum>(), Item.damage, Item.knockBack, Main.myPlayer, ai0: 0).ModProjectile as BellBalladEleum;
-                weaponPlayer.BellBalladHavoc ??= Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<BellBalladHavoc>(), Item.damage, Item.knockBack, Main.myPlayer, ai0: 1).ModProjectile as BellBalladHavoc;
-                weaponPlayer.BellBalladSunlight ??= Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<BellBalladSunlight>(), Item.damage, Item.knockBack, Main.myPlayer, ai0: 2).ModProjectile as BellBalladSunlight;
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<BellBalladEleum>()] < 1)
+                    Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<BellBalladEleum>(), Item.damage, Item.knockBack, Main.myPlayer, ai0: 0);
+
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<BellBalladHavoc>()] < 1)
+                    Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<BellBalladHavoc>(), Item.damage, Item.knockBack, Main.myPlayer, ai0: 1);
+
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<BellBalladSunlight>()] < 1)
+                    Projectile.NewProjectileDirect(player.GetSource_ItemUse(Item), player.Center, Vector2.Zero, ModContent.ProjectileType<BellBalladSunlight>(), Item.damage, Item.knockBack, Main.myPlayer, ai0: 2);
             }
         }
 
@@ -82,10 +76,18 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         {
             if (player.whoAmI == Main.myPlayer)
             {
-                WeaponPlayer weaponPlayer = player.GetModPlayer<WeaponPlayer>();
-                weaponPlayer.BellBalladEleum?.Shoot(Item.damage, Item.knockBack);
-                weaponPlayer.BellBalladHavoc?.Shoot(Item.damage, Item.knockBack);
-                weaponPlayer.BellBalladSunlight?.Shoot(Item.damage, Item.knockBack);
+                foreach (Projectile proj in Main.ActiveProjectiles)
+                {
+                    if (proj.owner == Main.myPlayer)
+                    {
+                        // BellBalladHavoc & BellBalladSunlight derive from BellBalladEleum
+                        // So here they are NOT excluded!
+                        if (proj.ModProjectile is BellBalladEleum bell)
+                        {
+                            bell.Shoot(Item.damage, Item.knockBack);
+                        }
+                    }
+                }
                 return true;
             }
             return base.BardUseItem(player);

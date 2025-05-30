@@ -38,6 +38,11 @@ Items: {
 		Tooltip: ""
 		DisplayName: Brimstone Harp
 	}
+
+	NecroticChorus: {
+		DisplayName: Necrotic Chorus
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -58,4 +63,6 @@ Projectiles: {
 	DeathsWhisperPro.DisplayName: Death's Whisper
 	BrimstoneHarpPro.DisplayName: Brimstone Harp Skull
 	BirbSaxophonePro.DisplayName: Red Lightning Feather
+	NecroticChorusPro.DisplayName: Necrotic Chorus
+	NecroticChorusWisp.DisplayName: Necrotic Chorus Wisp
 }
