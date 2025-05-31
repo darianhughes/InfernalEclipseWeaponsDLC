@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.DataStructures;
+using CalamityMod.Items.Placeables;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -38,11 +39,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.useTime = 40;
             Item.useAnimation = 40;
             Item.knockBack = 1.5f;
-            Item.damage = 80;
+            Item.damage = 72;
             Item.shootSpeed = 14f;
 
-            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
-            Item.rare = ItemRarityID.Purple;
+            Item.value = CalamityGlobalItem.RarityGreenBuyPrice;
+            Item.rare = ItemRarityID.Green;
 
             InspirationCost = 3;
         }
@@ -63,6 +64,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                 Projectile.NewProjectileDirect(source, position, velocity.RotatedBy(MathHelper.Pi / 16 * (i == 0 ? -1f : 1f)) * 0.75f, ModContent.ProjectileType<HomingPlankton>(), damage / 2, knockback, Main.myPlayer);
 
             return true;
+        }
+
+        public override void AddRecipes()
+        {
+            //Adding a recipe for Infernum Mode only due chests not spawning in the Abyss in Infernum.
+            if (ModLoader.TryGetMod("InfernumMode", out Mod _))
+            {
+                CreateRecipe()
+                    .AddIngredient<AbyssGravel>(10)
+                    .AddIngredient<PlantyMush>(5)
+                    .AddIngredient(ItemID.Bone, 3)
+                    .AddTile(TileID.Anvils)
+                    .Register();
+            }
         }
     }
 }

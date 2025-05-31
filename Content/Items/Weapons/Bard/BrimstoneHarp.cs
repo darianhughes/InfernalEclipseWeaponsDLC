@@ -47,13 +47,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.useTime = 12;
             Item.useAnimation = 12;
             Item.knockBack = 1.5f;
-            Item.damage = 80;
+            Item.damage = 95;
             Item.shootSpeed = 14f;
 
             Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
             Item.rare = ItemRarityID.Pink;
 
-            InspirationCost = 3;
+            InspirationCost = 2;
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)

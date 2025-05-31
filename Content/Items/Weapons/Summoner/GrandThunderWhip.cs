@@ -9,5 +9,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner
 {
     public class GrandThunderWhip : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => false;
     }
 }

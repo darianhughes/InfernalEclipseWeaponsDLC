@@ -41,7 +41,11 @@ Items: {
 
 	NecroticChorus: {
 		DisplayName: Necrotic Chorus
-		Tooltip: ""
+		Tooltip:
+			'''
+			Summons wisps that home onto foes
+			Right click for an alternate blood spit attack
+			'''
 	}
 }
 

@@ -13,6 +13,7 @@ using CalamityMod.NPCs.Signus;
 using CalamityMod.Items.TreasureBags;
 using Terraria.UI;
 using CalamityMod.NPCs.BrimstoneElemental;
+using CalamityMod.NPCs.Ravager;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -25,6 +26,10 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 if (npc.type == ModContent.NPCType<BrimstoneElemental>())
                 {
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimstoneHarp>(), 3));
+                }
+                if (npc.type == ModContent.NPCType<RavagerBody>())
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NecroticChorus>(), 3));
                 }
                 if (npc.type == ModContent.NPCType<Signus>())
                 {

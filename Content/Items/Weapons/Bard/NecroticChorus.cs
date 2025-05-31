@@ -35,13 +35,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 20f;
-            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
+            Item.rare = ItemRarityID.Yellow;
             Item.UseSound = ThoriumSounds.Bard_Horn;
             Item.shoot = ModContent.ProjectileType<NecroticChorusWisp>();
             Item.shootSpeed = 1f;
 
             InspirationCost = 5;
+
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
 
         public override bool AltFunctionUse(Player player) => true;
