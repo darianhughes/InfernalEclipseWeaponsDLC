@@ -27,7 +27,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         public override void SetBardDefaults()
         {
             Item.damage = 50;
-            InspirationCost = 1;
             Item.width = 28;
             Item.height = 28;
             Item.useTime = 32;
