@@ -1,4 +1,5 @@
 ﻿using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
