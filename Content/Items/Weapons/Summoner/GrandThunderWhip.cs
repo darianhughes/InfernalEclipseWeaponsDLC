@@ -16,6 +16,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner
 {
     public class GrandThunderWhip : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
         public override void SetStaticDefaults() => Item.ResearchUnlockCount = 1;
 
         public override void SetDefaults()
@@ -23,7 +27,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner
             Item.DamageType = DamageClass.SummonMeleeSpeed;
             Item.damage = 14;
             Item.knockBack = 2f;
-            Item.shoot = ModContent.ProjectileType<>();
+            //Item.shoot = ModContent.ProjectileType<>();
             Item.useStyle = 1;
             Item.shootSpeed = 12f;
             Item.useTime = 34;

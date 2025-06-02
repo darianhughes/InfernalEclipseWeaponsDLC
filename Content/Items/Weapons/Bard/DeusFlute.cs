@@ -72,6 +72,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
         {
+            TooltipLine line1 = new(Mod, "DuesFluteLore", "They had found the source of the Astral Infection, and in a attempt to destroy it they used the Starcore on the infected altar.");
+            line1.OverrideColor = Color.MediumPurple;
+            tooltips.Add(line1);
+
+            TooltipLine line2 = new(Mod, "DuesFluteLore2", "However, the altar had an unexpected reaction... two lights had started bouncing off each other heading the direction of the sky, opening a rift above it");
+            line2.OverrideColor = Color.MediumPurple;
+            tooltips.Add(line2);
+
+            TooltipLine line3 = new(Mod, "DuesFluteLore3", "What came out of it was truly something out of this world, but they apreciation had to be cut short as the servant of the stars rushed towards them.");
+            line3.OverrideColor = Color.MediumPurple;
+            tooltips.Add(line3);
         }
     }
 }
