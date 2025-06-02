@@ -91,7 +91,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
                     int dust = Dust.NewDust(Projectile.Center, 1, 1, 75);
                     Main.dust[dust].position = Projectile.Center + dustOffset;
                     Main.dust[dust].noGravity = true;
-                    Main.dust[dust].velocity = Vector2.Normalize(Projectile.Center - Main.dust[dust].position) * 24f;
+                    Main.dust[dust].velocity = Vector2.Normalize(Projectile.Center - Main.dust[dust].position) * 10f;
                     Main.dust[dust].scale = Projectile.scale * 3f;
                 }
             }
