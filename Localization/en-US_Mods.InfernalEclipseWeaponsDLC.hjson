@@ -52,6 +52,11 @@ Items: {
 		DisplayName: Deus Flute
 		Tooltip: ""
 	}
+
+	CorrodedCane: {
+		DisplayName: Corroded Cane
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -76,4 +81,6 @@ Projectiles: {
 	NecroticChorusWisp.DisplayName: Necrotic Chorus Wisp
 	DeusFlutePro.DisplayName: Deus Flute Pro
 	DeusFluteStar.DisplayName: Deus Flute Star
+	CorrodedCanePro.DisplayName: Corroded Cane
+	CorrodedCaneShark.DisplayName: Sulphurous Sharkron
 }

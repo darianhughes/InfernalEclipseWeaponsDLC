@@ -47,13 +47,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             Item.rare = ModContent.RarityType<DarkBlue>();
 
-            InspirationCost = 1;
+            InspirationCost = 0;
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
         {
-            player.itemLocation.X -= 12 * player.direction;
-            player.itemLocation.Y += 10;
+            player.itemLocation.X -= 6 * player.direction;
+            player.itemLocation.Y -= 4;
         }
 
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -61,7 +61,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             for (int i = 0; i < 4; i++)
             {
                 Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(10));
-                Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, ai0: i % 2);
+                position += velocity * 1.25f;
+                Projectile.NewProjectile(source, position.X, position.Y - 4, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockback, player.whoAmI, ai0: i % 2);
             }
             return false;
         }
