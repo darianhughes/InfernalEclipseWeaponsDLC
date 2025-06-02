@@ -21,10 +21,17 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimstoneHarp>(), 3));
                 }
+
+                if (item.type == ModContent.ItemType<AstrumDeusBag>())
+                {
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeusFlute>(), 3));
+                }
+
                 if (item.type == ModContent.ItemType<RavagerBag>())
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<NecroticChorus>(), 3));
                 }
+
                 if (item.type == ModContent.ItemType<SignusBag>())
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheParallel>(), 3));

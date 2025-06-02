@@ -26,7 +26,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetBardDefaults()
         {
-            Item.damage = 175;
+            Item.damage = 50;
             Item.width = 28;
             Item.height = 28;
             Item.useTime = 32;
@@ -39,7 +39,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.rare = ItemRarityID.Yellow;
             Item.UseSound = ThoriumSounds.Bard_Horn;
             Item.shoot = ModContent.ProjectileType<NecroticChorusWisp>();
-            Item.shootSpeed = 1f;
+            Item.shootSpeed = 2f;
 
             InspirationCost = 5;
         }
