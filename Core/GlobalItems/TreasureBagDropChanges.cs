@@ -8,6 +8,7 @@ using Terraria;
 using Terraria.ModLoader;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 using CalamityMod.Items.TreasureBags;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 {
@@ -45,6 +46,11 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 if (item.type == ModContent.ItemType<DevourerofGodsBag>())
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathsWhisper>(), 3));
+                }
+
+                if (item.type == ModContent.ItemType<OldDukeBag>())
+                {
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorrodedCane>(), 3));
                 }
             }
         }

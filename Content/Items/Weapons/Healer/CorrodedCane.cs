@@ -24,7 +24,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         {
             isHealer = true;
 
-            Item.damage = 175;
+            Item.damage = 2675;
             Item.width = 28;
             Item.height = 28;
             Item.useTime = 40;
@@ -40,8 +40,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             Item.mana = 20;
 
-            Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
-            Item.rare = ItemRarityID.Yellow;
+            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
+            Item.rare = ModContent.RarityType<PureGreen>();
             Item.shoot = ModContent.ProjectileType<CorrodedCanePro>();
             Item.shootSpeed = 1f;
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;

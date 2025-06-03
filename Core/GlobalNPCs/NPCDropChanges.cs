@@ -15,6 +15,8 @@ using Terraria.UI;
 using CalamityMod.NPCs.BrimstoneElemental;
 using CalamityMod.NPCs.Ravager;
 using CalamityMod.NPCs.AstrumDeus;
+using CalamityMod.NPCs.OldDuke;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -52,6 +54,11 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
                 {
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathsWhisper>(), 3));
+                }
+
+                if (npc.type == ModContent.NPCType<OldDuke>())
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorrodedCane>(), 3));
                 }
             }
         }
