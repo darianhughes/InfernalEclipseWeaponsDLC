@@ -29,7 +29,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
             Projectile.height = 44;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
-            Projectile.penetrate = 1;
+            Projectile.penetrate = 3;
             Projectile.timeLeft = 60 * 5;
         }
 

@@ -19,6 +19,7 @@ using CalamityMod.Projectiles.Magic;
 using ThoriumMod;
 using InfernalEclipseWeaponsDLC.Content.Projectiles;
 using ThoriumMod.Items.BossThePrimordials.Dream;
+using CalamityMod;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 {
@@ -42,6 +43,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.autoReuse = true;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
             Item.mana = 20;
+            Item.Calamity().devItem = true;
         }
 
         public override void AddRecipes()
@@ -87,9 +89,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             line2.OverrideColor = Color.MediumPurple;
             tooltips.Add(line2);
 
-            TooltipLine DedicatedLine = new(Mod, "DedicatedItem", "- Dedicated Item -");
-            DedicatedLine.OverrideColor = lerpedColor;
-            tooltips.Add(DedicatedLine);
+            //TooltipLine DedicatedLine = new(Mod, "DedicatedItem", "- Dedicated Item -");
+            //DedicatedLine.OverrideColor = lerpedColor;
+            //tooltips.Add(DedicatedLine);
         }
 
         public override bool AltFunctionUse(Player player) => true;
