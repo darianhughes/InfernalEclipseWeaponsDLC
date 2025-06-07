@@ -47,7 +47,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             Item.rare = ModContent.RarityType<DarkBlue>();
 
-            InspirationCost = 0;
+            InspirationCost = 2;
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
