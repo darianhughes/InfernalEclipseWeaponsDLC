@@ -14,7 +14,6 @@ using Terraria.ID;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
-using rail;
 using CalamityMod.Projectiles.Magic;
 using ThoriumMod;
 using InfernalEclipseWeaponsDLC.Content.Projectiles;
