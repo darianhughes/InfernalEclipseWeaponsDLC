@@ -84,10 +84,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
 
             if (Projectile.owner == Main.myPlayer)
             {
-                for (int w = 0; w < 3; w++)
+                for (int w = 0; w < 2; w++)
                 {
                     Vector2 velocity = CalamityUtils.RandomVelocity(100f, 70f, 100f);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<OcramKnifeProBolt>(), Projectile.damage / 6, Projectile.knockBack / 6, Main.myPlayer, 1f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<OcramKnifeProBolt>(), Projectile.damage / 4, Projectile.knockBack / 4, Main.myPlayer, 1f);
                 }
             }
 
@@ -97,7 +97,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
         public override bool PreDraw(ref Color lightColor)
         {
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
-            return false;
+            return true;
         }
     }
 }
