@@ -19,7 +19,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
 {
     public class TheBlightProSickle : ModProjectile
     {
-        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.DemonScythe;
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.DemonSickle;
 
         public override void SetDefaults()
         {
