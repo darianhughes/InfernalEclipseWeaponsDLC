@@ -17,6 +17,7 @@ using CalamityMod.NPCs.Ravager;
 using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.OldDuke;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -59,6 +60,15 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 if (npc.type == ModContent.NPCType<OldDuke>())
                 {
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorrodedCane>(), 3));
+                }
+            }
+
+            if (ModLoader.TryGetMod("Consolaria", out Mod console))
+            {
+                if (npc.type == console.Find<ModNPC>("Ocram").Type)
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OcramKnife>(), 4));
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheBlight>(), 4));
                 }
             }
         }

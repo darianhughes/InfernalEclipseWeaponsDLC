@@ -37,7 +37,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             scytheSoulCharge = 1;
             Item.width = 70;
             Item.height = 82;
-            Item.value = Item.buyPrice(gold: 5);
+            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             Item.rare = ItemRarityID.Lime;
             Item.UseSound = SoundID.Item1;
             Item.shoot = ModContent.ProjectileType<TheBlightProScythe>();

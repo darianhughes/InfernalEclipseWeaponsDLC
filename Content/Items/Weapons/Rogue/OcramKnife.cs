@@ -40,6 +40,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
             Item.shoot = ModContent.ProjectileType<OcramKnifePro>();
             Item.shootSpeed = 20f;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.rare = ItemRarityID.Lime;
+            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
         }
 
         public override float StealthDamageMultiplier => 1.2f;
@@ -54,6 +56,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
                 return false;
             }
             return true;
+        }
+
+        public override void AddRecipes()
+        {
+            if (!ModLoader.TryGetMod("Consolaria", out _))
+            {
+                //TODO
+            }
         }
     }
 }

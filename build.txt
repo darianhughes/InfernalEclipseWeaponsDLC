@@ -1,6 +1,6 @@
 displayName = Infernal Eclipse of Ragnarok: Weapon DLC
 author = Infernal Eclipse of Ragnarok Team
-version = 0.6.2
+version = 0.7
 modReferences = CalamityMod, ThoriumMod
 hideCode = true
 hideResources = true

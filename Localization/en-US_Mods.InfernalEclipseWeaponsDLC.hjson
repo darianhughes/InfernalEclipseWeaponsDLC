@@ -57,6 +57,20 @@ Items: {
 		DisplayName: Corroded Cane
 		Tooltip: ""
 	}
+
+	Weapons: {
+		Rogue: {
+			OcramKnife: {
+				Tooltip: ""
+				DisplayName: Dagger of the Forgotten
+			}
+		}
+	}
+
+	TheBlight: {
+		Tooltip: ""
+		DisplayName: The Blight
+	}
 }
 
 Projectiles: {
@@ -83,4 +97,11 @@ Projectiles: {
 	DeusFluteStar.DisplayName: Deus Flute Star
 	CorrodedCanePro.DisplayName: Corroded Cane
 	CorrodedCaneShark.DisplayName: Sulphurous Sharkron
+	OcramKnifeProSickle.DisplayName: Ocram Knife Pro Sickle
+	OcramKnifeProBolt.DisplayName: Ocram Knife Pro Bolt
+	OcramKnifePro.DisplayName: Ocram Knife Pro
+	TheBlightProSickle.DisplayName: The Blight Pro Sickle
+	TheBlightProServantLaser.DisplayName: The Blight Pro Servant Laser
+	TheBlightProServant.DisplayName: The Blight Pro Servant
+	TheBlightProScythe.DisplayName: The Blight Pro Scythe
 }

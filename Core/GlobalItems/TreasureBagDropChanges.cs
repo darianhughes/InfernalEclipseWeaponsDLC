@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 using CalamityMod.Items.TreasureBags;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 {
@@ -51,6 +52,15 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 if (item.type == ModContent.ItemType<OldDukeBag>())
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorrodedCane>(), 3));
+                }
+            }
+
+            if (ModLoader.TryGetMod("Consolaria", out Mod console))
+            {
+                if (item.type == console.Find<ModItem>("OcramBag").Type)
+                {
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<OcramKnife>(), 4));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheBlight>(), 4));
                 }
             }
         }
