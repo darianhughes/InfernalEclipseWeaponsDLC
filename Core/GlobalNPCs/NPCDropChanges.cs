@@ -18,6 +18,7 @@ using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.OldDuke;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -69,6 +70,14 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 {
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OcramKnife>(), 4));
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheBlight>(), 4));
+                }
+            }
+
+            if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+            {
+                if (npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type)
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandThunderWhip>(), 5));
                 }
             }
         }

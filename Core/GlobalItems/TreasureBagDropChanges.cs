@@ -10,6 +10,7 @@ using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 using CalamityMod.Items.TreasureBags;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 {
@@ -61,6 +62,14 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<OcramKnife>(), 4));
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheBlight>(), 4));
+                }
+            }
+
+            if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
+            {
+                if (item.type == thorium.Find<ModItem>("TheGrandThunderBirdTreasureBag").Type)
+                {
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandThunderWhip>(), 5));
                 }
             }
         }

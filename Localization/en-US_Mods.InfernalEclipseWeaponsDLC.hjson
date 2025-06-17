@@ -71,6 +71,11 @@ Items: {
 		Tooltip: ""
 		DisplayName: The Blight
 	}
+
+	GrandThunderWhip: {
+		Tooltip: Electrifies foes on hit
+		DisplayName: Grand Thunder Whip
+	}
 }
 
 Projectiles: {
@@ -104,4 +109,5 @@ Projectiles: {
 	TheBlightProServantLaser.DisplayName: The Blight Pro Servant Laser
 	TheBlightProServant.DisplayName: The Blight Pro Servant
 	TheBlightProScythe.DisplayName: The Blight Pro Scythe
+	GrandThunderWhipProjectile.DisplayName: Grand Thunder Whip Projectile
 }

@@ -11,15 +11,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner
 {
     public class GrandThunderWhip : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return false;
-        }
         public override void SetStaticDefaults() => Item.ResearchUnlockCount = 1;
 
         public override void SetDefaults()
@@ -27,7 +24,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner
             Item.DamageType = DamageClass.SummonMeleeSpeed;
             Item.damage = 14;
             Item.knockBack = 2f;
-            //Item.shoot = ModContent.ProjectileType<>();
+            Item.shoot = ModContent.ProjectileType<GrandThunderWhipProjectile>();
             Item.useStyle = 1;
             Item.shootSpeed = 12f;
             Item.useTime = 34;
@@ -36,20 +33,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner
             Item.UseSound = SoundID.Item152;
             Item.noMelee = true;
             Item.noUseGraphic = true;
-            Item.rare = ItemRarityID.White;
-            Item.value = CalamityGlobalItem.RarityWhiteBuyPrice;
+            Item.rare = ItemRarityID.Blue;
+            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
         }
 
         public override bool MeleePrefix() => true;
 
-        public virtual bool Shoot(
+        public override bool Shoot(
           Player player,
           EntitySource_ItemUse_WithAmmo source,
           Vector2 position,
           Vector2 velocity,
           int type,
           int damage,
-          float knockback)
+          float knockback
+        )
         {
             return player.ownedProjectileCounts[type] < 1;
         }
