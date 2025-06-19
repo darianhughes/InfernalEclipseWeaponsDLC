@@ -89,8 +89,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine line1 = new(Mod, "TheBlightTooltip", "Harness the power of Ocram.");
-            tooltips.Add(line1);
         }
     }
 }

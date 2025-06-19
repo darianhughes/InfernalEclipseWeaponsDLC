@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using ReLogic.Content;
 using Terraria.GameContent;
 using Terraria;
+using InfernalEclipseWeaponsDLC.Content.Buffs;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
 {
@@ -43,7 +44,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
             Projectile.DamageType = DamageClass.SummonMeleeSpeed;
             Projectile.width = 40;
             Projectile.height = 40;
-            Projectile.WhipSettings.Segments = 4;
+            Projectile.WhipSettings.Segments = 10;
             Projectile.WhipSettings.RangeMultiplier = 0.4f;
 
             whipSegment = ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Projectiles/SummonerPro/WhipPro/GrandThunderWhipSegment").Value;
@@ -123,9 +124,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
             if (Projectile.damage < 1)
                 Projectile.damage = 1;
 
-            target.AddBuff(BuffID.Electrified, 60); // Electrified for 1 second
+            target.AddBuff(BuffID.Electrified, 60);
+            target.AddBuff(ModContent.BuffType<DefaultSummonTag>(), 300);
 
             Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
+
+            Vector2 tipPos = GetTipPosition();
+            for (int j = 0; j < 8; j++)
+            {
+                Vector2 dustOffset = new Vector2(2f, 0f).RotatedBy(MathHelper.ToRadians(j * 45) + Main.rand.NextFloat(-0.1f, 0.1f));
+                Dust dust = Dust.NewDustDirect(tipPos + dustOffset, 0, 0, DustID.Electric);
+                dust.noGravity = true;
+                dust.scale = 0.7f;
+                dust.velocity *= 1.5f;
+            }
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -149,15 +161,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
                     Projectile.GetWhipSettings(Projectile, out float timeToFlyOut, out _, out _);
                     float t = Timer / timeToFlyOut;
                     scale = MathHelper.Lerp(0.35f, 1.1f, Utils.GetLerpValue(0.1f, 0.7f, t, true) * Utils.GetLerpValue(0.9f, 0.7f, t, true));
-
-                    // Blue electric dust instead of pink swirl
-                    for (int j = 0; j < 6; j++)
-                    {
-                        Vector2 dustOffset = new Vector2(2f, 0f).RotatedBy(MathHelper.ToRadians(j * 60) + Main.GameUpdateCount * 0.05f);
-                        Dust dust = Dust.NewDustDirect(pos + dustOffset, 0, 0, DustID.Electric);
-                        dust.noGravity = true;
-                        dust.scale = 0.7f;
-                    }
                 }
 
                 Rectangle frame = new Rectangle(0, 0, tex.Width, tex.Height);

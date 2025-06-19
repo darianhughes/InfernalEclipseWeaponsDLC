@@ -61,19 +61,23 @@ Items: {
 	Weapons: {
 		Rogue: {
 			OcramKnife: {
-				Tooltip: ""
+				Tooltip: Stealth strikes summon extra demon scythes that home on foes as they speed up
 				DisplayName: Dagger of the Forgotten
 			}
 		}
 	}
 
 	TheBlight: {
-		Tooltip: ""
+		Tooltip: Grants 1 soul essence on direct hit
 		DisplayName: The Blight
 	}
 
 	GrandThunderWhip: {
-		Tooltip: Electrifies foes on hit
+		Tooltip:
+			'''
+			5 summon tag damage
+			Electrifies foes on hit
+			'''
 		DisplayName: Grand Thunder Whip
 	}
 }
@@ -110,4 +114,11 @@ Projectiles: {
 	TheBlightProServant.DisplayName: The Blight Pro Servant
 	TheBlightProScythe.DisplayName: The Blight Pro Scythe
 	GrandThunderWhipProjectile.DisplayName: Grand Thunder Whip Projectile
+}
+
+Buffs: {
+	DefaultSummonTag: {
+		DisplayName: Default Summon Tag
+		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.DefaultSummonTag.Description
+	}
 }
