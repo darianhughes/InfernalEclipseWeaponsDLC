@@ -80,6 +80,21 @@ Items: {
 			'''
 		DisplayName: Grand Thunder Whip
 	}
+
+	DukeSynth: {
+		DisplayName: Viral Wisdom
+		Tooltip: "'It is finally here!'"
+	}
+
+	SearingSpearTip: {
+		Tooltip: Spear weapons will release hydrogen sulfide that burns foes on contact.
+		DisplayName: Searing Spear Tip
+	}
+
+	ArcticSpearTip: {
+		DisplayName: Arctic Spear Tip
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -114,6 +129,8 @@ Projectiles: {
 	TheBlightProServant.DisplayName: The Blight Pro Servant
 	TheBlightProScythe.DisplayName: The Blight Pro Scythe
 	GrandThunderWhipProjectile.DisplayName: Grand Thunder Whip Projectile
+	SulfurExplosionPro.DisplayName: Sulfur Explosion Pro
+	HydrogenSulfideProj.DisplayName: Hydrogen Sulfide Proj
 }
 
 Buffs: {

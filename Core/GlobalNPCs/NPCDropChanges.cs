@@ -30,37 +30,38 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
             {
                 if (npc.type == ModContent.NPCType<BrimstoneElemental>())
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimstoneHarp>(), 3));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BrimstoneHarp>(), 3));
                 }
 
                 if (npc.type == ModContent.NPCType<AstrumDeusHead>())
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeusFlute>(), 3));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DeusFlute>(), 3));
                 }
 
                 if (npc.type == ModContent.NPCType<RavagerBody>())
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NecroticChorus>(), 3));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<NecroticChorus>(), 3));
                 }
 
                 if (npc.type == ModContent.NPCType<Signus>())
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheParallel>(), 3));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<TheParallel>(), 3));
                 }
 
                 if (npc.type == ModContent.NPCType<Bumblefuck>())
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BirbSaxophone>(), 3));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BirbSaxophone>(), 3));
                 }
 
                 if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathsWhisper>(), 3));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DeathsWhisper>(), 3));
                 }
 
                 if (npc.type == ModContent.NPCType<OldDuke>())
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorrodedCane>(), 3));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<CorrodedCane>(), 4));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DukeSynth>(), 4));
                 }
             }
 
@@ -68,8 +69,8 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
             {
                 if (npc.type == console.Find<ModNPC>("Ocram").Type)
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OcramKnife>(), 4));
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheBlight>(), 4));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<OcramKnife>(), 4));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<TheBlight>(), 4));
                 }
             }
 
@@ -77,7 +78,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
             {
                 if (npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type)
                 {
-                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandThunderWhip>(), 5));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GrandThunderWhip>(), 5));
                 }
             }
         }

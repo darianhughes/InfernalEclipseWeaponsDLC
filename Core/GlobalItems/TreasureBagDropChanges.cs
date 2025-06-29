@@ -52,7 +52,8 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 
                 if (item.type == ModContent.ItemType<OldDukeBag>())
                 {
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorrodedCane>(), 3));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorrodedCane>(), 4));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DukeSynth>(), 4));
                 }
             }
 

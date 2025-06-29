@@ -10,7 +10,8 @@ It currently adds the following:
 	[*] 1 Summoner Weapon
 	[*] 1 Rogue/Thrower Weapon
 	[*] 2 Healer Weapons
-	[*]	8 Bard Weapons
+	[*]	9 Bard Weapons
+	[*] 1 Accessory
 [/list]
 
 It is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser[/url] to see how to obtain the new weapons.
