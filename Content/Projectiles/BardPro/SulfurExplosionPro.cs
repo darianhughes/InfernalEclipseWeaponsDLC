@@ -33,7 +33,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Projectile.alpha = 50;
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 45;
+            Projectile.localNPCHitCooldown = 30;
         }
 
         public override void AI()

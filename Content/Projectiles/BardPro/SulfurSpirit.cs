@@ -69,7 +69,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             {
                 Vector2 toTarget = target.Center - Projectile.Center;
                 toTarget.Normalize();
-                toTarget *= 8f; // Speed
+                toTarget *= 15f; // Speed
                 Projectile.velocity = (Projectile.velocity * (lerpFrames - 1) + toTarget) / lerpFrames;
             }
 
@@ -100,7 +100,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                     Projectile.Center,
                     Vector2.Zero,
                     ModContent.ProjectileType<SulfurExplosionPro>(), // See below for the explosion
-                    (int)(Projectile.damage * 0.9),
+                    (int)(Projectile.damage * 0.75),
                     Projectile.knockBack,
                     Projectile.owner
                 );

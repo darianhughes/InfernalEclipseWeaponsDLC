@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     public class BellBalladEleum : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
         public int BellIndex
         {
             get => (int)Projectile.ai[0];

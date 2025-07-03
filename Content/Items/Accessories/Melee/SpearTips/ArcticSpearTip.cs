@@ -19,6 +19,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.SpearTips
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
+            return false;
             return ModLoader.TryGetMod("ThoriumMod", out _);
         }
 

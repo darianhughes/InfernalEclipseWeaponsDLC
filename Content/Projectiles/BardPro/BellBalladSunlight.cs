@@ -8,11 +8,13 @@ using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Projectiles.Bard;
 using Microsoft.Xna.Framework;
+using ThoriumMod;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     public class BellBalladSunlight : BellBalladEleum
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
         public override void SetStaticDefaults()
         {
         }

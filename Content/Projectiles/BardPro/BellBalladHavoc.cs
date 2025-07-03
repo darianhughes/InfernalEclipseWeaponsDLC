@@ -2,11 +2,13 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     public class BellBalladHavoc : BellBalladEleum
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
         public override void SetStaticDefaults()
         {
         }

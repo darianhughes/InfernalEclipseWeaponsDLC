@@ -9,6 +9,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod;
 using ThoriumMod.Items.Donate;
 using ThoriumMod.Projectiles.Bard;
 
@@ -16,6 +17,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     public class BellBalladEleumBolt : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
         public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.FrostBoltStaff}";
 
         public override void SetBardDefaults()

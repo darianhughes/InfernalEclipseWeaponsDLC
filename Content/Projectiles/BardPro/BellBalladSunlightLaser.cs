@@ -3,12 +3,14 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     public class BellBalladSunlightLaser : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
         public override void SetBardDefaults()
         {
             Projectile.width = 4;
