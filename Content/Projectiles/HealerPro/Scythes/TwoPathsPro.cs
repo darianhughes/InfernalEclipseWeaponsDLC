@@ -46,7 +46,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
                     Projectile.owner
                 );
             }
-            //Main.NewText("Spawned explosion!"); // DEBUG
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -61,6 +60,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
             Vector2 drawOrigin = new Vector2(208 / 2f, 190 / 2f);
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
 
+            // adjust direction based on Projectile.direction
+            SpriteEffects spriteEffects = ((Projectile.spriteDirection > 0) ? SpriteEffects.FlipVertically : SpriteEffects.None);
+            spriteEffects |= SpriteEffects.FlipHorizontally;
+
             Main.EntitySpriteDraw(
                 texture,
                 drawPos,
@@ -69,7 +72,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
                 Projectile.rotation,
                 drawOrigin,
                 Projectile.scale, // <--- draws at double size
-                SpriteEffects.None,
+                spriteEffects,
                 0
             );
             return false;
