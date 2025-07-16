@@ -20,6 +20,11 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
         {
             if (ModLoader.TryGetMod("CalamityMod", out _))
             {
+                if (item.type == ModContent.ItemType<AquaticScourgeBag>())
+                {
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SulphuricShanty>(), 7));
+                }
+
                 if (item.type == ModContent.ItemType<BrimstoneWaifuBag>())
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimstoneHarp>(), 3));

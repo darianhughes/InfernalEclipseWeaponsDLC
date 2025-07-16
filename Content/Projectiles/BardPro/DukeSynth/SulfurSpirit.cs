@@ -10,8 +10,9 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using CalamityMod.Buffs.StatDebuffs;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DukeSynth
 {
     public class SulfurSpirit : ModProjectile
     {
@@ -80,6 +81,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            target.AddBuff(ModContent.BuffType<Irradiated>(), 180);
             Explode();
         }
 

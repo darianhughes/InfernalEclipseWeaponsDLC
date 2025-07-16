@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CalamityMod.Tiles.Abyss;
+using InfernalEclipseWeaponsDLC.Content.Items.Materials;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 using Terraria;
 using Terraria.ModLoader;
+using ThoriumMod.Tiles;
 
 namespace InfernalEclipseWeaponsDLC.Core.ChestLoot
 {
@@ -50,6 +52,25 @@ namespace InfernalEclipseWeaponsDLC.Core.ChestLoot
                             break;
                         }
                     }
+                }
+            }
+
+            for (int i = 0; i < Main.chest.Length; i++)
+            {
+                var chest = Main.chest[i];
+
+                if (chest == null) continue;
+
+                var tile = Main.tile[chest.x, chest.y];
+
+                if (tile.TileType == ModContent.TileType<AquaticDepthsBiomeChest>())
+                {
+                    var newItem = new Item(ModContent.ItemType<DeepSeaDrawlShard1>());
+
+                    var firstNoItem = Array.FindIndex(chest.item, x => x.IsAir);
+
+                    // this does what .Append does. .NET 8 is WEIRD yo
+                    chest.item[firstNoItem] = newItem;
                 }
             }
         }

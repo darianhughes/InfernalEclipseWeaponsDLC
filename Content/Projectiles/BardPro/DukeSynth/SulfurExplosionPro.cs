@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using ThoriumMod;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DukeSynth
 {
     public class SulfurExplosionPro : ModProjectile
     {

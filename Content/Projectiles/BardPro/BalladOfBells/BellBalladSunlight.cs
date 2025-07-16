@@ -10,7 +10,7 @@ using ThoriumMod.Projectiles.Bard;
 using Microsoft.Xna.Framework;
 using ThoriumMod;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.BalladOfBells
 {
     public class BellBalladSunlight : BellBalladEleum
     {

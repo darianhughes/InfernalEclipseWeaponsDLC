@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using InfernalEclipseWeaponsDLC.Content.Projectiles;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using Microsoft.Xna.Framework;
 using rail;
@@ -22,11 +22,16 @@ namespace InfernalEclipseWeaponsDLC.Common
             Vector2 direction = velocity;
             InfernalWeaponsPlayer weaponPlayer = player.GetModPlayer<InfernalWeaponsPlayer>();
 
-            if (ItemID.Sets.Spears[item.type] && (weaponPlayer.spearSearing))
+            if (ItemID.Sets.Spears[item.type] && (weaponPlayer.spearSearing || weaponPlayer.spearArctic))
             {
                 if (weaponPlayer.spearSearing)
                 {
                     Projectile.NewProjectile(source, position, direction * 1.5f, ModContent.ProjectileType<HydrogenSulfideProj>(), (int)(damage * 1.5), knockback, player.whoAmI, 0.0f, 0.0f, 0.0f);
+                }
+
+                if (weaponPlayer.spearArctic)
+                {
+                    Projectile.NewProjectile(source, position, direction, ModContent.ProjectileType<CryonicSpearTip>(), (int)(damage * 1.15), knockback, player.whoAmI, 0.0f, 0.0f, 0.0f);
                 }
             }
             return true;

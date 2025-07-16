@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DeusFlute
 {
     public class DeusFlutePro : BardProjectile
     {
@@ -85,6 +86,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Vector2 position = target.Center + spawnOffset;
             Vector2 velocity = new Vector2(20, 0).RotatedBy(new Vector2(-spawnOffset.X, -spawnOffset.Y).ToRotation());
             Projectile.NewProjectileDirect(Projectile.GetSource_OnHit(target), position, velocity, ModContent.ProjectileType<DeusFluteStar>(), Projectile.damage, Projectile.knockBack, ai0: ColorType, ai1: target.whoAmI);
+            target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 180);
         }
     }
 }

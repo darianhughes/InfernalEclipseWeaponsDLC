@@ -1,6 +1,6 @@
 ﻿using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.BalladOfBells;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;

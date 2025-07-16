@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.NPCs.OldDuke;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -97,6 +98,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
                 dustIndex = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 5, 0f, 0f, 100, default(Color), 2f);
                 Main.dust[dustIndex].velocity.X *= 2f;
             }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<Irradiated>(), 300);
         }
     }
 }

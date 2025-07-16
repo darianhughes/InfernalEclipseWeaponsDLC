@@ -19,6 +19,7 @@ using CalamityMod.NPCs.OldDuke;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
+using CalamityMod.NPCs.AquaticScourge;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -28,6 +29,11 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
         {
             if (ModLoader.TryGetMod("CalamityMod", out _))
             {
+                if (npc.type == ModContent.NPCType<AquaticScourgeHead>())
+                {
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<SulphuricShanty>(), 7));
+                }
+
                 if (npc.type == ModContent.NPCType<BrimstoneElemental>())
                 {
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BrimstoneHarp>(), 3));

@@ -1,6 +1,6 @@
 ﻿using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.Legacy;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -41,6 +41,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.UseSound = ThoriumSounds.BugleHorn_Sound;
             Item.shoot = ModContent.ProjectileType<LegacyProBolt>();
             Item.shootSpeed = 15f;
+            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
+            Item.rare = ItemRarityID.Lime;
         }
 
         public override Vector2? HoldoutOffset()

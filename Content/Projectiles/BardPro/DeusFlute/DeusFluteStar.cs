@@ -8,7 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod.Projectiles.Bard;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DeusFlute
 {
     public class DeusFluteStar : BardProjectile
     {

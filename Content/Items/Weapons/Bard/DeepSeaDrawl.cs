@@ -29,7 +29,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         {
             Item.width = 38;
             Item.height = 40;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = ItemUseStyleID.HoldUp;
             Item.autoReuse = true;
             Item.noMelee = true;
 
@@ -39,7 +39,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.useTime = 40;
             Item.useAnimation = 40;
             Item.knockBack = 1.5f;
-            Item.damage = 72;
+            Item.damage = 65;
             Item.shootSpeed = 14f;
 
             Item.value = CalamityGlobalItem.RarityGreenBuyPrice;

@@ -45,6 +45,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
                     Projectile.knockBack,
                     Projectile.owner
                 );
+
+                target.AddBuff(ModContent.BuffType<Wither>(), 300);
             }
         }
 

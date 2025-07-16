@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.BalladOfBells
 {
     public class BellBalladEleum : BardProjectile
     {
@@ -89,7 +89,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                 }
             }
 
-            float radians = (AI_Timer * 0.01f) % MathHelper.TwoPi + (MathHelper.TwoPi / 3f * BellIndex);
+            float radians = AI_Timer * 0.01f % MathHelper.TwoPi + MathHelper.TwoPi / 3f * BellIndex;
             Projectile.Center = Player.Center + new Vector2(0, Player.gfxOffY) + new Vector2(75 * movementProgress, 0).RotatedBy(radians);
         }
 

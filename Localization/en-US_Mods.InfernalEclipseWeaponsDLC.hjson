@@ -93,7 +93,51 @@ Items: {
 
 	ArcticSpearTip: {
 		DisplayName: Arctic Spear Tip
+		Tooltip: Spear weapons will release a cryonic spear tip that is unaffected by gravity and pierces 5 times.
+	}
+
+	DeepSeaDrawlShard1: {
+		DisplayName: Mouthpiece Shard
 		Tooltip: ""
+	}
+
+	DeepSeaDrawlShard2: {
+		DisplayName: Bell Shard
+		Tooltip: ""
+	}
+
+	DeepSeaDrawlShard3: {
+		DisplayName: Body Shard
+		Tooltip: ""
+	}
+
+	Legacy: {
+		DisplayName: Ocram's Roar
+		Tooltip: ""
+	}
+
+	RestoredDeepSeaDrawl: {
+		DisplayName: Restored Deep Sea Drawl
+		Tooltip:
+			'''
+			Summons a sharknado that throws aquatic debris at foes
+			You can only have one sharknado active at a time
+			Right click for an alternate typhoon attack that uses 2 inspiration
+			'''
+	}
+
+	SulphuricShanty: {
+		DisplayName: Sulphuric Shanty
+		Tooltip: ""
+	}
+
+	ExecutionersSword: {
+		DisplayName: Executioner's Sword
+		Tooltip:
+			'''
+			Empowered to execute the Death Penalty
+			'Confiscation.... and DEATH!'
+			'''
 	}
 }
 
@@ -131,11 +175,29 @@ Projectiles: {
 	GrandThunderWhipProjectile.DisplayName: Grand Thunder Whip Projectile
 	SulfurExplosionPro.DisplayName: Sulfur Explosion Pro
 	HydrogenSulfideProj.DisplayName: Hydrogen Sulfide Proj
+	LegacyProBolt.DisplayName: Legacy Pro Bolt
+	LegacyProSickle.DisplayName: Legacy Pro Sickle
+	MiniScourge.DisplayName: Mini Scourge
+	DrawlEel.DisplayName: Drawl Eel
+	DrawlIsopod.DisplayName: Drawl Isopod
+	DrawlStarfish.DisplayName: Drawl Starfish
+	DrawlStarfishShard.DisplayName: Drawl Starfish Shard
+	OurSharknado.DisplayName: Our Sharknado
+	DarkEnergyProj.DisplayName: Dark Energy Proj
+	ExecutionersSwordPro.DisplayName: Executioners Sword Pro
+	LightEnergyProj.DisplayName: Light Energy Proj
+	LightSlashPro.DisplayName: Light Slash Pro
+	CryonicSpearTip.DisplayName: Cryonic Spear Tip
 }
 
 Buffs: {
 	DefaultSummonTag: {
 		DisplayName: Default Summon Tag
 		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.DefaultSummonTag.Description
+	}
+
+	SwordStuckBuff: {
+		DisplayName: Sword Stuck Buff
+		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.SwordStuckBuff.Description
 	}
 }

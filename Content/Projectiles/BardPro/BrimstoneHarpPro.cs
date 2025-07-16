@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.CodeAnalysis.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -133,6 +134,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             EmitDust();
+            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 180);
         }
     }
 }

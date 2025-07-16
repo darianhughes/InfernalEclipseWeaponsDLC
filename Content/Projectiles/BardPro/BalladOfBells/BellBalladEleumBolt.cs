@@ -13,7 +13,7 @@ using ThoriumMod;
 using ThoriumMod.Items.Donate;
 using ThoriumMod.Projectiles.Bard;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.BalladOfBells
 {
     public class BellBalladEleumBolt : BardProjectile
     {

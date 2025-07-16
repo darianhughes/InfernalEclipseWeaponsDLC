@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.BalladOfBells
 {
     public class BellBalladHavoc : BellBalladEleum
     {

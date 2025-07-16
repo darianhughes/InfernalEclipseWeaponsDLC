@@ -13,7 +13,7 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
 {
     public class NecroticChorusPro : BardProjectile
     {
@@ -108,6 +108,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                     proj.netUpdate = true;
                 }
             }
+
+            target.AddBuff(ModContent.BuffType<BurningBlood>(), 180);
+            target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 180);
         }
     }
 }

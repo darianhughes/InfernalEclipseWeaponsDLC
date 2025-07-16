@@ -19,7 +19,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.SpearTips
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return false;
             return ModLoader.TryGetMod("ThoriumMod", out _);
         }
 
@@ -28,8 +27,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.SpearTips
             accDamage = "115% basic damage";
             Item.width = 28;
             Item.height = 28;
-            //Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
-            //Item.rare = ItemRarityID.Yellow;
+            Item.value = CalamityGlobalItem.RarityLightPurpleBuyPrice;
+            Item.rare = ItemRarityID.LightPurple;
             Item.accessory = true;
             accessoryType = AccessoryType.SpearTip;
         }

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.BalladOfBells
 {
     public class BellBalladSunlightLaser : BardProjectile
     {
@@ -59,7 +59,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffID.OnFire, 60 * 2);
+            if (ModLoader.TryGetMod("CalamityMod", out Mod cal))
+                target.AddBuff(cal.Find<ModBuff>("Crumbling").Type, 60 * 2);
+            else
+                target.AddBuff(BuffID.Ichor, 60 * 2);
         }
 
         public override void OnKill(int timeLeft)

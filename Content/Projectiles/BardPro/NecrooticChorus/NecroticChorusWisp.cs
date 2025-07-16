@@ -11,7 +11,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod.Projectiles.Bard;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
 {
     public class NecroticChorusWisp : BardProjectile
     {
@@ -184,7 +184,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                         bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
                         bool closeThroughWall = between < 100f;
 
-                        if (((closest && inRange) || !foundTarget) && (lineOfSight || closeThroughWall))
+                        if ((closest && inRange || !foundTarget) && (lineOfSight || closeThroughWall))
                         {
                             distanceFromTarget = between;
                             targetCenter = npc.Center;
@@ -279,7 +279,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                 ulong seed = (ulong)(Projectile.whoAmI + k);
                 float offsetX = Utils.RandomInt(ref seed, -5, 6) * 0.15f;
                 float offsetY = Utils.RandomInt(ref seed, -10, 1) * 0.35f;
-                float scale = Projectile.scale - ((k - 1) * 0.05f);
+                float scale = Projectile.scale - (k - 1) * 0.05f;
                 Color color = Color.White * 0.25f * Projectile.Opacity;
                 color.A = 0;
                 Main.spriteBatch.Draw(texture.Value, Projectile.Center + new Vector2(offsetX, offsetY) - Main.screenPosition, frame, color, Projectile.rotation, frame.Size() / 2f, scale, SpriteEffects.None, 0f);

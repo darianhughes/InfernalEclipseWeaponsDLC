@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ThoriumMod;
 using ReLogic.Content;
 using ThoriumMod.Projectiles.Bard;
+using CalamityMod.Buffs.StatDebuffs;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
@@ -133,8 +134,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Vector2 toPlayer = owner.Center - Projectile.Center;
             // Point the projectile's 'down' (texture's positive Y) towards the player
             Projectile.rotation = toPlayer.ToRotation() + MathHelper.PiOver2;
-            // If you want the point to face away from the player (as if thrown from the player), use:
-            // Projectile.rotation = toPlayer.ToRotation() - MathHelper.PiOver2;
+            target.AddBuff(ModContent.BuffType<WhisperingDeath>(), 120);
         }
 
         private NPC FindNearestTarget(float range)

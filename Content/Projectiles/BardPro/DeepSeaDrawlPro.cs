@@ -6,6 +6,8 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using ThoriumMod.Projectiles.Bard;
+using Terraria.ModLoader;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
@@ -103,6 +105,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            target.AddBuff(ModContent.BuffType<RiptideDebuff>(), 180);
         }
     }
 }

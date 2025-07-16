@@ -16,10 +16,11 @@ using ThoriumMod.Buffs;
 using ThoriumMod.Projectiles.Bard;
 using ThoriumMod.Projectiles.Scythe;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.Legacy
 {
     public class LegacyProBolt : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
         public override string Texture => "Terraria/Images/Item_" + ItemID.None;
 
         public override void SetBardDefaults()

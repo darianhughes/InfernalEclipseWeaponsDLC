@@ -12,7 +12,7 @@ using ThoriumMod;
 using ThoriumMod.Items.Donate;
 using ThoriumMod.Projectiles.Bard;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.BalladOfBells
 {
     public class BellBalladHavocSlash : BardProjectile
     {
@@ -115,7 +115,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             }
 
             for (int i = 0; i < 8; i++)
-                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY) + Projectile.rotation.ToRotationVector2().RotatedBy((float)Math.PI / 4f * (float)i) * (4f + 1f * opacity), sourceRect, color, Projectile.rotation, origin, Projectile.scale, dir);
+                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY) + Projectile.rotation.ToRotationVector2().RotatedBy((float)Math.PI / 4f * i) * (4f + 1f * opacity), sourceRect, color, Projectile.rotation, origin, Projectile.scale, dir);
 
             color = Projectile.GetAlpha(lightColor);
             color.A = 127;

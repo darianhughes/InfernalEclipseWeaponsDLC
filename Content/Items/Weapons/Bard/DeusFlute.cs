@@ -7,11 +7,11 @@ using ThoriumMod;
 using CalamityMod.Items;
 using Terraria.ModLoader;
 using CalamityMod.Rarities;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.DataStructures;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DeusFlute;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {

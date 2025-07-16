@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DukeSynth;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

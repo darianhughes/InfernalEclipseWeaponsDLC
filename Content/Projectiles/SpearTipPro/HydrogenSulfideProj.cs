@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro
 {
     public class HydrogenSulfideProj : ModProjectile
     {

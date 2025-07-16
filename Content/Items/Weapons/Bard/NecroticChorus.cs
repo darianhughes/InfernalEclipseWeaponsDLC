@@ -1,6 +1,6 @@
 ﻿using CalamityMod.Items;
 using CalamityMod.Rarities;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
