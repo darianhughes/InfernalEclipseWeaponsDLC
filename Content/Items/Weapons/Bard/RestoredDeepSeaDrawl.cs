@@ -36,7 +36,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetBardDefaults()
         {
-            Item.damage = 92;
+            Item.damage = 76;
             Item.DamageType = ModContent.GetInstance<BardDamage>();
             Item.width = 48;
             Item.height = 36;

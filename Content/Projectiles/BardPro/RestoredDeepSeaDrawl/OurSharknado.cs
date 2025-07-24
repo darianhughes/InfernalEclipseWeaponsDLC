@@ -57,11 +57,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaD
                 ModContent.ProjectileType<DrawlIsopod>()
             ];
 
-            //Fixes the projectile so other projectiles can hit the entity being hit by this proj.
-            Projectile.usesIDStaticNPCImmunity = true;
-            this.Projectile.idStaticNPCHitCooldown = Projectile.localNPCHitCooldown;
-            Projectile.usesLocalNPCImmunity = false;
+            Projectile.usesIDStaticNPCImmunity = false;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 30;
         }
+
         public override void OnKill(int timeLeft)
         {
 
@@ -94,19 +94,46 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaD
             if (Projectile.timeLeft % RECURSION_DELAY != 0) return;
 
             var nado = Projectile.NewProjectileDirect(Entity.GetSource_FromThis(),
-                Projectile.position - new Vector2(0, spawnOffset * numRecurs), Vector2.Zero, ProjectileID.Sharknado, Projectile.damage, Projectile.knockBack, Projectile.owner);
+            Projectile.position - new Vector2(0, spawnOffset * numRecurs),
+            Vector2.Zero,
+            ProjectileID.Sharknado,
+            Projectile.damage,
+            Projectile.knockBack,
+            Projectile.owner);
 
             nado.friendly = true;
             nado.hostile = false;
 
-            numRecurs++;
+            nado.usesIDStaticNPCImmunity = false;
+            nado.usesLocalNPCImmunity = true;
+            nado.localNPCHitCooldown = 30;
+
+            nado.GetGlobalProjectile<SharknadoDebuffGlobal>().fromDeepSeaDrawl = true;
 
             children.Add(nado);
+            numRecurs++;
+
         }
 
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<CrushDepth>(), 180);
+        }
+    }
+
+    public class SharknadoDebuffGlobal : GlobalProjectile
+    {
+        public override bool InstancePerEntity => true;
+
+        public bool fromDeepSeaDrawl;
+
+        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (projectile.type == ProjectileID.Sharknado &&
+                projectile.GetGlobalProjectile<SharknadoDebuffGlobal>().fromDeepSeaDrawl)
+            {
+                target.AddBuff(ModContent.BuffType<CrushDepth>(), 180);
+            }
         }
     }
 }

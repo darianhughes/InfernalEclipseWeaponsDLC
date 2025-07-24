@@ -74,22 +74,23 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
                 return false;
             }
 
-            Projectile.timeLeft = int.MaxValue;
             if (Projectile.Opacity < 1f)
                 Projectile.Opacity += 0.1f;
 
             if (Projectile.owner == Main.myPlayer)
             {
                 bool chorusEquipped = owner.HeldItem.type == ModContent.ItemType<NecroticChorus>() || Main.mouseItem.type == ModContent.ItemType<NecroticChorus>();
-                if (!chorusEquipped)
+                if (chorusEquipped)
                 {
-                    Despawn = true;
                     Projectile.timeLeft = 300;
-                    Projectile.netUpdate = true;
+                }
+                else
+                {
+                    
                 }
             }
 
-            if (owner.dead || !owner.active)
+            if (owner.dead || !owner.active || Projectile.timeLeft <= 1)
             {
                 Despawn = true;
                 Projectile.timeLeft = 20;
@@ -98,6 +99,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
 
             return true;
         }
+
 
         private void GeneralBehavior(Player owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition)
         {
