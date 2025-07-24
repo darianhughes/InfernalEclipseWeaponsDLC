@@ -53,5 +53,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro
             dust.velocity *= 0.3f; // Stays close
             Vector2 dustPos = Projectile.Center - Projectile.velocity * 0.5f;
         }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.Frostburn, 180);
+        }
     }
 }

@@ -18,11 +18,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
     public class SulphuricShanty : BardItem
     {
-        public override bool EmpowerOnUse => true;
-        public override void ModifyEmpowermentPool(Player player, Player target, EmpowermentPool empPool)
+        public override void SetStaticDefaults()
         {
-            empPool.Add<CriticalStrikeChance>(3);
-            empPool.Add<FlightTime>(2);
+            Empowerments.AddInfo<CriticalStrikeChance>(3);
+            Empowerments.AddInfo<FlightTime>(2);
         }
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
         public override void SetBardDefaults()

@@ -93,7 +93,7 @@ Items: {
 
 	ArcticSpearTip: {
 		DisplayName: Arctic Spear Tip
-		Tooltip: Spear weapons will release a cryonic spear tip that is unaffected by gravity and pierces 5 times.
+		Tooltip: Spear weapons will release a cryonic spear tip that is unaffected by gravity and pierces 5 times
 	}
 
 	DeepSeaDrawlShard1: {
@@ -200,4 +200,16 @@ Buffs: {
 		DisplayName: Sword Stuck Buff
 		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.SwordStuckBuff.Description
 	}
+}
+
+ItemTooltip: {
+	DuesFluteLore: They had found the source of the Astral Infection, and in a attempt to destroy it they used the Starcore on the infected altar.
+	DuesFluteLore2: However, the altar had an unexpected reaction... two lights had started bouncing off each other heading the direction of the sky, opening a rift above it
+	DuesFluteLore3: What came out of it was truly something out of this world, but they appreciation had to be cut short as the servant of the stars rushed towards them.
+	UniversalLore1: Kos had made his final stand. Used all of his tricks up his sleeve. He had lost to them. However, it doesn't mean Eclipse had lost.
+	UniversalLore2: Using every inch of power he had remaining in his soul, he summoned the true god slayer: The Devourer of Gods.
+	ParallelLore1: To his expectation, they had slew the Storm Weaver. But Kos had another trick up his sleeve.
+	ParallelLore2: Suddenly, with no warning, Kos had transported everyone to the mirror realm and called upon his second servant: Signus.
+	TwoSideLore1: They overcame Ragnarok. They dismantled Eclipse. They survived the Slime Monsoon.
+	TwoSideLore2: They stood at the brink of infinity, which only then Ren asked them "which path will you choose?"
 }

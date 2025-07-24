@@ -192,7 +192,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             if (attachCooldown > 0) return;
             if (target == previousVictim) return;
 
-            LaunchSkulls(1, -Projectile.velocity / 2);
+            LaunchSkulls(Main.rand.Next(3, 5), -Projectile.velocity / 2);
             Projectile.friendly = false;
             attachVictim = target;
             previousVictim = attachVictim;
@@ -226,7 +226,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             }
 
             // spawn the "poisonous skull"
-            LaunchSkulls(Main.rand.Next(3, 5), oldVelocity / 2);
+            LaunchSkulls(1, oldVelocity / 2);
 
             // "normals"
             if (Projectile.velocity.X != oldVelocity.X)

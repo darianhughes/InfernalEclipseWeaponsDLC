@@ -81,13 +81,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine line1 = new(Mod, "ParallelLore1", "To his expectation, they had slew the Storm Weaver. But Kos had another trick up his sleeve.");
-            line1.OverrideColor = Color.MediumPurple;
-            tooltips.Add(line1);
-
-            TooltipLine line2 = new(Mod, "ParallelLore2", "Suddenly, with no warning, Kos had transported everyone to the mirror realm and called upon his second servant: Signus.");
-            line2.OverrideColor = Color.MediumPurple;
-            tooltips.Add(line2);
+            tooltips.Add(new TooltipLine(Mod, "ParallelLore1", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.ParallelLore1")) { OverrideColor = Color.MediumPurple });
+            tooltips.Add(new TooltipLine(Mod, "ParallelLore2", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.ParallelLore2")) { OverrideColor = Color.MediumPurple });
         }
     }
 }

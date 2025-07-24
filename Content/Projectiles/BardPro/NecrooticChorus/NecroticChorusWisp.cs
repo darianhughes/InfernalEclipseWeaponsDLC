@@ -84,7 +84,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
                 if (!chorusEquipped)
                 {
                     Despawn = true;
-                    Projectile.timeLeft = 20;
+                    Projectile.timeLeft = 300;
                     Projectile.netUpdate = true;
                 }
             }

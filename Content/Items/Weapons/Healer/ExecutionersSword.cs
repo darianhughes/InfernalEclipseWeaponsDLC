@@ -23,7 +23,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
     {
         public override void SetDefaults()
         {
-            Item.damage = 450;
+            Item.damage = 400;
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             healType = HealType.Ally;
             healAmount = 0;
@@ -31,8 +31,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             isHealer = true;
             Item.width = 64;
             Item.height = 68;
-            Item.useTime = 24;
-            Item.useAnimation = 24;
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = true;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
@@ -40,10 +40,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
             Item.rare = ItemRarityID.Purple;
             Item.UseSound = new SoundStyle?(SoundID.Item1);
-            Item.healLife = 5; //temp until finished
 
             //Item.shoot = ModContent.ProjectileType<LightSlashPro>();
             //Item.shootsEveryUse = true;
+
+            //temp until finished
+            Item.scale = 1.25f;
+            Item.healLife = 5;
         }
 
         public override bool AltFunctionUse(Player player) => false;

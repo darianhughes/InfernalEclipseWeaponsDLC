@@ -16,6 +16,8 @@ It currently adds the following:
 
 It is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser[/url] to see how to obtain the new weapons.
 
+This mod also has combatability with Consolaria.
+
 If you have any issues please report them in the [url=https://discord.gg/tc5nZdRvaU] Discord server[/url]. 
 
 Also check out:
@@ -25,5 +27,8 @@ Also check out:
 [/list]
 
 Special thanks to Feldy for helping develop a lot of this mod's items, as well as Pil for most of the mods sprites!
+
+Simplified Chinese localization done by [url=https://steamcommunity.com/id/426875391/] Pudd1ng[/url].
+Russion localization done by Aizen522.
 
 Created by the Infernal Eclipse of Raganork Team

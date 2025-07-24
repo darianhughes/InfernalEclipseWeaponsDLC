@@ -10,6 +10,7 @@ using ThoriumMod.Projectiles.Bard;
 using Microsoft.Xna.Framework;
 
 using ThoriumMod;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaDrawl
 {
@@ -55,6 +56,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaD
                 ModContent.ProjectileType<DrawlStarfish>(),
                 ModContent.ProjectileType<DrawlIsopod>()
             ];
+
+            //Fixes the projectile so other projectiles can hit the entity being hit by this proj.
+            Projectile.usesIDStaticNPCImmunity = true;
+            this.Projectile.idStaticNPCHitCooldown = Projectile.localNPCHitCooldown;
+            Projectile.usesLocalNPCImmunity = false;
         }
         public override void OnKill(int timeLeft)
         {
@@ -96,6 +102,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaD
             numRecurs++;
 
             children.Add(nado);
+        }
+
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<CrushDepth>(), 180);
         }
     }
 }

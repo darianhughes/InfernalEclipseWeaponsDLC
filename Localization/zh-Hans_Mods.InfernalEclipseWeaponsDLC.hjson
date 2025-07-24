@@ -1,0 +1,232 @@
+Items: {
+	TwoPaths: {
+		DisplayName: 神冥歧径
+		Tooltip: ""
+	}
+
+	TheParallel: {
+		Tooltip: ""
+		DisplayName: 平行音律
+	}
+
+	SuperShotgun: {
+		Tooltip: “怎么？没见过带刺刀的霰弹枪？”
+		DisplayName: 刺刃霰弹枪
+	}
+
+	BellBallad: {
+		DisplayName: 颂铃之歌
+		Tooltip: ""
+	}
+
+	BirbSaxophone: {
+		DisplayName: 啼羽萨克斯
+		Tooltip: 召唤癫痫鸟之力！
+	}
+
+	DeepSeaDrawl: {
+		DisplayName: 深水腔调
+		Tooltip: ""
+	}
+
+	DeathsWhisper: {
+		Tooltip: ""
+		DisplayName: 亡语
+	}
+
+	BrimstoneHarp: {
+		Tooltip: ""
+		DisplayName: 硫火竖琴
+	}
+
+	NecroticChorus: {
+		DisplayName: 死灵合唱团
+		Tooltip:
+			'''
+			召唤追踪的幽光
+			右键发动血液喷射攻击
+			'''
+	}
+
+	DeusFlute: {
+		DisplayName: 流星风笛
+		Tooltip: ""
+	}
+
+	CorrodedCane: {
+		DisplayName: 酸朽藤杖
+		Tooltip: ""
+	}
+
+	Weapons: {
+		Rogue: {
+			OcramKnife: {
+				Tooltip: 潜伏攻击会召唤加速时追踪的恶魔镰刀
+				DisplayName: 忘却匕首
+			}
+		}
+	}
+
+	TheBlight: {
+		Tooltip: 直接命中会获得1层灵魂精华
+		DisplayName: 枯萎
+	}
+
+	GrandThunderWhip: {
+		Tooltip:
+			'''
+			5点召唤标记伤害
+			命中敌人时造成带电减益
+			'''
+		DisplayName: 惊雷鞭
+	}
+
+	DukeSynth: {
+		DisplayName: 病毒智慧律动键盘
+		Tooltip: 它终将现世，以节拍感染众生！
+	}
+
+	SearingSpearTip: {
+		Tooltip: 长矛类武器会释放硫磺毒气，触碰时灼烧敌人
+		DisplayName: 炙焱矛尖
+	}
+
+	ArcticSpearTip: {
+		DisplayName: 冰封矛尖
+		Tooltip: 长矛武器会释放出一支不受重力影响的寒冰矛尖，可连续穿刺5次
+	}
+
+	DeepSeaDrawlShard1: {
+		DisplayName: 吹嘴残片
+		Tooltip: ""
+	}
+
+	DeepSeaDrawlShard2: {
+		DisplayName: 管口残片
+		Tooltip: ""
+	}
+
+	DeepSeaDrawlShard3: {
+		DisplayName: 管体残片
+		Tooltip: ""
+	}
+
+	Legacy: {
+		DisplayName: 枯萎咆哮
+		Tooltip: ""
+	}
+
+	RestoredDeepSeaDrawl: {
+		DisplayName: 原版深海腔调
+		Tooltip:
+			'''
+			召唤鲨龙卷，将海洋残骸投向敌人
+			     	场上同时仅可存在一个鲨鱼龙卷
+			     	右键可释放台风攻击，消耗2点灵感
+			'''
+	}
+
+	SulphuricShanty: {
+		DisplayName: 硫海船歌
+		Tooltip: ""
+	}
+
+	ExecutionersSword: {
+		DisplayName: 刽子手之剑
+		Tooltip:
+			'''
+			授权执行死刑
+			'没收...并处以极刑！'
+			'''
+	}
+}
+
+Projectiles: {
+	// TwoPathsPro.DisplayName: Two Paths
+	// BlackExplosion.DisplayName: Black Explosion
+	// Magic.WhiteScythe.DisplayName: White Scythe
+	// TwoPathsPro2.DisplayName: Two Paths
+	// TheParallellPro.DisplayName: The Parallell
+	// BellBalladEleum.DisplayName: Ballad of Bells Eleum
+	// BellBalladHavoc.DisplayName: Ballad of Bells Havoc
+	// BellBalladSunlight.DisplayName: Ballad of Bells Sunlight
+	// BellBalladSunlightLaser.DisplayName: Ballad of Bells Laser
+	// BellBalladEleumBolt.DisplayName: Ballad of Bells Frost Bolt
+	// BellBalladHavocSlash.DisplayName: Ballad of Bells Brimstone Slash
+	// SulfurSpirit.DisplayName: Sulfur Spirit
+	// DeepSeaDrawlPro.DisplayName: Deep Sea Drawl
+	// HomingPlankton.DisplayName: Homing Plankton
+	// DeathsWhisperPro.DisplayName: Death's Whisper
+	// BrimstoneHarpPro.DisplayName: Brimstone Harp Skull
+	// BirbSaxophonePro.DisplayName: Red Lightning Feather
+	// NecroticChorusPro.DisplayName: Necrotic Chorus
+	// NecroticChorusWisp.DisplayName: Necrotic Chorus Wisp
+	// DeusFlutePro.DisplayName: Deus Flute Pro
+	// DeusFluteStar.DisplayName: Deus Flute Star
+	// CorrodedCanePro.DisplayName: Corroded Cane
+	// CorrodedCaneShark.DisplayName: Sulphurous Sharkron
+	// OcramKnifeProSickle.DisplayName: Ocram Knife Pro Sickle
+	// OcramKnifeProBolt.DisplayName: Ocram Knife Pro Bolt
+	// OcramKnifePro.DisplayName: Ocram Knife Pro
+	// TheBlightProSickle.DisplayName: The Blight Pro Sickle
+	// TheBlightProServantLaser.DisplayName: The Blight Pro Servant Laser
+	// TheBlightProServant.DisplayName: The Blight Pro Servant
+	// TheBlightProScythe.DisplayName: The Blight Pro Scythe
+	// GrandThunderWhipProjectile.DisplayName: Grand Thunder Whip Projectile
+	// SulfurExplosionPro.DisplayName: Sulfur Explosion Pro
+	// HydrogenSulfideProj.DisplayName: Hydrogen Sulfide Proj
+	// LegacyProBolt.DisplayName: Legacy Pro Bolt
+	// LegacyProSickle.DisplayName: Legacy Pro Sickle
+	// MiniScourge.DisplayName: Mini Scourge
+	// DrawlEel.DisplayName: Drawl Eel
+	// DrawlIsopod.DisplayName: Drawl Isopod
+	// DrawlStarfish.DisplayName: Drawl Starfish
+	// DrawlStarfishShard.DisplayName: Drawl Starfish Shard
+	// OurSharknado.DisplayName: Our Sharknado
+	// DarkEnergyProj.DisplayName: Dark Energy Proj
+	// ExecutionersSwordPro.DisplayName: Executioners Sword Pro
+	// LightEnergyProj.DisplayName: Light Energy Proj
+	// LightSlashPro.DisplayName: Light Slash Pro
+	// CryonicSpearTip.DisplayName: Cryonic Spear Tip
+}
+
+Buffs: {
+	DefaultSummonTag: {
+		DisplayName: Default Summon Tag
+		// Description: Mods.InfernalEclipseWeaponsDLC.Buffs.DefaultSummonTag.Description
+	}
+
+	SwordStuckBuff: {
+		DisplayName: Sword Stuck Buff
+		// Description: Mods.InfernalEclipseWeaponsDLC.Buffs.SwordStuckBuff.Description
+	}
+}
+
+ItemTooltip: {
+	DuesFluteLore: 他们找到了星辉瘟疫的源头。为了将其毁灭，他们将星核献奉于被污染的祭坛之上。
+	DuesFluteLore2: 然而，祭坛却作出了意想不到的反应……两道光辉相互碰撞，直冲苍穹，在头顶撕开一条裂隙。
+	DuesFluteLore3: 异界之物从裂隙中涌出。在他们惊叹之际，星辰的仆从已经迎面冲来。
+	UniversalLore1: 柯斯的最后一击消散了，招数已尽，败局已定。但是蚀光会拒绝落败。
+	UniversalLore2: 榨干灵魂中仅存的余力，他召唤出了真正的嗜神凶灵——神明吞噬者。
+	ParallelLore1:
+		'''
+		正如他所料，他们击败了风暴编织者。
+		但柯斯还有一计。
+		'''
+	ParallelLore2:
+		'''
+		忽然间，在没有任何预警的情况下，众人被传送至镜像领域。
+		他的第二位仆从现身于虚无之中——神之使徒，西格纳斯
+		'''
+	TwoSideLore1:
+		'''
+		他们征服了诸神黄昏。
+		他们瓦解了蚀光会。
+		'''
+	TwoSideLore2:
+		'''
+		他们挺过了史莱姆季风。 
+		当他们立于无穷的边缘，
+		仁问：“你将行何路？”
+		'''
+}

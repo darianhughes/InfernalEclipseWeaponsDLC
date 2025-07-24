@@ -39,9 +39,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.rare = ItemRarityID.Yellow;
             Item.UseSound = ThoriumSounds.Bard_Horn;
             Item.shoot = ModContent.ProjectileType<NecroticChorusWisp>();
-            Item.shootSpeed = 2f;
+            Item.shootSpeed = 4f;
 
-            InspirationCost = 5;
+            InspirationCost = 3;
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -58,8 +58,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
+            Item.shootSpeed = 4f;
             if (player.altFunctionUse == 2)
             {
+                Item.shootSpeed = 2f;
+
                 type = ModContent.ProjectileType<NecroticChorusPro>();
                 velocity *= 10f;
                 position.X += 38 * player.direction;

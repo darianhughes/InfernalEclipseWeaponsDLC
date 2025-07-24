@@ -12,10 +12,14 @@ It currently adds the following:
 	- 11 Bard Weapons
 	- 2 Accessory
 
-It is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser[/url] to see how to obtain the new weapons.
+It is recommended to use Recipe Browser to see how to obtain the new weapons.
+
+This mod also has combatability with Consolaria.
 
 If you have any other issues please report them in the discord (https://discord.gg/RXdTXbKY).
 
 Special thanks to Feldy for helping develop a lot of this mod's items, as well as Pil for most of the sprites!
+
+Simplified Chinese localization done by Pudd1ng.
 
 Created by the Infernal Ecllipse of Raganork Team

@@ -26,7 +26,7 @@ namespace InfernalEclipseWeaponsDLC.Common
             {
                 if (weaponPlayer.spearSearing)
                 {
-                    Projectile.NewProjectile(source, position, direction * 1.5f, ModContent.ProjectileType<HydrogenSulfideProj>(), (int)(damage * 1.5), knockback, player.whoAmI, 0.0f, 0.0f, 0.0f);
+                    Projectile.NewProjectile(source, position, direction * 2.5f, ModContent.ProjectileType<HydrogenSulfideProj>(), (int)(damage * 1.5), knockback, player.whoAmI, 0.0f, 0.0f, 0.0f);
                 }
 
                 if (weaponPlayer.spearArctic)

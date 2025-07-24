@@ -11,6 +11,7 @@ using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -62,13 +63,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine line1 = new(Mod, "UniversalLore1", "Kos had made his final stand. Used all of his tricks up his sleeve. He had lost to them. However, it doesn't mean Eclipse had lost.");
-            line1.OverrideColor = Color.MediumPurple;
-            tooltips.Add(line1);
-
-            TooltipLine line2 = new(Mod, "UniversalLore2", "Using every inch of power he had remaining in his soul, he summoned the true god slayer: The Devourer of Gods.");
-            line2.OverrideColor = Color.MediumPurple;
-            tooltips.Add(line2);
+            tooltips.Add(new TooltipLine(Mod, "UniversalLore1", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.UniversalLore1")) { OverrideColor = Color.MediumPurple });
+            tooltips.Add(new TooltipLine(Mod, "UniversalLore2", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.UniversalLore2")) { OverrideColor = Color.MediumPurple });
         }
     }
 }

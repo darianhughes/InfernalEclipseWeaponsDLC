@@ -19,6 +19,7 @@ using ThoriumMod;
 using InfernalEclipseWeaponsDLC.Content.Projectiles;
 using ThoriumMod.Items.BossThePrimordials.Dream;
 using CalamityMod;
+using Terraria.Localization;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 {
@@ -78,19 +79,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            Color lerpedColor = Color.Lerp(Color.White, new Color(255, 105, 180), (float)(Math.Sin(Main.GlobalTimeWrappedHourly * 4.0) * 0.5 + 0.5));
-
-            TooltipLine line1 = new(Mod, "TwoSideLore1", "They overcame Ragnarok.They dismantled Eclipse.They survived the Slime Monsoon.");
-            line1.OverrideColor = Color.MediumPurple;
-            tooltips.Add(line1);
-
-            TooltipLine line2 = new(Mod, "TwoSideLore2", "They stood at the brink of infinity, which only then Ren asked them \"which path will you choose?\"");
-            line2.OverrideColor = Color.MediumPurple;
-            tooltips.Add(line2);
-
-            //TooltipLine DedicatedLine = new(Mod, "DedicatedItem", "- Dedicated Item -");
-            //DedicatedLine.OverrideColor = lerpedColor;
-            //tooltips.Add(DedicatedLine);
+            tooltips.Add(new TooltipLine(Mod, "TwoSideLore1", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.TwoSideLore1")) { OverrideColor = Color.MediumPurple });
+            tooltips.Add(new TooltipLine(Mod, "TwoSideLore2", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.TwoSideLore2")) { OverrideColor = Color.MediumPurple });
         }
 
         public override bool AltFunctionUse(Player player) => true;

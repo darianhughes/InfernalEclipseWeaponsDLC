@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro
 {
@@ -68,7 +69,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffID.OnFire3, 90); // 1.5 seconds poison
+            target.AddBuff(BuffID.OnFire3, 120);
+            target.AddBuff(ModContent.BuffType<CrushDepth>(), 120);
         }
 
         public override bool PreDraw(ref Color lightColor) => false; // completely invisible

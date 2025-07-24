@@ -68,6 +68,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<OcramKnife>(), 4));
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<TheBlight>(), 4));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Legacy>(), 4));
                 }
             }
 
