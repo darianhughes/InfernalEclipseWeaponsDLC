@@ -21,38 +21,55 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
 
         public override void SafeSetDefaults()
         {
-            Projectile.scale = 2f;
-            Projectile.Size = new Vector2(208f, 190f);
-            dustOffset = new Vector2(-35, 7f);
-            dustCount = 4;
-            dustType = 320;
-            rotationSpeed = 0.25f;
-            Projectile.light = 1;
-            this.fadeOutSpeed = 30;
+            if (Projectile.ai[0] == 1)
+            {
+                Projectile.scale = 2f;
+                Projectile.Size = new Vector2(208f, 190f);
+                dustOffset = new Vector2(-35, 7f);
+                dustCount = 4;
+                dustType = 320;
+                rotationSpeed = 0.25f;
+                Projectile.light = 1;
+                this.fadeOutSpeed = 30;
+            }
+            else
+            {
+                Projectile.scale = 1f;
+                Projectile.Size = new Vector2(208f, 190f);
+                dustOffset = new Vector2(-35, 7f);
+                dustCount = 4;
+                dustType = 320;
+                rotationSpeed = 0.25f;
+                Projectile.light = 1;
+                this.fadeOutSpeed = 30;
+            }
         }
 
         public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            // Spawn black explosion at hit location
-            if (Main.myPlayer == Projectile.owner)
+            if (Projectile.ai[0] == 1)
             {
-                int proj = Projectile.NewProjectile(
-                    Projectile.GetSource_FromThis(),
-                    target.Center,
-                    Vector2.Zero,
-                    ModContent.ProjectileType<BlackExplosion>(),
-                    Projectile.damage,
-                    Projectile.knockBack,
-                    Projectile.owner
-                );
+                // Spawn black explosion at hit location
+                if (Main.myPlayer == Projectile.owner)
+                {
+                    int proj = Projectile.NewProjectile(
+                        Projectile.GetSource_FromThis(),
+                        target.Center,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<BlackExplosion>(),
+                        Projectile.damage,
+                        Projectile.knockBack,
+                        Projectile.owner
+                    );
 
-                target.AddBuff(ModContent.BuffType<Wither>(), 300);
+                    target.AddBuff(ModContent.BuffType<Wither>(), 300);
+                }
             }
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-           //Get your texture
+            //Get your texture
             Texture2D texture = ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Projectiles/HealerPro/Scythes/TwoPathsPro").Value;
 
             // If your projectile has only one frame, use this:

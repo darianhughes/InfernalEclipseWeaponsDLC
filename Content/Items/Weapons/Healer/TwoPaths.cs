@@ -39,7 +39,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.height = 190;
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
             Item.rare = ModContent.RarityType<HotPink>();
-            Item.shoot = ModContent.ProjectileType<TwoPathsPro2>();
+            Item.shoot = ModContent.ProjectileType<TwoPathsPro>();
             Item.autoReuse = true;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
             Item.mana = 20;
@@ -93,7 +93,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 Item.damage = 475;
                 scytheSoulCharge = 4;
                 Item.mana = 20;
-                Item.shoot = ModContent.ProjectileType<TwoPathsPro2>();
                 Item.shootSpeed = 10f;
                 Item.UseSound = SoundID.Item8;
                 ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
@@ -106,9 +105,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 scytheSoulCharge = 4;
                 Item.width = 86;
                 Item.height = 90;
-                Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
-                Item.rare = ModContent.RarityType<HotPink>();
-                Item.shoot = ModContent.ProjectileType<TwoPathsPro>();
                 Item.mana = 0;
             }
             return base.CanUseItem(player);
@@ -129,10 +125,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                     Projectile.NewProjectile(source, player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle) * 2f), (float)(Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<WhiteScythe>(), damage, knockback, Main.myPlayer, 0f, 0f);
                     Projectile.NewProjectile(source, player.Center.X, player.Center.Y, (float)(-Math.Sin(offsetAngle) * 2f), (float)(-Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<WhiteScythe>(), damage, knockback, Main.myPlayer, 0f, 0f);
                 }
-                return base.Shoot(player, source, position, velocity, type, 150, knockback);
+                Projectile.NewProjectile(source, position, velocity, type, 150, knockback, player.whoAmI, 2);
+                return false;
             }
             // Default behavior (left click)
-            return base.Shoot(player, source, position, velocity, type, damage, knockback);
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 1);
+            return false;
         }
     }
 }

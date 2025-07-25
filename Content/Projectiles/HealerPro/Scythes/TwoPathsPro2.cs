@@ -20,14 +20,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
 
         public override void SafeSetDefaults()
         {
-            //Projectile.scale = 1.5f;
-            Projectile.Size = new Vector2(208f, 190f);
-            dustOffset = new Vector2(-35, 7f);
-            dustCount = 4;
-            dustType = 320;
-            rotationSpeed = 0.25f;
-            Projectile.light = 1;
-            this.fadeOutSpeed = 30;
         }
 
         //public override bool PreDraw(ref Color lightColor)
