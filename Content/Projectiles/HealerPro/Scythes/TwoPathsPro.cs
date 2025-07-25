@@ -25,18 +25,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
             Projectile.light = 1f;
             fadeOutSpeed = 30;
             Projectile.scale = 1f; // Normal visual
-
-            // Base size of the texture
-            Vector2 baseSize = new Vector2(208f, 190f);
-
-            // Visual scale only
-            if (Projectile.ai[0] == 0)
-            {
-                Projectile.scale = 2f; // Large visual
-            }
-
-            // Hitbox stays the same
-            Projectile.Size = baseSize;
         }
 
 
@@ -57,6 +45,25 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
 
                 target.AddBuff(ModContent.BuffType<Wither>(), 300);
             }
+        }
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            base.OnSpawn(source);
+
+            float scale = Projectile.ai[0] == 0 ? 2f : 1f;
+            Projectile.scale = scale;
+
+            Vector2 oldCenter = Projectile.Center;
+            Projectile.Size = new Vector2(208f, 190f) * scale;
+            Projectile.Center = oldCenter;
+        }
+
+        // Remove any resizing from PreAI/AI!
+        public override bool PreAI()
+        {
+            // No resizing here!
+            return base.PreAI();
         }
 
         public override bool PreDraw(ref Color lightColor)

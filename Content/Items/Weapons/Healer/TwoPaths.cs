@@ -101,7 +101,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             {
                 // Default scythe stats (TwoPathsPro logic)
                 SetDefaultsToScythe();
-                Item.damage = 1425;
+                Item.damage = 1550;
                 scytheSoulCharge = 4;
                 Item.width = 86;
                 Item.height = 90;
@@ -127,12 +127,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 }
 
                 // ai[0] = 1 => right-click version (small)
-                Projectile.NewProjectile(source, position, velocity, type, 150, knockback, player.whoAmI, 1);
+                Projectile.NewProjectile(source, new Vector2(player.Center.X, player.Center.Y), velocity, type, 150, knockback, player.whoAmI, 1);
                 return false;
             }
 
             // Left-click version (large), ai[0] = 0
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0);
+            Projectile.NewProjectile(source, new Vector2(player.Center.X, player.Center.Y), velocity, type, damage, knockback, player.whoAmI, 0);
             return false;
         }
 
