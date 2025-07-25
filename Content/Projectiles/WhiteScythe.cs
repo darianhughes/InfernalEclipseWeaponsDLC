@@ -57,20 +57,19 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles
             }
             if (index1 == -1)
                 return;
-            NPC npc1 = Main.npc[index1];
             IEntitySource sourceFromThis = Projectile.GetSource_FromThis(null);
             int num1 = ModContent.ProjectileType<ZRealitySlasherSlash>();
             int num2 = (int)(Projectile.damage * 0.25);
             int num3 = Main.rand.Next(4);
             if (num3 == 0)
-                Projectile.NewProjectile(sourceFromThis, npc1.Center.X, npc1.Center.Y + 40f, 0.0f, -15f, num1, num2, 0.0f, Projectile.owner, 0.0f, 0.0f, 0.0f);
+                Projectile.NewProjectile(sourceFromThis, target.Center.X, target.Center.Y + 40f, 0.0f, -15f, num1, num2, 0.0f, Projectile.owner, 0.0f, 0.0f, 0.0f);
             if (num3 == 1)
-                Projectile.NewProjectile(sourceFromThis, npc1.Center.X, npc1.Center.Y - 40f, 0.0f, 15f, num1, num2, 0.0f, Projectile.owner, 0.0f, 0.0f, 0.0f);
+                Projectile.NewProjectile(sourceFromThis, target.Center.X, target.Center.Y - 40f, 0.0f, 15f, num1, num2, 0.0f, Projectile.owner, 0.0f, 0.0f, 0.0f);
             if (num3 == 2)
-                Projectile.NewProjectile(sourceFromThis, npc1.Center.X + 40f, npc1.Center.Y, -15f, 0.0f, num1, num2, 0.0f, Projectile.owner, 0.0f, 0.0f, 0.0f);
+                Projectile.NewProjectile(sourceFromThis, target.Center.X + 40f, target.Center.Y, -15f, 0.0f, num1, num2, 0.0f, Projectile.owner, 0.0f, 0.0f, 0.0f);
             if (num3 != 3)
                 return;
-            Projectile.NewProjectile(sourceFromThis, npc1.Center.X - 40f, npc1.Center.Y, 15f, 0.0f, num1, num2, 0.0f, Projectile.owner, 0.0f, 0.0f, 0.0f);
+            Projectile.NewProjectile(sourceFromThis, target.Center.X - 40f, target.Center.Y, 15f, 0.0f, num1, num2, 0.0f, Projectile.owner, 0.0f, 0.0f, 0.0f);
         }
 
         public override void OnKill(int timeLeft)
