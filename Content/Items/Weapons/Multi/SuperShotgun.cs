@@ -12,6 +12,7 @@ using CalamityMod.Rarities;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes;
 using CalamityMod.Items.Materials;
 using ThoriumMod.Buffs;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 {
@@ -19,15 +20,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
     {
         public override void SetDefaults()
         {
-            Item.damage = 7; // Base damage
+            Item.damage = 8; // Base damage
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 34; // How fast the weapon is used.
             Item.useAnimation = 34;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = false;
             Item.knockBack = 6f;
-            Item.value = Item.sellPrice(silver: 50);
-            Item.rare = ItemRarityID.Blue;
+            Item.value = Item.sellPrice(silver: 40);
+            Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item36; // Shotgun sound
             Item.autoReuse = false;
             Item.shoot = ProjectileID.Bullet;
@@ -45,25 +46,25 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2) // Right click - melee
+            if (player.altFunctionUse == 2) // Right click - melee (shortsword style)
             {
-                // Melee setup
-                Item.damage = 30;
+                Item.damage = 22;
                 Item.DamageType = DamageClass.Melee;
                 Item.useTime = 12;
                 Item.useAnimation = 12;
                 Item.knockBack = 4f;
                 Item.noMelee = false;
-                Item.shoot = 0;
-                Item.useTurn = true;
-                Item.UseSound = SoundID.Item1;
-                Item.shootSpeed = 1f;
+                Item.shoot = ModContent.ProjectileType<SuperShotgunStab>();
                 Item.useAmmo = 0;
-                Item.useStyle = 5;
+                Item.shootSpeed = 1f;
+                Item.UseSound = SoundID.Item1;
+                Item.useStyle = ItemUseStyleID.Shoot;
+                Item.noUseGraphic = true;
             }
+
             else // Left click - shotgun
             {
-                Item.damage = 7;
+                Item.damage = 9;
                 Item.DamageType = DamageClass.Ranged;
                 Item.useTime = 34;
                 Item.useAnimation = 34;
@@ -75,6 +76,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
                 Item.shootSpeed = 6f;
                 Item.useAmmo = AmmoID.Bullet;
                 Item.useStyle = 5;
+                Item.noUseGraphic = false;
             }
             return base.CanUseItem(player);
         }
@@ -90,14 +92,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
         //    }
         //}
 
-        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source,
-            Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            // Only shoot on left click
             if (player.altFunctionUse == 2)
+            {
+                // Melee stab (shortsword style) - spawn manually!
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SuperShotgunStab>(), damage, knockback, player.whoAmI);
                 return false;
+            }
 
-            int numberProjectiles = 4 + Main.rand.Next(2); // 4 or 5 bullets
+            // Left click - shotgun
+            int numberProjectiles = 4 + Main.rand.Next(2);
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(12));
@@ -105,8 +110,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
                 perturbedSpeed *= scale;
                 Projectile.NewProjectile(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
             }
-            return false; // Prevent vanilla projectile
+
+            return false; // prevent default
         }
+
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {

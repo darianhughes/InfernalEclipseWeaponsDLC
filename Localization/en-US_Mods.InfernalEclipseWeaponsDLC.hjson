@@ -188,6 +188,7 @@ Projectiles: {
 	LightEnergyProj.DisplayName: Light Energy Proj
 	LightSlashPro.DisplayName: Light Slash Pro
 	CryonicSpearTip.DisplayName: Cryonic Spear Tip
+	SuperShotgunStab.DisplayName: Super Shotgun Stab
 }
 
 Buffs: {
