@@ -125,12 +125,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                     Projectile.NewProjectile(source, player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle) * 2f), (float)(Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<WhiteScythe>(), damage, knockback, Main.myPlayer, 0f, 0f);
                     Projectile.NewProjectile(source, player.Center.X, player.Center.Y, (float)(-Math.Sin(offsetAngle) * 2f), (float)(-Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<WhiteScythe>(), damage, knockback, Main.myPlayer, 0f, 0f);
                 }
-                Projectile.NewProjectile(source, position, velocity, type, 150, knockback, player.whoAmI, 2);
+
+                // ai[0] = 1 => right-click version (small)
+                Projectile.NewProjectile(source, position, velocity, type, 150, knockback, player.whoAmI, 1);
                 return false;
             }
-            // Default behavior (left click)
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 1);
+
+            // Left-click version (large), ai[0] = 0
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0);
             return false;
         }
+
     }
 }
