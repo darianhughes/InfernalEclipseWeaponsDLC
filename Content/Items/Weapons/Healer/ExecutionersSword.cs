@@ -41,8 +41,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.rare = ItemRarityID.Purple;
             Item.UseSound = new SoundStyle?(SoundID.Item1);
 
-            //Item.shoot = ModContent.ProjectileType<LightSlashPro>();
-            //Item.shootsEveryUse = true;
+            Item.shoot = ModContent.ProjectileType<ExecutionersSwordSlashPro>();
+            Item.shootsEveryUse = true;
+            Item.noMelee = true; // disables vanilla hitbox
+            Item.noUseGraphic = false; // optional if you only want slash visible
 
             //temp until finished
             Item.scale = 1.25f;
@@ -69,26 +71,36 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            return false; //WIP
+            // Heal 5 on use
+            player.HealEffect(5);
+            player.statLife += 5;
+            if (player.statLife > player.statLifeMax2)
+                player.statLife = player.statLifeMax2;
 
-            if (player.altFunctionUse == 2) // Right click: throw sword
-            {
-                type = ModContent.ProjectileType<ExecutionersSwordPro>();
-                velocity = velocity.SafeNormalize(Vector2.UnitX) * 16f;
-                return false;
-            }
-            else // Left click: fire slash
-            {
-                type = ModContent.ProjectileType<LightSlashPro>();
+            // Direction to cursor
+            Vector2 mouseWorld = Main.MouseWorld;
+            Vector2 dir = (mouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
 
-                // Direction to cursor
-                Vector2 mouseWorld = Main.MouseWorld;
-                Vector2 dir = (mouseWorld - position).SafeNormalize(Vector2.UnitX);
+            // Alternate swing direction
+            float swingDir = (player.itemAnimation % 2 == 0) ? -1f : 1f;
 
-                velocity = dir * 16f; // Or your desired speed
-                return true;
-            }
+            // Spawn slash projectile
+            Projectile.NewProjectile(
+                source,
+                player.Center,
+                dir,
+                ModContent.ProjectileType<ExecutionersSwordSlashPro>(),
+                damage,
+                knockback,
+                player.whoAmI,
+                swingDir,
+                20f
+            );
+
+            return false; // prevent vanilla projectile
         }
+
+
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
