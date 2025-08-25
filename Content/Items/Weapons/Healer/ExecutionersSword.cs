@@ -49,7 +49,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.shootSpeed = 10f;
 
             //temp until finished
-            Item.scale = 1.25f;
+            Item.scale = 1f;
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -110,7 +110,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                     player.Center,
                     finalVelocity,
                     type,      // Right-click projectile type (e.g., ExecutionersSwordPro)
-                    damage,
+                    damage / 2,
                     knockback,
                     player.whoAmI,
                     swingDir,

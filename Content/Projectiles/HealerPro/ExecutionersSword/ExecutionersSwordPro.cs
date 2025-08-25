@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework;
 using InfernalEclipseWeaponsDLC.Content.Buffs;
 using CalamityMod.Buffs.DamageOverTime;
 using Terraria.ID;
+using Terraria.Audio;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword
 {
@@ -22,8 +24,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
         public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/ExecutionersSword";
         public override void SetDefaults()
         {
-            Projectile.width = 64;
-            Projectile.height = 68;
+            Projectile.width = 32;
+            Projectile.height = 32;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 180;
@@ -45,7 +47,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             if (!stuck)
             {
                 if (Projectile.velocity != Vector2.Zero)
-                    Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
+                    Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(46.5f);
             }
             else
             {
@@ -55,6 +57,52 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                     Projectile.Center = Main.npc[stuckTarget].Center + offsetFromNPC;
                     Projectile.velocity = Vector2.Zero;
                     Projectile.tileCollide = false;
+
+                    // --- Alternate projectile spawn logic ---
+                    Projectile.ai[0]++; // timer
+                    if (Projectile.ai[0] >= 10) // half second
+                    {
+                        Projectile.ai[0] = 0;
+
+                        if (Projectile.owner == Main.myPlayer)
+                        {
+                            int projType;
+                            Vector2 randDir;
+
+                            // alternate between dark/light using ai[1]
+                            if (Projectile.ai[1] == 0)
+                            {
+                                projType = ModContent.ProjectileType<ExecutionersSwordDarkEnergy>();
+                                Projectile.ai[1] = 1;
+
+                                // random direction + random speed 10–18
+                                randDir = Main.rand.NextVector2Unit() * Main.rand.NextFloat(10f, 18f);
+
+                                SoundEngine.PlaySound(SoundID.Item103, Projectile.position);
+                            }
+                            else
+                            {
+                                projType = ModContent.ProjectileType<ExecutionersSwordLightEnergy>();
+                                Projectile.ai[1] = 0;
+
+                                // random direction + random speed 6–10
+                                randDir = Main.rand.NextVector2Unit() * Main.rand.NextFloat(1f, 10f);
+
+                                SoundEngine.PlaySound(SoundID.Item9, Projectile.position);
+                            }
+
+                            Projectile.NewProjectile(
+                                Projectile.GetSource_FromAI(),
+                                Projectile.Center,
+                                randDir,
+                                projType,
+                                Projectile.damage,
+                                Projectile.knockBack,
+                                Projectile.owner
+                            );
+                        }
+                    }
+
                 }
                 else
                 {
@@ -77,20 +125,46 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                 stuckTarget = target.whoAmI;
                 Projectile.velocity = Vector2.Zero;
                 Projectile.netUpdate = true;
-                target.AddBuff(ModContent.BuffType<SwordStuckBuff>(), 300);
-                Projectile.timeLeft = 300;
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+                target.AddBuff(ModContent.BuffType<SwordStuckBuff>(), 360);
+                Projectile.timeLeft = 360;
+                target.AddBuff(ModContent.BuffType<HolyFlames>(), 360);
+
+                SoundEngine.PlaySound(SoundID.Item71, Projectile.position);
 
                 // Store the initial offset from the NPC's center
                 offsetFromNPC = Projectile.Center - target.Center;
-            }
 
-            for (int i = 0; i < 5; i++)
-            {
-                Vector2 offset = Main.rand.NextVector2CircularEdge(target.width / 2f, target.height / 2f);
-                Dust dust = Dust.NewDustPerfect(target.Center + offset, DustID.Enchanted_Gold, Vector2.Zero, 150, Color.White, 1.2f);
-                dust.noGravity = true;
+                for (int i = 0; i < 10; i++)
+                {
+                    Vector2 offset = Main.rand.NextVector2CircularEdge(target.width / 2f, target.height / 2f);
+                    Vector2 spawnPos = target.Center + offset;
+                    Vector2 vel = offset.SafeNormalize(Vector2.UnitY) * 6f;
+
+                    Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Enchanted_Gold, vel, 150, Color.White, 1.5f);
+                    dust.noGravity = true;
+                }
             }
+            else
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    Vector2 offset = Main.rand.NextVector2CircularEdge(target.width / 2f, target.height / 2f);
+                    Vector2 spawnPos = target.Center + offset;
+                    Vector2 vel = offset.SafeNormalize(Vector2.UnitY) * 2f;
+
+                    Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Enchanted_Gold, vel, 150, Color.White, 1.5f);
+                    dust.noGravity = true;
+                }
+            }
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            Vector2 drawPos = Projectile.Center - Main.screenPosition - new Vector2(0, 4f); // shift 12 pixels down
+            Main.spriteBatch.Draw(texture, drawPos, null, lightColor, Projectile.rotation,
+                texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0f);
+            return false; // prevent default draw
         }
     }
 }

@@ -137,6 +137,9 @@ Items: {
 			'''
 			Left click to swing the sword, restoring 5 life on hit
 			Right click to throw the sword, embedding itself into the hit enemy
+			When the sword is embedded it will release light and dark energy
+			Light energy will home onto nearby allies and heal life equal to bonus healing
+			Dark energy will home onto nearby enemies deal damage
 			Only one sword can be thrown at a time
 			Empowered to execute the Death Penalty
 			'Confiscation.... and DEATH!'
@@ -193,6 +196,8 @@ Projectiles: {
 	CryonicSpearTip.DisplayName: Cryonic Spear Tip
 	SuperShotgunStab.DisplayName: Super Shotgun Stab
 	ExecutionersSwordSlashPro.DisplayName: Executioners Sword Slash Pro
+	ExecutionersSwordLightEnergy.DisplayName: Executioners Sword Light Energy
+	ExecutionersSwordDarkEnergy.DisplayName: Executioners Sword Dark Energy
 }
 
 Buffs: {
