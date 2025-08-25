@@ -1,7 +1,12 @@
 Items: {
 	TwoPaths: {
 		DisplayName: Two Paths
-		Tooltip: ""
+		Tooltip:
+			'''
+			Grants 4 soul essence on direct hit
+			Left click to deal full damage in a larger radius
+			Right click to consume mana and fire white scythes that slash the enemy
+			'''
 	}
 
 	TheParallel: {
@@ -10,7 +15,11 @@ Items: {
 	}
 
 	SuperShotgun: {
-		Tooltip: "'What? Never seen a blade on a shotgun before?'"
+		Tooltip:
+			'''
+			Right click stabs with the shotgun's blade, dealing melee damage
+			'What? Never seen a blade on a shotgun before?'
+			'''
 		DisplayName: Triggerblade
 	}
 

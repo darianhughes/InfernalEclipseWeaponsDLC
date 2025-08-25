@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes;
 using CalamityMod.Items.Materials;
 using ThoriumMod.Buffs;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro;
@@ -20,104 +12,103 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
     {
         public override void SetDefaults()
         {
-            Item.damage = 8; // Base damage
+            // Base stats = shotgun mode
+            Item.damage = 9;
             Item.DamageType = DamageClass.Ranged;
-            Item.useTime = 34; // How fast the weapon is used.
+            Item.useTime = 34;
             Item.useAnimation = 34;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = false;
             Item.knockBack = 6f;
             Item.value = Item.sellPrice(silver: 40);
             Item.rare = ItemRarityID.Green;
-            Item.UseSound = SoundID.Item36; // Shotgun sound
+            Item.UseSound = SoundID.Item36;
             Item.autoReuse = false;
             Item.shoot = ProjectileID.Bullet;
             Item.shootSpeed = 6f;
             Item.useAmmo = AmmoID.Bullet;
-            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+
             Item.width = 64;
             Item.height = 20;
+
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
 
-        public override bool AltFunctionUse(Player player)
-        {
-            return true;
-        }
+        public override bool AltFunctionUse(Player player) => true;
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2) // Right click - melee (shortsword style)
+            if (player.altFunctionUse == 2) // right click
             {
-                Item.damage = 22;
-                Item.DamageType = DamageClass.Melee;
-                Item.useTime = 12;
-                Item.useAnimation = 12;
-                Item.knockBack = 4f;
-                Item.noMelee = false;
+                // Just change visuals & shoot behavior
+                Item.noMelee = true;
+                Item.noUseGraphic = true;
+                Item.UseSound = SoundID.Item1;
                 Item.shoot = ModContent.ProjectileType<SuperShotgunStab>();
                 Item.useAmmo = 0;
-                Item.shootSpeed = 1f;
-                Item.UseSound = SoundID.Item1;
-                Item.useStyle = ItemUseStyleID.Shoot;
-                Item.noUseGraphic = true;
+            }
+            else // left click
+            {
+                Item.noMelee = false;
+                Item.noUseGraphic = false;
+                Item.UseSound = SoundID.Item36;
+                Item.shoot = ProjectileID.Bullet;
+                Item.useAmmo = AmmoID.Bullet;
             }
 
-            else // Left click - shotgun
-            {
-                Item.damage = 9;
-                Item.DamageType = DamageClass.Ranged;
-                Item.useTime = 34;
-                Item.useAnimation = 34;
-                Item.knockBack = 6f;
-                Item.noMelee = false;
-                Item.shoot = ProjectileID.Bullet;
-                Item.useTurn = false;
-                Item.UseSound = SoundID.Item36;
-                Item.shootSpeed = 6f;
-                Item.useAmmo = AmmoID.Bullet;
-                Item.useStyle = 5;
-                Item.noUseGraphic = false;
-            }
             return base.CanUseItem(player);
         }
 
-        //public override void UseItemFrame(Player player)
-        //{
-        //    if (player.altFunctionUse == 2)
-        //    {
-        //        // Remove rotation
-        //        player.itemRotation = 0f;
-
-        //        player.itemLocation = player.Center + new Vector2(0f, -12f);
-        //    }
-        //}
-
-        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override float UseTimeMultiplier(Player player)
         {
-            if (player.altFunctionUse == 2)
+            // Stab is faster
+            return player.altFunctionUse == 2 ? 0.35f : 1f;
+        }
+
+        public override float UseAnimationMultiplier(Player player)
+        {
+            return player.altFunctionUse == 2 ? 0.35f : 1f;
+        }
+
+        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source,
+                           Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (player.altFunctionUse == 2) // right click = stab
             {
-                // Melee stab (shortsword style) - spawn manually!
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SuperShotgunStab>(), damage, knockback, player.whoAmI);
+                // Correctly apply melee scaling
+                int meleeDamage = (int)player.GetTotalDamage(DamageClass.Melee).ApplyTo(22);
+                float meleeKB = player.GetTotalKnockback(DamageClass.Melee).ApplyTo(knockback);
+                int meleeCrit = (int)player.GetTotalCritChance(DamageClass.Melee);
+
+                int proj = Projectile.NewProjectile(source, position, velocity,
+                    ModContent.ProjectileType<SuperShotgunStab>(), meleeDamage, meleeKB, player.whoAmI);
+
+                Main.projectile[proj].DamageType = DamageClass.Melee;
+                Main.projectile[proj].CritChance = meleeCrit;
+
                 return false;
             }
 
-            // Left click - shotgun
+            // Left click = shotgun spread (base 9, ranged scaling)
             int numberProjectiles = 4 + Main.rand.Next(2);
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(12));
                 float scale = 1f - Main.rand.NextFloat() * 0.1f;
                 perturbedSpeed *= scale;
-                Projectile.NewProjectile(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
+
+                Projectile.NewProjectile(source, position, perturbedSpeed,
+                    type, damage, knockback, player.whoAmI);
             }
 
-            return false; // prevent default
+            return false;
         }
 
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<Stunned>(), 120);
+            if (player.altFunctionUse == 2) // only stab applies stun
+                target.AddBuff(ModContent.BuffType<Stunned>(), 120);
         }
 
         public override void AddRecipes()

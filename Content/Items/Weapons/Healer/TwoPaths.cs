@@ -33,7 +33,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
-            Item.damage = 475;
+            Item.damage = 1550;
             scytheSoulCharge = 4;
             Item.width = 208;
             Item.height = 190;
@@ -79,34 +79,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
+            // Lore lines
             tooltips.Add(new TooltipLine(Mod, "TwoSideLore1", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.TwoSideLore1")) { OverrideColor = Color.MediumPurple });
             tooltips.Add(new TooltipLine(Mod, "TwoSideLore2", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.TwoSideLore2")) { OverrideColor = Color.MediumPurple });
         }
+
+
 
         public override bool AltFunctionUse(Player player) => true;
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2) // Right-click (alternate)
-            {
-                SetDefaultsToScythe();
-                Item.damage = 475;
-                scytheSoulCharge = 4;
-                Item.mana = 20;
-                Item.shootSpeed = 10f;
-                Item.UseSound = SoundID.Item8;
-                ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
-            }
-            else // Left-click (default)
-            {
-                // Default scythe stats (TwoPathsPro logic)
-                SetDefaultsToScythe();
-                Item.damage = 1550;
-                scytheSoulCharge = 4;
-                Item.width = 86;
-                Item.height = 90;
-                Item.mana = 0;
-            }
             return base.CanUseItem(player);
         }
 
@@ -122,12 +105,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 for (i = 0; i < 3; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(source, player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle) * 2f), (float)(Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<WhiteScythe>(), damage, knockback, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(source, player.Center.X, player.Center.Y, (float)(-Math.Sin(offsetAngle) * 2f), (float)(-Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<WhiteScythe>(), damage, knockback, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(source, player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle) * 2f), (float)(Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<WhiteScythe>(), (int)Math.Round(damage * 0.3f), knockback, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(source, player.Center.X, player.Center.Y, (float)(-Math.Sin(offsetAngle) * 2f), (float)(-Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<WhiteScythe>(), (int)Math.Round(damage * 0.3f), knockback, Main.myPlayer, 0f, 0f);
                 }
 
                 // ai[0] = 1 => right-click version (small)
-                Projectile.NewProjectile(source, new Vector2(player.Center.X, player.Center.Y), velocity, type, 150, knockback, player.whoAmI, 1);
+                Projectile.NewProjectile(source, new Vector2(player.Center.X, player.Center.Y), velocity, type, (int)Math.Round(damage * 0.3f), knockback, player.whoAmI, 1);
                 return false;
             }
 
@@ -136,5 +119,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             return false;
         }
 
+        public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
+        {
+            if (player.altFunctionUse != 2) // left-click
+                mult = 0f; // free
+        }
     }
 }

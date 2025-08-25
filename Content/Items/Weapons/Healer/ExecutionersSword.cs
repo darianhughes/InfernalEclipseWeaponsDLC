@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
-using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using ThoriumMod.Items;
-using ThoriumMod;
-using CalamityMod.Items;
-using ThoriumMod.Items.HealerItems;
+using Terraria.ID;
+using Terraria.Audio;
 using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword;
+using ThoriumMod;
 using CalamityMod.Buffs.DamageOverTime;
-
+using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword;
+using CalamityMod.Items;
+using Terraria.DataStructures;
+using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 {
@@ -29,26 +24,27 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             healAmount = 0;
             healDisplay = true;
             isHealer = true;
+
             Item.width = 64;
             Item.height = 68;
+
             Item.useTime = 16;
             Item.useAnimation = 16;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = true;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+
             Item.knockBack = 4f;
             Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
             Item.rare = ItemRarityID.Purple;
-            Item.UseSound = new SoundStyle?(SoundID.Item1);
+            Item.UseSound = SoundID.Item1;
 
             Item.shoot = ModContent.ProjectileType<ExecutionersSwordSlashPro>();
-            Item.shootsEveryUse = true;
-            Item.noMelee = true;
-            Item.noUseGraphic = false;
-
             Item.shootSpeed = 10f;
 
-            //temp until finished
+            Item.noMelee = false;
+            Item.noUseGraphic = false;
+
             Item.scale = 1f;
         }
 
@@ -56,74 +52,87 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2) // Right click
+            if (player.altFunctionUse == 2) // right click
             {
-                // Don't allow another projectile if one already exists
+                // Block use entirely if throw is already out
                 if (player.ownedProjectileCounts[ModContent.ProjectileType<ExecutionersSwordPro>()] > 0)
-                {
-                   return false;
-                }
+                    return false;
 
-                Item.useStyle = ItemUseStyleID.Swing;
+                // Suppress melee swing + graphic
                 Item.noMelee = true;
                 Item.noUseGraphic = true;
-                Item.shoot = ModContent.ProjectileType<ExecutionersSwordPro>();
-                Item.shootsEveryUse = true;
-                Item.useTime = 20;
-                Item.useAnimation = 20;
-                Item.knockBack = 3f;
             }
-            else // Left click
+            else
             {
-                Item.useStyle = ItemUseStyleID.Swing;
-                Item.noMelee = false;
+                // Left click restores normal behavior
+                Item.noMelee = true;
                 Item.noUseGraphic = false;
-                Item.shoot = ModContent.ProjectileType<ExecutionersSwordSlashPro>();
-                Item.shootsEveryUse = true;
-                Item.useTime = 16;
-                Item.useAnimation = 16;
-                Item.knockBack = 4f;
             }
 
-            return true;
+            return base.CanUseItem(player);
         }
 
-
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position,
+                                   Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.altFunctionUse == 2) // Right-click
+            if (Main.myPlayer != player.whoAmI)
+                return false;
+
+            if (player.altFunctionUse == 2) // right-click throw
             {
-                // Direction to cursor
+                // prevent multiple swords
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<ExecutionersSwordPro>()] > 0)
+                    return false;
+
                 Vector2 mouseWorld = Main.MouseWorld;
                 Vector2 dir = (mouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
 
-                // Set projectile speed for flying sword
-                float projectileSpeed = 30f;
-                Vector2 finalVelocity = dir * projectileSpeed;
-
-                // Optional: alternate rotation param
-                float swingDir = (player.itemAnimation % 2 == 0) ? -1f : 1f;
-
-                // Spawn right-click projectile
-                Projectile.NewProjectile(
+                int proj = Projectile.NewProjectile(
                     source,
                     player.Center,
-                    finalVelocity,
-                    type,      // Right-click projectile type (e.g., ExecutionersSwordPro)
-                    damage / 2,
-                    knockback,
-                    player.whoAmI,
-                    swingDir,
-                    20f
+                    dir * 30f,
+                    ModContent.ProjectileType<ExecutionersSwordPro>(),
+                    damage / 2,        // half damage
+                    knockback * 0.75f, // reduced knockback
+                    player.whoAmI
                 );
 
-                return false; // Skip default shoot
-            }
+                NetMessage.SendData(MessageID.SyncProjectile, number: proj);
+                SoundEngine.PlaySound(SoundID.Item1, player.position);
 
-            // Left-click: do nothing here, keep existing behavior
-            return true; // Let vanilla / CanUseItem handle the slash projectile
+                return false; // don’t use default shoot
+            }
+            else // left-click slash
+            {
+                int proj = Projectile.NewProjectile(
+                    source,
+                    position,
+                    velocity,
+                    ModContent.ProjectileType<ExecutionersSwordSlashPro>(),
+                    damage,
+                    knockback,
+                    player.whoAmI
+                );
+                NetMessage.SendData(MessageID.SyncProjectile, number: proj);
+
+                return false; // suppress extra default projectiles
+            }
         }
 
+        // Longer use time for right-click
+        public override float UseTimeMultiplier(Player player)
+        {
+            if (player.altFunctionUse == 2)
+                return 1.5f; // 50% slower
+            return 1f;
+        }
+
+        public override float UseAnimationMultiplier(Player player)
+        {
+            if (player.altFunctionUse == 2)
+                return 1.5f;
+            return 1f;
+        }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
