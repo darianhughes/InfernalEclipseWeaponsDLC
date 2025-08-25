@@ -135,7 +135,9 @@ Items: {
 		DisplayName: Executioner's Sword
 		Tooltip:
 			'''
-			Restores 5 life on hit
+			Left click to swing the sword, restoring 5 life on hit
+			Right click to throw the sword, embedding itself into the hit enemy
+			Only one sword can be thrown at a time
 			Empowered to execute the Death Penalty
 			'Confiscation.... and DEATH!'
 			'''

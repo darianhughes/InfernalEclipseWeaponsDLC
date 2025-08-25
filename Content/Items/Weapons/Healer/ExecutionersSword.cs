@@ -43,62 +43,86 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             Item.shoot = ModContent.ProjectileType<ExecutionersSwordSlashPro>();
             Item.shootsEveryUse = true;
-            Item.noMelee = true; // disables vanilla hitbox
-            Item.noUseGraphic = false; // optional if you only want slash visible
+            Item.noMelee = true;
+            Item.noUseGraphic = false;
+
+            Item.shootSpeed = 10f;
 
             //temp until finished
             Item.scale = 1.25f;
         }
 
-        public override bool AltFunctionUse(Player player) => false;
+        public override bool AltFunctionUse(Player player) => true;
 
         public override bool CanUseItem(Player player)
         {
-            return true;
-
             if (player.altFunctionUse == 2) // Right click
             {
+                // Don't allow another projectile if one already exists
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<ExecutionersSwordPro>()] > 0)
+                {
+                   return false;
+                }
+
+                Item.useStyle = ItemUseStyleID.Swing;
                 Item.noMelee = true;
                 Item.noUseGraphic = true;
-                // Only throw if not already thrown (only one at a time)
-                return !(player.ownedProjectileCounts[ModContent.ProjectileType<ExecutionersSwordPro>()] > 0);
+                Item.shoot = ModContent.ProjectileType<ExecutionersSwordPro>();
+                Item.shootsEveryUse = true;
+                Item.useTime = 20;
+                Item.useAnimation = 20;
+                Item.knockBack = 3f;
             }
-            Item.noMelee = false;
-            Item.noUseGraphic = false;
+            else // Left click
+            {
+                Item.useStyle = ItemUseStyleID.Swing;
+                Item.noMelee = false;
+                Item.noUseGraphic = false;
+                Item.shoot = ModContent.ProjectileType<ExecutionersSwordSlashPro>();
+                Item.shootsEveryUse = true;
+                Item.useTime = 16;
+                Item.useAnimation = 16;
+                Item.knockBack = 4f;
+            }
+
             return true;
         }
+
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            // Heal 5 on use
-            //player.HealEffect(5);
-            //player.statLife += 5;
-            //if (player.statLife > player.statLifeMax2)
-            //    player.statLife = player.statLifeMax2;
+            if (player.altFunctionUse == 2) // Right-click
+            {
+                // Direction to cursor
+                Vector2 mouseWorld = Main.MouseWorld;
+                Vector2 dir = (mouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
 
-            // Direction to cursor
-            Vector2 mouseWorld = Main.MouseWorld;
-            Vector2 dir = (mouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
+                // Set projectile speed for flying sword
+                float projectileSpeed = 30f;
+                Vector2 finalVelocity = dir * projectileSpeed;
 
-            // Alternate swing direction
-            float swingDir = (player.itemAnimation % 2 == 0) ? -1f : 1f;
+                // Optional: alternate rotation param
+                float swingDir = (player.itemAnimation % 2 == 0) ? -1f : 1f;
 
-            // Spawn slash projectile
-            Projectile.NewProjectile(
-                source,
-                player.Center,
-                dir,
-                ModContent.ProjectileType<ExecutionersSwordSlashPro>(),
-                damage,
-                knockback,
-                player.whoAmI,
-                swingDir,
-                20f
-            );
+                // Spawn right-click projectile
+                Projectile.NewProjectile(
+                    source,
+                    player.Center,
+                    finalVelocity,
+                    type,      // Right-click projectile type (e.g., ExecutionersSwordPro)
+                    damage,
+                    knockback,
+                    player.whoAmI,
+                    swingDir,
+                    20f
+                );
 
-            return false; // prevent vanilla projectile
+                return false; // Skip default shoot
+            }
+
+            // Left-click: do nothing here, keep existing behavior
+            return true; // Let vanilla / CanUseItem handle the slash projectile
         }
-
 
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

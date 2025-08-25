@@ -188,6 +188,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
 
                     hasHealedThisSwing = true; // mark that we've healed for this swing
                 }
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Vector2 offset = Main.rand.NextVector2CircularEdge(target.width / 2f, target.height / 2f);
+                    Dust dust = Dust.NewDustPerfect(target.Center + offset, DustID.Enchanted_Gold, Vector2.Zero, 150, Color.White, 1.2f);
+                    dust.noGravity = true;
+                }
             }
         }
 
