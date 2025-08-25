@@ -6,6 +6,9 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
+using ThoriumMod.Buffs.Healer;
+using CalamityMod.Items;
+using InfernalEclipseWeaponsDLC.Utilities;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword
 {
@@ -14,7 +17,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
         public override string Texture => "InfernalEclipseWeaponsDLC/Assets/Textures/Empty"; // invisible
 
         public override bool? CanHitNPC(NPC target) => false;
-        public override bool CanHitPlayer(Player target) => true;
 
         public override void SetDefaults()
         {
@@ -65,6 +67,23 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                 Projectile.velocity *= 0.96f; // slow down if no target
             }
 
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player p = Main.player[i];
+                if (p.active && !p.dead && p.whoAmI != owner.whoAmI)
+                {
+                    if (owner.team != 0 && owner.team == p.team) // teammates only
+                    {
+                        if (Projectile.Hitbox.Intersects(p.Hitbox))
+                        {
+                            HealTeammateThorium(owner, p, baseHeal: 0); // give some healing
+                            Projectile.Kill(); // consume projectile after heal
+                            break;
+                        }
+                    }
+                }
+            }
+
             // White dust trail
             for (int i = 0; i < 2; ++i)
             {
@@ -82,6 +101,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                 Main.dust[dustIndex].noGravity = true;
             }
         }
+
+        public override bool CanHitPlayer(Player target)
+        {
+            Player owner = Main.player[Projectile.owner];
+            // Only hit teammates (but not self)
+            return owner.team != 0 && target.team == owner.team && target.whoAmI != owner.whoAmI;
+        }
+
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
@@ -108,28 +135,27 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
 
         private void HealTeammateThorium(Player healer, Player target, int baseHeal)
         {
-            if (healer.whoAmI != Main.myPlayer) return; // only run on owner client
+            if (healer.whoAmI != Main.myPlayer) return;
+            if (healer == target) return;
+            if (healer.team == 0 || healer.team != target.team) return;
 
-            ThoriumPlayer thoriumHealer = healer.GetModPlayer<ThoriumPlayer>();
-            ThoriumPlayer thoriumTarget = target.GetModPlayer<ThoriumPlayer>();
+            if (baseHeal <= 0 && healer.GetModPlayer<ThoriumPlayer>().healBonus <= 0)
+                return; // Nothing to heal
 
-            int totalHeal = baseHeal + thoriumHealer.healBonus;
+            HealerHelper.HealPlayer(
+                healer,
+                target,
+                healAmount: baseHeal, // <-- don't add healBonus here
+                recoveryTime: 60,
+                healEffects: true,
+                extraEffects: p => p.AddBuff(ModContent.BuffType<Cured>(), 30, true, false)
+            );
 
-            target.statLife += totalHeal;
-            if (target.statLife > target.statLifeMax2)
-                target.statLife = target.statLifeMax2;
-
-            target.HealEffect(totalHeal);
-
-            thoriumTarget.mostRecentHeal = totalHeal;
-            thoriumTarget.mostRecentHealer = healer.whoAmI;
-            thoriumHealer.healedTarget = target.whoAmI;
-
+            // Optional dust visuals
             for (int i = 0; i < 5; i++)
             {
-                Dust dust = Dust.NewDustPerfect(target.Center + Main.rand.NextVector2Circular(16, 16),
-                    DustID.Enchanted_Gold, Vector2.Zero, 150, Color.White, 1.3f);
-                dust.noGravity = true;
+                Vector2 offset = Main.rand.NextVector2CircularEdge(target.width / 2f, target.height / 2f);
+                Dust.NewDustPerfect(target.Center + offset, DustID.Enchanted_Gold, Vector2.Zero, 150, Color.White, 1.2f).noGravity = true;
             }
         }
 

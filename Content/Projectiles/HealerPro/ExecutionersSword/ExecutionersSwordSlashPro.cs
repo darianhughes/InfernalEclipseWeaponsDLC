@@ -7,14 +7,20 @@ using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
+using ThoriumMod.Buffs.Healer;
 using ThoriumMod.Items.HealerItems;
 using CalamityMod.Buffs.DamageOverTime;
+using InfernalEclipseWeaponsDLC.Utilities;
+using System.Collections.Generic;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword
 {
     public class ExecutionersSwordSlashPro : ModProjectile
     {
         public override string Texture => "Terraria/Images/Projectile_982"; // Excalibur slash
+
+        private HashSet<int> healedPlayers = new HashSet<int>(); // track who got healed
+
         private bool hasHealedThisSwing = false;
 
         public override void SetStaticDefaults()
@@ -40,6 +46,19 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
+
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player target = Main.player[i];
+                if (target.active && !target.dead && CanHitPlayer(target))
+                {
+                    Rectangle playerHitbox = target.Hitbox;
+                    if (Colliding(Projectile.Hitbox, playerHitbox) == true)
+                    {
+                        HealTeammateThorium(player, target, baseHeal: 0);
+                    }
+                }
+            }
 
             // Track animation progress
             float progress = 1f - (player.itemAnimation / (float)player.itemAnimationMax);
@@ -78,7 +97,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             // Kill when swing is done
             if (player.itemAnimation <= 1)
             {
-                hasHealedThisSwing = false;
+                healedPlayers.Clear();
                 Projectile.Kill();
             }
         }
@@ -126,35 +145,41 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
 
         private void HealTeammateThorium(Player healer, Player target, int baseHeal)
         {
-            if (healer.whoAmI != Main.myPlayer) return; // Only run on owner
+            if (healer.whoAmI != Main.myPlayer) return;
+            if (healer == target) return;
+            if (healer.team == 0 || healer.team != target.team) return;
 
-            ThoriumPlayer thoriumHealer = healer.GetModPlayer<ThoriumPlayer>();
-            ThoriumPlayer thoriumTarget = target.GetModPlayer<ThoriumPlayer>();
+            if (healedPlayers.Contains(target.whoAmI))
+                return;
 
-            // Include Thorium bonus healing
-            int totalHeal = baseHeal + thoriumHealer.healBonus;
+            if (baseHeal <= 0 && healer.GetModPlayer<ThoriumPlayer>().healBonus <= 0)
+                return; // Nothing to heal
 
-            // Heal the target using ThoriumPlayer helper
-            target.statLife += totalHeal;
-            if (target.statLife > target.statLifeMax2)
-                target.statLife = target.statLifeMax2;
+            HealerHelper.HealPlayer(
+                healer,
+                target,
+                healAmount: baseHeal, // <-- don't add healBonus here
+                recoveryTime: 60,
+                healEffects: true,
+                extraEffects: p => p.AddBuff(ModContent.BuffType<Cured>(), 30, true, false)
+            );
 
-            target.HealEffect(totalHeal);
+            healedPlayers.Add(target.whoAmI);
 
-            // Track recent heal
-            thoriumTarget.mostRecentHeal = totalHeal;
-            thoriumTarget.mostRecentHealer = healer.whoAmI;
-
-            // Track healed target
-            thoriumHealer.healedTarget = target.whoAmI;
-
-            // Visual effect
+            // Optional dust visuals
             for (int i = 0; i < 5; i++)
             {
                 Vector2 offset = Main.rand.NextVector2CircularEdge(target.width / 2f, target.height / 2f);
-                Dust dust = Dust.NewDustPerfect(target.Center + offset, DustID.Enchanted_Gold, Vector2.Zero, 150, Color.White, 1.2f);
-                dust.noGravity = true;
+                Dust.NewDustPerfect(target.Center + offset, DustID.Enchanted_Gold, Vector2.Zero, 150, Color.White, 1.2f).noGravity = true;
             }
+        }
+
+
+        public override bool CanHitPlayer(Player target)
+        {
+            Player owner = Main.player[Projectile.owner];
+            // Only hit teammates (but not self)
+            return owner.team != 0 && target.team == owner.team && target.whoAmI != owner.whoAmI;
         }
 
 
