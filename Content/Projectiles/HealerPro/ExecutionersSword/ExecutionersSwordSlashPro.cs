@@ -15,6 +15,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
     public class ExecutionersSwordSlashPro : ModProjectile
     {
         public override string Texture => "Terraria/Images/Projectile_982"; // Excalibur slash
+        private bool hasHealedThisSwing = false;
 
         public override void SetStaticDefaults()
         {
@@ -76,7 +77,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
 
             // Kill when swing is done
             if (player.itemAnimation <= 1)
+            {
+                hasHealedThisSwing = false;
                 Projectile.Kill();
+            }
         }
 
 
@@ -92,6 +96,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            Player player = Main.player[Projectile.owner]; // <-- Add this line
+
             target.AddBuff(ModContent.BuffType<HolyFlames>(), 300); // 5 seconds
 
             for (int i = 0; i < 8; i++)
@@ -103,12 +109,88 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                 Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Enchanted_Gold, vel, 150, Color.White, 1.5f);
                 dust.noGravity = true;
             }
+
+            if (!hasHealedThisSwing)
+            {
+                int healAmount = 5;
+                player.statLife += healAmount;
+                if (player.statLife > player.statLifeMax2)
+                    player.statLife = player.statLifeMax2;
+
+                player.HealEffect(healAmount);
+
+                hasHealedThisSwing = true; // mark that we've healed for this swing
+            }
         }
+
+
+        private void HealTeammateThorium(Player healer, Player target, int baseHeal)
+        {
+            if (healer.whoAmI != Main.myPlayer) return; // Only run on owner
+
+            ThoriumPlayer thoriumHealer = healer.GetModPlayer<ThoriumPlayer>();
+            ThoriumPlayer thoriumTarget = target.GetModPlayer<ThoriumPlayer>();
+
+            // Include Thorium bonus healing
+            int totalHeal = baseHeal + thoriumHealer.healBonus;
+
+            // Heal the target using ThoriumPlayer helper
+            target.statLife += totalHeal;
+            if (target.statLife > target.statLifeMax2)
+                target.statLife = target.statLifeMax2;
+
+            target.HealEffect(totalHeal);
+
+            // Track recent heal
+            thoriumTarget.mostRecentHeal = totalHeal;
+            thoriumTarget.mostRecentHealer = healer.whoAmI;
+
+            // Track healed target
+            thoriumHealer.healedTarget = target.whoAmI;
+
+            // Visual effect
+            for (int i = 0; i < 5; i++)
+            {
+                Vector2 offset = Main.rand.NextVector2CircularEdge(target.width / 2f, target.height / 2f);
+                Dust dust = Dust.NewDustPerfect(target.Center + offset, DustID.Enchanted_Gold, Vector2.Zero, 150, Color.White, 1.2f);
+                dust.noGravity = true;
+            }
+        }
+
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+            Player player = Main.player[Projectile.owner];
+
+            // Only heal teammates, not self
+            if (player.team != 0 && player.team == target.team && target.whoAmI != player.whoAmI)
+            {
+                HealTeammateThorium(player, target, baseHeal: 0); // base 0 + Thorium bonus
+            }
+
+            // Only apply debuff if this is a PvP hit
+            bool isPvPHit = player.whoAmI != target.whoAmI    // Not self
+                            && player.team != 0             // Teams are enabled
+                            && player.team != target.team;  // Not same team
+
+            if (isPvPHit)
+            {
+                target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+
+                if (!hasHealedThisSwing)
+                {
+                    int healAmount = 5;
+                    player.statLife += healAmount;
+                    if (player.statLife > player.statLifeMax2)
+                        player.statLife = player.statLifeMax2;
+
+                    player.HealEffect(healAmount);
+
+                    hasHealedThisSwing = true; // mark that we've healed for this swing
+                }
+            }
         }
+
 
         public override bool PreDraw(ref Color lightColor)
         {
@@ -141,7 +223,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                 baseColor, drawRotation, slashOrigin, scale * 1.1f, slashEffects, 0f);
 
             // Glow overlay
-            Color glow = Color.White * 0.5f * progress;
+            Color glow = Color.LightYellow * 0.5f * progress;
             Main.EntitySpriteDraw(slashTexture, drawPos, Utils.Frame(slashTexture, 1, 4, 0, 0),
                 glow, drawRotation, slashOrigin, scale * 1.5f, slashEffects, 0f);
 

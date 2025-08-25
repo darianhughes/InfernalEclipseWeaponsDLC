@@ -48,7 +48,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             //temp until finished
             Item.scale = 1.25f;
-            Item.healLife = 5;
         }
 
         public override bool AltFunctionUse(Player player) => false;
@@ -72,10 +71,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             // Heal 5 on use
-            player.HealEffect(5);
-            player.statLife += 5;
-            if (player.statLife > player.statLifeMax2)
-                player.statLife = player.statLifeMax2;
+            //player.HealEffect(5);
+            //player.statLife += 5;
+            //if (player.statLife > player.statLifeMax2)
+            //    player.statLife = player.statLifeMax2;
 
             // Direction to cursor
             Vector2 mouseWorld = Main.MouseWorld;

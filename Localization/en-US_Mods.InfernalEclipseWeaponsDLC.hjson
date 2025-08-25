@@ -135,6 +135,7 @@ Items: {
 		DisplayName: Executioner's Sword
 		Tooltip:
 			'''
+			Restores 5 life on hit
 			Empowered to execute the Death Penalty
 			'Confiscation.... and DEATH!'
 			'''
