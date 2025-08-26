@@ -189,6 +189,9 @@ Projectiles: {
 	// LightSlashPro.DisplayName: Light Slash Pro
 	// CryonicSpearTip.DisplayName: Cryonic Spear Tip
 	// SuperShotgunStab.DisplayName: Super Shotgun Stab
+	// ExecutionersSwordSlashPro.DisplayName: Executioners Sword Slash Pro
+	// ExecutionersSwordLightEnergy.DisplayName: Executioners Sword Light Energy
+	// ExecutionersSwordDarkEnergy.DisplayName: Executioners Sword Dark Energy
 }
 
 Buffs: {

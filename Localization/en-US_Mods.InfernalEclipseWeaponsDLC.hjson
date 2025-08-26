@@ -1,7 +1,12 @@
 Items: {
 	TwoPaths: {
 		DisplayName: Two Paths
-		Tooltip: ""
+		Tooltip:
+			'''
+			Grants 4 soul essence on direct hit
+			Left click to deal full damage in a larger radius
+			Right click to consume mana and fire white scythes that slash the enemy
+			'''
 	}
 
 	TheParallel: {
@@ -10,7 +15,11 @@ Items: {
 	}
 
 	SuperShotgun: {
-		Tooltip: "'What? Never seen a blade on a shotgun before?'"
+		Tooltip:
+			'''
+			Right click stabs with the shotgun's blade, dealing melee damage
+			'What? Never seen a blade on a shotgun before?'
+			'''
 		DisplayName: Triggerblade
 	}
 
@@ -135,6 +144,12 @@ Items: {
 		DisplayName: Executioner's Sword
 		Tooltip:
 			'''
+			Left click to swing the sword, restoring 5 life on hit
+			Right click to throw the sword, embedding itself into the hit enemy
+			When the sword is embedded it will release light and dark energy
+			Light energy will home onto nearby allies and heal life equal to bonus healing
+			Dark energy will home onto nearby enemies, dealing damage
+			Only one sword can be thrown at a time
 			Empowered to execute the Death Penalty
 			'Confiscation.... and DEATH!'
 			'''
@@ -189,6 +204,9 @@ Projectiles: {
 	LightSlashPro.DisplayName: Light Slash Pro
 	CryonicSpearTip.DisplayName: Cryonic Spear Tip
 	SuperShotgunStab.DisplayName: Super Shotgun Stab
+	ExecutionersSwordSlashPro.DisplayName: Executioners Sword Slash Pro
+	ExecutionersSwordLightEnergy.DisplayName: Executioners Sword Light Energy
+	ExecutionersSwordDarkEnergy.DisplayName: Executioners Sword Dark Energy
 }
 
 Buffs: {

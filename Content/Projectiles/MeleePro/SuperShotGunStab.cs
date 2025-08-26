@@ -14,8 +14,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro
 
         public override void SetDefaults()
         {
-            Projectile.width = 10;
-            Projectile.height = 10;
+            Projectile.width = 30;
+            Projectile.height = 30;
             Projectile.aiStyle = 19; // Shortsword behavior
             Projectile.penetrate = -1;
             Projectile.timeLeft = 90;

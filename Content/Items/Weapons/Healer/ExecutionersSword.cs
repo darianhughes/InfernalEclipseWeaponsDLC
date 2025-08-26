@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
-using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using ThoriumMod.Items;
-using ThoriumMod;
-using CalamityMod.Items;
-using ThoriumMod.Items.HealerItems;
+using Terraria.ID;
+using Terraria.Audio;
 using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword;
+using ThoriumMod;
 using CalamityMod.Buffs.DamageOverTime;
-
+using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword;
+using CalamityMod.Items;
+using Terraria.DataStructures;
+using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 {
@@ -29,65 +24,114 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             healAmount = 0;
             healDisplay = true;
             isHealer = true;
+
             Item.width = 64;
             Item.height = 68;
+
             Item.useTime = 16;
             Item.useAnimation = 16;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = true;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+
             Item.knockBack = 4f;
             Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
             Item.rare = ItemRarityID.Purple;
-            Item.UseSound = new SoundStyle?(SoundID.Item1);
+            Item.UseSound = SoundID.Item1;
 
-            //Item.shoot = ModContent.ProjectileType<LightSlashPro>();
-            //Item.shootsEveryUse = true;
+            Item.shoot = ModContent.ProjectileType<ExecutionersSwordSlashPro>();
+            Item.shootSpeed = 10f;
 
-            //temp until finished
-            Item.scale = 1.25f;
-            Item.healLife = 5;
+            Item.noMelee = false;
+            Item.noUseGraphic = false;
+
+            Item.scale = 1f;
         }
 
-        public override bool AltFunctionUse(Player player) => false;
+        public override bool AltFunctionUse(Player player) => true;
 
         public override bool CanUseItem(Player player)
         {
-            return true;
-
-            if (player.altFunctionUse == 2) // Right click
+            if (player.altFunctionUse == 2) // right click
             {
+                // Block use entirely if throw is already out
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<ExecutionersSwordPro>()] > 0)
+                    return false;
+
+                // Suppress melee swing + graphic
                 Item.noMelee = true;
                 Item.noUseGraphic = true;
-                // Only throw if not already thrown (only one at a time)
-                return !(player.ownedProjectileCounts[ModContent.ProjectileType<ExecutionersSwordPro>()] > 0);
             }
-            Item.noMelee = false;
-            Item.noUseGraphic = false;
-            return true;
+            else
+            {
+                // Left click restores normal behavior
+                Item.noMelee = true;
+                Item.noUseGraphic = false;
+            }
+
+            return base.CanUseItem(player);
         }
 
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position,
+                                   Vector2 velocity, int type, int damage, float knockback)
         {
-            return false; //WIP
-
-            if (player.altFunctionUse == 2) // Right click: throw sword
-            {
-                type = ModContent.ProjectileType<ExecutionersSwordPro>();
-                velocity = velocity.SafeNormalize(Vector2.UnitX) * 16f;
+            if (Main.myPlayer != player.whoAmI)
                 return false;
-            }
-            else // Left click: fire slash
+
+            if (player.altFunctionUse == 2) // right-click throw
             {
-                type = ModContent.ProjectileType<LightSlashPro>();
+                // prevent multiple swords
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<ExecutionersSwordPro>()] > 0)
+                    return false;
 
-                // Direction to cursor
                 Vector2 mouseWorld = Main.MouseWorld;
-                Vector2 dir = (mouseWorld - position).SafeNormalize(Vector2.UnitX);
+                Vector2 dir = (mouseWorld - player.Center).SafeNormalize(Vector2.UnitX);
 
-                velocity = dir * 16f; // Or your desired speed
-                return true;
+                int proj = Projectile.NewProjectile(
+                    source,
+                    player.Center,
+                    dir * 30f,
+                    ModContent.ProjectileType<ExecutionersSwordPro>(),
+                    damage / 2,        // half damage
+                    knockback * 0.75f, // reduced knockback
+                    player.whoAmI
+                );
+
+                NetMessage.SendData(MessageID.SyncProjectile, number: proj);
+                SoundEngine.PlaySound(SoundID.Item1, player.position);
+
+                return false; // don’t use default shoot
             }
+            else // left-click slash
+            {
+                int proj = Projectile.NewProjectile(
+                    source,
+                    position,
+                    velocity,
+                    ModContent.ProjectileType<ExecutionersSwordSlashPro>(),
+                    damage,
+                    knockback,
+                    player.whoAmI
+                );
+                NetMessage.SendData(MessageID.SyncProjectile, number: proj);
+
+                return false; // suppress extra default projectiles
+            }
+        }
+
+        // Longer use time for right-click
+        public override float UseTimeMultiplier(Player player)
+        {
+            if (player.altFunctionUse == 2)
+                return 1.5f; // 50% slower
+            return 1f;
+        }
+
+        public override float UseAnimationMultiplier(Player player)
+        {
+            if (player.altFunctionUse == 2)
+                return 1.5f;
+            return 1f;
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
