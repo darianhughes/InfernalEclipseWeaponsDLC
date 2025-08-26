@@ -59,6 +59,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
                 if (Projectile.velocity.Length() < 0.5f)
                 {
                     Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.UnitY) * 80f;
+
+                    Projectile.damage = Math.Max(1, Projectile.damage * 2);
+
                     accelerated = true;
                 }
             }

@@ -215,8 +215,8 @@ Projectiles: {
 	// BloodShotFriendly.DisplayName: Blood Shot Friendly
 	// NukePro.DisplayName: Nuke Pro
 	// NukeMissile.DisplayName: Nuke Missile
-	// ListoftheDamnedSoul_Orange.DisplayName: Listofthe Damned Soul Orange
-	// ListoftheDamnedSoul_Cyan.DisplayName: Listofthe Damned Soul Cyan
+	// ListoftheDamnedSoul_Orange.DisplayName: List of the Damned Soul Orange
+	// ListoftheDamnedSoul_Cyan.DisplayName: List of the Damned Soul Cyan
 }
 
 Buffs: {

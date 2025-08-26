@@ -24,7 +24,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         {
             isHealer = true;
 
-            Item.damage = 100;
+            Item.damage = 80;
             Item.width = 28;
             Item.height = 28;
 

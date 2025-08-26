@@ -172,7 +172,7 @@ Items: {
 
 	ListoftheDamned: {
 		DisplayName: List of the Damned
-		Tooltip: Fires a spread of 6 damned souls that burst forward after some time
+		Tooltip: Fires a spread of 6 souls that burst forward after some time, dealing double damage
 	}
 }
 
