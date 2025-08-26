@@ -14,6 +14,7 @@ using ThoriumMod.Items;
 using Microsoft.Xna.Framework;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NukePros;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
+using ThoriumMod.Sounds;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -40,10 +41,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             // Item.Size = new Vector2(38, 31);
             Item.value = Item.sellPrice(gold: 3);
             Item.autoReuse = true;
-            Item.damage = 200;
+            Item.damage = 800;
             Item.knockBack = 4f;
             Item.noMelee = true;
-            Item.UseSound = SoundID.Item42;
+            Item.UseSound = ThoriumSounds.Whistle_Sound;
             Item.rare = ItemRarityID.LightRed;
             InspirationCost = 10;
         }
@@ -62,7 +63,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             {
                 if (calamity.TryFind("ShadowspecBar", out ModItem bar))
                 {
-                    recipe.AddIngredient(bar, 4);
+                    recipe.AddIngredient(bar, 5);
                 }
             }
             recipe.AddTile(TileID.Anvils);
@@ -73,9 +74,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position,
             Vector2 velocity, int type, int damage, float knockback)
         {
-            SoundStyle soundStyle = new SoundStyle("Marvel/Assets/Sounds/RedWhistle");
-            soundStyle.MaxInstances = 3;
-            SoundEngine.PlaySound(soundStyle, position);
             InfernalWeaponsPlayer modPlayer = player.GetModPlayer<InfernalWeaponsPlayer>();
             modPlayer.missileIndex--;
             if (modPlayer.missileIndex == 0)
@@ -87,16 +85,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                 Projectile.NewProjectile(source, player.Center + new Vector2(xOffset, -Main.screenHeight / 2),
                     new Vector2((Main.MouseWorld.X -
                                  (player.Center.X + xOffset)) / 37, 7), ModContent.ProjectileType<NukePro>(),
-                    (int)((double)damage * 2.5), knockback, 0, Item.useTime);
+                    (int)((double)damage * 2), knockback, 0, Item.useTime);
             }
             else
             {
-                Item.damage--;
-                if (Item.damage == 190)
-                {
-                    Item.damage = 200;
-                }
-
                 int sign = Main.rand.Next(0, 2) * 2 - 1;
                 int xOffset = (int)((Main.MouseWorld.X - player.Center.X) / 3) +
                               (sign == 0 ? Main.rand.Next(-8, 4) * 65 : Main.rand.Next(-4, 8) * 65);

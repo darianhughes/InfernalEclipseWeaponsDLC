@@ -154,6 +154,21 @@ Items: {
 			'Confiscation.... and DEATH!'
 			'''
 	}
+
+	ButchersBloodmaker: {
+		DisplayName: Butcher's Bloodmaker
+		Tooltip:
+			'''
+			Fires a spread of bullets and a bolt of lightly homing blood
+			Right click to consume 50 life, entering a Blood Rage for 10 seconds
+			Blood Rage increases the bloodmaker's damage by 25% and causes blood bolts to inflict burning blood on hit
+			'''
+	}
+
+	NukeWhistle: {
+		Tooltip: "'Legalise nuclear songs'"
+		DisplayName: Intercontinental Ballistic Whistle
+	}
 }
 
 Projectiles: {
@@ -207,6 +222,9 @@ Projectiles: {
 	ExecutionersSwordSlashPro.DisplayName: Executioners Sword Slash Pro
 	ExecutionersSwordLightEnergy.DisplayName: Executioners Sword Light Energy
 	ExecutionersSwordDarkEnergy.DisplayName: Executioners Sword Dark Energy
+	BloodShotFriendly.DisplayName: Blood Shot Friendly
+	NukePro.DisplayName: Nuke Pro
+	NukeMissile.DisplayName: Nuke Missile
 }
 
 Buffs: {
@@ -216,8 +234,13 @@ Buffs: {
 	}
 
 	SwordStuckBuff: {
-		DisplayName: Sword Stuck Buff
+		DisplayName: Sword Stuck
 		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.SwordStuckBuff.Description
+	}
+
+	BloodRageBuff: {
+		DisplayName: Blood Rage
+		Description: Increases bloodmaker damage by 25% and couses blood bolts to inflict burning blood on hit
 	}
 }
 

@@ -98,7 +98,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NukePros
                             if (calamity.TryFind("WavePounderBoom", out ModProjectile boom))
                             {
                                 Projectile projectile = Projectile.NewProjectileDirect(Projectile.GetSource_FromAI(), Projectile.Center, Vector2.Zero,
-                                    boom.Type, 20, 1f);
+                                    boom.Type, Projectile.damage, 1f);
                                 float j = 1;
                                 projectile.ai[1] = 320f + j * 45f;
                                 projectile.localAI[1] = Main.rand.NextFloat(0.08f, 0.25f);
@@ -114,5 +114,48 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NukePros
                 Projectile.velocity.Y += 0.275f;
             }
         }
+
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            Explode();
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            if (target.hostile) // only if PvP enabled
+                Explode();
+        }
+
+        private void Explode()
+        {
+            if (hit) return; // prevent double explosions if it already hit tiles
+
+            hit = true;
+            Projectile.velocity = Vector2.Zero;
+
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamity))
+            {
+                if (calamity.TryFind("WavePounderBoom", out ModProjectile boom))
+                {
+                    Projectile projectile = Projectile.NewProjectileDirect(
+                        Projectile.GetSource_FromAI(),
+                        Projectile.Center,
+                        Vector2.Zero,
+                        boom.Type,
+                        Projectile.damage, // explosion damage
+                        1f  // explosion knockback
+                    );
+
+                    float j = 1;
+                    projectile.ai[1] = 320f + j * 45f;
+                    projectile.localAI[1] = Main.rand.NextFloat(0.08f, 0.25f);
+                    projectile.Opacity = MathHelper.Lerp(0.18f, 0.6f, j / 7f) + Main.rand.NextFloat(-0.08f, 0.08f);
+                    projectile.netUpdate = true;
+                }
+            }
+
+            SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, Projectile.Center);
+        }
+
     }
 }
