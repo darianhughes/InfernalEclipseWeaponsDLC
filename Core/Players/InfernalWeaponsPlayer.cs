@@ -11,6 +11,7 @@ using Terraria.DataStructures;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using System.Security.Policy;
 
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 {
@@ -20,6 +21,8 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         public bool spearArctic;
 
         const int shard2chance = 20;
+
+        public int missileIndex = 10;
 
         public override void ResetEffects()
         {

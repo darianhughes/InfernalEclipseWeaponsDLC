@@ -11,6 +11,15 @@ using CalamityMod.Items.TreasureBags;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
+using CalamityMod.Items.Fishing.SulphurCatches;
+using CalamityMod;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Items.Weapons.Summon;
+using ThoriumMod.Items.Depths;
+using InfernalEclipseWeaponsDLC.Content.Items.Materials;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 {
@@ -59,6 +68,19 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<CorrodedCane>(), 4));
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<DukeSynth>(), 4));
+                }
+
+
+                if (item.type == ModContent.ItemType<SulphurousCrate>() || item.type == ModContent.ItemType<HydrothermalCrate>())
+                {
+                    LeadingConditionRule mainRule = itemLoot.DefineConditionalDropSet(() => DownedBossSystem.downedSlimeGod || Main.hardMode);
+                    mainRule.Add(new OneFromOptionsDropRule(6, 1, ModContent.ItemType<DeepSeaDrawl>()));
+                }
+
+                if (item.type == ModContent.ItemType<AquaticDepthsCrate>() || item.type == ModContent.ItemType<AbyssalCrate>())
+                {
+                    LeadingConditionRule mainRule = itemLoot.DefineConditionalDropSet(() => DownedBossSystem.downedCryogen && NPC.downedGolemBoss);
+                    mainRule.Add(new OneFromOptionsDropRule(20, 1, ModContent.ItemType<DeepSeaDrawlShard1>()));
                 }
             }
 

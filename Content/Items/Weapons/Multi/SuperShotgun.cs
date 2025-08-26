@@ -13,6 +13,7 @@ using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes;
 using CalamityMod.Items.Materials;
 using ThoriumMod.Buffs;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro;
+using CalamityMod;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 {
@@ -37,6 +38,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
             Item.width = 64;
             Item.height = 20;
+            Item.Calamity().canFirePointBlankShots = true;
         }
 
         public override bool AltFunctionUse(Player player)
