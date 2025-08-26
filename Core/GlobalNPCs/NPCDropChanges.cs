@@ -20,6 +20,7 @@ using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
 using CalamityMod.NPCs.AquaticScourge;
+using CalamityMod;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -86,6 +87,20 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 if (npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type)
                 {
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GrandThunderWhip>(), 5));
+                }
+
+                if (npc.type == thorium.Find<ModNPC>("Lich").Type)
+                {
+                    var dropRule = new CommonDropNotScalingWithLuck(ModContent.ItemType<ListoftheDamned>(), 5, 1, 1)
+                    {
+                        chanceNumerator = 2 // 2/5 = 40%
+                    };
+
+                    // Wrap the custom rule in a LeadingConditionRule so it only fires when NotExpert is true
+                    var leadingRule = new LeadingConditionRule(new Conditions.NotExpert());
+                    leadingRule.Add(dropRule);
+
+                    npcLoot.Add(leadingRule);
                 }
             }
         }

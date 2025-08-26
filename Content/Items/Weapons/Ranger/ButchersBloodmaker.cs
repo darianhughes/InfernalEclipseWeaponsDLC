@@ -131,8 +131,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranger
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.CrimtaneBar, 12)
-                .AddIngredient(ItemID.TissueSample, 8)
+                .AddIngredient(ItemID.CrimtaneBar, 10)
+                .AddIngredient(ItemID.TissueSample, 5)
                 .AddTile(TileID.Anvils)
                 .Register();
         }

@@ -154,6 +154,11 @@ Items: {
 		// Tooltip: "'Legalise nuclear songs'"
 		// DisplayName: Intercontinental Ballistic Whistle
 	}
+
+	ListoftheDamned: {
+		// DisplayName: List of the Damned
+		// Tooltip: Fires a spread of 6 damned souls that burst forward after some time
+	}
 }
 
 Projectiles: {
@@ -210,6 +215,8 @@ Projectiles: {
 	// BloodShotFriendly.DisplayName: Blood Shot Friendly
 	// NukePro.DisplayName: Nuke Pro
 	// NukeMissile.DisplayName: Nuke Missile
+	// ListoftheDamnedSoul_Orange.DisplayName: Listofthe Damned Soul Orange
+	// ListoftheDamnedSoul_Cyan.DisplayName: Listofthe Damned Soul Cyan
 }
 
 Buffs: {

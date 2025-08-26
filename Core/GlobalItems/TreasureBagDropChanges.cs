@@ -100,6 +100,15 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandThunderWhip>(), 5));
                 }
+
+                if (item.type == thorium.Find<ModItem>("LichTreasureBag").Type)
+                {
+                    var rule = new CommonDropNotScalingWithLuck(ModContent.ItemType<ListoftheDamned>(), 5, 1, 1)
+                    {
+                        chanceNumerator = 2 // 2/5 = 40%
+                    };
+                    itemLoot.Add(rule);
+                }
             }
         }
     }
