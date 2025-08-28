@@ -5,7 +5,7 @@ Items: {
 			'''
 			Grants 4 soul essence on direct hit
 			Left click to deal full damage in a larger radius
-			Right click to consume mana and fire white scythes that slash the enemy
+			Right click to consume mana and summon white scythes that slash the enemy
 			'''
 	}
 
@@ -77,8 +77,8 @@ Items: {
 	}
 
 	TheBlight: {
-		Tooltip: Grants 1 soul essence on direct hit
 		DisplayName: The Blight
+		Tooltip: ""
 	}
 
 	GrandThunderWhip: {

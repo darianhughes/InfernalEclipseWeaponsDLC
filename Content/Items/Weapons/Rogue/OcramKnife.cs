@@ -1,6 +1,7 @@
 ﻿using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Potions;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Rogue;
 using CalamityMod.Rarities;
@@ -17,8 +18,10 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
+using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Tiles;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
 {
@@ -60,10 +63,33 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
 
         public override void AddRecipes()
         {
-            if (!ModLoader.TryGetMod("Consolaria", out _))
+            if (!ModLoader.TryGetMod("Consolaria", out Mod _))
             {
-                //TODO
+                CreateRecipe()
+                    .AddIngredient<AureusCell>(10)
+                    .AddIngredient<GildedDagger>(1)
+                    .AddIngredient(ItemID.SoulofSight, 5)
+                    .AddIngredient(ItemID.SoulofMight, 5)
+                    .AddIngredient(ItemID.SoulofFright, 5)
+                    .AddIngredient(ItemID.SoulofNight, 8)
+                    .AddIngredient(ItemID.Bone, 12)
+                    .AddIngredient(ItemID.CursedFlame, 8)
+                    .AddTile(ModContent.TileType<SoulForgeNew>())
+                    .Register();
+
+                CreateRecipe()
+                    .AddIngredient<AureusCell>(10)
+                    .AddIngredient<GleamingDagger>(1)
+                    .AddIngredient(ItemID.SoulofSight, 5)
+                    .AddIngredient(ItemID.SoulofMight, 5)
+                    .AddIngredient(ItemID.SoulofFright, 5)
+                    .AddIngredient(ItemID.SoulofNight, 8)
+                    .AddIngredient(ItemID.Bone, 12)
+                    .AddIngredient(ItemID.CursedFlame, 8)
+                    .AddTile(ModContent.TileType<SoulForgeNew>())
+                    .Register();
             }
         }
+
     }
 }

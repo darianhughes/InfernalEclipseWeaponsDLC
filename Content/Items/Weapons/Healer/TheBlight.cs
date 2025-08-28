@@ -1,6 +1,8 @@
 ﻿using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Potions;
+using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Rarities;
 using InfernalEclipseWeaponsDLC.Content.Projectiles;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
@@ -19,6 +21,7 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Tiles;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 {
@@ -34,7 +37,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             SetDefaultsToScythe();
 
             Item.damage = 120;
-            scytheSoulCharge = 1;
+            scytheSoulCharge = 2;
             Item.width = 70;
             Item.height = 82;
             Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
@@ -87,8 +90,24 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             return base.Shoot(player, source, position, velocity, type, damage, knockback);
         }
 
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        public override void AddRecipes()
         {
+            if (!ModLoader.TryGetMod("Consolaria", out Mod _))
+            {
+                var recipe = CreateRecipe()
+                    .AddIngredient<AureusCell>(10)
+                    .AddIngredient<IceShaver>(1)
+                    .AddIngredient(ItemID.SoulofSight, 5)
+                    .AddIngredient(ItemID.SoulofMight, 5)
+                    .AddIngredient(ItemID.SoulofFright, 5)
+                    .AddIngredient(ItemID.SoulofNight, 8)
+                    .AddIngredient(ItemID.Bone, 12)
+                    .AddIngredient(ItemID.CursedFlame, 8);
+
+                recipe.AddTile(ModContent.TileType<SoulForgeNew>())
+                      .Register();
+            }
         }
+
     }
 }

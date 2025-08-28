@@ -68,8 +68,8 @@ Items: {
 	}
 
 	TheBlight: {
-		Tooltip: 直接命中会获得1层灵魂精华
 		DisplayName: 枯萎
+		Tooltip: 直接命中会获得1层灵魂精华
 	}
 
 	GrandThunderWhip: {

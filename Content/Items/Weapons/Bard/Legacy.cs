@@ -1,5 +1,8 @@
 ﻿using CalamityMod.Items;
+using CalamityMod.CustomRecipes;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Potions;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.Legacy;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes;
 using Microsoft.Xna.Framework;
@@ -13,6 +16,8 @@ using ThoriumMod.Empowerments;
 using ThoriumMod.Items;
 using ThoriumMod.Projectiles.Bard;
 using ThoriumMod.Sounds;
+using ThoriumMod.Tiles;
+using ThoriumMod.Items.BardItems;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -73,5 +78,36 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
             return false;
         }
+
+        public override void AddRecipes()
+        {
+            if (!ModLoader.TryGetMod("Consolaria", out Mod _))
+            {
+                CreateRecipe()
+                    .AddIngredient<AureusCell>(10)
+                    .AddIngredient<GoldBugleHorn>(1)
+                    .AddIngredient(ItemID.SoulofSight, 5)
+                    .AddIngredient(ItemID.SoulofMight, 5)
+                    .AddIngredient(ItemID.SoulofFright, 5)
+                    .AddIngredient(ItemID.SoulofNight, 8)
+                    .AddIngredient(ItemID.Bone, 12)
+                    .AddIngredient(ItemID.CursedFlame, 8)
+                    .AddTile(ModContent.TileType<SoulForgeNew>())
+                    .Register();
+
+                CreateRecipe()
+                    .AddIngredient<AureusCell>(10)
+                    .AddIngredient<PlatinumBugleHorn>(1)
+                    .AddIngredient(ItemID.SoulofSight, 5)
+                    .AddIngredient(ItemID.SoulofMight, 5)
+                    .AddIngredient(ItemID.SoulofFright, 5)
+                    .AddIngredient(ItemID.SoulofNight, 8)
+                    .AddIngredient(ItemID.Bone, 12)
+                    .AddIngredient(ItemID.CursedFlame, 8)
+                    .AddTile(ModContent.TileType<SoulForgeNew>())
+                    .Register();
+            }
+        }
+
     }
 }

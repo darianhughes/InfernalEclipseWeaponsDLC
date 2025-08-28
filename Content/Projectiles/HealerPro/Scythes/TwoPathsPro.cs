@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using ThoriumMod.Projectiles.Scythe;
 using Terraria.DataStructures;
 using ThoriumMod.Buffs;
+using Terraria.ID;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
 {
@@ -20,7 +21,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
             // Shared values
             dustOffset = new Vector2(-35, 7f);
             dustCount = 4;
-            dustType = 320;
+            dustType = 279;
             rotationSpeed = 0.25f;
             Projectile.light = 1f;
             fadeOutSpeed = 30;
@@ -57,7 +58,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
             Vector2 oldCenter = Projectile.Center;
             Projectile.Size = new Vector2(208f, 190f) * scale;
             Projectile.Center = oldCenter;
+
+            // Decide dust settings based on click type
+            if (Projectile.ai[0] == 1) // Right-click version
+            {
+                dustOffset = new Vector2(-35, 7f);
+                dustType = 175;
+            }
+            else // Left-click version
+            {
+                dustOffset = new Vector2(-70, 14f);
+                dustType = 109;
+            }
         }
+
+
 
         // Remove any resizing from PreAI/AI!
         public override bool PreAI()

@@ -20,8 +20,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
         public Color fishingLineColor = Color.LightGreen;
         public Color lightingColor = Color.Transparent;
         public Color? drawColor;
-        public int? swingDust = 166;
-        public int dustAmount = 2;
+        public int? swingDust = DustID.Electric;
+        public int dustAmount = 1;
         public SoundStyle? whipCrackSound = new SoundStyle?(SoundID.Item153);
         public Texture2D whipSegment;
         public Texture2D whipTip;

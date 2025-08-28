@@ -10,6 +10,9 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using ThoriumMod.Buffs;
+using CalamityMod;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro;
+using Terraria.ID;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
 {
@@ -17,31 +20,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
     {
         public override void SafeSetDefaults()
         {
+            // Shared values
+            dustOffset = new Vector2(-35, 7f);
+            dustCount = 4;
+            dustType = 75;
             Projectile.Size = new Vector2(140f, 150f);
         }
+        public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.CursedInferno, 60);
 
-        //public override bool PreDraw(ref Color lightColor)
-        //{
-        //    Texture2D texture = ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Projectiles/HealerPro/Scythes/TheBlightProScythe").Value;
-
-        //    Rectangle frame = new Rectangle(0, 0, 140, 150);
-
-        //    Vector2 drawOrigin = new Vector2(Projectile.Size.X / 2f, Projectile.Size.Y / 2f);
-        //    Vector2 drawPos = Projectile.Center - Main.screenPosition;
-
-        //    Main.EntitySpriteDraw(
-        //        texture,
-        //        drawPos,
-        //        frame,
-        //        lightColor,
-        //        Projectile.rotation,
-        //        drawOrigin,
-        //        Projectile.scale,
-        //        SpriteEffects.None,
-        //        0
-        //    );
-
-        //    return false;
-        //}
+            base.SafeOnHitNPC(target, hit, damageDone);
+        }
     }
 }
