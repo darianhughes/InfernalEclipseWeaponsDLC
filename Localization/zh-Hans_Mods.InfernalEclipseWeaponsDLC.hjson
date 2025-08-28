@@ -166,7 +166,7 @@ Items: {
 			'''
 			Left click to consume inspiration and fire an AirPod that bursts into sound on hit
 			AirPod damage is increased with the ammo consumed
-			Right click to fire a buckshot of bullets from your ammo
+			Right click to fire a buckshot of bullets from your ammo, not granting empowerments
 			These bullets will scale off of bard reforges and ranged boosts
 			"Airpod shawty ima catch a body lookin real sussy"
 			''' */
@@ -229,8 +229,8 @@ Projectiles: {
 	// NukeMissile.DisplayName: Nuke Missile
 	// ListoftheDamnedSoul_Orange.DisplayName: List of the Damned Soul Orange
 	// ListoftheDamnedSoul_Cyan.DisplayName: List of the Damned Soul Cyan
-	// AirPod.DisplayName: Air Pod
-	// AirPodNote.DisplayName: Air Pod Note
+	// AirPod.DisplayName: AirPod
+	// AirPodNote.DisplayName: AirPod Note
 }
 
 Buffs: {
