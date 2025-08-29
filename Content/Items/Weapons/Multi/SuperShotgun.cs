@@ -6,6 +6,7 @@ using CalamityMod.Items.Materials;
 using ThoriumMod.Buffs;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro;
 using CalamityMod;
+using CalamityMod.Items;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 {
@@ -21,7 +22,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = false;
             Item.knockBack = 6f;
-            Item.value = Item.sellPrice(silver: 40);
+            Item.value = CalamityGlobalItem.RarityGreenBuyPrice;
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item36;
             Item.autoReuse = false;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CalamityMod.Tiles.Abyss;
 using InfernalEclipseWeaponsDLC.Content.Items.Materials;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Tiles;
@@ -16,8 +17,8 @@ namespace InfernalEclipseWeaponsDLC.Core.ChestLoot
     {
         public override void PostWorldGen()
         {
-            // Your custom item
-            int yourItemType = ModContent.ItemType<DeepSeaDrawl>();
+            int drawlType = ModContent.ItemType<DeepSeaDrawl>();
+            int tridentType = ModContent.ItemType<DeepseaTrident>();
 
             for (int chestIndex = 0; chestIndex < Main.maxChests; chestIndex++)
             {
@@ -29,48 +30,44 @@ namespace InfernalEclipseWeaponsDLC.Core.ChestLoot
                 if (!tile.HasTile || tile.TileType != ModContent.TileType<AbyssTreasureChest>())
                     continue;
 
-                // Optional: only add if your item isn't already present
-                bool hasItem = false;
-                for (int i = 0; i < Chest.maxItems; i++)
+                // === Add DeepSeaDrawl ===
+                bool hasDrawl = chest.item.Any(item => item.type == drawlType);
+                if (!hasDrawl)
                 {
-                    if (chest.item[i].type == yourItemType)
+                    int slot = Array.FindIndex(chest.item, i => i.IsAir);
+                    if (slot != -1)
                     {
-                        hasItem = true;
-                        break;
+                        chest.item[slot].SetDefaults(drawlType);
+                        chest.item[slot].stack = 1;
                     }
                 }
 
-                if (!hasItem)
+                // === Add DeepseaTrident ===
+                bool hasTrident = chest.item.Any(item => item.type == tridentType);
+                if (!hasTrident)
                 {
-                    // Try to place in the first empty slot
-                    for (int i = 0; i < Chest.maxItems; i++)
+                    int slot = Array.FindIndex(chest.item, i => i.IsAir);
+                    if (slot != -1)
                     {
-                        if (chest.item[i].IsAir)
-                        {
-                            chest.item[i].SetDefaults(yourItemType);
-                            chest.item[i].stack = 1;
-                            break;
-                        }
+                        chest.item[slot].SetDefaults(tridentType);
+                        chest.item[slot].stack = 1;
                     }
                 }
             }
 
+            // === Aquatic Depths Biome Chest handling ===
             for (int i = 0; i < Main.chest.Length; i++)
             {
                 var chest = Main.chest[i];
-
                 if (chest == null) continue;
 
                 var tile = Main.tile[chest.x, chest.y];
-
                 if (tile.TileType == ModContent.TileType<AquaticDepthsBiomeChest>())
                 {
                     var newItem = new Item(ModContent.ItemType<DeepSeaDrawlShard1>());
-
-                    var firstNoItem = Array.FindIndex(chest.item, x => x.IsAir);
-
-                    // this does what .Append does. .NET 8 is WEIRD yo
-                    chest.item[firstNoItem] = newItem;
+                    int slot = Array.FindIndex(chest.item, x => x.IsAir);
+                    if (slot != -1)
+                        chest.item[slot] = newItem;
                 }
             }
         }

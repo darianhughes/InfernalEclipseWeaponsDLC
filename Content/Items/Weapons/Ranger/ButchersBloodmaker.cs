@@ -9,6 +9,7 @@ using InfernalEclipseWeaponsDLC.Content.Buffs;
 using CalamityMod;
 using Terraria.Audio;
 using System;
+using CalamityMod.Items;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranger
 {
@@ -24,7 +25,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranger
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = false;
             Item.knockBack = 6f;
-            Item.value = Item.sellPrice(silver: 40);
+            Item.value = CalamityGlobalItem.RarityGreenBuyPrice;
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item36;
             Item.autoReuse = false;

@@ -11,6 +11,7 @@ using ThoriumMod.Items;
 using ThoriumMod.Sounds;
 using Terraria.Audio;
 using CalamityMod;
+using CalamityMod.Items;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 {
@@ -37,7 +38,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
             Item.useAnimation = 40;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 6f;
-            Item.value = Item.buyPrice(gold: 40);
+            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
             Item.rare = ItemRarityID.Purple;
             Item.UseSound = SoundID.Item36;
             Item.autoReuse = true;

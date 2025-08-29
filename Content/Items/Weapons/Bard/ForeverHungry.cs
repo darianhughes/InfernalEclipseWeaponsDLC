@@ -137,8 +137,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
     {
         public override string Texture => "InfernalEclipseWeaponsDLC/Assets/Textures/Empty";
 
-        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
-
         public override void SetBardDefaults()
         {
             Projectile.DamageType = ModContent.GetInstance<BardDamage>();
@@ -160,7 +158,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         public override void OnSpawn(IEntitySource source)
         {
             // Reduce damage to 1/5 of initial damage on spawn
-            Projectile.damage = Math.Max(Projectile.damage / 5, 1);
+            Projectile.damage = Math.Max(Projectile.damage / 5, 10);
         }
 
         public override void AI()

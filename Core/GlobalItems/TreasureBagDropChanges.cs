@@ -40,6 +40,11 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 
             if (ModLoader.TryGetMod("CalamityMod", out _))
             {
+                if (item.type == ModContent.ItemType<DesertScourgeBag>())
+                {
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SandSlasher>(), 3));
+                }
+
                 if (item.type == ModContent.ItemType<AquaticScourgeBag>())
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SulphuricShanty>(), 7));

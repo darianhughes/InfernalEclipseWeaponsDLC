@@ -22,6 +22,7 @@ using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
 using CalamityMod.NPCs.AquaticScourge;
 using CalamityMod;
 using Terraria.ID;
+using CalamityMod.NPCs.DesertScourge;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -38,6 +39,11 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 
             if (ModLoader.TryGetMod("CalamityMod", out _))
             {
+                if (npc.type == ModContent.NPCType<DesertScourgeHead>())
+                {
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<SandSlasher>(), 3));
+                }
+
                 if (npc.type == ModContent.NPCType<AquaticScourgeHead>())
                 {
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<SulphuricShanty>(), 7));
