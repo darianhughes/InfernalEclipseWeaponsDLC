@@ -186,6 +186,26 @@ Items: {
 			"Airpod shawty ima catch a body lookin real sussy"
 			'''
 	}
+
+	AcidBelcher: {
+		DisplayName: Acid Belcher
+		Tooltip: ""
+	}
+
+	ForeverHungry: {
+		DisplayName: Forever Hungry
+		Tooltip: Hungries make splashes of blood on tile bounce
+	}
+
+	BottleOfSouls: {
+		DisplayName: Bottle of Souls
+		Tooltip:
+			'''
+			Releases souls of night and light from the jar
+			Souls of night home into enemies and deal damage, inflicting shadowflame
+			Souls of light home in and heal teammates equal to bonus healing
+			'''
+	}
 }
 
 Projectiles: {
@@ -246,6 +266,11 @@ Projectiles: {
 	ListoftheDamnedSoul_Cyan.DisplayName: List of the Damned Soul Cyan
 	AirPod.DisplayName: AirPod
 	AirPodNote.DisplayName: AirPod Note
+	BouncingHungry.DisplayName: Bouncing Hungry
+	HealingSoul.DisplayName: Healing Soul
+	DamagingSoul.DisplayName: Damaging Soul
+	ForeverHungryBlood.DisplayName: Forever Hungry Blood
+	AcidBelcherPro.DisplayName: Acid Belcher Pro
 }
 
 Buffs: {

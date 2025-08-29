@@ -85,19 +85,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             {
                 CreateRecipe()
                     .AddIngredient<AureusCell>(10)
-                    .AddIngredient<GoldBugleHorn>(1)
-                    .AddIngredient(ItemID.SoulofSight, 5)
-                    .AddIngredient(ItemID.SoulofMight, 5)
-                    .AddIngredient(ItemID.SoulofFright, 5)
-                    .AddIngredient(ItemID.SoulofNight, 8)
-                    .AddIngredient(ItemID.Bone, 12)
-                    .AddIngredient(ItemID.CursedFlame, 8)
-                    .AddTile(ModContent.TileType<SoulForgeNew>())
-                    .Register();
-
-                CreateRecipe()
-                    .AddIngredient<AureusCell>(10)
-                    .AddIngredient<PlatinumBugleHorn>(1)
+                    .AddIngredient<AcidBelcher>(1)
                     .AddIngredient(ItemID.SoulofSight, 5)
                     .AddIngredient(ItemID.SoulofMight, 5)
                     .AddIngredient(ItemID.SoulofFright, 5)

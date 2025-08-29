@@ -20,6 +20,7 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
 using ThoriumMod.Items.Depths;
 using InfernalEclipseWeaponsDLC.Content.Items.Materials;
+using Terraria.ID;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 {
@@ -27,6 +28,16 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
     {
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
         {
+            if (item.type == ItemID.WallOfFleshBossBag)
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<ForeverHungry>(), 3));
+            }
+
+            if (item.type == ItemID.WallOfFleshBossBag)
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BottleOfSouls>(), 3));
+            }
+
             if (ModLoader.TryGetMod("CalamityMod", out _))
             {
                 if (item.type == ModContent.ItemType<AquaticScourgeBag>())

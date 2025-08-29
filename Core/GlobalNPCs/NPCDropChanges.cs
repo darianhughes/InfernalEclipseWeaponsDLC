@@ -21,6 +21,7 @@ using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
 using CalamityMod.NPCs.AquaticScourge;
 using CalamityMod;
+using Terraria.ID;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -28,6 +29,13 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
     {
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
+            if (npc.type == NPCID.WallofFlesh)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ForeverHungry>(), 3));
+
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BottleOfSouls>(), 3));
+            }
+
             if (ModLoader.TryGetMod("CalamityMod", out _))
             {
                 if (npc.type == ModContent.NPCType<AquaticScourgeHead>())
