@@ -201,6 +201,19 @@ Items: {
 		// DisplayName: Serpentine Fork
 		// Tooltip: ""
 	}
+
+	Stick: {
+		// DisplayName: The Ultimate Stick of Supreme Power and Infinite Destruction
+		/* Tooltip:
+			'''
+			Sharpness V
+			Breach IV
+			Fire Aspect II
+			Unbreaking III
+			Mending
+			'This enchanted stick is totally legit'
+			''' */
+	}
 }
 
 Projectiles: {
@@ -268,7 +281,7 @@ Projectiles: {
 	// AcidBelcherPro.DisplayName: Acid Belcher Pro
 	// SandSlasherSandnado.DisplayName: Sand Slasher Sandnado
 	// SandSlasher_Projectile.DisplayName: Sand Slasher Projectile
-	// DeepseaTrident_Projectile.DisplayName: Deepsea Trident_ Projectile
+	// DeepseaTrident_Projectile.DisplayName: Deepsea Trident Projectile
 }
 
 Buffs: {

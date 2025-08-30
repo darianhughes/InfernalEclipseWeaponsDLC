@@ -18,7 +18,7 @@ This mod also has combatability with Consolaria.
 
 If you have any other issues please report them in the discord (https://discord.gg/RXdTXbKY).
 
-Special thanks to Feldy for helping develop a lot of this mod's items, as well as Pil for most of the sprites!
+Special thanks to Feldy for helping develop a lot of this mod's items, as well as Pil for a lot of the sprites!
 
 Simplified Chinese localization done by Pudd1ng.
 

@@ -216,6 +216,19 @@ Items: {
 		DisplayName: Serpentine Fork
 		Tooltip: ""
 	}
+
+	Stick: {
+		DisplayName: The Ultimate Stick of Supreme Power and Infinite Destruction
+		Tooltip:
+			'''
+			Sharpness V
+			Breach IV
+			Fire Aspect II
+			Unbreaking III
+			Mending
+			'This enchanted stick is totally legit'
+			'''
+	}
 }
 
 Projectiles: {
