@@ -38,11 +38,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             SetDefaultsToScythe();
             Item.shoot = ModContent.ProjectileType<NeonRipperPro>();
             scytheSoulCharge = 3;
-            Item.damage = 30;
+            Item.damage = 27;
             Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
             Item.rare = ItemRarityID.Yellow;
 
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+
+            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
+            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 135f;
+            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.05f;
         }
 
         public override bool AltFunctionUse(Player player) => true;
