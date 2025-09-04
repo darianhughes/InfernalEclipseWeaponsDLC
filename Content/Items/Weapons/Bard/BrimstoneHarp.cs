@@ -18,6 +18,7 @@ using Terraria.Localization;
 using Terraria.ID;
 using ThoriumMod.Items.BardItems;
 using CalamityMod.Items.Placeables;
+using static Terraria.Player;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -50,17 +51,33 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.damage = 95;
             Item.shootSpeed = 14f;
 
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
+
             Item.value = CalamityGlobalItem.RarityPinkBuyPrice;
             Item.rare = ItemRarityID.Pink;
 
             InspirationCost = 2;
         }
 
-        public override void UseStyle(Player player, Rectangle heldItemFrame)
+        public override Vector2? HoldoutOffset()
         {
-            player.itemLocation.X -= 12 * player.direction;
-            player.itemLocation.Y += 10;
+            return new Vector2(6, -7.5f);
         }
+
+        public override void UseItemFrame(Player player)
+        {
+            ((ModItem)this).HoldItemFrame(player);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += Utils.RotatedBy(new Vector2((float)(ModLoader.HasMod("Look") ? (-4) : (-6)), (float)(ModLoader.HasMod("Look") ? 6 : 8)) * player.Directions, (double)player.itemRotation, default(Vector2));
+        }
+
 
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

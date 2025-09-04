@@ -38,7 +38,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             SetDefaultsToScythe();
             Item.shoot = ModContent.ProjectileType<NeonRipperPro>();
             scytheSoulCharge = 3;
-            Item.damage = 27;
+            Item.damage = 28;
             Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
             Item.rare = ItemRarityID.Yellow;
 

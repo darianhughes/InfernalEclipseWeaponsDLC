@@ -34,6 +34,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
             Item.useTime = 40;
             Item.useAnimation = 40;
+            ((ModItem)this).Item.holdStyle = 5;
             Item.autoReuse = true;
             Item.useStyle = ItemUseStyleID.Guitar;
 
@@ -51,6 +52,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.shootSpeed = 20f;
 
             InspirationCost = 2;
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(0, 0);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += new Vector2(0, 0f) * player.Directions;
         }
     }
 

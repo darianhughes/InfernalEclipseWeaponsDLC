@@ -223,6 +223,16 @@ Items: {
 			Right Click to throw the scythe, which will curve on it's way back
 			''' */
 	}
+
+	PlasmaOcarina: {
+		// Tooltip: ""
+		// DisplayName: Plasma Ocarina
+	}
+
+	Infrariff: {
+		// Tooltip: ""
+		// DisplayName: Infrariff
+	}
 }
 
 Projectiles: {
@@ -293,6 +303,9 @@ Projectiles: {
 	// DeepseaTrident_Projectile.DisplayName: Deepsea Trident Projectile
 	// Nanodroid.DisplayName: Nanodroid
 	// NeonRipperPro.DisplayName: Neon Ripper Pro
+	// InfrariffProjectile.DisplayName: Infrariff Projectile
+	// InfrariffLaser.DisplayName: Infrariff Laser
+	// ColoredExplosion.DisplayName: Colored Explosion
 }
 
 Buffs: {

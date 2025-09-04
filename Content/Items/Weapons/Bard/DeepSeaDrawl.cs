@@ -46,12 +46,18 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
 
             InspirationCost = 3;
+
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
         {
-            player.itemLocation.X -= 12 * player.direction;
-            player.itemLocation.Y += 10;
+            player.itemLocation.X -= 0 * player.direction;
+            player.itemLocation.Y += 0;
         }
 
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
@@ -66,6 +72,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             return true;
         }
 
+        public override void UseItemFrame(Player player)
+        {
+            ((ModItem)this).HoldItemFrame(player);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += Utils.RotatedBy(new Vector2((float)(ModLoader.HasMod("Look") ? (-4) : (-6)), (float)(ModLoader.HasMod("Look") ? 6 : 8)) * player.Directions, (double)player.itemRotation, default(Vector2));
+        }
         public override void AddRecipes()
         {
             //Adding a recipe for Infernum Mode only due chests not spawning in the Abyss in Infernum.

@@ -33,6 +33,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.width = 40;
             Item.height = 40;
             Item.useTime = 20;
+            ((ModItem)this).Item.holdStyle = 5;
             Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.Guitar;
             Item.knockBack = 4;
@@ -52,6 +53,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             return base.BardShoot(player, source, position, velocity, type, damage, knockback);
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(0, 0);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += new Vector2(0, 0f) * player.Directions;
         }
 
         public override void AddRecipes()

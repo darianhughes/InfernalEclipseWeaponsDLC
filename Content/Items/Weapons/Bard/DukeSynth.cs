@@ -49,6 +49,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.UseSound = SoundID.Zombie53;
             Item.shoot = ModContent.ProjectileType<SulfurSpirit>();
             Item.shootSpeed = 10f;
+
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
         }
 
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -67,6 +73,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         {
             Texture2D texture = Terraria.GameContent.TextureAssets.Item[Item.type].Value;
             return new Vector2(texture.Width / 2f, texture.Height / 2f);
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(5, 0);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += new Vector2(0, 0f) * player.Directions;
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

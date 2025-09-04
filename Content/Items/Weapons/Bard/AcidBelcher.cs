@@ -13,6 +13,7 @@ using ThoriumMod.Items.BardItems;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items;
 
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
@@ -31,7 +32,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         public override void SetBardDefaults()
         {
             Item.Size = new Vector2(44, 48);
-            Item.value = Item.sellPrice(gold: 3);
 
             Item.useTime = 20;
             Item.useAnimation = 20;
@@ -43,12 +43,19 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.noMelee = true;
 
             Item.UseSound = ThoriumSounds.Trombone_Sound;
-            Item.rare = ItemRarityID.LightRed;
+            Item.value = CalamityGlobalItem.RarityGreenBuyPrice;
+            Item.rare = ItemRarityID.Green;
 
             Item.shoot = ModContent.ProjectileType<AcidBelcherPro>();
             Item.shootSpeed = 10f;
 
             InspirationCost = 1;
+
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
         }
 
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -64,7 +71,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(6, 0);
+            return new Vector2(0, -5);
+        }
+
+        public override void UseItemFrame(Player player)
+        {
+            ((ModItem)this).HoldItemFrame(player);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += Utils.RotatedBy(new Vector2((float)(ModLoader.HasMod("Look") ? (-4) : (-6)), (float)(ModLoader.HasMod("Look") ? 6 : 8)) * player.Directions, (double)player.itemRotation, default(Vector2));
         }
 
         public override void AddRecipes()

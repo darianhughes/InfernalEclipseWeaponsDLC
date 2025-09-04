@@ -15,6 +15,8 @@ using Microsoft.Xna.Framework;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NukePros;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using ThoriumMod.Sounds;
+using CalamityMod.Items;
+using CalamityMod.Rarities;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -39,14 +41,35 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.shootSpeed = 15;
             Item.shoot = ModContent.ProjectileType<NukeMissile>();
             // Item.Size = new Vector2(38, 31);
-            Item.value = Item.sellPrice(gold: 3);
             Item.autoReuse = true;
             Item.damage = 800;
             Item.knockBack = 4f;
             Item.noMelee = true;
             Item.UseSound = ThoriumSounds.Whistle_Sound;
-            Item.rare = ItemRarityID.LightRed;
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
+            Item.rare = ModContent.RarityType<HotPink>();
             InspirationCost = 10;
+
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(8, -10);
+        }
+
+        public override void UseItemFrame(Player player)
+        {
+            ((ModItem)this).HoldItemFrame(player);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += Utils.RotatedBy(new Vector2((float)(ModLoader.HasMod("Look") ? (-4) : (-6)), (float)(ModLoader.HasMod("Look") ? 6 : 8)) * player.Directions, (double)player.itemRotation, default(Vector2));
         }
 
         public override void AddRecipes()

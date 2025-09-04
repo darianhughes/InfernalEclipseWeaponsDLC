@@ -56,6 +56,18 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.shootSpeed = 20f;
 
             InspirationCost = 1;
+
+            ((ModItem)this).Item.holdStyle = 5;
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(0, 0);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += new Vector2(0, 0f) * player.Directions;
         }
     }
 

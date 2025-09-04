@@ -21,7 +21,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.Size = new Vector2(18, 36);
             Item.value = CalamityGlobalItem.RarityLightRedBuyPrice;
             Item.damage = 40;
-            Item.DamageType = ThoriumDamageBase<HealerTool>.Instance;
+            Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Item.noMelee = true;
             Item.mana = 5;
             radiantLifeCost = 2;

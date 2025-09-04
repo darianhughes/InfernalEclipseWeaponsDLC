@@ -53,6 +53,22 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.shoot = ModContent.ProjectileType<OurSharknado>();
             Item.shootSpeed = 0f;
             InspirationCost = 3;
+
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
+        }
+
+        public override void UseItemFrame(Player player)
+        {
+            ((ModItem)this).HoldItemFrame(player);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += Utils.RotatedBy(new Vector2((float)(ModLoader.HasMod("Look") ? (-4) : (-6)), (float)(ModLoader.HasMod("Look") ? 6 : 8)) * player.Directions, (double)player.itemRotation, default(Vector2));
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -65,8 +81,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
         {
-            player.itemLocation.X -= 5 * player.direction;
-            player.itemLocation.Y += 12;
+            player.itemLocation.X -= 0 * player.direction;
+            player.itemLocation.Y += 0;
         }
 
         public override bool? BardUseItem(Player player)

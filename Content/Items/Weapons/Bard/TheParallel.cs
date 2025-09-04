@@ -10,6 +10,7 @@ using ThoriumMod;
 using CalamityMod.Items;
 using Terraria.ModLoader;
 using CalamityMod.Rarities;
+using CalamityMod.CustomRecipes;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -35,6 +36,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.height = 46;
             Item.holdStyle = 5;
             Item.useStyle = 12;
+            ((ModItem)this).Item.holdStyle = 5;
             Item.useTime = 4;
             Item.useAnimation = 12;
             Item.reuseDelay = 20;
@@ -79,6 +81,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             return false; // Suppress vanilla projectile spawn
         }
 
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(0, 0);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += new Vector2(0, 0f) * player.Directions;
+        }
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
         {
             tooltips.Add(new TooltipLine(Mod, "ParallelLore1", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.ParallelLore1")) { OverrideColor = Color.MediumPurple });

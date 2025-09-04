@@ -49,6 +49,22 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.rare = ModContent.RarityType<DarkBlue>();
 
             InspirationCost = 2;
+
+            ((ModItem)this).Item.useStyle = 5;
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(6, 0);
+        }
+
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += Utils.RotatedBy(new Vector2((float)(ModLoader.HasMod("Look") ? (-4) : (-6)), (float)(ModLoader.HasMod("Look") ? 6 : 8)) * player.Directions, (double)player.itemRotation, default(Vector2));
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
