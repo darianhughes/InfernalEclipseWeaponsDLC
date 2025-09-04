@@ -8,6 +8,7 @@ using Terraria.ID;
 using ThoriumMod.Projectiles.Bard;
 using Terraria.ModLoader;
 using CalamityMod.Buffs.DamageOverTime;
+using ThoriumMod;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
@@ -19,6 +20,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
+
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
 
         public override void SetBardDefaults()
         {

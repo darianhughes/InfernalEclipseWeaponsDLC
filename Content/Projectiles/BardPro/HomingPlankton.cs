@@ -13,6 +13,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     public class HomingPlankton : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 5;

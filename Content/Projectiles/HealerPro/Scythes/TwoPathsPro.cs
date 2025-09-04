@@ -83,27 +83,76 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Projectiles/HealerPro/Scythes/TwoPathsPro").Value;
-            Vector2 baseSize = new Vector2(208f, 190f);
-            Rectangle frame = new Rectangle(0, 0, (int)baseSize.X, (int)baseSize.Y);
-            Vector2 drawOrigin = baseSize / 2f;
-            Vector2 drawPos = Projectile.Center - Main.screenPosition;
+            // Fade with projectile alpha
+            lightColor *= MathHelper.Lerp(1f, 0f, Projectile.alpha / 255f);
 
-            SpriteEffects spriteEffects = ((Projectile.spriteDirection > 0) ? SpriteEffects.FlipVertically : SpriteEffects.None);
-            spriteEffects |= SpriteEffects.FlipHorizontally;
-
+            // --- Draw the scythe itself ---
+            Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
+            float baseVisualRot = Projectile.rotation + MathHelper.PiOver4 * Projectile.spriteDirection;
             Main.EntitySpriteDraw(
                 texture,
-                drawPos,
-                frame,
+                Projectile.Center - Main.screenPosition,
+                null,
                 lightColor,
-                Projectile.rotation,
-                drawOrigin,
+                baseVisualRot,
+                texture.Size() / 2f,
                 Projectile.scale,
-                spriteEffects,
-                0
+                (Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
+                0f
             );
-            return false;
+
+            // --- Custom Afterimages ---
+            Texture2D slashTexture = (Texture2D)ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Assets/Textures/Slash_3");
+
+            // Fade like before
+            float alphaFade = MathHelper.Lerp(0.35f, 0f, Projectile.alpha / 255f);
+
+            // Define colors
+            Color darkRed = new Color(120, 0, 0) * alphaFade;
+            darkRed.A = 0;
+            Color whiteGold = new Color(255, 240, 180) * alphaFade;
+            whiteGold.A = 0;
+
+            // Decide which color goes on which side
+            Color leftColor, rightColor;
+            if (Projectile.spriteDirection == 1) // facing right
+            {
+                leftColor = darkRed;
+                rightColor = whiteGold;
+            }
+            else // facing left
+            {
+                leftColor = whiteGold;
+                rightColor = darkRed;
+            }
+
+            // --- Left side ---
+            Main.EntitySpriteDraw(
+                slashTexture,
+                Projectile.Center - Main.screenPosition,
+                null,
+                leftColor,
+                Projectile.rotation + MathHelper.Pi - MathHelper.ToRadians(85f),
+                slashTexture.Size() / 2f,
+                Projectile.scale * 2.7f,
+                (Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
+                0f
+            );
+
+            // --- Right side ---
+            Main.EntitySpriteDraw(
+                slashTexture,
+                Projectile.Center - Main.screenPosition,
+                null,
+                rightColor,
+                Projectile.rotation - MathHelper.ToRadians(85f),
+                slashTexture.Size() / 2f,
+                Projectile.scale * 2.7f,
+                (Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
+                0f
+            );
+
+            return false; // Suppress default drawing
         }
     }
 }

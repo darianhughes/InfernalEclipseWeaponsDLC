@@ -1,7 +1,9 @@
-﻿using CalamityMod;
+﻿using CalamityMod.Buffs.Potions;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics.PackedVector;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -9,13 +11,18 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
+using ThoriumMod.Items.Donate;
 using ThoriumMod.Projectiles.Bard;
+using ThoriumMod.Items;
+using ThoriumMod.Sounds;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     public class DeathsWhisperPro : BardProjectile
     {
         public override string Texture => $"Terraria/Images/Item_{ItemID.None}";
+
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
 
         public override void SetStaticDefaults()
         {

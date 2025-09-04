@@ -17,6 +17,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     public class BrimstoneHarpPro : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.String;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;

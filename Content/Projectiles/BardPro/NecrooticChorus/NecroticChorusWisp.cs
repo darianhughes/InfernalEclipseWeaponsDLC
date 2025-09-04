@@ -9,12 +9,15 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
 {
     public class NecroticChorusWisp : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;

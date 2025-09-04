@@ -17,6 +17,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
 {
     public class NecroticChorusPro : BardProjectile
     {
+
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
         public override string Texture => $"Terraria/Images/Item_{ItemID.None}";
 
         public override void SetStaticDefaults()

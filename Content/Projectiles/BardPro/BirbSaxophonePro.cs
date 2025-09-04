@@ -14,6 +14,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
     // Adapted from CalamityMod.Projectiles.Boss.RedLightningFeather
     public class BirbSaxophonePro : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
+
         public override string Texture => ModContent.GetInstance<CalamityMod.Projectiles.Boss.RedLightningFeather>().Texture;
 
         public override void SetStaticDefaults()

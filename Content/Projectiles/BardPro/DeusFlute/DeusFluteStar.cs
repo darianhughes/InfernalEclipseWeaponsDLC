@@ -6,6 +6,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DeusFlute
@@ -13,6 +14,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DeusFlute
     public class DeusFluteStar : BardProjectile
     {
         public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.Starfury}";
+
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
 
         public int ColorType
         {

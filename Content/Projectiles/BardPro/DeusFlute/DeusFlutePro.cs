@@ -12,6 +12,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DeusFlute
     {
         public override string Texture => $"Terraria/Images/Item_{ItemID.None}";
 
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
         public int ColorType
         {
             get => (int)Projectile.ai[0];

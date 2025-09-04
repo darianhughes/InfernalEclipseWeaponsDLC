@@ -11,16 +11,19 @@ using ThoriumMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityMod.Buffs.StatDebuffs;
+using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DukeSynth
 {
-    public class SulfurSpirit : ModProjectile
+    public class SulfurSpirit : BardProjectile
     {
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Electronic;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 3; // Match your explosion's frame count
         }
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 18;
             Projectile.height = 18;
@@ -79,7 +82,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DukeSynth
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Ghost, 0f, 0f, 100, default, 1f);
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<Irradiated>(), 180);
             Explode();

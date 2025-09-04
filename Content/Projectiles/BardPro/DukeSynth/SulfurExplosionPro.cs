@@ -8,12 +8,15 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using ThoriumMod;
+using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DukeSynth
 {
-    public class SulfurExplosionPro : ModProjectile
+    public class SulfurExplosionPro : BardProjectile
     {
         public override string Texture => "CalamityMod/Projectiles/Boss/SandPoisonCloudOldDuke";
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Electronic;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 10;
@@ -21,7 +24,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DukeSynth
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Projectile.width = 45; 
             Projectile.height = 45;
@@ -79,7 +82,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DukeSynth
             return Vector2.Distance(Projectile.Center, targetHitbox.Center.ToVector2()) <= explosionRadius;
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Poisoned, 120);
         }

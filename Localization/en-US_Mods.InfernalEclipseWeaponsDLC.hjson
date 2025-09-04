@@ -229,6 +229,15 @@ Items: {
 			'This enchanted stick is totally legit'
 			'''
 	}
+
+	NeonRipper: {
+		DisplayName: Neon Ripper
+		Tooltip:
+			'''
+			Hitting enemies will generate electrifying nanobots
+			Right Click to throw the scythe, which will curve on it's way back
+			'''
+	}
 }
 
 Projectiles: {
@@ -297,6 +306,8 @@ Projectiles: {
 	SandSlasherSandnado.DisplayName: Sand Slasher Sandnado
 	SandSlasher_Projectile.DisplayName: Sand Slasher Projectile
 	DeepseaTrident_Projectile.DisplayName: Deepsea Trident Projectile
+	Nanodroid.DisplayName: Nanodroid
+	NeonRipperPro.DisplayName: Neon Ripper Pro
 }
 
 Buffs: {

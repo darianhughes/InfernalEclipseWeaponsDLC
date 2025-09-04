@@ -38,7 +38,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
 
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-            Item.damage = 30;
+            Item.damage = 25;
             Item.knockBack = 6.5f;
             Item.noUseGraphic = true;
             Item.noMelee = true;
