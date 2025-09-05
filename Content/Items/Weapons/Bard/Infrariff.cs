@@ -5,22 +5,14 @@ using Terraria.ModLoader;
 using ThoriumMod.Empowerments;
 using ThoriumMod;
 using ThoriumMod.Items;
-using ThoriumMod.Sounds;
 using ThoriumMod.Projectiles.Bard;
-using CalamityMod.Projectiles.Boss;
+using CalamityMod.Items.Materials;
 using Terraria.DataStructures;
-using CalamityMod.NPCs.Providence;
 using System;
-using CalamityMod.Items.Potions.Alcohol;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.GameContent;
 using System.IO;
-using Mono.Cecil;
-using static System.Net.Mime.MediaTypeNames;
-using Steamworks;
-using CalamityMod.Items;
-using CalamityMod.Items.Materials;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -31,8 +23,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetStaticDefaults()
         {
-            Empowerments.AddInfo<DamageReduction>(1);
-            Empowerments.AddInfo<Defense>(1);
+            Empowerments.AddInfo<DamageReduction>(2);
+            Empowerments.AddInfo<Defense>(2);
+            Empowerments.AddInfo<EmpowermentProlongation>(2);
         }
 
         public override void SetBardDefaults()
@@ -40,37 +33,67 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.width = 44;
             Item.height = 46;
 
-            Item.useTime = 20;
-            Item.useAnimation = 20;
-            ((ModItem)this).Item.holdStyle = 5;
-            ((ModItem)this).Item.useStyle = 12;
+            Item.useTime = 14;
+            Item.useAnimation = 14;
+            Item.holdStyle = 5;
+            Item.useStyle = 12;
             Item.reuseDelay = 30;
             Item.autoReuse = true;
 
-            Item.damage = 10;
+            Item.damage = 70;
             Item.knockBack = 4f;
             Item.noMelee = true;
 
-            ((ModItem)this).Item.UseSound = SoundID.Item47;
-            Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
+            Item.UseSound = SoundID.Item47;
+            Item.value = Item.buyPrice(0, 10, 0, 0);
             Item.rare = ItemRarityID.Yellow;
 
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 135f;
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.05f;
+            Item.GetGlobalItem<CalamityMod.Items.CalamityGlobalItem>().UsesCharge = true;
+            Item.GetGlobalItem<CalamityMod.Items.CalamityGlobalItem>().MaxCharge = 135f;
+            Item.GetGlobalItem<CalamityMod.Items.CalamityGlobalItem>().ChargePerUse = 0.05f;
 
             Item.shoot = ModContent.ProjectileType<InfrariffProjectile>();
             Item.shootSpeed = 1f;
 
-            InspirationCost = 1;
+            InspirationCost = 3;
         }
 
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float angle = (player.Center - Main.screenPosition).AngleTo(Main.MouseScreen);
+            float aimAngle = (Main.MouseWorld - player.Center).ToRotation();
+            float spread = MathHelper.ToRadians(45f);
 
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, Main.myPlayer, ai0: angle - MathHelper.ToRadians(45f), ai1: 1);
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, Main.myPlayer, ai0: angle + MathHelper.ToRadians(45f), ai1: -1);
+            // Sweep left -> right
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, Main.myPlayer,
+                ai0: aimAngle - spread, ai1: aimAngle + spread);
+
+            // Sweep right -> left
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, Main.myPlayer,
+                ai0: aimAngle + spread, ai1: aimAngle - spread);
+
+            // Third purple beam: same logic, just randomized start/target angle
+            // Editable angles in degrees
+            float randomStartDegrees = 30f;  // ± from aim
+            float maxSweepDegrees = 45f;     // maximum sweep toward mouse
+
+            // Convert start to radians
+            float randomStart = aimAngle + MathHelper.ToRadians(Main.rand.NextFloat(-randomStartDegrees, randomStartDegrees));
+
+            // Angle directly to mouse
+            float directionToMouse = (Main.MouseWorld - player.Center).ToRotation();
+
+            // Clamp the target so it moves toward the mouse
+            float deltaAngle = MathHelper.WrapAngle(directionToMouse - randomStart);
+
+            // Limit deltaAngle to ±maxSweepDegrees, but keep its sign (toward the mouse)
+            deltaAngle = MathHelper.Clamp(deltaAngle, -MathHelper.ToRadians(maxSweepDegrees), MathHelper.ToRadians(maxSweepDegrees));
+
+            // The purple beam target
+            float randomEnd = randomStart + deltaAngle;
+
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<InfrariffProjectile>(),
+                damage, knockback, Main.myPlayer, ai0: randomStart, ai1: randomEnd, ai2: 1f);
+
 
             return false;
         }
@@ -80,10 +103,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             player.itemLocation += new Vector2(-18, 18f) * player.Directions;
         }
 
-        public override void UseItemFrame(Player player)
-        {
-            ((ModItem)this).HoldItemFrame(player);
-        }
+        public override void UseItemFrame(Player player) => HoldItemFrame(player);
 
         public override void AddRecipes()
         {
@@ -102,7 +122,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
     {
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
 
-        public override string Texture => "CalamityMod/Projectiles/Boss/ProvidenceHolyRay";
+        // Using Providence beam texture (can swap to neutral if needed)
+        public override string Texture => "CalamityMod/Projectiles/Boss/ProvidenceHolyRayNight";
 
         public override void SetBardDefaults()
         {
@@ -111,151 +132,135 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Projectile.friendly = true;
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
-            Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = -1;
+            Projectile.usesLocalNPCImmunity = false; // global immunity
+            Projectile.usesIDStaticNPCImmunity = true;
+            Projectile.idStaticNPCHitCooldown = 3;     // 3 ticks between hits per NPC
         }
 
-        // Code below adapted/lifted from Calamity
-
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            writer.Write(Projectile.localAI[1]);
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            Projectile.localAI[1] = reader.ReadSingle();
-        }
-
+        public override void SendExtraAI(BinaryWriter writer) => writer.Write(Projectile.localAI[1]);
+        public override void ReceiveExtraAI(BinaryReader reader) => Projectile.localAI[1] = reader.ReadSingle();
 
         public override void AI()
         {
-            if (Projectile.timeLeft > 5) Projectile.ai[0] += MathHelper.ToRadians(1 * Projectile.ai[1]);
-            Projectile.Center = Main.player[Projectile.owner].Center + Vector2.UnitX.RotatedBy(Projectile.ai[0]) * 8;
-            Projectile.velocity = Projectile.Center.DirectionFrom(Main.player[Projectile.owner].Center);
+            Player player = Main.player[Projectile.owner];
+
+            float startAngle = Projectile.ai[0];
+            float targetAngle = Projectile.ai[1];
+
+            float lifetime = 50f;
+            float progress = 1f - (Projectile.timeLeft / lifetime);
+            progress = MathHelper.Clamp(progress, 0f, 1f);
+
+            // Smoothstep easing
+            float easedProgress = 0.5f - 0.5f * (float)Math.Cos(progress * Math.PI);
+            float currentAngle = MathHelper.Lerp(startAngle, targetAngle, easedProgress);
+
+            // Position & rotation
+            Projectile.Center = player.Center + Vector2.UnitX.RotatedBy(currentAngle) * 8f;
+            Projectile.velocity = Projectile.Center.DirectionFrom(player.Center);
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
 
+            // Laser scan length
             float[] array = new float[3];
             Collision.LaserScan(Projectile.Center, Projectile.velocity, Projectile.scale, 800f, array);
-            float num4 = 0f;
-            for (int i = 0; i < array.Length; i++)
-            {
-                num4 += array[i];
-            }
+            float avgLength = (array[0] + array[1] + array[2]) / 3f;
+            Projectile.localAI[1] = MathHelper.Lerp(Projectile.localAI[1], avgLength, 0.5f);
 
-            num4 /= 3f;
-
-            Projectile.localAI[1] = MathHelper.Lerp(Projectile.localAI[1], num4, 0.5f);
-
-            IEntitySource source = Projectile.GetSource_FromAI();
-            int damage = Projectile.damage;
-            float knockback = Projectile.knockBack;
+            // Continuous beam projectiles
             if (Main.myPlayer == Projectile.owner)
             {
-                if (Projectile.timeLeft == 1)
-                {
-                    for (int i = 0; i < 7; i++)
-                    {
-                        Vector2 position = Projectile.Center + Projectile.velocity * (i + 1) * 6 * 16;
-                        if (Projectile.Center.Distance(position) > Projectile.localAI[1]) { break; }
-                        Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<ColoredExplosion>(), damage, knockback, ai0: 0x5012E0, ai2: 1);
-                        Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<ColoredExplosion>(), damage, knockback, ai0: 0x7C55D9, ai2: .6f);
-                    }
-                }
-                else
-                {
-                    Projectile.NewProjectile(source, Projectile.Center, Projectile.velocity * 8, ModContent.ProjectileType<InfrariffLaser>(), damage, knockback);
-                }
+                Projectile.NewProjectile(
+                    Projectile.GetSource_FromAI(),
+                    Projectile.Center,
+                    Projectile.velocity * 8,
+                    ModContent.ProjectileType<InfrariffLaser>(),
+                    Projectile.damage,
+                    Projectile.knockBack,
+                    Projectile.owner
+                );
             }
         }
 
         Texture2D texture2D => TextureAssets.Projectile[Type].Value;
-        Texture2D texture2D2 = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/ProvidenceHolyRayMid", AssetRequestMode.ImmediateLoad).Value;
-        Texture2D texture2D3 = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/ProvidenceHolyRayEnd", AssetRequestMode.ImmediateLoad).Value;
+        Texture2D textureStart = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Boss/ProvidenceHolyRayNight", AssetRequestMode.ImmediateLoad).Value;
+        Texture2D texture2D2 = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/ProvidenceHolyRayMidNight", AssetRequestMode.ImmediateLoad).Value;
+        Texture2D texture2D3 = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/ProvidenceHolyRayEndNight", AssetRequestMode.ImmediateLoad).Value;
+
+        public float StartOffset = 24f; // pixels in front of the player
 
         public override bool PreDraw(ref Color lightColor)
         {
             if (Projectile.velocity == Vector2.Zero)
-            {
                 return false;
-            }
 
-            float num2 = Projectile.localAI[1];
-            Color color = Projectile.ai[1] > 0 ? new Color(255, 69, 0, 255) : new Color(0, 0, 255, 255);
-            Vector2 position = Projectile.Center - Main.screenPosition;
-            num2 -= (texture2D.Height / 2 + texture2D3.Height) * Projectile.scale;
-            Vector2 center = Projectile.Center;
-            center += Projectile.velocity * Projectile.scale * texture2D.Height / 2f;
-            if (num2 > 0f)
+            float beamLength = Projectile.localAI[1];
+            float lifetime = 50f;
+            float progress = 1f - (Projectile.timeLeft / lifetime);
+
+            // Fade in/out
+            float maxOpacity = 1f;
+            float fadeFraction = 0.4f;
+
+            float fadeIn = MathHelper.Clamp(progress / fadeFraction, 0f, 1f);
+            float fadeOut = MathHelper.Clamp((1f - progress) / fadeFraction, 0f, 1f);
+            float fade = Math.Min(fadeIn, fadeOut) * maxOpacity;
+
+            Color desiredColor;
+            if (Projectile.ai[2] == 1f)
+                desiredColor = Color.DarkOrchid;           // purple beam
+            else if (Projectile.ai[0] < Projectile.ai[1])
+                desiredColor = new Color(255, 69, 0); // red
+            else
+                desiredColor = Color.Cyan;            // cyan
+
+            Color color = desiredColor * fade;
+
+            // Beam origin offset in front of player
+            Vector2 beamOrigin = Projectile.Center + Projectile.velocity * StartOffset;
+
+            // Draw start section
+            Vector2 startPos = beamOrigin - Main.screenPosition;
+            Main.spriteBatch.Draw(textureStart, startPos, null, color, Projectile.rotation,
+                textureStart.Frame().Center(), Projectile.scale, SpriteEffects.None, 0f);
+
+            // Calculate remaining length for mid section
+            float midBeamLength = beamLength - (textureStart.Height + texture2D3.Height) * Projectile.scale;
+            if (midBeamLength > 0f)
             {
-                float num3 = 0f;
-                Rectangle value = new Rectangle(0, 36 * (Projectile.timeLeft / 3 % 4), texture2D2.Width, 36);
-                while (num3 + 1f < num2)
+                float startMidOffset = 10f; // extra distance between start and mid
+                Vector2 center = beamOrigin + Projectile.velocity * (textureStart.Height * Projectile.scale + startMidOffset);
+
+                float traveled = 0f;
+
+                Rectangle frame = new Rectangle(0, 36 * (Projectile.timeLeft / 3 % 4), texture2D2.Width, 36);
+
+                while (traveled + 1f < midBeamLength)
                 {
-                    Main.spriteBatch.Draw(texture2D2, center - Main.screenPosition, value, color, Projectile.rotation, new Vector2(value.Width / 2, 0f), Projectile.scale, SpriteEffects.None, 0f);
-                    num3 += value.Height * Projectile.scale;
-                    center += Projectile.velocity * value.Height * Projectile.scale;
-                    value.Y += 36;
-                    if (value.Y + value.Height > texture2D2.Height)
-                    {
-                        value.Y = 0;
-                    }
+                    Main.spriteBatch.Draw(texture2D2, center - Main.screenPosition, frame, color,
+                        Projectile.rotation, new Vector2(frame.Width / 2, 0f), Projectile.scale,
+                        SpriteEffects.None, 0f);
+
+                    traveled += frame.Height * Projectile.scale;
+                    center += Projectile.velocity * frame.Height * Projectile.scale;
+
+                    frame.Y += 36;
+                    if (frame.Y + frame.Height > texture2D2.Height)
+                        frame.Y = 0;
                 }
+
+                // Draw end section
+                Vector2 endPos = center - Main.screenPosition;
+                Main.spriteBatch.Draw(texture2D3, endPos, null, color, Projectile.rotation + MathHelper.Pi,
+                    texture2D3.Frame().Center() + (Vector2.UnitY * 24), Projectile.scale, SpriteEffects.None, 0f);
             }
 
-            Vector2 position2 = center - Main.screenPosition;
-            Main.spriteBatch.Draw(texture2D3, position2, null, color, Projectile.rotation + MathHelper.Pi, texture2D3.Frame().Center() + (Vector2.UnitY * 24), Projectile.scale, SpriteEffects.None, 0f);
-            return false;
-        }
-    }
-
-    public class ColoredExplosion : BardProjectile
-    {
-        public override string Texture => $"Terraria/Images/Projectile_{ProjectileID.Flames}";
-
-        // Pass in a hexcode of the color as an argument for NewProjectile/Direct for the value of ai0, like this
-        // ai2 is the projectile's scale
-        // Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ColoredExplosion>(), damage, knockback, ai0: 0x5012E0, ai2: 1);
-        public uint ColorData => (uint)Projectile.ai[0];
-
-        public ref float Timer => ref Projectile.ai[1];
-
-        public override void SetBardDefaults()
-        {
-            Projectile.Size = new Vector2(64, 64);
-            Projectile.timeLeft = 24;
-            Projectile.friendly = true;
-            Projectile.tileCollide = false;
-            Projectile.penetrate = -1;
-        }
-
-        public override void AI()
-        {
-            Timer++;
-            Projectile.rotation = MathHelper.ToRadians(1 * Timer);
-            Projectile.scale = Projectile.ai[2];
-
-            if (Projectile.timeLeft > 20) Lighting.AddLight(Projectile.Center, 5);
-        }
-
-        public override bool PreDraw(ref Color lightColor)
-        {
-            Texture2D texture = TextureAssets.Projectile[Type].Value;
-            Vector2 position = Projectile.Center - Main.screenPosition;
-            int frame_height = texture.Height / 7;
-            Rectangle source_rect = new Rectangle(0, (int)(((Timer % 24) / 3) - 1) * frame_height, texture.Width, frame_height);
-
-            Color color = new Color();
-            color.PackedValue = ColorData;
-            Main.EntitySpriteDraw(texture, position, source_rect, color, Projectile.rotation, source_rect.Size() / 2, Projectile.scale, SpriteEffects.None);
             return false;
         }
     }
 
     public class InfrariffLaser : BardProjectile
     {
-        public override string Texture => $"Terraria/Images/Item_{ItemID.Zenith}"; // Can be whatever is valid, it's not gonna get drawn anyways
-
+        public override string Texture => $"Terraria/Images/Item_{ItemID.Zenith}"; // hidden, not drawn
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
 
         public override void SetBardDefaults()
@@ -269,11 +274,19 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
             Projectile.aiStyle = ProjAIStyleID.Arrow;
             AIType = ProjectileID.Bullet;
+
+            Projectile.usesLocalNPCImmunity = false; // global immunity
+            Projectile.usesIDStaticNPCImmunity = true;
+            Projectile.idStaticNPCHitCooldown = 3;     // 3 ticks between hits per NPC
         }
 
-        public override bool PreDraw(ref Color lightColor)
+        // This is where the debuff gets applied
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            return false;
+            // 180 ticks = 3 seconds
+            target.AddBuff(BuffID.ShadowFlame, 180);
         }
+
+        public override bool PreDraw(ref Color lightColor) => false;
     }
 }

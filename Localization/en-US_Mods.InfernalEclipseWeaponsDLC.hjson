@@ -245,8 +245,12 @@ Items: {
 	}
 
 	Infrariff: {
-		Tooltip: ""
 		DisplayName: Infrariff
+		Tooltip:
+			'''
+			Creates a lightshow of infared waves that will damage enemies on contact
+			'The microwave lightshow guitar, you know the one'
+			'''
 	}
 }
 

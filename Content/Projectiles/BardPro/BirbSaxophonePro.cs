@@ -34,6 +34,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 1200;
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 4;
         }
 
         public override void AI()
