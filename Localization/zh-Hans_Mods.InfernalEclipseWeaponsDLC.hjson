@@ -230,15 +230,39 @@ Items: {
 	}
 
 	Infrariff: {
-		// Tooltip: ""
 		// DisplayName: Infrariff
+		/* Tooltip:
+			'''
+			Creates a lightshow of infared waves that will damage enemies on contact
+			'The microwave lightshow guitar, you know the one'
+			''' */
+	}
+
+	Defibrillanator: {
+		// DisplayName: Defibrillanator
+		// Tooltip: ""
+	}
+
+	Staff: {
+		// DisplayName: Staff
+		// Tooltip: ""
+	}
+
+	GloomSwitch: {
+		// DisplayName: Gloom Switch
+		// Tooltip: ""
 	}
 }
 
 Projectiles: {
 	// TwoPathsPro.DisplayName: Two Paths
 	// BlackExplosion.DisplayName: Black Explosion
-	// Magic.WhiteScythe.DisplayName: White Scythe
+
+	Magic: {
+		// WhiteScythe.DisplayName: White Scythe
+		// HealingLightningArc.DisplayName: Healing Lightning Arc
+	}
+
 	// TwoPathsPro2.DisplayName: Two Paths
 	// TheParallellPro.DisplayName: The Parallell
 	// BellBalladEleum.DisplayName: Ballad of Bells Eleum
@@ -306,6 +330,7 @@ Projectiles: {
 	// InfrariffProjectile.DisplayName: Infrariff Projectile
 	// InfrariffLaser.DisplayName: Infrariff Laser
 	// ColoredExplosion.DisplayName: Colored Explosion
+	// Staff_Projectile.DisplayName: Staff_ Projectile
 }
 
 Buffs: {
