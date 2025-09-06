@@ -246,6 +246,15 @@ Items: {
 			''' */
 	}
 
+	Defibrillanator: {
+		// DisplayName: Defibrillanator
+		// Tooltip: ""
+	}
+
+	Staff: {
+		// DisplayName: Staff
+		// Tooltip: ""
+
 	ArckaneStaff: {
 		// Tooltip: Creates an overloaded bolt of fluctuating elements
 		// DisplayName: Arckane Staff
@@ -255,12 +264,22 @@ Items: {
 		// DisplayName: Mystick Staff
 		// Tooltip: ""
 	}
+
+	GloomSwitch: {
+		// DisplayName: Gloom Switch
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
 	// TwoPathsPro.DisplayName: Two Paths
 	// BlackExplosion.DisplayName: Black Explosion
-	// Magic.WhiteScythe.DisplayName: White Scythe
+
+	Magic: {
+		// WhiteScythe.DisplayName: White Scythe
+		// HealingLightningArc.DisplayName: Healing Lightning Arc
+	}
+
 	// TwoPathsPro2.DisplayName: Two Paths
 	// TheParallellPro.DisplayName: The Parallell
 	// BellBalladEleum.DisplayName: Ballad of Bells Eleum
@@ -328,14 +347,6 @@ Projectiles: {
 	// InfrariffProjectile.DisplayName: Infrariff Projectile
 	// InfrariffLaser.DisplayName: Infrariff Laser
 	// ColoredExplosion.DisplayName: Colored Explosion
-
-	Misc: {
-		// BardPulseRiffleShot.DisplayName: Bard Pulse Riffle Shot
-		// BardWavePounderBoom.DisplayName: Bard Wave Pounder Boom
-	}
-
-	// ArckaneStaffPro.DisplayName: Arckane Staff Pro
-	// MystickStaffPro.DisplayName: Mystick Staff Pro
 }
 
 Buffs: {
