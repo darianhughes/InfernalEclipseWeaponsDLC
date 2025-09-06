@@ -17,6 +17,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items.BardItems;
@@ -79,7 +80,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                         position,
                         throwVel,
                         type,
-                        damage + damage / 5, // Slight bonus damage
+                        damage - (int)(damage * 0.2),
                         knockback,
                         player.whoAmI,
                         (Main.rand.Next(2, 5) + 1) * 0.1f, // ai[0]
@@ -103,6 +104,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             return player.altFunctionUse == 2 ? 2f : 1f;
         }
 
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            // Lore lines
+            tooltips.Add(new TooltipLine(Mod, "NeonRipLore1", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.NeonRipperLore1")) { OverrideColor = Color.MediumPurple });
+            tooltips.Add(new TooltipLine(Mod, "NeonRipLore2", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.NeonRipperLore2")) { OverrideColor = Color.MediumPurple });
+        }
+
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -115,6 +123,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         }
     }
 
+    //WHY IS THIS ALL IN ONE FILE!?!??!?!?!
     [ExtendsFromMod("ThoriumMod")]
     public class NeonRipperPro : ScythePro
     {

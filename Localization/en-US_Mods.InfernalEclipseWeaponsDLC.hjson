@@ -236,11 +236,19 @@ Items: {
 			'''
 			Hitting enemies will generate electrifying nanobots
 			Right Click to throw the scythe, which will curve on it's way back
+			The sycthe does 20% less damage when thrown
 			'''
 	}
 
 	PlasmaOcarina: {
-		Tooltip: ""
+		Tooltip:
+			'''
+			Shoots a spread of 3 plasma beams 
+			Hold right click to charge a large damaging sound wave
+			[c/1FFBFF:'I once tried creating instruments that had to power to deal damage.]
+			[c/1FFBFF:This happens to be one of them, however these weapons were never mass produced]
+			[c/1FFBFF:because the Tyrant's army couldn't play them']
+			'''
 		DisplayName: Plasma Ocarina
 	}
 
@@ -250,6 +258,20 @@ Items: {
 			'''
 			Creates a lightshow of infared waves that will damage enemies on contact
 			'The microwave lightshow guitar, you know the one'
+			'''
+	}
+
+	ArckaneStaff: {
+		Tooltip: Creates an overloaded bolt of fluctuating elements
+		DisplayName: Arckane Staff
+	}
+
+	MystickStaff: {
+		DisplayName: Mystick Staff
+		Tooltip: 
+			'''
+			Creates an supercharged bolt of every known element
+			'How much more do you need!?'
 			'''
 	}
 }
@@ -325,6 +347,14 @@ Projectiles: {
 	InfrariffProjectile.DisplayName: Infrariff Projectile
 	InfrariffLaser.DisplayName: Infrariff Laser
 	ColoredExplosion.DisplayName: Colored Explosion
+
+	Misc: {
+		BardPulseRiffleShot.DisplayName: Bard Pulse Riffle Shot
+		BardWavePounderBoom.DisplayName: Bard Wave Pounder Boom
+	}
+
+	ArckaneStaffPro.DisplayName: Arckane Staff Pro
+	MystickStaffPro.DisplayName: Mystick Staff Pro
 }
 
 Buffs: {
@@ -354,4 +384,7 @@ ItemTooltip: {
 	ParallelLore2: Suddenly, with no warning, Kos had transported everyone to the mirror realm and called upon his second servant: Signus.
 	TwoSideLore1: They overcame Ragnarok. They dismantled Eclipse. They survived the Slime Monsoon.
 	TwoSideLore2: They stood at the brink of infinity, which only then Ren asked them "which path will you choose?"
+	NeonRipperLore1: After the defeat of the Goliath, Erelian decided to repurpose some of the armor plating it wore.
+	NeonRipperLore2: In doing so he created two weapons: the first of which being a sycthe that could absorb aura, much like Kami's ability.
+	PBGBardALore2: In doing so he created two weapons: the second of which being a guitar that shot colorful microwaves.
 }

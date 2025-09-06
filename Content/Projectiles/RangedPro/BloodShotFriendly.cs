@@ -7,7 +7,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RangerPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RangedPro
 {
     public class BloodShotFriendly : ModProjectile
     {

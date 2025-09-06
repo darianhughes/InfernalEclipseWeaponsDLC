@@ -13,6 +13,8 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.GameContent;
 using System.IO;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -105,6 +107,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void UseItemFrame(Player player) => HoldItemFrame(player);
 
+        public override void BardModifyTooltips(List<TooltipLine> tooltips)
+        {
+            // Lore lines
+            tooltips.Add(new TooltipLine(Mod, "PBGALore1", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.NeonRipperLore1")) { OverrideColor = Color.MediumPurple });
+            tooltips.Add(new TooltipLine(Mod, "PBGALore2", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.PBGBardALore2")) { OverrideColor = Color.MediumPurple });
+        }
         public override void AddRecipes()
         {
             CreateRecipe()

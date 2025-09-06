@@ -84,8 +84,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             tooltips.Add(new TooltipLine(Mod, "TwoSideLore2", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.TwoSideLore2")) { OverrideColor = Color.MediumPurple });
         }
 
-
-
         public override bool AltFunctionUse(Player player) => true;
 
         public override bool CanUseItem(Player player)
