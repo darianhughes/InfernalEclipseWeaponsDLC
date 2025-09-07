@@ -116,6 +116,14 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                     itemLoot.Add(rule);
                 }
             }
+
+            if (ModLoader.TryGetMod("FargowiltasSouls", out Mod souls) && !ModLoader.TryGetMod("YharimEX", out _))
+            {
+                if (item.type == souls.Find<ModItem>("MutantBag").Type)
+                {
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AuricBrimfireCrosier>(), 1));
+                }
+            }
         }
     }
 }

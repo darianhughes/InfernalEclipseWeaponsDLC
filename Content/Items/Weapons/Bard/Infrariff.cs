@@ -15,6 +15,7 @@ using Terraria.GameContent;
 using System.IO;
 using System.Collections.Generic;
 using Terraria.Localization;
+using CalamityMod.CustomRecipes;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -121,6 +122,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                 .AddIngredient<InfectedArmorPlating>(10)
                 .AddIngredient<LifeAlloy>(5)
                 .AddTile(TileID.MythrilAnvil)
+                .AddCondition(ArsenalTierGatedRecipe.ConstructRecipeCondition(3, out Func<bool> condition), condition)
                 .Register();
         }
     }

@@ -1,3 +1,4 @@
+using CalamityMod.CustomRecipes;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
@@ -119,6 +120,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 .AddIngredient<InfectedArmorPlating>(10)
                 .AddIngredient<LifeAlloy>(5)
                 .AddTile(TileID.MythrilAnvil)
+                .AddCondition(ArsenalTierGatedRecipe.ConstructRecipeCondition(3, out Func<bool> condition), condition)
                 .Register();
         }
     }

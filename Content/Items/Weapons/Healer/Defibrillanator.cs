@@ -1,4 +1,7 @@
+using CalamityMod.Items;
+using CalamityMod;
 using CalamityMod.Projectiles.Magic;
+using InfernalEclipseWeaponsDLC.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -10,6 +13,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
+using ThoriumMod.Utilities;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables;
+using CalamityMod.CustomRecipes;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 {
@@ -31,23 +38,31 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.value = Item.sellPrice(gold: 3);
 
             Item.damage = 10;
-            Item.DamageType = ThoriumDamageBase<HealerTool>.Instance;
+            Item.DamageType = ThoriumDamageBase<HealerToolDamageHybrid>.Instance;
             Item.noMelee = true;
-            Item.mana = 1;
-            Item.damage = 10;
+            //Item.mana = 1;
+            Item.damage = 33;
 
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.autoReuse = true;
 
-            Item.rare = ItemRarityID.Blue; // ?
-            Item.UseSound = SoundID.Item24; // ?
+            Item.rare = ItemRarityID.Orange;
+            Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
+            Item.UseSound = SoundID.Item24;
 
             Item.shoot = ModContent.ProjectileType<LightningArc>();
             Item.shootSpeed = 8f;
 
             isHealer = true;
+            healDisplay = true;
+            healAmount = 3;
+
+            CalamityGlobalItem modItem = Item.Calamity();
+            modItem.UsesCharge = true;
+            modItem.MaxCharge = 50f;
+            modItem.ChargePerUse = 0.07f;
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -66,8 +81,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 player.Hurt(new Player.HurtInfo() { Damage = 3, DamageSource = new PlayerDeathReason() { SourceItem = Item } });
                 player.immune = false;
             }
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
+            projectile.DamageType = ThoriumDamageBase<HealerToolDamageHybrid>.Instance;
             return false;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient<MysteriousCircuitry>(5)
+                .AddIngredient<DubiousPlating>(4)
+                .AddIngredient<AerialiteBar>(3)
+                .AddIngredient<SeaPrism>(6)
+                .AddTile(TileID.Anvils)
+                .AddCondition(ArsenalTierGatedRecipe.ConstructRecipeCondition(1, out Func<bool> condition), condition)
+                .Register();
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
@@ -161,14 +189,39 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             Projectile.position = center;
 
-        }
+            Player owner = Main.player[Projectile.owner];
 
-        public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player p = Main.player[i];
+                if (p.active && !p.dead && p.whoAmI != owner.whoAmI)
+                {
+                    if (Projectile.Hitbox.Intersects(p.Hitbox))
+                    {
+                        HealTeammateThorium(owner, p, baseHeal: 3); // give some healing
+                        Projectile.Kill(); // consume projectile after heal
+                        break;
+                    }
+                }
+            }
+
+        }
+        private void HealTeammateThorium(Player healer, Player target, int baseHeal)
         {
-            modifiers.Cancel();
-            if (target.whoAmI == Projectile.owner && Projectile.timeLeft > 1000 - 60) return;
-            healedAlready.Add(target);
-            target.Heal(3);
+            if (healer.whoAmI != Main.myPlayer) return;
+            if (healer == target) return;
+            if (healer.team == 0 || healer.team != target.team) return;
+
+            if (baseHeal <= 0 && healer.GetModPlayer<ThoriumPlayer>().healBonus <= 0)
+                return; // Nothing to heal
+
+            HealerHelper.HealPlayer(
+                healer,
+                target,
+                healAmount: baseHeal, // <-- don't add healBonus here
+                recoveryTime: 60,
+                healEffects: true
+            );
         }
 
         private void AdjustMagnitude(ref Vector2 vector)

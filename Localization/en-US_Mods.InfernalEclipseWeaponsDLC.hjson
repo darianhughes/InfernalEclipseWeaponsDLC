@@ -266,11 +266,6 @@ Items: {
 		Tooltip: ""
 	}
 
-	Staff: {
-		DisplayName: Staff
-		Tooltip: ""
-	}
-
 	ArckaneStaff: {
 		Tooltip: Creates an overloaded bolt of fluctuating elements
 		DisplayName: Arckane Staff
@@ -293,6 +288,11 @@ Items: {
 			Right Click to consume 200 mana, entering a Dark Rush for 10 seconds
 			Dark Rush increases movement speed by 25% and tightens shot spread while the gun is held
 			'''
+	}
+
+	AuricBrimfireCrosier: {
+		Tooltip: ""
+		DisplayName: Auric Brimfire Crosier
 	}
 }
 
@@ -376,6 +376,7 @@ Projectiles: {
 	Staff_Projectile.DisplayName: Staff_ Projectile
 	ArckaneStaffPro.DisplayName: Arckane Staff Pro
 	MystickStaffPro.DisplayName: Mystick Staff Pro
+	HealerBrimstoneBarrage.DisplayName: Healer Brimstone Barrage
 }
 
 Buffs: {

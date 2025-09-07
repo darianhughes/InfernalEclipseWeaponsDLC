@@ -6,12 +6,15 @@ The Infernal Eclipse of Ragnarok: Weapon DLC is a mod that aims to fill in the w
 
 It currently adds the following:
 [list]
-	[*] 1 Ranged Weapon
-	[*] 1 Summoner Weapon
-	[*] 1 Rogue/Thrower Weapon
-	[*] 4 Healer Weapons
-	[*] 11 Bard Weapons
-	[*] 2 Accessory
+	[*] 1 Melee weapon
+	[*] 2 Ranged weapons
+	[*] 2 Mage weapons
+	[*] 1 Summoner weapon
+	[*] 1 Rogue/Thrower weapon
+	[*] 18 Bard weapons
+	[*] 10 Healer weapons
+	[*] 2 Multi-class weapoons
+	[*] 2 accessories
 [/list]
 
 It is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser[/url] to see how to obtain the new weapons.
@@ -26,7 +29,7 @@ Also check out:
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url]
 [/list]
 
-Special thanks to Feldy for helping develop a lot of this mod's items, as well as Pil for a lot of the mods sprites!
+Special thanks to Feldy & TacoConKvass for helping develop some of this mods items, & Pil for some of the mods sprites!
 
 Simplified Chinese localization done by [url=https://steamcommunity.com/id/426875391/] Pudd1ng[/url].
 Russion localization done by Aizen522.
