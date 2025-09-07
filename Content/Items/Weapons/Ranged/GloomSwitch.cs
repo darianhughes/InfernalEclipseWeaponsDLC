@@ -4,14 +4,14 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
 using ThoriumMod.Buffs;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.RangerPro;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.RangedPro;
 using InfernalEclipseWeaponsDLC.Content.Buffs;
 using CalamityMod;
 using Terraria.Audio;
 using System;
 using CalamityMod.Items;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranger
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
 {
     public class GloomSwitch : ModItem
     {
