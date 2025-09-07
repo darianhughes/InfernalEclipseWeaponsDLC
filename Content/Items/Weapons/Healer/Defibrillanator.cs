@@ -72,8 +72,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Main.EntitySpriteDraw(inventoryTexture.Value, position, inventoryTexture.Value.Bounds, drawColor, 0, origin + new Vector2(inventoryTexture.Value.Width / 3, inventoryTexture.Value.Height / 3), scale, SpriteEffects.None);
-            return false;
+            float customScale = scale * 0.75f; // shrink to 75% of normal
+
+            Main.EntitySpriteDraw(
+                inventoryTexture.Value,
+                position,
+                inventoryTexture.Value.Bounds,
+                drawColor,
+                0f,
+                inventoryTexture.Value.Bounds.Size() / 2f, // center origin
+                customScale,
+                SpriteEffects.None
+            );
+
+            return false; // prevent default drawing
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
