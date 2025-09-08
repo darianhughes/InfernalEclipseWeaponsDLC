@@ -34,6 +34,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
 
             Item.width = 15;
             Item.height = 11;
+
+            Item.scale = 0.66f; // permanent small sprite
         }
 
         public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source,
@@ -50,14 +52,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
             Vector2 perturbedVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(maxSpread));
 
 
-            // Forward offset (muzzle distance)
-            Vector2 muzzleOffset = Vector2.Normalize(velocity) * 30f;
+            // Always start from the center of the player
+            Vector2 gunOrigin = player.MountedCenter;
 
-            // Consistent vertical offset (always upwards relative to player)
-            Vector2 verticalOffset = new Vector2(0f, -2f * player.gravDir);
+            // Normalize velocity to get aim direction
+            Vector2 aimDir = Vector2.Normalize(velocity);
+
+            // Forward muzzle offset (always along aim)
+            Vector2 muzzleOffset = aimDir * 30f;
+
+            // Consistent vertical offset (account for gravity flip)
+            Vector2 verticalOffset = new Vector2(0f, -4f * player.gravDir);
 
             // Final spawn position
-            Vector2 spawnPos = position + muzzleOffset + verticalOffset;
+            Vector2 spawnPos = gunOrigin + muzzleOffset + verticalOffset;
+
 
 
             if (modPlayer.shotCounter >= 15)
@@ -79,6 +88,22 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
                     proj.penetrate = 2; // <-- set custom pierce
                 }
 
+                // Cursed flame effect
+                int dustCount = 15;
+                for (int i = 0; i < dustCount; i++)
+                {
+                    // Pick a random angle inside a cone (match bullet spread range)
+                    float angle = Main.rand.NextFloat(-MathHelper.ToRadians(maxSpread), MathHelper.ToRadians(maxSpread));
+                    Vector2 dustVelocity = velocity.RotatedBy(angle).SafeNormalize(Vector2.UnitX) * Main.rand.NextFloat(1f, 4f);
+
+                    // Randomize spawn position slightly around muzzle
+                    Vector2 dustPos = spawnPos + Main.rand.NextVector2Circular(8f, 8f);
+
+                    int dustIndex = Dust.NewDust(spawnPos, 0, 0, 75, (dustVelocity.X * 2.5f), (dustVelocity.Y * 2.5f), 0, default, Main.rand.NextFloat(2.0f, 3.0f));
+                    Main.dust[dustIndex].noGravity = true;
+                    Main.dust[dustIndex].fadeIn = 0f;
+                }
+
                 modPlayer.shotCounter = 0;
             }
 
@@ -87,6 +112,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
                 // Normal bullet
                 Projectile.NewProjectile(source, spawnPos, perturbedVelocity,
                     type, damage, knockback, player.whoAmI);
+
+                int dustCount = 5;
+                for (int i = 0; i < dustCount; i++)
+                {
+                    // Pick a random angle inside a cone (match bullet spread range)
+                    float angle = Main.rand.NextFloat(-MathHelper.ToRadians(maxSpread), MathHelper.ToRadians(maxSpread));
+                    Vector2 dustVelocity = velocity.RotatedBy(angle).SafeNormalize(Vector2.UnitX) * Main.rand.NextFloat(1f, 4f);
+
+                    // Randomize spawn position slightly around muzzle
+                    Vector2 dustPos = spawnPos + Main.rand.NextVector2Circular(8f, 8f);
+
+                    int dustIndex = Dust.NewDust(spawnPos, 0, 0, 18, dustVelocity.X, dustVelocity.Y, 0, default, Main.rand.NextFloat(0.5f, 1.0f));
+                    Main.dust[dustIndex].noGravity = true;
+                    Main.dust[dustIndex].fadeIn = 0f;
+                }
             }
 
             return false; // prevent default
@@ -140,19 +180,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
         {
             return new Vector2(-2f, 2f); // adjust as needed
         }
-
-        public override void HoldItem(Player player)
-        {
-            if (player.itemAnimation > 0) // while using
-            {
-                Item.scale = 0.66f; // one-third smaller
-            }
-            else
-            {
-                Item.scale = 1f; // normal size
-            }
-        }
-
 
         public override void AddRecipes()
         {
