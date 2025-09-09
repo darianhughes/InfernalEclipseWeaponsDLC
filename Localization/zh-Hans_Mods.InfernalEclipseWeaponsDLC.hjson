@@ -248,7 +248,11 @@ Items: {
 
 	Defibrillanator: {
 		// DisplayName: Defibrillanator
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			Shoots overcharged bolts of lightning foward
+			Right click to shoot healing bolts
+			''' */
 	}
 
 	ArckaneStaff: {
@@ -276,7 +280,11 @@ Items: {
 	}
 
 	AuricBrimfireCrosier: {
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			Shoots balls of brimstone magic in a star pattern
+			'You think the witch is the only one who can cast those spells?'
+			''' */
 		// DisplayName: Auric Brimfire Crosier
 	}
 }

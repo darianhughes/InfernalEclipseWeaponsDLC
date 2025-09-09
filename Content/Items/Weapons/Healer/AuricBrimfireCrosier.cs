@@ -38,7 +38,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         public override void SetDefaults()
         {
             Item.Size = new Vector2(44, 48);
-            Item.value = Item.sellPrice(gold: 3);
 
             Item.useTime = 5;
             // Item.reuseDelay = 4;
@@ -55,6 +54,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             radiantLifeCost = 10;
 
             Item.rare = ModLoader.TryGetMod("NoxusBoss", out Mod noxus) ? noxus.Find<ModRarity>("LotusOfCreationRarity").Type : ModContent.RarityType<HotPink>();
+            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
 
             Item.shoot = ModContent.ProjectileType<Staff_Projectile>();
             Item.shootSpeed = 20;
