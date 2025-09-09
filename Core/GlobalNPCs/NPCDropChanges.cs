@@ -23,6 +23,8 @@ using CalamityMod.NPCs.AquaticScourge;
 using CalamityMod;
 using Terraria.ID;
 using CalamityMod.NPCs.DesertScourge;
+using CalamityMod.NPCs.SupremeCalamitas;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
@@ -83,6 +85,11 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 {
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<CorrodedCane>(), 4));
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<DukeSynth>(), 4));
+                }
+
+                if (npc.type == ModContent.NPCType<SupremeCataclysm>())
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModLoader.HasMod("SOTS") ? Mod.Find<ModItem>("CataclysmicGauntletVoid").Type : ModContent.ItemType<CataclysmicGauntlet>(), 10));
                 }
             }
 

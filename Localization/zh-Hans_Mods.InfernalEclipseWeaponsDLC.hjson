@@ -287,6 +287,16 @@ Items: {
 			''' */
 		// DisplayName: Auric Brimfire Crosier
 	}
+
+	CataclysmicGauntletVoid: {
+		// DisplayName: Cataclysmic Gauntlet
+		// Tooltip: "'Cataclysm!'"
+	}
+
+	CataclysmicGauntlet: {
+		// DisplayName: Cataclysmic Gauntlet
+		// Tooltip: "'Cataclysm!'"
+	}
 }
 
 Projectiles: {
@@ -370,6 +380,7 @@ Projectiles: {
 	// ArckaneStaffPro.DisplayName: Arckane Staff Pro
 	// MystickStaffPro.DisplayName: Mystick Staff Pro
 	// HealerBrimstoneBarrage.DisplayName: Healer Brimstone Barrage
+	// SupremeCataclysmFist.DisplayName: Supreme Cataclysm Fist
 }
 
 Buffs: {

@@ -12,6 +12,8 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System.Security.Policy;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void;
 
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 {
@@ -48,6 +50,30 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             if (!randomChanceSuccess || !goodEnoughLevel) return;
 
             itemDrop = ModContent.ItemType<DeepSeaDrawlShard2>();
+        }
+
+        public override void PostUpdateMiscEffects()
+        {
+            MiscEffects();
+        }
+
+        private void MiscEffects()
+        {
+            if (ModLoader.HasMod("SOTS"))
+            {
+                
+                if (Player.ActiveItem().type == Mod.Find<ModItem>("CataclysmicGauntletVoid").Type) //we have to do it this way since the item doesn't load without SOTS.
+                {
+                    SupremeCataclysmFist.GenerateDustOnOwnerHand(Player);
+                }
+            }
+            else
+            {
+                if (Player.ActiveItem().type == ModContent.ItemType<CataclysmicGauntlet>())
+                {
+                    SupremeCataclysmFist.GenerateDustOnOwnerHand(Player);
+                }
+            }
         }
     }
 }
