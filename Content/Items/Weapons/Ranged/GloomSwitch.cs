@@ -34,6 +34,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
 
             Item.width = 15;
             Item.height = 11;
+
+            Item.scale = 0.66f; // permanent small sprite
         }
 
         public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source,
@@ -45,20 +47,31 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
             modPlayer.shotCounter++;
 
             // --- Shot spread ---
-            // Base spread 35°, reduced to 5° while Overclock/Dark Rush is active
             float maxSpread = rushPlayer.OverclockActive ? 5f : 25f;
             Vector2 perturbedVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(maxSpread));
 
+            // --- Build a stable muzzle position that follows aim AND keeps an "above" offset ---
+            // Normalize aim
+            Vector2 aimDir = velocity.SafeNormalize(Vector2.UnitX);
 
-            // Forward offset (muzzle distance)
-            Vector2 muzzleOffset = Vector2.Normalize(velocity) * 30f;
+            // Base forward muzzle offset
+            float muzzleLength = 30f;
 
-            // Consistent vertical offset (always upwards relative to player)
-            Vector2 verticalOffset = new Vector2(0f, -2f * player.gravDir);
+            // Adjust forward length if facing left (compensates for sprite shift)
+            if (player.direction == -1)
+                muzzleLength += 6f;  // tweak until the muzzle lines up with your sprite
+
+            Vector2 muzzleOffset = aimDir * muzzleLength;
+
+            // Perpendicular offset (keeps “above” the barrel)
+            Vector2 perp = aimDir.RotatedBy(MathHelper.PiOver2);
+            if (perp.Y * player.gravDir >= 0f)
+                perp = -perp;
+
+            Vector2 verticalOffset = perp * 4f;
 
             // Final spawn position
-            Vector2 spawnPos = position + muzzleOffset + verticalOffset;
-
+            Vector2 spawnPos = player.MountedCenter + muzzleOffset + verticalOffset;
 
             if (modPlayer.shotCounter >= 15)
             {
@@ -75,21 +88,45 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
                 if (projIndex >= 0 && Main.projectile[projIndex].active)
                 {
                     Projectile proj = Main.projectile[projIndex];
-                    proj.DamageType = DamageClass.Ranged; // <-- force ranged scaling
-                    proj.penetrate = 2; // <-- set custom pierce
+                    proj.DamageType = DamageClass.Ranged;
+                    proj.penetrate = 2;
+                }
+
+                // Cursed flame dust: spawn at muzzle, spread within cone of aim
+                int dustCount = 15;
+                for (int i = 0; i < dustCount; i++)
+                {
+                    float angle = Main.rand.NextFloat(-MathHelper.ToRadians(maxSpread), MathHelper.ToRadians(maxSpread));
+                    Vector2 dustDir = aimDir.RotatedBy(angle);
+                    Vector2 dustVel = dustDir * Main.rand.NextFloat(1.0f, 4.0f);
+
+                    int dustIndex = Dust.NewDust(spawnPos, 0, 0, 75, dustVel.X * 2.5f, dustVel.Y * 2.5f, 0, default, Main.rand.NextFloat(2.0f, 3.0f));
+                    Main.dust[dustIndex].noGravity = true;
+                    Main.dust[dustIndex].fadeIn = 0f;
                 }
 
                 modPlayer.shotCounter = 0;
             }
-
             else
             {
-                // Normal bullet
-                Projectile.NewProjectile(source, spawnPos, perturbedVelocity,
-                    type, damage, knockback, player.whoAmI);
+                // Normal bullet (use perturbedVelocity to fire)
+                Projectile.NewProjectile(source, spawnPos, perturbedVelocity, type, damage, knockback, player.whoAmI);
+
+                // small blood dust from muzzle, cone-shaped
+                int dustCount = 5;
+                for (int i = 0; i < dustCount; i++)
+                {
+                    float angle = Main.rand.NextFloat(-MathHelper.ToRadians(maxSpread), MathHelper.ToRadians(maxSpread));
+                    Vector2 dustDir = aimDir.RotatedBy(angle);
+                    Vector2 dustVel = dustDir * Main.rand.NextFloat(1.0f, 2.5f);
+
+                    int dustIndex = Dust.NewDust(spawnPos, 0, 0, 18, dustVel.X, dustVel.Y, 0, default, Main.rand.NextFloat(0.5f, 1.0f));
+                    Main.dust[dustIndex].noGravity = true;
+                    Main.dust[dustIndex].fadeIn = 0f;
+                }
             }
 
-            return false; // prevent default
+            return false;
         }
 
         public override bool AltFunctionUse(Player player)
@@ -140,19 +177,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
         {
             return new Vector2(-2f, 2f); // adjust as needed
         }
-
-        public override void HoldItem(Player player)
-        {
-            if (player.itemAnimation > 0) // while using
-            {
-                Item.scale = 0.66f; // one-third smaller
-            }
-            else
-            {
-                Item.scale = 1f; // normal size
-            }
-        }
-
 
         public override void AddRecipes()
         {
