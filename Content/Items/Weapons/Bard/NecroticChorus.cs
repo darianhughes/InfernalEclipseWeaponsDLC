@@ -1,8 +1,10 @@
-﻿using CalamityMod.Items;
+using CalamityMod.Items;
 using CalamityMod.Rarities;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
@@ -72,18 +74,47 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         }
 
+        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                // Right-click: Shoot 7 blood bolts in shotgun spread
+                Vector2 shootPosition = position;
+                shootPosition.X += 38 * player.direction;
+                shootPosition.Y -= 18;
+
+                int projectileType = ModContent.ProjectileType<NecroticChorusPro>();
+                int boltDamage = (int)(damage * 0.8f);
+                float boltSpeed = 20f;
+                
+                Vector2 baseVelocity = Vector2.Normalize(velocity) * boltSpeed;
+
+                for (int i = 0; i < 7; i++)
+                {
+                    float spreadAngle = (i - 3) * 0.087f;
+                    
+                    float randomSpread = Main.rand.Next(-5, 6) * ((float)Math.PI / 4f) * 0.01f;
+                    
+                    float speedVariation = Main.rand.NextFloat(0.9f, 1.1f);
+                    
+                    Vector2 spreadVelocity = baseVelocity.RotatedBy(spreadAngle + randomSpread) * speedVariation;
+                    
+                    Projectile.NewProjectile(source, shootPosition, spreadVelocity, projectileType, boltDamage, knockback, player.whoAmI);
+                }
+                
+                return false;
+            }
+            else
+            {
+                // Left-click: Default behavior (wisps)
+                return true;
+            }
+        }
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             Item.shootSpeed = 4f;
-            if (player.altFunctionUse == 2)
-            {
-                Item.shootSpeed = 2f;
-
-                type = ModContent.ProjectileType<NecroticChorusPro>();
-                velocity *= 10f;
-                position.X += 38 * player.direction;
-                position.Y -= 18;
-            }
+            // Right-click logic now handled by BardShoot method
         }
     }
 }

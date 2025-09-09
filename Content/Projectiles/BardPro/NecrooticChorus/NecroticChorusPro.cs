@@ -46,7 +46,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
                 {
                     Dust obj11 = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, 5, Projectile.velocity.X, Projectile.velocity.Y, 100);
                     obj11.velocity = (Main.rand.NextFloatDirection() * (float)Math.PI).ToRotationVector2() * 2f + Projectile.velocity.SafeNormalize(Vector2.Zero) * 2f;
-                    obj11.scale = 0.9f;
+                    obj11.scale = 0.65f;
                     obj11.fadeIn = 1.3f;
                     obj11.position = Projectile.Center;
                 }
@@ -61,7 +61,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
                 Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.Blood, 0f, 0f, 100);
                 dust.velocity = dust.velocity * 0.5f + Projectile.velocity * 0.5f;
                 dust.velocity *= 0.5f;
-                dust.scale = (6 - i) * 0.4f;
+                dust.scale = (6 - i) * 0.3f;
                 dust.noGravity = true;
                 dust.position = Projectile.Center - Projectile.velocity * 2f * i;
             }
@@ -70,10 +70,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
             {
                 Dust dust = Dust.NewDustPerfect(Projectile.Center - Projectile.velocity * 3f, 267, Projectile.velocity * 0.5f, 0, Color.Red * (Main.rand.NextFloat() * 0.3f + 0.1f));
                 dust.noGravity = true;
-                dust.scale = 0.7f;
+                dust.scale = 0.5f;
             }
 
-            Lighting.AddLight(Projectile.Center, 0.3f, 0.05f, 0.05f);
+            Lighting.AddLight(Projectile.Center, 0.22f, 0.035f, 0.035f);
 
             if (Main.player[Projectile.owner].GetModPlayer<ThoriumPlayer>().accWindHoming)
             {
