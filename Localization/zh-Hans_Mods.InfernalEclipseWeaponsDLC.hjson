@@ -193,12 +193,12 @@ Items: {
 	}
 
 	SandSlasher: {
-		// DisplayName: Shanty of the Former Seas
+		DisplayName: 昔海之谣
 		Tooltip: 奏出弹跳的小型沙尘旋风
 	}
 
 	DeepseaTrident: {
-		DisplayName: 蛇形叉
+		DisplayName: 蛇之叉
 		Tooltip: ""
 	}
 
@@ -289,31 +289,31 @@ Items: {
 	}
 
 	CataclysmicGauntletVoid: {
-		// DisplayName: Cataclysmic Gauntlet
-		/* Tooltip:
+		DisplayName: 灾祸拳套
+		Tooltip:
 			'''
-			Empowers you punches with brimstone energy for short-range high-damage barrages
-			"'Cataclysm!'"
-			''' */
+			为你的拳击注入硫火能量，释放近距离高伤害连击  
+			“灾变！”
+			'''
 	}
 
 	CataclysmicGauntlet: {
-		// DisplayName: Cataclysmic Gauntlet
-		/* Tooltip:
+		DisplayName: 灾祸拳套
+		Tooltip:
 			'''
-			Empowers you punches with brimstone energy for short-range high-damage barrages
-			"'Cataclysm!'"
-			''' */
+			为你的拳击注入硫火能量，释放近距离高伤害连击  
+			“灾变！”
+			'''
 	}
 
 	CatastrophicLongbladeVoid: {
-		// DisplayName: Catastrophic Longblade
-		// Tooltip: Shoots a catastrophic brimstone energy beam forward
+		DisplayName: 灾难长刃
+		Tooltip: 向前射出灾劫般的硫火能量光束
 	}
 
 	CatastrophicLongblade: {
-		// DisplayName: Catastrophic Longblade
-		// Tooltip: Shoots a catastrophic brimstone energy beam forward
+		DisplayName: 灾难长刃
+		Tooltip: 向前射出灾劫般的硫火能量光束
 	}
 }
 
