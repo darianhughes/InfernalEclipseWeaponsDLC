@@ -151,7 +151,7 @@ Items: {
 	}
 
 	NukeWhistle: {
-		Tooltip: "“核歌曲自由！”"
+		Tooltip: “核歌曲自由！”
 		DisplayName: 洲际弹道口哨
 	}
 
@@ -290,12 +290,30 @@ Items: {
 
 	CataclysmicGauntletVoid: {
 		// DisplayName: Cataclysmic Gauntlet
-		// Tooltip: "'Cataclysm!'"
+		/* Tooltip:
+			'''
+			Empowers you punches with brimstone energy for short-range high-damage barrages
+			"'Cataclysm!'"
+			''' */
 	}
 
 	CataclysmicGauntlet: {
 		// DisplayName: Cataclysmic Gauntlet
-		// Tooltip: "'Cataclysm!'"
+		/* Tooltip:
+			'''
+			Empowers you punches with brimstone energy for short-range high-damage barrages
+			"'Cataclysm!'"
+			''' */
+	}
+
+	CatastrophicLongbladeVoid: {
+		// DisplayName: Catastrophic Longblade
+		// Tooltip: Shoots a catastrophic brimstone energy beam forward
+	}
+
+	CatastrophicLongblade: {
+		// DisplayName: Catastrophic Longblade
+		// Tooltip: Shoots a catastrophic brimstone energy beam forward
 	}
 }
 
