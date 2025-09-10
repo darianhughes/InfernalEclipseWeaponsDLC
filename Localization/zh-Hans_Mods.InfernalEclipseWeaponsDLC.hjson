@@ -193,7 +193,7 @@ Items: {
 	}
 
 	SandSlasher: {
-		// DisplayName: Sand Slasher
+		// DisplayName: Shanty of the Former Seas
 		// Tooltip: Creates small sandnados on bounce
 	}
 
@@ -290,12 +290,30 @@ Items: {
 
 	CataclysmicGauntletVoid: {
 		// DisplayName: Cataclysmic Gauntlet
-		// Tooltip: "'Cataclysm!'"
+		/* Tooltip:
+			'''
+			Empowers you punches with brimstone energy for short-range high-damage barrages
+			"'Cataclysm!'"
+			''' */
 	}
 
 	CataclysmicGauntlet: {
 		// DisplayName: Cataclysmic Gauntlet
-		// Tooltip: "'Cataclysm!'"
+		/* Tooltip:
+			'''
+			Empowers you punches with brimstone energy for short-range high-damage barrages
+			"'Cataclysm!'"
+			''' */
+	}
+
+	CatastrophicLongbladeVoid: {
+		// DisplayName: Catastrophic Longblade
+		// Tooltip: Shoots a catastrophic brimstone energy beam forward
+	}
+
+	CatastrophicLongblade: {
+		// DisplayName: Catastrophic Longblade
+		// Tooltip: Shoots a catastrophic brimstone energy beam forward
 	}
 }
 
@@ -381,6 +399,7 @@ Projectiles: {
 	// MystickStaffPro.DisplayName: Mystick Staff Pro
 	// HealerBrimstoneBarrage.DisplayName: Healer Brimstone Barrage
 	// SupremeCataclysmFist.DisplayName: Supreme Cataclysm Fist
+	// SupremeCatastropheSlash.DisplayName: Supreme Catastrophe Slash
 }
 
 Buffs: {

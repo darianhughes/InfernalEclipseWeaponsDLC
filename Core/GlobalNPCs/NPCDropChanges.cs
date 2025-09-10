@@ -91,6 +91,11 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 {
                     npcLoot.Add(ItemDropRule.Common(ModLoader.HasMod("SOTS") ? Mod.Find<ModItem>("CataclysmicGauntletVoid").Type : ModContent.ItemType<CataclysmicGauntlet>(), 10));
                 }
+
+                if (npc.type == ModContent.NPCType<SupremeCatastrophe>())
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModLoader.HasMod("SOTS") ? Mod.Find<ModItem>("CatastrophicLongbladeVoid").Type : ModContent.ItemType<CatastrophicLongblade>(), 10));
+                }
             }
 
             if (ModLoader.TryGetMod("Consolaria", out Mod console))
