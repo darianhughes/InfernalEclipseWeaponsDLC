@@ -31,7 +31,7 @@ Items: {
 
 	DeathsWhisper: {
 		Tooltip: ""
-		DisplayName: 亡语
+		DisplayName: 殁亡笛语
 	}
 
 	BrimstoneHarp: {
@@ -68,7 +68,7 @@ Items: {
 	}
 
 	TheBlight: {
-		DisplayName: 枯萎
+		DisplayName: 枯萎之镰
 		Tooltip: 直接命中会获得1层灵魂精华
 	}
 
@@ -112,7 +112,7 @@ Items: {
 	}
 
 	Legacy: {
-		DisplayName: 枯萎咆哮
+		DisplayName: 奥库瑞姆的咆哮
 		Tooltip: ""
 	}
 
@@ -141,179 +141,161 @@ Items: {
 	}
 
 	ButchersBloodmaker: {
-		// DisplayName: Butcher's Bloodmaker
-		/* Tooltip:
+		DisplayName: 血铸屠夫铳
+		Tooltip:
 			'''
-			Fires a spread of bullets and a bolt of lightly homing blood
-			Right click to consume 50 life, entering a Blood Rage for 10 seconds
-			Blood Rage increases the bloodmaker's damage by 25% and causes blood bolts to inflict burning blood on hit
-			''' */
+			发射散射子弹与一枚带轻微追踪效果的血之弹
+			右键消耗50点生命，进入持续10秒的血怒状态
+			血怒状态下血铸枪伤害提高25%，血弹命中时会施加血液沸腾减益
+			'''
 	}
 
 	NukeWhistle: {
-		// Tooltip: "'Legalise nuclear songs'"
-		// DisplayName: Intercontinental Ballistic Whistle
+		Tooltip: "“核歌曲自由！”"
+		DisplayName: 洲际弹道口哨
 	}
 
 	ListoftheDamned: {
-		// DisplayName: List of the Damned
-		// Tooltip: Fires a spread of 6 souls that burst forward after some time, dealing double damage
+		DisplayName: 诅咒者簿录
+		Tooltip: 发射 6 个灵魂，延迟后向前爆发，造成双倍伤害
 	}
 
 	AirPodShawty: {
-		// DisplayName: AirPod Shawty
-		/* Tooltip:
+		DisplayName: AirPod 美眉
+		Tooltip:
 			'''
-			Left click to consume inspiration and fire an AirPod that bursts into sound on hit
-			AirPod damage is increased with the ammo consumed
-			Right click to fire a buckshot of bullets from your ammo, not granting empowerments
-			These bullets will scale off of bard reforges and ranged boosts
-			"Airpod shawty ima catch a body lookin real sussy"
-			''' */
+			左键消耗灵感，发射一个 AirPod，命中后爆发声波
+			AirPod 伤害随消耗弹药提升
+			右键发射一发霰弹，不提供咒音增幅
+			子弹受乐师重铸前缀与远程伤害加成影响
+			“噢baby情话多说一点，想我就多看一眼~”
+			'''
 	}
 
 	AcidBelcher: {
-		// DisplayName: Acid Belcher
-		// Tooltip: ""
+		DisplayName: 酸液喷喉
+		Tooltip: ""
 	}
 
 	ForeverHungry: {
-		// DisplayName: Forever Hungry
-		// Tooltip: Hungries make splashes of blood on bounce
+		DisplayName: 永恒之饥
+		Tooltip: 饿鬼在弹跳时会迸溅血液
 	}
 
 	BottleOfSouls: {
-		// DisplayName: Bottle of Souls
-		/* Tooltip:
+		DisplayName: 载魂瓶
+		Tooltip:
 			'''
-			Releases souls of night and light from the jar
-			Souls of night home into enemies and deal damage, inflicting shadowflame
-			Souls of light home in and heal teammates equal to bonus healing
-			''' */
+			释放瓶中的暗影之魂与光明之魂
+			暗影之魂会追击敌人并造成伤害，施加暗影焰
+			光明之魂会追击队友并进行治疗，治疗量等于你的额外治疗值
+			'''
 	}
 
 	SandSlasher: {
 		// DisplayName: Shanty of the Former Seas
-		// Tooltip: Creates small sandnados on bounce
+		Tooltip: 奏出弹跳的小型沙尘旋风
 	}
 
 	DeepseaTrident: {
-		// DisplayName: Serpentine Fork
-		// Tooltip: ""
+		DisplayName: 蛇形叉
+		Tooltip: ""
 	}
 
 	Stick: {
-		// DisplayName: The Ultimate Stick of Supreme Power and Infinite Destruction
-		/* Tooltip:
+		DisplayName: 终极毁天灭地至尊神棍
+		Tooltip:
 			'''
-			Sharpness V
-			Breach IV
-			Fire Aspect II
-			Unbreaking III
-			Mending
-			'This enchanted stick is totally legit'
-			''' */
+			锋利 V
+			破甲 IV
+			火焰附加 II
+			耐久 III
+			经验修补
+			“这附魔木棍绝对靠谱”
+			'''
 	}
 
 	NeonRipper: {
-		// DisplayName: Neon Ripper
-		/* Tooltip:
+		DisplayName: 霓虹裂镰
+		Tooltip:
 			'''
-			Hitting enemies will generate electrifying nanobots
-			Right Click to throw the scythe, which will curve on it's way back
-			The sycthe does 20% less damage when thrown
-			''' */
+			攻击敌人会释放带电的纳米机器人
+			右键投掷镰刀，它会以弧线轨迹返回
+			投掷镰刀的伤害降低 20%
+			'''
 	}
 
 	PlasmaOcarina: {
-		/* Tooltip:
+		Tooltip:
 			'''
-			Shoots a spread of 3 plasma beams 
-			Hold right click to charge a large damaging sound wave
-			[c/1FFBFF:'I once tried creating instruments that had to power to deal damage.]
-			[c/1FFBFF:This happens to be one of them, however these weapons were never mass produced]
-			[c/1FFBFF:because the Tyrant's army couldn't play them']
-			''' */
-		// DisplayName: Plasma Ocarina
+			发射三道等离子光束
+			右键蓄力以释放高伤害的音波
+			[c/1FFBFF:我曾尝试制造过能造成伤害的乐器]
+			[c/1FFBFF:这正是其中之一，然而这些武器从未量产]
+			[c/1FFBFF:因为暴君的军队根本不会演奏它们]
+			'''
+		DisplayName: 等离子陶笛
 	}
 
 	Infrariff: {
-		// DisplayName: Infrariff
-		/* Tooltip:
+		DisplayName: 红外电吉他
+		Tooltip:
 			'''
-			Creates a lightshow of infared waves that will damage enemies on contact
-			'The microwave lightshow guitar, you know the one'
-			''' */
+			演奏时释放红外灯效，触碰敌人造成伤害
+			“那把微波灯光秀吉他，你懂我意思”
+			'''
 	}
 
 	Defibrillanator: {
-		// DisplayName: Defibrillanator
-		/* Tooltip:
+		DisplayName: 雷击除颤器
+		Tooltip:
 			'''
-			Shoots overcharged bolts of lightning foward
-			Right click to shoot healing bolts
-			''' */
+			向前发射过载的闪电弹
+			右键发射治疗电击弹
+			'''
 	}
 
 	ArckaneStaff: {
-		// Tooltip: Creates an overloaded bolt of fluctuating elements
-		// DisplayName: Arckane Staff
+		Tooltip: 释放一枚过载的元素能量弹
+		DisplayName: 奥能法杖
 	}
 
 	MystickStaff: {
-		// DisplayName: Mystick Staff
-		/* Tooltip:
+		DisplayName: 秘能法杖
+		Tooltip:
 			'''
-			Creates an supercharged bolt of every known element
-			'How much more do you need!?'
-			''' */
+			释放一枚汇聚所有已知元素的超能能量弹
+			“你还想要多少啊！？”
+			'''
 	}
 
 	GloomSwitch: {
-		// DisplayName: Gloom Switch
-		/* Tooltip:
+		DisplayName: 幽冥扳机
+		Tooltip:
 			'''
-			A rapid fire SMG that fires a bouncing cursed flame every 15 shots
-			Right Click to consume 200 mana, entering a Dark Rush for 10 seconds
-			Dark Rush increases movement speed by 25% and tightens shot spread while the gun is held
-			''' */
+			一把速射冲锋枪，每15发会射出一簇弹跳的诅咒焰
+			右键消耗200法力，进入10秒的暗影冲击
+			暗影冲击期间移动速度提高25%，且持枪时射击散布减小
+			'''
 	}
 
 	AuricBrimfireCrosier: {
-		/* Tooltip:
+		Tooltip:
 			'''
-			Shoots balls of brimstone magic in a star pattern
-			'You think the witch is the only one who can cast those spells?'
-			''' */
-		// DisplayName: Auric Brimfire Crosier
+			以星形轨迹释放硫火魔法
+			“你以为只有那位魔女才能施展这些法术吗？”
+			'''
+		DisplayName: 金辉狱火杖
 	}
 
 	CataclysmicGauntletVoid: {
 		// DisplayName: Cataclysmic Gauntlet
-		/* Tooltip:
-			'''
-			Empowers you punches with brimstone energy for short-range high-damage barrages
-			"'Cataclysm!'"
-			''' */
+		// Tooltip: "'Cataclysm!'"
 	}
 
 	CataclysmicGauntlet: {
 		// DisplayName: Cataclysmic Gauntlet
-		/* Tooltip:
-			'''
-			Empowers you punches with brimstone energy for short-range high-damage barrages
-			"'Cataclysm!'"
-			''' */
-	}
-
-	CatastrophicLongbladeVoid: {
-		// DisplayName: Catastrophic Longblade
-		// Tooltip: Shoots a catastrophic brimstone energy beam forward
-	}
-
-	CatastrophicLongblade: {
-		// DisplayName: Catastrophic Longblade
-		// Tooltip: Shoots a catastrophic brimstone energy beam forward
+		// Tooltip: "'Cataclysm!'"
 	}
 }
 
@@ -414,8 +396,8 @@ Buffs: {
 	}
 
 	BloodRageBuff: {
-		// DisplayName: Blood Rage
-		// Description: Increases bloodmaker damage by 25% and couses blood bolts to inflict burning blood on hit
+		DisplayName: 血怒
+		Description: 血铸武器伤害提高25%，血弹命中时附加血液沸腾减益
 	}
 }
 
@@ -446,7 +428,7 @@ ItemTooltip: {
 		当他们立于无穷的边缘，
 		仁问：“你将行何路？”
 		'''
-	// NeonRipperLore1: After the defeat of the Goliath, Erelian decided to repurpose some of the armor plating it wore.
-	// NeonRipperLore2: In doing so he created two weapons: the first of which being a sycthe that could absorb aura, much like Kami's ability.
-	// PBGBardALore2: In doing so he created two weapons: the second of which being a guitar that shot colorful microwaves.
+	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲
+	NeonRipperLore2: 借此他打造了两件武器：第一件是一柄能够吸收灵气的镰刀，正如卡米的能力一般。
+	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
 }

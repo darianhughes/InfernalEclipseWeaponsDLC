@@ -1,0 +1,37 @@
+[h1]诸神黄昏：炼狱蚀光武器DLC[/h1]
+[h3]一个[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]的武器DLC附加包[/h3]
+[b]可独立游玩，无需依赖主模组[/b]
+
+本武器 DLC 旨在通过新增一系列全新、激动人心的物品，填补原版进程中的空白，同时作为[url=https://steamcommunity.com/workshop/filedetails/?id=3142064272]非官方吟游诗人和牧师武器[/url]模组的扩展
+
+当前新增内容：
+[list]
+	[*] 1 件近战武器
+	[*] 2 件远程武器
+	[*] 2 件魔法武器
+	[*] 1 件召唤师武器
+	[*] 1 件盗贼/投掷武器
+	[*] 18 件吟游诗人武器
+	[*] 10 件牧师武器
+	[*] 2 件多职业武器
+	[*] 2 件饰品
+[/list]
+
+强烈建议使用[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser [/url]查看新增物品的制作配方与获取方式
+
+此模组也同时为[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929] Consolaria [/url]添加了联动内容
+
+如有任何问题，推荐加入[url=https://discord.gg/tc5nZdRvaU]官方Discord服务器[/url]进行反馈
+
+同系列推荐：
+[list]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus 的灾厄/瑟银平衡模组[/url]
+[/list]
+
+特别感谢 Feldy 和 TacoConKvass 在本模组开发中的大力支持，以及 Pil 提供的美术素材！
+
+简体中文翻译者[url=https://steamcommunity.com/id/426875391/] Pudd1ng [/url]
+俄文翻译者 Aizen522
+
+诸神黄昏：炼狱蚀光团队
