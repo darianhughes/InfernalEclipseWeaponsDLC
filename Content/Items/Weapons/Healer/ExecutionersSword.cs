@@ -18,7 +18,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
     {
         public override void SetDefaults()
         {
-            Item.damage = 400;
+            Item.damage = 500;
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             healType = HealType.Ally;
             healAmount = 0;
@@ -28,8 +28,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.width = 64;
             Item.height = 68;
 
-            Item.useTime = 16;
-            Item.useAnimation = 16;
+            Item.useTime = 14;
+            Item.useAnimation = 14;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = true;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;

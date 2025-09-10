@@ -30,7 +30,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 
         public override void SetBardDefaults()
         {
-            Item.damage = 120;
+            Item.damage = 150;
             Item.DamageType = ModContent.GetInstance<BardDamage>();
             Item.width = 48;
             Item.height = 36;
@@ -48,6 +48,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
             Item.shootSpeed = 16f;
             Item.useAmmo = AmmoID.Bullet;
 
+            if (!ModLoader.HasMod("Look"))
+            {
+                ((ModItem)this).Item.holdStyle = 3;
+            }
+
             Item.Calamity().canFirePointBlankShots = true;
         }
 
@@ -55,7 +60,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 
         public override void ModifyInspirationCost(Player player, ref int cost)
         {
-            cost = (player.altFunctionUse == 2) ? 0 : 5;
+            cost = (player.altFunctionUse == 2) ? 0 : 4;
         }
 
         public override void ModifyEmpowermentPool(Player player, Player target, EmpowermentPool empPool)
@@ -80,7 +85,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
             if (player.altFunctionUse == 2)
             {
                 // Right-click = shotgun spread, scale with ranged instead of bard
-                int numberProjectiles = 7 + Main.rand.Next(2);
+                int numberProjectiles = 6 + Main.rand.Next(2);
 
                 // Take the item’s base damage and apply player’s ranged bonuses
                 int rangedDamage = (int)player.GetTotalDamage(DamageClass.Ranged).ApplyTo(Item.damage);
