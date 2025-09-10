@@ -116,8 +116,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                         source,
                         player.Center,
                         typhoonVelocity,
-                        ProjectileID.Typhoon,
-                        damage,
+                        ModContent.ProjectileType<SharknadoBolt>(),
+                        damage / 2,
                         knockback,
                         player.whoAmI
                     );

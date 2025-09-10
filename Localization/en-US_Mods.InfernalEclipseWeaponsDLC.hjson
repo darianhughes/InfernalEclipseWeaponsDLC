@@ -35,7 +35,11 @@ Items: {
 
 	DeepSeaDrawl: {
 		DisplayName: Deep Sea Drawl
-		Tooltip: ""
+		Tooltip:
+			'''
+			A husk of it's former strength, it's parts scattered throughout the world
+			For just a moment, you swear you see a glimmer in the acidic bubbles that surround you
+			'''
 	}
 
 	DeathsWhisper: {
@@ -107,17 +111,32 @@ Items: {
 
 	DeepSeaDrawlShard1: {
 		DisplayName: Mouthpiece Shard
-		Tooltip: ""
+		Tooltip:
+			'''
+			The Mouthpiece of the Restored Drawl
+			Permafrost once told stories of his encounters with the Lizhard tribe
+			Perhaps he may know something
+			'''
 	}
 
 	DeepSeaDrawlShard2: {
 		DisplayName: Bell Shard
-		Tooltip: ""
+		Tooltip:
+			'''
+			The Bell of the Restored Drawl
+			In an attempt to keep others from this power, the mouthpiece was sealed in the dungeon
+			It is heard that the key was tossed to the blue depths below
+			'''
 	}
 
 	DeepSeaDrawlShard3: {
 		DisplayName: Body Shard
-		Tooltip: ""
+		Tooltip:
+			'''
+			The Body of the Restored Drawl
+			A grand forge of soul will be the finishing touch to restore it's power
+			Make haste, the waves will soon crash at your call
+			'''
 	}
 
 	Legacy: {
@@ -234,6 +253,7 @@ Items: {
 		DisplayName: Neon Ripper
 		Tooltip:
 			'''
+			Grants 3 soul essence on direct hit
 			Hitting enemies will generate electrifying nanobots
 			Right Click to throw the scythe, which will curve on it's way back
 			The sycthe does 20% less damage when thrown
@@ -415,6 +435,7 @@ Projectiles: {
 	HealerBrimstoneBarrage.DisplayName: Healer Brimstone Barrage
 	SupremeCataclysmFist.DisplayName: Supreme Cataclysm Fist
 	SupremeCatastropheSlash.DisplayName: Supreme Catastrophe Slash
+	SharknadoBolt.DisplayName: Sharknado Bolt
 }
 
 Buffs: {

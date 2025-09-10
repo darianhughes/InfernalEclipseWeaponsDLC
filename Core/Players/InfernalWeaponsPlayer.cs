@@ -39,11 +39,6 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 
             if (!isSulfurCatch || !inWater) return;
 
-            bool downedCryo = CalamityConditions.DownedCryogen.IsMet();
-            bool downedGolem = NPC.downedGolemBoss;
-
-            if (!downedCryo || !downedGolem) return;
-
             bool goodEnoughLevel = attempt.fishingLevel >= 45;
             bool randomChanceSuccess = Main.rand.NextBool(shard2chance);
 

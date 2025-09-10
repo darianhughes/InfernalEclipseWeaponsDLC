@@ -92,13 +92,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
         }
 
-        public override bool? CanHitNPC(NPC target)
-        {
-            // Reset immunity for this projectile so full damage applies
-            target.immune[Projectile.owner] = 0;
-            return true;
-        }
-
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             // Ensure full damage every hit
@@ -234,12 +227,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         {
             // Ensure full damage every hit
             // Projectile.damage = Projectile.damage + (Projectile.damage / 2);
-        }
-
-        public override bool? CanHitNPC(NPC target)
-        {
-            target.immune[Projectile.owner] = 0;
-            return true;
         }
 
         public override bool PreDraw(ref Color lightColor)

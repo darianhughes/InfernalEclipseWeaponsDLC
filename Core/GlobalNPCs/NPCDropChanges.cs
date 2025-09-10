@@ -34,9 +34,9 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
         {
             if (npc.type == NPCID.WallofFlesh)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ForeverHungry>(), 3));
+                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ForeverHungry>(), 3));
 
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BottleOfSouls>(), 3));
+                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BottleOfSouls>(), 3));
             }
 
             if (ModLoader.TryGetMod("CalamityMod", out _))

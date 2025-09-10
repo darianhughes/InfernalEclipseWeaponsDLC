@@ -58,7 +58,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             float baseSpeed = 2f;
 
             // Offset from player so projectiles appear in front of the weapon
-            Vector2 spawnOffset = velocity.SafeNormalize(Vector2.UnitY) * 46f;
+            Vector2 spawnOffset = velocity.SafeNormalize(Vector2.UnitY) * 36f;
             Vector2 spawnPosition = player.Center + spawnOffset;
 
             for (int i = 0; i < numberProjectiles; i++)
@@ -76,5 +76,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             return false;
         }
 
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-10f, -6f); // adjust as needed
+        }
     }
 }

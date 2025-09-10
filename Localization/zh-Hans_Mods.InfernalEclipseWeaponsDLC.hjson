@@ -400,6 +400,7 @@ Projectiles: {
 	// HealerBrimstoneBarrage.DisplayName: Healer Brimstone Barrage
 	// SupremeCataclysmFist.DisplayName: Supreme Cataclysm Fist
 	// SupremeCatastropheSlash.DisplayName: Supreme Catastrophe Slash
+	// SharknadoBolt.DisplayName: Sharknado Bolt
 }
 
 Buffs: {
