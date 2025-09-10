@@ -2,7 +2,7 @@
 [h3]一个[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]的武器DLC附加包[/h3]
 [b]可独立游玩，无需依赖主模组[/b]
 
-本武器 DLC 旨在通过新增一系列全新、激动人心的物品，填补原版进程中的空白，同时作为[url=https://steamcommunity.com/workshop/filedetails/?id=3142064272]非灾厄官方吟游诗人和牧师武器[/url]模组的合适扩展
+本武器 DLC 旨在通过新增一系列全新、激动人心的物品，填补原版进程中的空白，同时作为[url=https://steamcommunity.com/workshop/filedetails/?id=3142064272]非官方吟游诗人和牧师武器[/url]模组的扩展
 
 当前新增内容：
 [list]
@@ -34,4 +34,4 @@
 简体中文翻译者[url=https://steamcommunity.com/id/426875391/] Pudd1ng [/url]
 俄文翻译者 Aizen522
 
-制作：诸神黄昏：炼狱蚀光团队
+诸神黄昏：炼狱蚀光团队
