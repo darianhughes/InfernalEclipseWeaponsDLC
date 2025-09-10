@@ -1,4 +1,4 @@
-[h1]诸神黄昏：炼狱蚀光-武器DLC[/h1]
+[h1]诸神黄昏：炼狱蚀光武器DLC[/h1]
 [h3]一个[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]的武器DLC附加包[/h3]
 [b]可独立游玩，无需依赖主模组[/b]
 
@@ -17,15 +17,15 @@
 	[*] 2 件饰品
 [/list]
 
-强烈建议使用[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser [/url]查看新增物品的制作配方与获取方式。
+强烈建议使用[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser [/url]查看新增物品的制作配方与获取方式
 
 此模组也同时为[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929] Consolaria [/url]添加了联动内容
 
-如有任何问题，推荐加入[url=https://discord.gg/tc5nZdRvaU]官方Discord 服务器[/url]进行反馈 
+如有任何问题，推荐加入[url=https://discord.gg/tc5nZdRvaU]官方Discord服务器[/url]进行反馈
 
 同系列推荐：
 [list]
-	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus 的灾厄/瑟银平衡模组[/url]
 [/list]
 
