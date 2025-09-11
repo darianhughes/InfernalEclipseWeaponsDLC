@@ -19,7 +19,7 @@ It currently adds the following:
 
 It is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser[/url] to see how to obtain the new weapons.
 
-This mod also has combatability with Consolaria.
+This mod also has combatability with Consolaria & Secrets of the Shadows.
 
 If you have any issues please report them in the [url=https://discord.gg/tc5nZdRvaU] Discord server[/url]. 
 

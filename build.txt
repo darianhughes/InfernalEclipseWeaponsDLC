@@ -1,6 +1,6 @@
 displayName = Infernal Eclipse of Ragnarok: Weapon DLC
 author = Infernal Eclipse of Ragnarok Team
-version = 1.2
+version = 1.2.1
 modReferences = CalamityMod, ThoriumMod
 weakReferences = Luminance, Daybreak, SOTS
 hideCode = true
