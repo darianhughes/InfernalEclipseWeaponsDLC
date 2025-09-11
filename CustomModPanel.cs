@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Daybreak.Common.Features.ModPanel;
+using Daybreak.Common.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -283,19 +284,6 @@ namespace InfernalEclipseWeaponsDLC
         // Panel constants
         private const int BorderThickness = 2;
         
-        // Helper method to execute drawing operations with a shader
-        private static void DrawWithShader(SpriteBatch spriteBatch, Effect shader, Action drawOperations)
-        {
-            spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, 
-                DepthStencilState.None, RasterizerState.CullCounterClockwise, shader, Main.UIScaleMatrix);
-            
-            drawOperations();
-            
-            spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, 
-                DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.UIScaleMatrix);
-        }
         
         // Loads panel gradient shader on mod initialization
         public override void Load()
@@ -344,13 +332,17 @@ namespace InfernalEclipseWeaponsDLC
             panelHoverIntensity = MathHelper.Lerp(panelHoverIntensity, element.IsMouseHovering ? 1f : 0f, 0.15f);
             
             var panelRect = new Rectangle((int)dims.X, (int)dims.Y, (int)dims.Width, (int)dims.Height);
-            DrawWithShader(sb, panelShader, () =>
-            {
-                panelShader.Parameters["uTime"]?.SetValue(Main.GlobalTimeWrappedHourly);
-                panelShader.Parameters["uHoverIntensity"]?.SetValue(panelHoverIntensity);
-                
-                sb.Draw(TextureAssets.MagicPixel.Value, panelRect, Color.White);
-            });
+            
+            sb.End(out var ss);
+            sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, 
+                DepthStencilState.None, ss.RasterizerState, panelShader, Main.UIScaleMatrix);
+            
+            panelShader.Parameters["uTime"]?.SetValue(Main.GlobalTimeWrappedHourly);
+            panelShader.Parameters["uHoverIntensity"]?.SetValue(panelHoverIntensity);
+            
+            sb.Draw(TextureAssets.MagicPixel.Value, panelRect, Color.White);
+            
+            sb.Restart(ss);
             
             var borderColor = Color.Lerp(new Color(30, 25, 120), new Color(80, 25, 110), panelHoverIntensity * 0.5f);
             
