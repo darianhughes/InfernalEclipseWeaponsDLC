@@ -164,7 +164,7 @@ Items: {
 		DisplayName: AirPod 美眉
 		Tooltip:
 			'''
-			左键消耗灵感，发射一个 AirPod，命中后爆发声波
+			左键消耗灵感，发射一个AirPod，命中后爆发声波
 			AirPod 伤害随消耗弹药提升
 			右键发射一发霰弹，不提供咒音增幅
 			子弹受乐师重铸前缀与远程伤害加成影响
@@ -405,7 +405,7 @@ Projectiles: {
 
 Buffs: {
 	DefaultSummonTag: {
-		DisplayName: 默认召唤标记
+		DisplayName: 召唤标记
 		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.DefaultSummonTag.Description
 	}
 
