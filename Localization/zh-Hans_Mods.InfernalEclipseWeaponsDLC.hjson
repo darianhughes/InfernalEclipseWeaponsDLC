@@ -132,7 +132,7 @@ Items: {
 	}
 
 	ExecutionersSword: {
-		DisplayName: 刽子手之剑
+		DisplayName: 行刑者之剑
 		Tooltip:
 			'''
 			授权执行死刑
@@ -157,7 +157,7 @@ Items: {
 
 	ListoftheDamned: {
 		DisplayName: 诅咒者簿录
-		Tooltip: 发射 6 个灵魂，延迟后向前爆发，造成双倍伤害
+		Tooltip: 发射 6 个灵魂，短暂延迟后向前飞射，造成双倍伤害
 	}
 
 	AirPodShawty: {
@@ -194,7 +194,7 @@ Items: {
 
 	SandSlasher: {
 		DisplayName: 昔海之谣
-		Tooltip: 奏出弹跳的小型沙尘旋风
+		Tooltip: 奏出弹跳的小型沙龙卷
 	}
 
 	DeepseaTrident: {
@@ -293,7 +293,7 @@ Items: {
 		Tooltip:
 			'''
 			为你的拳击注入硫火能量，释放近距离高伤害连击  
-			“灾变！”
+			“灾祸！”
 			'''
 	}
 
@@ -318,100 +318,100 @@ Items: {
 }
 
 Projectiles: {
-	// TwoPathsPro.DisplayName: Two Paths
-	// BlackExplosion.DisplayName: Black Explosion
+	TwoPathsPro.DisplayName: 神冥歧径
+	BlackExplosion.DisplayName: 黑爆
 
 	Magic: {
-		// WhiteScythe.DisplayName: White Scythe
-		// HealingLightningArc.DisplayName: Healing Lightning Arc
+		WhiteScythe.DisplayName: 洁白之镰
+		HealingLightningArc.DisplayName: 治疗性电弧
 	}
 
-	// TwoPathsPro2.DisplayName: Two Paths
-	// TheParallellPro.DisplayName: The Parallell
-	// BellBalladEleum.DisplayName: Ballad of Bells Eleum
-	// BellBalladHavoc.DisplayName: Ballad of Bells Havoc
-	// BellBalladSunlight.DisplayName: Ballad of Bells Sunlight
-	// BellBalladSunlightLaser.DisplayName: Ballad of Bells Laser
-	// BellBalladEleumBolt.DisplayName: Ballad of Bells Frost Bolt
-	// BellBalladHavocSlash.DisplayName: Ballad of Bells Brimstone Slash
-	// SulfurSpirit.DisplayName: Sulfur Spirit
-	// DeepSeaDrawlPro.DisplayName: Deep Sea Drawl
-	// HomingPlankton.DisplayName: Homing Plankton
-	// DeathsWhisperPro.DisplayName: Death's Whisper
-	// BrimstoneHarpPro.DisplayName: Brimstone Harp Skull
-	// BirbSaxophonePro.DisplayName: Red Lightning Feather
-	// NecroticChorusPro.DisplayName: Necrotic Chorus
-	// NecroticChorusWisp.DisplayName: Necrotic Chorus Wisp
-	// DeusFlutePro.DisplayName: Deus Flute Pro
-	// DeusFluteStar.DisplayName: Deus Flute Star
-	// CorrodedCanePro.DisplayName: Corroded Cane
-	// CorrodedCaneShark.DisplayName: Sulphurous Sharkron
-	// OcramKnifeProSickle.DisplayName: Ocram Knife Pro Sickle
-	// OcramKnifeProBolt.DisplayName: Ocram Knife Pro Bolt
-	// OcramKnifePro.DisplayName: Ocram Knife Pro
-	// TheBlightProSickle.DisplayName: The Blight Pro Sickle
-	// TheBlightProServantLaser.DisplayName: The Blight Pro Servant Laser
-	// TheBlightProServant.DisplayName: The Blight Pro Servant
-	// TheBlightProScythe.DisplayName: The Blight Pro Scythe
-	// GrandThunderWhipProjectile.DisplayName: Grand Thunder Whip Projectile
-	// SulfurExplosionPro.DisplayName: Sulfur Explosion Pro
-	// HydrogenSulfideProj.DisplayName: Hydrogen Sulfide Proj
-	// LegacyProBolt.DisplayName: Legacy Pro Bolt
-	// LegacyProSickle.DisplayName: Legacy Pro Sickle
-	// MiniScourge.DisplayName: Mini Scourge
-	// DrawlEel.DisplayName: Drawl Eel
-	// DrawlIsopod.DisplayName: Drawl Isopod
-	// DrawlStarfish.DisplayName: Drawl Starfish
-	// DrawlStarfishShard.DisplayName: Drawl Starfish Shard
-	// OurSharknado.DisplayName: Our Sharknado
-	// DarkEnergyProj.DisplayName: Dark Energy Proj
-	// ExecutionersSwordPro.DisplayName: Executioners Sword Pro
-	// LightEnergyProj.DisplayName: Light Energy Proj
-	// LightSlashPro.DisplayName: Light Slash Pro
-	// CryonicSpearTip.DisplayName: Cryonic Spear Tip
-	// SuperShotgunStab.DisplayName: Super Shotgun Stab
-	// ExecutionersSwordSlashPro.DisplayName: Executioners Sword Slash Pro
-	// ExecutionersSwordLightEnergy.DisplayName: Executioners Sword Light Energy
-	// ExecutionersSwordDarkEnergy.DisplayName: Executioners Sword Dark Energy
-	// BloodShotFriendly.DisplayName: Blood Shot Friendly
-	// NukePro.DisplayName: Nuke Pro
-	// NukeMissile.DisplayName: Nuke Missile
-	// ListoftheDamnedSoul_Orange.DisplayName: List of the Damned Soul Orange
-	// ListoftheDamnedSoul_Cyan.DisplayName: List of the Damned Soul Cyan
-	// AirPod.DisplayName: AirPod
-	// AirPodNote.DisplayName: AirPod Note
-	// BouncingHungry.DisplayName: Bouncing Hungry
-	// HealingSoul.DisplayName: Healing Soul
-	// DamagingSoul.DisplayName: Damaging Soul
-	// ForeverHungryBlood.DisplayName: Forever Hungry Blood
-	// AcidBelcherPro.DisplayName: Acid Belcher Pro
-	// SandSlasherSandnado.DisplayName: Sand Slasher Sandnado
-	// SandSlasher_Projectile.DisplayName: Sand Slasher Projectile
-	// DeepseaTrident_Projectile.DisplayName: Deepsea Trident Projectile
-	// Nanodroid.DisplayName: Nanodroid
-	// NeonRipperPro.DisplayName: Neon Ripper Pro
-	// InfrariffProjectile.DisplayName: Infrariff Projectile
-	// InfrariffLaser.DisplayName: Infrariff Laser
-	// ColoredExplosion.DisplayName: Colored Explosion
-	// Misc.BardPulseRiffleShot.DisplayName: Bard Pulse Riffle Shot
-	// Staff_Projectile.DisplayName: Staff_ Projectile
-	// ArckaneStaffPro.DisplayName: Arckane Staff Pro
-	// MystickStaffPro.DisplayName: Mystick Staff Pro
-	// HealerBrimstoneBarrage.DisplayName: Healer Brimstone Barrage
-	// SupremeCataclysmFist.DisplayName: Supreme Cataclysm Fist
-	// SupremeCatastropheSlash.DisplayName: Supreme Catastrophe Slash
-	// SharknadoBolt.DisplayName: Sharknado Bolt
+	TwoPathsPro2.DisplayName: 神冥歧径
+	TheParallellPro.DisplayName: 平行音律
+	BellBalladEleum.DisplayName: 怜钟之歌
+	BellBalladHavoc.DisplayName: 乱钟之歌
+	BellBalladSunlight.DisplayName: 耀钟之歌
+	BellBalladSunlightLaser.DisplayName: 炽钟之歌
+	BellBalladEleumBolt.DisplayName: 霜钟之歌
+	BellBalladHavocSlash.DisplayName: 炎钟之歌
+	SulfurSpirit.DisplayName: 硫魂
+	DeepSeaDrawlPro.DisplayName: 深水腔调
+	HomingPlankton.DisplayName: 追踪浮游体
+	DeathsWhisperPro.DisplayName: 殁亡笛语
+	BrimstoneHarpPro.DisplayName: 硫焰琴骨
+	BirbSaxophonePro.DisplayName: 赤霆之羽
+	NecroticChorusPro.DisplayName: 死灵合唱团
+	NecroticChorusWisp.DisplayName: 亡歌幽焰
+	DeusFlutePro.DisplayName: 流星风笛
+	DeusFluteStar.DisplayName: 风笛流星
+	CorrodedCanePro.DisplayName: 酸朽藤杖
+	CorrodedCaneShark.DisplayName: 硫海鲨灵
+	OcramKnifeProSickle.DisplayName: 奥库瑞姆斩击
+	OcramKnifeProBolt.DisplayName: 奥库瑞姆飞弹
+	OcramKnifePro.DisplayName: 奥库瑞姆匕首
+	TheBlightProSickle.DisplayName: 枯萎斩击
+	TheBlightProServantLaser.DisplayName: 枯萎奴仆激光
+	TheBlightProServant.DisplayName: 枯萎奴仆
+	TheBlightProScythe.DisplayName: 枯萎之镰
+	GrandThunderWhipProjectile.DisplayName: 惊雷鞭
+	SulfurExplosionPro.DisplayName: 硫爆
+	HydrogenSulfideProj.DisplayName: 硫氢毒弹
+	LegacyProBolt.DisplayName: 奥库瑞姆咆哮飞弹
+	LegacyProSickle.DisplayName: 奥库瑞姆咆哮斩击
+	MiniScourge.DisplayName: 迷你灾虫
+	DrawlEel.DisplayName: 鳗鱼腔调
+	DrawlIsopod.DisplayName: 等足虫腔调
+	DrawlStarfish.DisplayName: 海星腔调
+	DrawlStarfishShard.DisplayName: 海星碎片
+	OurSharknado.DisplayName: 友方鲨龙卷
+	DarkEnergyProj.DisplayName: 暗能量
+	ExecutionersSwordPro.DisplayName: 行刑者之剑
+	LightEnergyProj.DisplayName: 光能
+	LightSlashPro.DisplayName: 光斩
+	CryonicSpearTip.DisplayName: 寒冰矛尖
+	SuperShotgunStab.DisplayName: 霰弹枪戳刺
+	ExecutionersSwordSlashPro.DisplayName: 行刑者之斩
+	ExecutionersSwordLightEnergy.DisplayName: 行刑者之剑光辉能量
+	ExecutionersSwordDarkEnergy.DisplayName: 行刑者之剑暗影能量
+	BloodShotFriendly.DisplayName: 血液射击
+	NukePro.DisplayName: 核打击
+	NukeMissile.DisplayName: 核弹头
+	ListoftheDamnedSoul_Orange.DisplayName: 橙色咒魂
+	ListoftheDamnedSoul_Cyan.DisplayName: 青色咒魂
+	AirPod.DisplayName: AirPod
+	AirPodNote.DisplayName: AirPod 音符
+	BouncingHungry.DisplayName: 弹跳饿鬼
+	HealingSoul.DisplayName: 治疗之魂
+	DamagingSoul.DisplayName: 伤害之魂
+	ForeverHungryBlood.DisplayName: 永恒之饥血滴
+	AcidBelcherPro.DisplayName: 酸液喷喉
+	SandSlasherSandnado.DisplayName: 昔海之谣沙龙卷
+	SandSlasher_Projectile.DisplayName: 昔海之音
+	DeepseaTrident_Projectile.DisplayName: 深海三叉戟
+	Nanodroid.DisplayName: 纳米机兵
+	NeonRipperPro.DisplayName: 霓虹裂镰
+	InfrariffProjectile.DisplayName: 红外电音
+	InfrariffLaser.DisplayName: 红外激光
+	ColoredExplosion.DisplayName: 绚光爆破
+	Misc.BardPulseRiffleShot.DisplayName: 吟游律动脉冲
+	Staff_Projectile.DisplayName: 魔法飞弹
+	ArckaneStaffPro.DisplayName: 奥能法杖
+	MystickStaffPro.DisplayName: 秘能法杖
+	HealerBrimstoneBarrage.DisplayName: 牧师硫火弹幕
+	SupremeCataclysmFist.DisplayName: 至尊灾祸之拳
+	SupremeCatastropheSlash.DisplayName: 至尊灾难之刃
+	SharknadoBolt.DisplayName: 鲨龙卷飞弹
 }
 
 Buffs: {
 	DefaultSummonTag: {
-		DisplayName: Default Summon Tag
-		// Description: Mods.InfernalEclipseWeaponsDLC.Buffs.DefaultSummonTag.Description
+		DisplayName: 默认召唤标记
+		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.DefaultSummonTag.Description
 	}
 
 	SwordStuckBuff: {
-		DisplayName: Sword Stuck Buff
-		// Description: Mods.InfernalEclipseWeaponsDLC.Buffs.SwordStuckBuff.Description
+		DisplayName: 剑刃贯体
+		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.SwordStuckBuff.Description
 	}
 
 	BloodRageBuff: {
