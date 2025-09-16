@@ -62,6 +62,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             isHealer = true;
         }
 
+        public override bool CanUseItem(Player player)
+        {
+            int lifeAfterUsing = player.statLife - (radiantLifeCost * 4);
+            return lifeAfterUsing > 0;
+        }
+
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             position += velocity * 3;

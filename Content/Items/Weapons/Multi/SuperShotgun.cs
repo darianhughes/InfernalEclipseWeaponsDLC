@@ -7,6 +7,7 @@ using ThoriumMod.Buffs;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro;
 using CalamityMod;
 using CalamityMod.Items;
+using Terraria.Audio;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 {
@@ -41,21 +42,24 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 
         public override bool CanUseItem(Player player)
         {
+
+            int meleeType = ModContent.ProjectileType<SuperShotgunStab>();
+
+            if (player.ownedProjectileCounts[meleeType] != 0) return false;
+
             if (player.altFunctionUse == 2) // right click
             {
                 // Just change visuals & shoot behavior
                 Item.noMelee = true;
                 Item.noUseGraphic = true;
                 Item.UseSound = SoundID.Item1;
-                Item.shoot = ModContent.ProjectileType<SuperShotgunStab>();
-                Item.useAmmo = 0;
+                Item.useAmmo = AmmoID.None;
             }
             else // left click
             {
                 Item.noMelee = false;
                 Item.noUseGraphic = false;
                 Item.UseSound = SoundID.Item36;
-                Item.shoot = ProjectileID.Bullet;
                 Item.useAmmo = AmmoID.Bullet;
             }
 
@@ -86,9 +90,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
                 int proj = Projectile.NewProjectile(source, position, velocity,
                     ModContent.ProjectileType<SuperShotgunStab>(), meleeDamage, meleeKB, player.whoAmI);
 
-                Main.projectile[proj].DamageType = DamageClass.Melee;
-                Main.projectile[proj].CritChance = meleeCrit;
-
+                var p = Main.projectile[proj];
+                p.DamageType = DamageClass.Melee;
+                p.CritChance = meleeCrit;
+                p.ai[0] = 1f; // tag as "alt stab"
                 return false;
             }
 

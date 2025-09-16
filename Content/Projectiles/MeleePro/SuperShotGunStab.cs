@@ -1,4 +1,5 @@
-﻿using CalamityMod;
+﻿using System;
+using CalamityMod;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,9 +17,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro
         {
             Projectile.width = 30;
             Projectile.height = 30;
-            Projectile.aiStyle = 19; // Shortsword behavior
+            //Projectile.aiStyle = 0;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 90;
+            Projectile.timeLeft = 30; // initial, we’ll manage it in AI
             Projectile.DamageType = DamageClass.Melee;
             Projectile.ownerHitCheck = true;
             Projectile.tileCollide = false;
@@ -29,35 +30,55 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
+
+            // Must be the alt stab we spawned, same item in hand, and animating
+            bool valid =
+                Projectile.ai[0] == 1f &&
+                player.HeldItem?.type == ModContent.ItemType<SuperShotgun>() &&
+                player.itemAnimation > 0;
+
+            if (!valid)
+            {
+                Projectile.Kill();
+                return;
+            }
+
+            // Keep alive only while the stab animation is playing
+            Projectile.timeLeft = 2;
+
             Vector2 playerCenter = player.RotatedRelativePoint(player.MountedCenter, true);
 
+            // Safe direction towards mouse
+            Vector2 dir = Main.MouseWorld - playerCenter;
+            if (dir.LengthSquared() < 1f)
+                dir = new Vector2(player.direction, 0f);
+            else
+                dir.Normalize();
+
+            // Compute progress safely
+            float animMax = Math.Max(1f, player.itemAnimationMax); // clamp
+            float half = animMax * 0.5f;
+            float anim = MathHelper.Clamp(player.itemAnimation, 0f, animMax);
+
+            float progress = anim < half ? (anim / half) : ((animMax - anim) / half);
+            progress = MathHelper.Clamp(progress, 0f, 1f);
+
+            float stabDistance = 50f;
+            Projectile.Center = playerCenter + dir * (stabDistance * progress);
+
+            Projectile.direction = dir.X >= 0f ? 1 : -1;
+            Projectile.spriteDirection = Projectile.direction;
             player.heldProj = Projectile.whoAmI;
             player.ChangeDir(Projectile.direction);
-            Projectile.direction = player.direction;
-            Projectile.spriteDirection = Projectile.direction;
 
-            // The direction of the stab
-            Vector2 stabDirection = Vector2.Normalize(Main.MouseWorld - playerCenter);
-            if (stabDirection.HasNaNs()) stabDirection = player.DirectionTo(Main.MouseWorld);
+            Projectile.rotation = dir.ToRotation() + MathHelper.Pi;
 
-            // Simulate animation-based stab movement
-            float halfDuration = player.itemAnimationMax / 2f;
-            float progress;
-            if (player.itemAnimation < halfDuration)
-                progress = player.itemAnimation / halfDuration;
-            else
-                progress = (player.itemAnimationMax - player.itemAnimation) / halfDuration;
-
-            float stabDistance = 50f; // Adjust reach
-            Vector2 stabOffset = stabDirection * (stabDistance * progress);
-
-            Projectile.Center = playerCenter + stabOffset;
-
-            Projectile.rotation = stabDirection.ToRotation() + MathHelper.ToRadians(180f); // or (float)(Math.PI * 3 / 4)
-            Projectile.timeLeft = 2; // Keeps it alive as long as player is stabbing
-
-            // Optional: Visualize with dust for debugging
-            // Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Fire);
+            // Absolute safety valve: if anything went bad, kill it
+            if (float.IsNaN(Projectile.position.X) || float.IsNaN(Projectile.position.Y) ||
+                float.IsInfinity(Projectile.position.X) || float.IsInfinity(Projectile.position.Y))
+            {
+                Projectile.Kill();
+            }
         }
 
         public override bool PreDraw(ref Color lightColor)
