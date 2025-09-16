@@ -1,5 +1,5 @@
 [h1]诸神黄昏：炼狱蚀光武器DLC[/h1]
-[h3]一个[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]的武器DLC附加包[/h3]
+[h3]一个[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]的武器附加包[/h3]
 [b]可独立游玩，无需依赖主模组[/b]
 
 本武器 DLC 旨在通过新增一系列全新、激动人心的物品，填补原版进程中的空白，同时作为[url=https://steamcommunity.com/workshop/filedetails/?id=3142064272]非官方吟游诗人和牧师武器[/url]模组的扩展
@@ -29,7 +29,14 @@
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus 的灾厄/瑟银平衡模组[/url]
 [/list]
 
-特别感谢 Feldy 和 TacoConKvass 在本模组开发中的大力支持，以及 Pil 提供的美术素材！
+如果你希望支持我们的开发团队，请参考[url=https://www.patreon.com/c/InfernalEclipseofRagnarokTeam]我们的Patreon页面[/url]
+
+特别感谢：
+[list]
+[*] Feldy 和 TacoConKvass 在本模组开发中的支持
+[*] [url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen [/url]为重镰和飞镰提供的代码支持
+[*] 以及 Pil 提供的美术素材
+[/list]
 
 简体中文翻译者[url=https://steamcommunity.com/id/426875391/] Pudd1ng [/url]
 俄文翻译者 Aizen522
