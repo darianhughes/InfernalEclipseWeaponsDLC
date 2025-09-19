@@ -27,7 +27,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Buffs
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-            if (npc.HasBuff<DefaultSummonTag>())
+            if (npc.HasBuff<DefaultSummonTag>() && projectile.IsMinionOrSentryRelated)
             {
                 modifiers.FlatBonusDamage += DefaultSummonTag.TagDamage * ProjectileID.Sets.SummonTagDamageMultiplier[projectile.type];
             }
