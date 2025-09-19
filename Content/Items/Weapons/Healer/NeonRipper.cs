@@ -81,7 +81,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                         position,
                         throwVel,
                         type,
-                        damage - (int)(damage * 0.2),
+                        damage,
                         knockback,
                         player.whoAmI,
                         (Main.rand.Next(2, 5) + 1) * 0.1f, // ai[0]
