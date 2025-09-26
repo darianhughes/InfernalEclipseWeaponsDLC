@@ -161,11 +161,11 @@ Items: {
 	}
 
 	AirPodShawty: {
-		DisplayName: AirPod 美眉
+		DisplayName: AirPod美眉
 		Tooltip:
 			'''
 			左键消耗灵感，发射一个AirPod，命中后爆发声波
-			AirPod 伤害随消耗弹药提升
+			AirPod伤害随消耗弹药提升
 			右键发射一发霰弹，不提供咒音增幅
 			子弹受乐师重铸前缀与远程伤害加成影响
 			“噢baby情话多说一点，想我就多看一眼~”
@@ -378,7 +378,7 @@ Projectiles: {
 	ListoftheDamnedSoul_Orange.DisplayName: 橙色咒魂
 	ListoftheDamnedSoul_Cyan.DisplayName: 青色咒魂
 	AirPod.DisplayName: AirPod
-	AirPodNote.DisplayName: AirPod 音符
+	AirPodNote.DisplayName: AirPod音符
 	BouncingHungry.DisplayName: 弹跳饿鬼
 	HealingSoul.DisplayName: 治疗之魂
 	DamagingSoul.DisplayName: 伤害之魂
