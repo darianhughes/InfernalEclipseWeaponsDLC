@@ -25,6 +25,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         const int shard2chance = 20;
 
         public int missileIndex = 10;
+        public int CataclysmFistShotCount = 0;
 
         public override void ResetEffects()
         {

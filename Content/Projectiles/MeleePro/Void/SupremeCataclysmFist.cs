@@ -42,6 +42,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void
             Projectile.scale = 0.5f;
         }
 
+        public override void OnSpawn(IEntitySource source)
+        {
+            if (Projectile.ai[2] == 1f)
+            {
+                Projectile.timeLeft = 75;
+            }
+        }
+
         public override void AI()
         {
             // Keep flying exactly as fired; no velocity changes on purpose.

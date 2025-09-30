@@ -327,6 +327,7 @@ Items: {
 		Tooltip:
 			'''
 			Empowers you punches with brimstone energy for short-range high-damage barrages
+			Has a special effect when the Catastrophic Longblade is in the next slot next to this item
 			"'Cataclysm!'"
 			'''
 	}
@@ -336,18 +337,27 @@ Items: {
 		Tooltip:
 			'''
 			Empowers you punches with brimstone energy for short-range high-damage barrages
+			Has a special effect when the Catastrophic Longblade is in the next slot next to this item
 			"'Cataclysm!'"
 			'''
 	}
 
 	CatastrophicLongbladeVoid: {
 		DisplayName: Catastrophic Longblade
-		Tooltip: Shoots a catastrophic brimstone energy beam forward
+		Tooltip:
+			'''
+			Shoots a catastrophic brimstone energy beam forward
+			Has a special effect when the Cataclysmic Gauntlet is in the next slot next to this item
+			'''
 	}
 
 	CatastrophicLongblade: {
 		DisplayName: Catastrophic Longblade
-		Tooltip: Shoots a catastrophic brimstone energy beam forward
+		Tooltip:
+			'''
+			Shoots a catastrophic brimstone energy beam forward
+			Has a special effect when the Cataclysmic Gauntlet is in the next slot next to this item
+			'''
 	}
 }
 

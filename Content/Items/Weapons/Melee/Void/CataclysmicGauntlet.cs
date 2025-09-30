@@ -9,6 +9,9 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod;
+using InfernalEclipseWeaponsDLC.Core;
+using InfernalEclipseWeaponsDLC.Core.NewFolder;
+using Terraria.Audio;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
 {
@@ -46,8 +49,26 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float spawnPos = Main.rand.Next(0, 18);
-            Projectile.NewProjectile(source, position + new Vector2(0, spawnPos), velocity, type, damage, knockback, player.whoAmI, 0f, Main.rand.Next(0, 2));
+            bool nextTo = InventoryHelperMethods.HasNeighborItem(player, Item.type, ModContent.ItemType<CatastrophicLongblade>());
+            if (nextTo)
+            {
+                float spawnPos = Main.rand.Next(0, 18);
+                Projectile.NewProjectile(source, position + new Vector2(0, spawnPos), velocity - (velocity / 20), type, damage, knockback, player.whoAmI, 0f, Main.rand.Next(0, 2), 1f);
+                
+                InfernalWeaponsPlayer mp = player.GetModPlayer<InfernalWeaponsPlayer>();
+                if (mp.CataclysmFistShotCount >= 15)
+                {
+                    SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Item/ExobladeBeamSlash"), player.position);
+                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<SupremeCatastropheSlash>(), 700, 9f, player.whoAmI, 0f, Main.rand.Next(0, 2));
+                    mp.CataclysmFistShotCount = 0;
+                }
+                mp.CataclysmFistShotCount++;
+            }
+            else
+            {
+                float spawnPos = Main.rand.Next(0, 18);
+                Projectile.NewProjectile(source, position + new Vector2(0, spawnPos), velocity, type, damage, knockback, player.whoAmI, 0f, Main.rand.Next(0, 2));
+            }
             return false;
         }
 

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void
@@ -37,6 +35,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void
             Projectile.Opacity = 1f;
 
             Projectile.DamageType = ModLoader.TryGetMod("SOTS", out Mod sots) ? sots.Find<DamageClass>("VoidMelee") : ModContent.GetInstance<TrueMeleeDamageClass>();
+        }
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            if (Projectile.ai[2] == 1f)
+            {
+                Projectile.timeLeft = 75;
+            }
         }
 
         public override void AI()
