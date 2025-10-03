@@ -30,7 +30,7 @@ Items: {
 
 	BirbSaxophone: {
 		DisplayName: 啼羽萨克斯
-		Tooltip: 召唤癫痫鸟之力！
+		Tooltip: “召唤癫痫鸟之力！”
 	}
 
 	DeepSeaDrawl: {
