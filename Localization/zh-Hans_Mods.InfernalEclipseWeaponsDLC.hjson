@@ -1,7 +1,12 @@
 Items: {
 	TwoPaths: {
 		DisplayName: 神冥歧径
-		Tooltip: ""
+		Tooltip:
+			'''
+			直接击中会获得4层灵魂精华
+			左键驱动镰刀造成大范围伤害
+			右键消耗魔力，召唤洁白之镰斩击敌人
+			'''
 	}
 
 	TheParallel: {
@@ -26,7 +31,11 @@ Items: {
 
 	DeepSeaDrawl: {
 		DisplayName: 深水腔调
-		Tooltip: ""
+		Tooltip:
+			'''
+			往日力量的残躯，如今零散于世间各处
+			在那环绕你的酸液气泡中，你仿佛一瞬间看见了微光
+			'''
 	}
 
 	DeathsWhisper: {
@@ -98,17 +107,32 @@ Items: {
 
 	DeepSeaDrawlShard1: {
 		DisplayName: 吹嘴残片
-		Tooltip: ""
+		Tooltip:
+			'''
+			原版腔调的吹口
+			用冻曾经讲述过他与蜥蜴人部族的邂逅
+			或许他知道些什么
+			'''
 	}
 
 	DeepSeaDrawlShard2: {
 		DisplayName: 管口残片
-		Tooltip: ""
+		Tooltip:
+			'''
+			原版腔调的管口
+			为了防止他人获取这股力量，吹口被封印在地牢之中
+			据说开启它的钥匙被抛入了幽蓝的深渊
+			'''
 	}
 
 	DeepSeaDrawlShard3: {
 		DisplayName: 管体残片
-		Tooltip: ""
+		Tooltip:
+			'''
+			原版腔调的管体
+			一座灵魂的宏伟熔炉将成为恢复其力量的最后一笔
+			快些吧，潮汐即将因你的召唤而汹涌
+			'''
 	}
 
 	Legacy: {
@@ -135,8 +159,14 @@ Items: {
 		DisplayName: 行刑者之剑
 		Tooltip:
 			'''
+			左键挥动长剑，命中时回复5点生命值
+			右键投掷长剑，将其嵌入敌人之中
+			长剑处于嵌入状态时会释放出光暗能量
+			光辉能量会追踪附近的友方，并治疗等同于额外治疗量的生命值
+			暗影能量会追踪附近的敌人，造成伤害
+			一次只能投掷一把长剑
 			授权执行死刑
-			'没收...并处以极刑！'
+			“没收...并处以极刑！”
 			'''
 	}
 
@@ -219,6 +249,7 @@ Items: {
 		DisplayName: 霓虹裂镰
 		Tooltip:
 			'''
+			直接击中会获得3层灵魂精华
 			攻击敌人会释放带电的纳米机器人
 			右键投掷镰刀，它会以弧线轨迹返回
 			'''
