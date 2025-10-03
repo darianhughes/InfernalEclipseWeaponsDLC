@@ -15,7 +15,11 @@ Items: {
 	}
 
 	SuperShotgun: {
-		Tooltip: “怎么？没见过带刺刀的霰弹枪？”
+		Tooltip:
+			'''
+			右键使用刺刀突刺，造成近战伤害
+			“怎么？没见过带刺刀的霰弹枪？”
+			'''
 		DisplayName: 刺刃霰弹枪
 	}
 
