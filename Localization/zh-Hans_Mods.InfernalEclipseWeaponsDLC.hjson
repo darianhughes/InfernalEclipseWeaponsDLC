@@ -228,7 +228,7 @@ Items: {
 
 	SandSlasher: {
 		DisplayName: 昔海之谣
-		Tooltip: 奏出弹跳的小型沙龙卷
+		Tooltip: 反弹时演奏出小型沙龙卷
 	}
 
 	DeepseaTrident: {
