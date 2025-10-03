@@ -83,7 +83,7 @@ Items: {
 
 	DukeSynth: {
 		DisplayName: 病毒智慧律动键盘
-		Tooltip: 它终将现世，以节拍感染众生！
+		Tooltip: “它终将现世，以节拍感染众生！”
 	}
 
 	SearingSpearTip: {
