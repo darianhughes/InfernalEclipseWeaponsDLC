@@ -30,12 +30,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 
         public override void SetBardDefaults()
         {
-            Item.damage = 150;
+            Item.damage = 125;
             Item.DamageType = ModContent.GetInstance<BardDamage>();
             Item.width = 48;
             Item.height = 36;
-            Item.useTime = 40;
-            Item.useAnimation = 40;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 6f;
             Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
@@ -63,6 +63,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
             cost = (player.altFunctionUse == 2) ? 0 : 4;
         }
 
+        private int shotsThisAnimation = 0;
+
         public override void ModifyEmpowermentPool(Player player, Player target, EmpowermentPool empPool)
         {
             // Only allow empowerments on left-click
@@ -78,39 +80,50 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
         }
 
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source,
-            Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+    Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 muzzleOffset = Vector2.Normalize(velocity) * 64f;
 
             if (player.altFunctionUse == 2)
             {
-                // Right-click = shotgun spread, scale with ranged instead of bard
+                // Right-click = spread
                 int numberProjectiles = 6 + Main.rand.Next(2);
-
-                // Take the item’s base damage and apply player’s ranged bonuses
                 int rangedDamage = (int)player.GetTotalDamage(DamageClass.Ranged).ApplyTo(Item.damage);
                 float rangedKnockback = player.GetTotalKnockback(DamageClass.Ranged).ApplyTo(Item.knockBack);
 
                 for (int i = 0; i < numberProjectiles; i++)
                 {
                     Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(12)) * 0.9f;
-
                     int proj = Projectile.NewProjectile(source, player.Center + muzzleOffset,
                         perturbedSpeed, type, rangedDamage, rangedKnockback, player.whoAmI);
-
                     Main.projectile[proj].DamageType = DamageClass.Ranged;
                 }
-
-                return false; // don't fire bard note
             }
             else
             {
-                // Left-click = normal bard note
+                // Left-click
                 Projectile.NewProjectile(source, player.Center + muzzleOffset, velocity * 2f,
                     ModContent.ProjectileType<AirPod>(), damage, knockback, player.whoAmI);
-
-                return false;
             }
+
+            // Dynamic useTime changes
+            shotsThisAnimation++;
+
+            if (shotsThisAnimation == 1 || shotsThisAnimation == 0)
+            {
+                // After first shot → slow down for “break”
+                Item.useTime = Item.useTime * 4;          // 10 → 40
+                Item.useAnimation = Item.useAnimation * 4; // 10 → 40
+            }
+            else if (shotsThisAnimation == 2)
+            {
+                // After second shot → reset to fast for next cycle
+                Item.useTime = Item.useTime / 4;
+                Item.useAnimation = Item.useAnimation / 4;
+                shotsThisAnimation = 0;
+            }
+
+            return false;
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-12.5f, 3f);
