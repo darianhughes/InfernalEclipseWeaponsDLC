@@ -198,6 +198,7 @@ Items: {
 		DisplayName: AirPod美眉
 		Tooltip:
 			'''
+			可快速连发两次，然后需要重新装填
 			左键消耗灵感，发射一个AirPod，命中后爆发声波
 			AirPod伤害随消耗弹药提升
 			右键发射一发霰弹，不提供咒音增幅
