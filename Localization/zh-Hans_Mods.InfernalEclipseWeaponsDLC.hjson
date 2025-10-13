@@ -1,7 +1,12 @@
 Items: {
 	TwoPaths: {
 		DisplayName: 神冥歧径
-		Tooltip: ""
+		Tooltip:
+			'''
+			直接击中会获得4层灵魂精华
+			左键驱动镰刀造成大范围伤害
+			右键消耗魔力，召唤洁白之镰斩击敌人
+			'''
 	}
 
 	TheParallel: {
@@ -10,7 +15,11 @@ Items: {
 	}
 
 	SuperShotgun: {
-		Tooltip: “怎么？没见过带刺刀的霰弹枪？”
+		Tooltip:
+			'''
+			右键使用刺刀突刺，造成近战伤害
+			“怎么？没见过带刺刀的霰弹枪？”
+			'''
 		DisplayName: 刺刃霰弹枪
 	}
 
@@ -21,12 +30,16 @@ Items: {
 
 	BirbSaxophone: {
 		DisplayName: 啼羽萨克斯
-		Tooltip: 召唤癫痫鸟之力！
+		Tooltip: “召唤癫痫鸟之力！”
 	}
 
 	DeepSeaDrawl: {
 		DisplayName: 深水腔调
-		Tooltip: ""
+		Tooltip:
+			'''
+			往日力量的残躯，如今零散于世间各处
+			在那环绕你的酸液气泡中，你仿佛一瞬间看见了微光
+			'''
 	}
 
 	DeathsWhisper: {
@@ -83,7 +96,7 @@ Items: {
 
 	DukeSynth: {
 		DisplayName: 病毒智慧律动键盘
-		Tooltip: 它终将现世，以节拍感染众生！
+		Tooltip: “它终将现世，以节拍感染众生！”
 	}
 
 	SearingSpearTip: {
@@ -98,17 +111,32 @@ Items: {
 
 	DeepSeaDrawlShard1: {
 		DisplayName: 吹嘴残片
-		Tooltip: ""
+		Tooltip:
+			'''
+			原版腔调的吹口
+			永冻曾经讲述过他与蜥蜴人部族的邂逅
+			或许他知道些什么
+			'''
 	}
 
 	DeepSeaDrawlShard2: {
 		DisplayName: 管口残片
-		Tooltip: ""
+		Tooltip:
+			'''
+			原版腔调的管口
+			为了防止他人获取这股力量，吹口被封印在地牢之中
+			据说开启它的钥匙被抛入了幽蓝的深渊
+			'''
 	}
 
 	DeepSeaDrawlShard3: {
 		DisplayName: 管体残片
-		Tooltip: ""
+		Tooltip:
+			'''
+			原版腔调的管体
+			一座宏伟的灵魂熔炉将成为恢复其力量的最后一笔
+			快些吧，潮汐即将因你的召唤而汹涌
+			'''
 	}
 
 	Legacy: {
@@ -121,8 +149,8 @@ Items: {
 		Tooltip:
 			'''
 			召唤鲨龙卷，将海洋残骸投向敌人
-			     	场上同时仅可存在一个鲨鱼龙卷
-			     	右键可释放台风攻击，消耗2点灵感
+			场上同时仅可存在一个鲨龙卷
+			右键可释放台风攻击，消耗2点灵感
 			'''
 	}
 
@@ -135,8 +163,14 @@ Items: {
 		DisplayName: 行刑者之剑
 		Tooltip:
 			'''
+			左键挥动长剑，命中时回复5点生命值
+			右键投掷长剑，将其嵌入敌人之中
+			长剑处于嵌入状态时会释放出光暗能量
+			光辉能量会追踪附近的友方，并治疗等同于额外治疗量的生命值
+			暗影能量会追踪附近的敌人，造成伤害
+			一次只能投掷一把长剑
 			授权执行死刑
-			'没收...并处以极刑！'
+			“没收...并处以极刑！”
 			'''
 	}
 
@@ -144,9 +178,9 @@ Items: {
 		DisplayName: 血铸屠夫铳
 		Tooltip:
 			'''
-			发射散射子弹与一枚带轻微追踪效果的血之弹
+			发射散射子弹与一枚带轻微追踪效果的血弹
 			右键消耗50点生命，进入持续10秒的血怒状态
-			血怒状态下血铸枪伤害提高25%，血弹命中时会施加血液沸腾减益
+			血怒状态下血铸枪伤害提高25%，且血弹命中时会施加血液沸腾减益
 			'''
 	}
 
@@ -157,13 +191,14 @@ Items: {
 
 	ListoftheDamned: {
 		DisplayName: 诅咒者簿录
-		Tooltip: 发射 6 个灵魂，短暂延迟后向前飞射，造成双倍伤害
+		Tooltip: 发射6个灵魂，短暂延迟后向前飞射，造成双倍伤害
 	}
 
 	AirPodShawty: {
 		DisplayName: AirPod美眉
 		Tooltip:
 			'''
+			可快速连发两次，然后需要重新装填
 			左键消耗灵感，发射一个AirPod，命中后爆发声波
 			AirPod伤害随消耗弹药提升
 			右键发射一发霰弹，不提供咒音增幅
@@ -194,7 +229,7 @@ Items: {
 
 	SandSlasher: {
 		DisplayName: 昔海之谣
-		Tooltip: 奏出弹跳的小型沙龙卷
+		Tooltip: 反弹时演奏出小型沙龙卷
 	}
 
 	DeepseaTrident: {
@@ -219,6 +254,7 @@ Items: {
 		DisplayName: 霓虹裂镰
 		Tooltip:
 			'''
+			直接击中会获得3层灵魂精华
 			攻击敌人会释放带电的纳米机器人
 			右键投掷镰刀，它会以弧线轨迹返回
 			'''
@@ -291,7 +327,8 @@ Items: {
 		DisplayName: 灾祸拳套
 		Tooltip:
 			'''
-			为你的拳击注入硫火能量，释放近距离高伤害连击  
+			硫火之力灌注双拳，释放近距离高伤害连击
+			当灾难长刃在相邻的快捷栏内时，可触发特殊效果 
 			“灾祸！”
 			'''
 	}
@@ -300,25 +337,34 @@ Items: {
 		DisplayName: 灾祸拳套
 		Tooltip:
 			'''
-			为你的拳击注入硫火能量，释放近距离高伤害连击  
+			硫火之力灌注双拳，释放近距离高伤害连击
+			当灾难长刃在相邻的快捷栏内时，可触发特殊效果
 			“灾祸！”
 			'''
 	}
 
 	CatastrophicLongbladeVoid: {
 		DisplayName: 灾难长刃
-		Tooltip: 向前射出灾劫般的硫火能量光束
+		Tooltip: 
+			'''
+			当灾祸拳套在相邻的快捷栏内时，可触发特殊效果
+			向前斩出宛若浩劫的硫火刃光
+			'''
 	}
 
 	CatastrophicLongblade: {
 		DisplayName: 灾难长刃
-		Tooltip: 向前射出灾劫般的硫火能量光束
+		Tooltip:
+			'''
+			当灾祸拳套在相邻的快捷栏内时，可触发特殊效果
+			向前斩出宛若浩劫的硫火刃光
+			'''
 	}
 }
 
 Projectiles: {
 	TwoPathsPro.DisplayName: 神冥歧径
-	BlackExplosion.DisplayName: 黑爆
+	BlackExplosion.DisplayName: 暗黑爆破
 
 	Magic: {
 		WhiteScythe.DisplayName: 洁白之镰
@@ -424,7 +470,7 @@ ItemTooltip: {
 	DuesFluteLore2: 然而，祭坛却作出了意想不到的反应……两道光辉相互碰撞，直冲苍穹，在头顶撕开一条裂隙。
 	DuesFluteLore3: 异界之物从裂隙中涌出。在他们惊叹之际，星辰的仆从已经迎面冲来。
 	UniversalLore1: 柯斯的最后一击消散了，招数已尽，败局已定。但是蚀光会拒绝落败。
-	UniversalLore2: 榨干灵魂中仅存的余力，他召唤出了真正的嗜神凶灵——神明吞噬者。
+	UniversalLore2: 榨干灵魂中仅存的余力，他召唤出了真正的弑神凶灵——神明吞噬者。
 	ParallelLore1:
 		'''
 		正如他所料，他们击败了风暴编织者。
@@ -437,13 +483,13 @@ ItemTooltip: {
 		'''
 	TwoSideLore1:
 		'''
-		他们征服了诸神黄昏。
-		他们瓦解了蚀光会。
+		祂征服了诸神黄昏。
+		祂瓦解了蚀光会。
 		'''
 	TwoSideLore2:
 		'''
-		他们挺过了史莱姆季风。 
-		当他们立于无穷的边缘，
+		祂挺过了史莱姆季风。 
+		当祂立于无穷的边缘，
 		仁问：“你将行何路？”
 		'''
 	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲

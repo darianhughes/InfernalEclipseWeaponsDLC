@@ -198,6 +198,7 @@ Items: {
 		DisplayName: AirPod Shawty
 		Tooltip:
 			'''
+			Can fire 2 shots quickly before needing to reload
 			Left click to consume inspiration and fire an AirPod that bursts into sound on hit
 			AirPod damage is increased with the ammo consumed
 			Right click to fire a buckshot of bullets from your ammo, not granting empowerments
