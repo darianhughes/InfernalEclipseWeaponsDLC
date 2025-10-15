@@ -12,10 +12,10 @@
 	    <HintPath>..\ModAssemblies\CalamityMod_v2.0.5.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Daybreak">
-	    <HintPath>..\ModAssemblies\Daybreak_v1.6.1.dll</HintPath>
+	    <HintPath>..\ModAssemblies\Daybreak_v1.6.2.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Luminance">
-	    <HintPath>..\ModAssemblies\Luminance_v1.0.9.dll</HintPath>
+	    <HintPath>..\ModAssemblies\Luminance_v1.0.12.dll</HintPath>
 	  </Reference>
 	  <Reference Include="SOTS">
 	    <HintPath>..\ModAssemblies\SOTS_v0.25.0.4.dll</HintPath>
