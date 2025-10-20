@@ -2,7 +2,7 @@
 [h3]一个[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]的武器附加包[/h3]
 [b]可独立游玩，无需依赖主模组[/b]
 
-本武器 DLC 旨在通过新增一系列全新、激动人心的物品，填补原版进程中的空白，同时作为[url=https://steamcommunity.com/workshop/filedetails/?id=3142064272]非官方吟游诗人和牧师武器[/url]模组的扩展
+本武器 DLC 旨在通过新增一系列全新、激动人心的物品，填补原版进程中的空白，同时作为[url=https://steamcommunity.com/workshop/filedetails/?id=3142064272]非官方灾厄吟游诗人&牧师武器[/url]模组的扩展
 
 当前新增内容：
 [list]
@@ -19,26 +19,31 @@
 
 强烈建议使用[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser [/url]查看新增物品的制作配方与获取方式
 
-此模组也同时为[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929] Consolaria [/url]添加了联动内容
+同时，也建议您使用[url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/zh] 诸神黄昏：炼狱蚀光官方中文Wiki [/url]来查看相关信息
 
-如有任何问题，推荐加入[url=https://discord.gg/tc5nZdRvaU]官方Discord服务器[/url]进行反馈
+此模组也同时为[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929] Consolaria [/url]与[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914] 暗影奥秘 [/url]模组添加了兼容内容
+
+如有任何问题，推荐加入[url=https://discord.gg/tc5nZdRvaU] 官方Discord服务器 [/url]进行反馈
+
+如果汉化出现错漏，推荐您订阅[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3588408051] 诸神黄昏：炼狱蚀光-汉化补丁[/url]，若问题仍未解决，请在汉化补丁评论区反馈
 
 同系列推荐：
 [list]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3535746309] 跨模组投手融合 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus 的灾厄/瑟银平衡模组[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3557455275&searchtext=Homeward+Ragnaork] 旅人黄昏[/url]，诸神黄昏：炼狱蚀光的官方旅人归途兼容拓展包
 [/list]
 
-如果你希望支持我们的开发团队，请参考[url=https://www.patreon.com/c/InfernalEclipseofRagnarokTeam]我们的Patreon页面[/url]
+如果你希望支持我们的开发团队，请参考[url=https://www.patreon.com/c/InfernalEclipseofRagnarokTeam] 我们的Patreon页面 [/url]
 
 特别感谢：
 [list]
 [*] Feldy 和 TacoConKvass 在本模组开发中的支持
 [*] [url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen [/url]为重镰和飞镰提供的代码支持
 [*] 以及 Pil 提供的美术素材
+[*] 简体中文翻译者[url=https://steamcommunity.com/id/426875391/] Pudd1ng [/url]
+[*] 俄文翻译者 Aizen522
 [/list]
-
-简体中文翻译者[url=https://steamcommunity.com/id/426875391/] Pudd1ng [/url]
-俄文翻译者 Aizen522
 
 诸神黄昏：炼狱蚀光团队
