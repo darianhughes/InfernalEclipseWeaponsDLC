@@ -17,6 +17,7 @@ using ThoriumMod.Utilities;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityMod.CustomRecipes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 {
@@ -38,9 +39,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.value = Item.sellPrice(gold: 3);
 
             Item.damage = 10;
-            Item.DamageType = ThoriumDamageBase<HealerToolDamageHybrid>.Instance;
+            Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Item.noMelee = true;
-            //Item.mana = 1;
+            Item.mana = 3;
+            radiantLifeCost = 3;
             Item.damage = 33;
 
             Item.useTime = 20;
@@ -62,8 +64,26 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             CalamityGlobalItem modItem = Item.Calamity();
             modItem.UsesCharge = true;
             modItem.MaxCharge = 50f;
-            modItem.ChargePerUse = 0.07f;
+            modItem.ChargePerUse = 0.04f;
         }
+
+        public override bool CanUseItem(Player player)
+        {
+            // Handle right-click (alt function)
+            if (player.altFunctionUse == 2)
+            {
+                // Right-click = heal arc no Radiant cost
+                radiantLifeCost = 0;
+            }
+            else
+            {
+                // Left-click = attack arc normal cost
+                radiantLifeCost = 3;
+            }
+
+            return base.CanUseItem(player);
+        }
+
 
         public override bool AltFunctionUse(Player player) => true;
 
@@ -76,13 +96,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.altFunctionUse != 2)
-            {
-                player.Hurt(new Player.HurtInfo() { Damage = 3, DamageSource = new PlayerDeathReason() { SourceItem = Item } });
-                player.immune = false;
-            }
+
             Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-            projectile.DamageType = ThoriumDamageBase<HealerToolDamageHybrid>.Instance;
+            projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             return false;
         }
 
@@ -133,8 +149,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         public override void SetDefaults()
         {
             base.SetDefaults();
+            Projectile.damage = 0;
             Projectile.friendly = false;
-            Projectile.hostile = true;
+            Projectile.hostile = false;
         }
 
         public override void AI()

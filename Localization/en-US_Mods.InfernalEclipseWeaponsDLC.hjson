@@ -285,8 +285,8 @@ Items: {
 		DisplayName: Defibrillanator
 		Tooltip:
 			'''
-			Shoots overcharged bolts of lightning foward
-			Right click to shoot healing bolts
+			Shoots overcharged bolts of homing lightning foward
+			Right click to shoot healing bolts, consuming just mana
 			'''
 	}
 
