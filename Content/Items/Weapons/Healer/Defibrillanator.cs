@@ -215,7 +215,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 {
                     if (Projectile.Hitbox.Intersects(p.Hitbox))
                     {
-                        HealTeammateThorium(owner, p, baseHeal: 3); // give some healing
+                        HealTeammateThorium(owner, p, baseHeal: 5); // give some healing
                         Projectile.Kill(); // consume projectile after heal
                         break;
                     }

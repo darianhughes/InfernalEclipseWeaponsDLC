@@ -360,6 +360,16 @@ Items: {
 			向前斩出宛若浩劫的硫火刃光
 			'''
 	}
+
+	BarrenGarden: {
+		// DisplayName: Barren Garden
+		/* Tooltip:
+			'''
+			Left click to fire a spread of homing, piercing and healing petals
+			Right click to summon a large frozen lotus that will fire alternating damaging and healing energies
+			Only one frozen lotus may be active at a time and they last for 30 seconds
+			''' */
+	}
 }
 
 Projectiles: {
@@ -446,6 +456,10 @@ Projectiles: {
 	SupremeCataclysmFist.DisplayName: 至尊灾祸之拳
 	SupremeCatastropheSlash.DisplayName: 至尊灾难之刃
 	SharknadoBolt.DisplayName: 鲨龙卷飞弹
+	// BarrenGardenHealingPro.DisplayName: Barren Garden Healing Pro
+	// BarrenGardenLotus.DisplayName: Barren Garden Lotus
+	// BarrenGardenPro.DisplayName: Barren Garden Pro
+	// BarrenGardenProHoming.DisplayName: Barren Garden Pro Homing
 }
 
 Buffs: {

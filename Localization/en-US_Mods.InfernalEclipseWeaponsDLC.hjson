@@ -287,6 +287,7 @@ Items: {
 			'''
 			Shoots overcharged bolts of homing lightning foward
 			Right click to shoot healing bolts, consuming just mana
+			These bolts heal 5 life + bonus healing
 			'''
 	}
 
@@ -358,6 +359,16 @@ Items: {
 			'''
 			Shoots a catastrophic brimstone energy beam forward
 			Has a special effect when the Cataclysmic Gauntlet is in the next slot next to this item
+			'''
+	}
+
+	BarrenGarden: {
+		DisplayName: Barren Garden
+		Tooltip:
+			'''
+			Left click to fire a spread of homing, piercing and healing petals
+			Right click to summon a large frozen lotus that will fire alternating damaging and healing energies
+			Only one frozen lotus may be active at a time and they last for 30 seconds
 			'''
 	}
 }
@@ -446,6 +457,10 @@ Projectiles: {
 	SupremeCataclysmFist.DisplayName: Supreme Cataclysm Fist
 	SupremeCatastropheSlash.DisplayName: Supreme Catastrophe Slash
 	SharknadoBolt.DisplayName: Sharknado Bolt
+	BarrenGardenHealingPro.DisplayName: Barren Garden Healing Pro
+	BarrenGardenLotus.DisplayName: Barren Garden Lotus
+	BarrenGardenPro.DisplayName: Barren Garden Pro
+	BarrenGardenProHoming.DisplayName: Barren Garden Pro Homing
 }
 
 Buffs: {

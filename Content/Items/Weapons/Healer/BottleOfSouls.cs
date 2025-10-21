@@ -42,7 +42,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             healType = HealType.Ally;
             healAmount = 0;
             healDisplay = true;
-            isHealer = true;
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
