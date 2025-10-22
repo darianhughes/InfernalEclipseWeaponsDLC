@@ -59,7 +59,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             isHealer = true;
             healDisplay = true;
-            healAmount = 3;
+            healAmount = 5;
+            healType = HealType.Ally;
 
             CalamityGlobalItem modItem = Item.Calamity();
             modItem.UsesCharge = true;
@@ -156,73 +157,100 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override void AI()
         {
+            Player owner = Main.player[Projectile.owner];
+
+            // --- Dust + light ---
+            if (Main.rand.NextBool(3))
+            {
+                Dust.NewDustPerfect(
+                    Projectile.Center,
+                    DustID.Torch,
+                    Projectile.velocity * -0.25f,
+                    150,
+                    Color.Pink,
+                    1.2f
+                ).noGravity = true;
+            }
+            Lighting.AddLight(Projectile.Center, 1.0f, 0.85f, 0.4f);
+
+            // --- One-time setup ---
             if (Projectile.localAI[0] == 0f)
             {
                 AdjustMagnitude(ref Projectile.velocity);
                 Projectile.localAI[0] = 1f;
             }
 
-            Vector2 arc = Vector2.Zero;
-            float distance = 10f;
-            bool found = false;
+            // --- Find teammate target ---
             Player target = null;
-            bool flag2 = false;
-            foreach (Player player in Main.ActivePlayers)
-            {
-                if (player.whoAmI == Projectile.owner || healedAlready.Contains(player))
-                    continue;
-                Vector2 newArc = player.Center - Projectile.Center;
-                float newDistance = newArc.LengthSquared();
-                if (newDistance < (distance * distance))
-                {
-                    arc = newArc;
-                    distance = newDistance;
-                    found = true;
-                    target = player;
-                }
-            }
-
-            Vector2 center = Projectile.Center;
-            if (found)
-            {
-                arc += new Vector2(Main.rand.Next(-10, 11), Main.rand.Next(-10, 11)) * distance / 30f;
-                if (flag2)
-                {
-                    prevX++;
-                    arc += new Vector2(Main.rand.Next(-10, 11), Main.rand.Next(-10, 11)) * prevX;
-                }
-            }
-            else
-            {
-                arc = (Projectile.velocity + new Vector2(Main.rand.Next(-5, 6), Main.rand.Next(-5, 6))) * 5f;
-            }
-
-            for (int j = 0; j < 20; j++)
-            {
-                int num4 = Dust.NewDust(center, Projectile.width, Projectile.height, DustID.PinkTorch);
-                Main.dust[num4].velocity = new Vector2(0f);
-                center += arc / 20f;
-            }
-
-            Projectile.position = center;
-
-            Player owner = Main.player[Projectile.owner];
-
+            float closestDist = 200f;
             for (int i = 0; i < Main.maxPlayers; i++)
             {
                 Player p = Main.player[i];
                 if (p.active && !p.dead && p.whoAmI != owner.whoAmI)
                 {
-                    if (Projectile.Hitbox.Intersects(p.Hitbox))
+                    if (owner.team != 0 && owner.team == p.team)
                     {
-                        HealTeammateThorium(owner, p, baseHeal: 5); // give some healing
-                        Projectile.Kill(); // consume projectile after heal
-                        break;
+                        float dist = Vector2.Distance(Projectile.Center, p.Center);
+                        if (dist < closestDist)
+                        {
+                            closestDist = dist;
+                            target = p;
+                        }
                     }
                 }
             }
 
+            // --- Arc path simulation ---
+            Vector2 arcVec;
+            float jitterScale = 10f;
+
+            if (target != null)
+            {
+                // Pull the arc direction slightly toward target
+                Vector2 toTarget = target.Center - Projectile.Center;
+                float dist = toTarget.Length();
+                toTarget.Normalize();
+
+                // Add random jitter to keep lightning-like arcs
+                arcVec = toTarget * dist * 0.15f + new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)) * jitterScale;
+            }
+            else
+            {
+                // No target – purely random arcing forward
+                arcVec = Projectile.velocity * 5f + new Vector2(Main.rand.Next(-5, 6), Main.rand.Next(-5, 6)) * 5f;
+            }
+
+            // --- Draw arc dust trail ---
+            Vector2 start = Projectile.Center;
+            for (int j = 0; j < 20; j++)
+            {
+                int dust = Dust.NewDust(start, 0, 0, DustID.Torch, 0f, 0f, 150, Color.Pink, 1.2f);
+                Main.dust[dust].noGravity = true;
+                start += arcVec / 20f;
+            }
+
+            // --- Advance projectile position along the arc ---
+            Projectile.position = start;
+
+            // --- Heal teammates on contact ---
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player p = Main.player[i];
+                if (p.active && !p.dead && p.whoAmI != owner.whoAmI)
+                {
+                    if (owner.team != 0 && owner.team == p.team)
+                    {
+                        if (Projectile.Hitbox.Intersects(p.Hitbox))
+                        {
+                            HealTeammateThorium(owner, p, baseHeal: 5);
+                            Projectile.Kill();
+                            break;
+                        }
+                    }
+                }
+            }
         }
+
         private void HealTeammateThorium(Player healer, Player target, int baseHeal)
         {
             if (healer.whoAmI != Main.myPlayer) return;

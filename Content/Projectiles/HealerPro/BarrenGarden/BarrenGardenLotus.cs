@@ -94,28 +94,34 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.BarrenGarden
                     string projName = alternate ? "BlackLotusPro2" : "LotusPro2";
                     int projType = thorium.Find<ModProjectile>(projName).Type;
 
-                    // Fire straight upward
-                    Vector2 shootVel = new Vector2(0f, -30f);
-
-                    // Spawn slightly above the lotus top
                     Vector2 spawnPos = Projectile.Center - new Vector2(0f, Projectile.height / 2f - 12f);
 
-                    // Optional: dust burst at firing point
+                    // Base velocity (straight up)
+                    Vector2 baseVel = new Vector2(0f, -30f);
+
+                    // Fire 3 projectiles: center, slight left, slight right
+                    for (int i = -1; i <= 1; i++)
+                    {
+                        // Rotate by small angle (5 degrees spread)
+                        Vector2 shootVel = baseVel.RotatedBy(MathHelper.ToRadians(0 * i));
+
+                        Projectile.NewProjectile(
+                            Projectile.GetSource_FromAI(),
+                            spawnPos,
+                            shootVel,
+                            projType,
+                            Projectile.damage * 2,
+                            Projectile.knockBack,
+                            Projectile.owner
+                        );
+                    }
+
+                    // Dust burst
                     for (int i = 0; i < 5; i++)
                     {
                         int dust = Dust.NewDust(spawnPos, 10, 10, DustID.Frost, 0f, -3f, 100, Color.White, 1.4f);
                         Main.dust[dust].noGravity = true;
                     }
-
-                    Projectile.NewProjectile(
-                        Projectile.GetSource_FromAI(),
-                        spawnPos,
-                        shootVel,
-                        projType,
-                        Projectile.damage * 5,
-                        Projectile.knockBack,
-                        Projectile.owner
-                    );
 
                     SoundEngine.PlaySound(SoundID.Item20, Projectile.Center);
                 }

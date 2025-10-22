@@ -35,7 +35,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override void SetDefaults()
         {
-            Item.damage = 500;
+            Item.damage = 475;
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Item.noMelee = true;
             Item.mana = 15;
@@ -54,7 +54,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             isHealer = true;
             healType = HealType.Ally;
-            healAmount = 7;
+            healAmount = 1;
             healDisplay = true;
 
             Item.noUseGraphic = true;

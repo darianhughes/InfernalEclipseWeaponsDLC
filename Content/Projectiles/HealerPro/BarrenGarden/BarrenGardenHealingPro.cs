@@ -93,7 +93,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.BarrenGarden
                     {
                         if (Projectile.Hitbox.Intersects(p.Hitbox))
                         {
-                            HealTeammateThorium(owner, p, baseHeal: 3);
+                            HealTeammateThorium(owner, p, baseHeal: 1);
                             Projectile.Kill();
                             break;
                         }
