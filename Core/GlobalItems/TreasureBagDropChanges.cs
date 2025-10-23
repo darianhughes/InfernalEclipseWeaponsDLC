@@ -100,6 +100,14 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 }
             }
 
+            if (ModLoader.TryGetMod("SOTS", out Mod sots))
+            {
+                if (item.type == sots.Find<ModItem>("GlowmothBag").Type)
+                {
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MothwingDagger>(), 5));
+                }
+            }
+
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
                 if (item.type == thorium.Find<ModItem>("TheGrandThunderBirdTreasureBag").Type)

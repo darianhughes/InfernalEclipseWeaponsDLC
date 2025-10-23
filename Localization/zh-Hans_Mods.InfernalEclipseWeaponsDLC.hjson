@@ -77,6 +77,15 @@ Items: {
 				Tooltip: 潜伏攻击会召唤加速时追踪的恶魔镰刀
 				DisplayName: 忘却匕首
 			}
+
+			MothwingDagger: {
+				// DisplayName: Mothwing Dagger
+				/* Tooltip:
+					'''
+					Throws a lightly homing winged dagger
+					Stealth strikes create homing illuminant bolts as they travel and on hit
+					''' */
+			}
 		}
 	}
 
@@ -460,6 +469,8 @@ Projectiles: {
 	// BarrenGardenLotus.DisplayName: Barren Garden Lotus
 	// BarrenGardenPro.DisplayName: Barren Garden Pro
 	// BarrenGardenProHoming.DisplayName: Barren Garden Pro Homing
+	// MothwingDaggerPro.DisplayName: Mothwing Dagger Pro
+	// IlluminantBolt.DisplayName: Illuminant Bolt
 }
 
 Buffs: {

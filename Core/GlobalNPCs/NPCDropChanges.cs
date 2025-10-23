@@ -108,6 +108,14 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 }
             }
 
+            if (ModLoader.TryGetMod("SOTS", out Mod sots))
+            {
+                if (npc.type == sots.Find<ModNPC>("Glowmoth").Type)
+                {
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<MothwingDagger>(), 5));
+                }
+            }
+
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
                 if (npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type)
