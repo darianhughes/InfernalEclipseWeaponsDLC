@@ -79,12 +79,12 @@ Items: {
 			}
 
 			MothwingDagger: {
-				// DisplayName: Mothwing Dagger
-				/* Tooltip:
+				DisplayName: 蛾翼短刀
+				Tooltip:
 					'''
-					Throws a lightly homing winged dagger
-					Stealth strikes create homing illuminant bolts as they travel and on hit
-					''' */
+					投掷一把带有轻度追踪效果的翼刃
+					潜伏攻击在飞行途中与命中时会生成追踪的荧光飞弹
+					'''
 			}
 		}
 	}
@@ -371,13 +371,13 @@ Items: {
 	}
 
 	BarrenGarden: {
-		// DisplayName: Barren Garden
-		/* Tooltip:
+		DisplayName: 霜莲寒苑
+		Tooltip:
 			'''
-			Left click to fire a spread of homing, piercing and healing petals
-			Right click to summon a large frozen lotus that will fire alternating damaging and healing energies
-			Only one frozen lotus may be active at a time and they last for 30 seconds
-			''' */
+			左键发射追踪且穿透的花瓣散射，花瓣有治愈效果
+			右键召唤一朵巨大的冰莲，交替释放造成伤害与治疗的能量
+			同一时间只能存在一朵冰莲，持续时间为30秒
+			'''
 	}
 }
 
@@ -465,12 +465,12 @@ Projectiles: {
 	SupremeCataclysmFist.DisplayName: 至尊灾祸之拳
 	SupremeCatastropheSlash.DisplayName: 至尊灾难之刃
 	SharknadoBolt.DisplayName: 鲨龙卷飞弹
-	// BarrenGardenHealingPro.DisplayName: Barren Garden Healing Pro
-	// BarrenGardenLotus.DisplayName: Barren Garden Lotus
-	// BarrenGardenPro.DisplayName: Barren Garden Pro
-	// BarrenGardenProHoming.DisplayName: Barren Garden Pro Homing
-	// MothwingDaggerPro.DisplayName: Mothwing Dagger Pro
-	// IlluminantBolt.DisplayName: Illuminant Bolt
+	BarrenGardenHealingPro.DisplayName: 霜莲寒苑治疗弹幕
+	BarrenGardenLotus.DisplayName: 寒苑霜莲
+	BarrenGardenPro.DisplayName: 霜莲寒苑弹幕
+	BarrenGardenProHoming.DisplayName: 霜莲寒苑追踪弹幕
+	MothwingDaggerPro.DisplayName: 蛾翼短刀
+	IlluminantBolt.DisplayName: 荧光飞弹
 }
 
 Buffs: {
