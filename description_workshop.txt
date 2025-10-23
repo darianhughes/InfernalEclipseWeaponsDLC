@@ -10,12 +10,14 @@ It currently adds the following:
 	[*] 2 Ranged weapons
 	[*] 2 Mage weapons
 	[*] 1 Summoner weapon
-	[*] 1 Rogue/Thrower weapon
+	[*] 2 Rogue/Thrower weapons
 	[*] 18 Bard weapons
 	[*] 10 Healer weapons
-	[*] 2 Multi-class weapoons
+	[*] 2 Multi-class weapons
 	[*] 2 accessories
 [/list]
+
+For more information on the weapons added by this mod, check out the official [url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/Weapons_(Weapons_DLC)] wiki![/url]
 
 It is recommended to use [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser[/url] to see how to obtain the new weapons.
 
@@ -39,3 +41,5 @@ Simplified Chinese localization done by [url=https://steamcommunity.com/id/42687
 Russion localization done by Aizen522.
 
 Created by the Infernal Eclipse of Raganork Team
+[quote=tModLoader InfernalEclipseWeaponsDLC]
+Developed By Infernal Eclipse of Ragnarok Team[/quote]
