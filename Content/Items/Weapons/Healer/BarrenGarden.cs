@@ -160,29 +160,26 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Recipe recipe = CreateRecipe();
 
             // --- Ingredient Logic ---
-            if (ragnarok != null && clamity != null)
+            if (ragnarok != null)
             {
-                // Both Ragnarok and Calamity are loaded
                 recipe.AddIngredient(ragnarok.Find<ModItem>("VerdurantBloom").Type, 1);
-                recipe.AddIngredient(thorium.Find<ModItem>("SamsaraLotus").Type, 1);
-                recipe.AddIngredient(thorium.Find<ModItem>("DivineLotus").Type, 1);
+            }
+            else
+            {
+                recipe.AddIngredient(thorium.Find<ModItem>("BalanceBloom").Type, 1);
+            }
+
+            recipe.AddIngredient(thorium.Find<ModItem>("SamsaraLotus").Type, 1);
+            recipe.AddIngredient(thorium.Find<ModItem>("DivineLotus").Type, 1);
+
+            if (clamity != null)
+            {
                 recipe.AddIngredient(clamity.Find<ModItem>("EnchantedMetal").Type, 8);
             }
             else
             {
-                // Ragnarok missing - use BalanceBloom
-                recipe.AddIngredient(thorium.Find<ModItem>("BalanceBloom").Type, 1);
-
-                // Thorium staples
-                recipe.AddIngredient(thorium.Find<ModItem>("SamsaraLotus").Type, 1);
-                recipe.AddIngredient(thorium.Find<ModItem>("DivineLotus").Type, 1);
-
-                // Clamity fallback logic
-                if (clamity != null)
-                {
-                    recipe.AddIngredient(calamity.Find<ModItem>("AuricBar").Type, 8);
-                    recipe.AddIngredient(calamity.Find<ModItem>("EndothermicEnergy").Type, 20);
-                }
+                recipe.AddIngredient(calamity.Find<ModItem>("AuricBar").Type, 8);
+                recipe.AddIngredient(calamity.Find<ModItem>("EndothermicEnergy").Type, 20);
             }
 
             // --- Tile and output setup ---
