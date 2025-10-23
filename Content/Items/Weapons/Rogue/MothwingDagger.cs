@@ -1,26 +1,12 @@
 ﻿using CalamityMod;
 using CalamityMod.Items;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Potions;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Projectiles.Rogue;
-using CalamityMod.Rarities;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ThoriumMod;
-using ThoriumMod.Items.BardItems;
-using ThoriumMod.Items.BossThePrimordials.Dream;
-using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Tiles;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
