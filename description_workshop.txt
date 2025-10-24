@@ -41,5 +41,3 @@ Simplified Chinese localization done by [url=https://steamcommunity.com/id/42687
 Russion localization done by Aizen522.
 
 Created by the Infernal Eclipse of Raganork Team
-[quote=tModLoader InfernalEclipseWeaponsDLC]
-Developed By Infernal Eclipse of Ragnarok Team[/quote]
