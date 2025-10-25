@@ -10,16 +10,16 @@
 	[*] 2 件远程武器
 	[*] 2 件魔法武器
 	[*] 1 件召唤师武器
-	[*] 1 件盗贼/投掷武器
+	[*] 2 件盗贼/投掷武器
 	[*] 18 件吟游诗人武器
 	[*] 10 件牧师武器
 	[*] 2 件多职业武器
 	[*] 2 件饰品
 [/list]
 
-强烈建议使用[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser [/url]查看新增物品的制作配方与获取方式
+强烈建议使用[url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/zh] 诸神黄昏：炼狱蚀光官方中文Wiki [/url]查看新增物品的制作配方与获取方式
 
-同时，也建议您使用[url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/zh] 诸神黄昏：炼狱蚀光官方中文Wiki [/url]来查看相关信息
+同时，也建议您使用[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser [/url]来查看相关信息
 
 此模组也同时为[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929] Consolaria [/url]与[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914] 暗影奥秘 [/url]模组添加了兼容内容
 
