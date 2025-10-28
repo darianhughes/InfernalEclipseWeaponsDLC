@@ -380,6 +380,17 @@ Items: {
 			“冷彻心肺，如坠冰渊”
 			'''
 	}
+
+	FroststeelGong: {
+		// DisplayName: Froststeel Gong
+		/* Tooltip:
+			'''
+			Allows you to rythmically bang the gong
+			Successfully timing hits will steadily increase its damage and empowerment level
+			Mistiming these hits will decrease these bonuses greatly and cost 10 inspiration
+			These bonuses will stay between weapon swaps, but gradually fade when not your active weapon
+			''' */
+	}
 }
 
 Projectiles: {
@@ -472,6 +483,7 @@ Projectiles: {
 	BarrenGardenProHoming.DisplayName: 霜莲寒苑追踪弹幕
 	MothwingDaggerPro.DisplayName: 蛾翼短刀
 	IlluminantBolt.DisplayName: 荧光飞弹
+	// FroststeelPulse.DisplayName: Froststeel Pulse
 }
 
 Buffs: {

@@ -380,6 +380,17 @@ Items: {
 			'It's so cold it feels like my lungs are bursting'
 			'''
 	}
+
+	FroststeelGong: {
+		DisplayName: Froststeel Gong
+		Tooltip:
+			'''
+			Allows you to rythmically bang the gong
+			Successfully timing hits will steadily increase its damage and empowerment level
+			Mistiming these hits will decrease these bonuses greatly and cost 10 inspiration
+			These bonuses will stay between weapon swaps, but gradually fade when not your active weapon
+			'''
+	}
 }
 
 Projectiles: {
@@ -472,6 +483,7 @@ Projectiles: {
 	BarrenGardenProHoming.DisplayName: Barren Garden Pro Homing
 	MothwingDaggerPro.DisplayName: Mothwing Dagger Pro
 	IlluminantBolt.DisplayName: Illuminant Bolt
+	FroststeelPulse.DisplayName: Froststeel Pulse
 }
 
 Buffs: {
