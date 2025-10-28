@@ -386,6 +386,7 @@ Items: {
 		/* Tooltip:
 			'''
 			Allows you to rythmically bang the gong
+			Successfully timing 3 hits will also release a burst of 8 freezing vibrations outwards
 			Successfully timing hits will steadily increase its damage and empowerment level
 			Mistiming these hits will decrease these bonuses greatly and cost 10 inspiration
 			These bonuses will stay between weapon swaps, but gradually fade when not your active weapon

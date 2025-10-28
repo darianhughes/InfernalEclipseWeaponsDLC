@@ -18,7 +18,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
         public override string Texture => "CalamityMod/Projectiles/Summon/RustyBeaconPulse";
         public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
 
-        public float LifetimeCompletion => 1f - (float)((ModProjectile)this).Projectile.timeLeft / 95f;
+        public float LifetimeCompletion => 1f - (float)((ModProjectile)this).Projectile.timeLeft / 30f;
 
         public override void SetBardDefaults()
         {
@@ -30,7 +30,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             ((ModProjectile)this).Projectile.penetrate = -1;
             ((ModProjectile)this).Projectile.usesIDStaticNPCImmunity = true;
             ((ModProjectile)this).Projectile.idStaticNPCHitCooldown = 30;
-            ((ModProjectile)this).Projectile.timeLeft = 95;
+            ((ModProjectile)this).Projectile.timeLeft = 30;
             ((ModProjectile)this).Projectile.scale = 0.001f;
         }
 
@@ -42,7 +42,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                 ((ModProjectile)this).Projectile.localAI[0] = Utils.ToDirectionInt(Utils.NextBool(Main.rand));
                 ((ModProjectile)this).Projectile.netUpdate = true;
             }
-            ((ModProjectile)this).Projectile.Opacity = 1f - (float)Math.Pow((double)LifetimeCompletion, 1.56);
+            Projectile.Opacity = (1f - (float)Math.Pow(LifetimeCompletion, 1.56)) * 0.4f;
             ((ModProjectile)this).Projectile.scale = MathHelper.Lerp(0.3f, 16f, LifetimeCompletion);
             Projectile projectile = ((ModProjectile)this).Projectile;
             projectile.rotation += ((ModProjectile)this).Projectile.localAI[0] * 0.012f;
@@ -52,7 +52,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
         {
             // Icy white-blue gradient
             Color start = new Color(180, 230, 255, 0);  // soft light blue
-            Color end = new Color(255, 255, 255, 128);  // fades to white glow
+            Color end = new Color(255, 255, 255, 32);  // fades to white glow
             Color blended = Color.Lerp(start, end, LifetimeCompletion);
 
             return blended * Projectile.Opacity;

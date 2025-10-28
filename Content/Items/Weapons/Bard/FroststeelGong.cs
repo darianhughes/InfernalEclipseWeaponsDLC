@@ -34,6 +34,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override bool CanChangePitch => false;
 
+        private int froststeelCombo = 0; // combo tracker — stays within this item
+
         public override void SafeSetStaticDefaults()
         {
             Empowerments.AddInfo<AquaticAbility>(2);
@@ -55,10 +57,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.holdStyle = 3;       // Use the same hold animation
             Item.width = 30;
             Item.height = 30;
-            Item.shootSpeed = 15;
+            Item.shootSpeed = 20;
             Item.shoot = ModContent.ProjectileType<FroststeelPulse>(); // now the pulse
             Item.autoReuse = false; // optional: single strike per use
-            Item.damage = 1000;
+            Item.damage = 600;
             Item.knockBack = 4f;
             Item.UseSound = ThoriumSounds.Cymbals;
             Item.rare = ModContent.RarityType<Violet>();
@@ -106,6 +108,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void Shoot_OnSuccess(Player player)
         {
+            froststeelCombo++;
+
             for (int i = 0; i < 20; i++)
             {
                 Vector2 offset = Main.rand.NextVector2Circular(1f, 1f) * 20f;
@@ -128,6 +132,44 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                 knockback,
                 player.whoAmI
             );
+
+            // Every 3rd successful use, release FrostwindCymbals ring
+            if (froststeelCombo >= 3)
+            {
+                froststeelCombo = 0; // reset combo
+
+                Mod thorium = ModLoader.GetMod("ThoriumMod");
+                if (thorium != null)
+                {
+                    int projType = thorium.Find<ModProjectile>("FrostwindCymbalsPro1").Type;
+                    int count = 8;
+                    float speed = Item.shootSpeed;
+
+                    for (int i = 0; i < count; i++)
+                    {
+                        float angle = MathHelper.ToRadians(360f / count * i);
+                        Vector2 dir = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
+                        Projectile.NewProjectile(
+                            source,
+                            player.Center,
+                            dir * speed,
+                            projType,
+                            (int)(damage * 1f),
+                            knockback,
+                            player.whoAmI
+                        );
+                    }
+
+                    // Dust & sound burst
+                    for (int i = 0; i < 40; i++)
+                    {
+                        Vector2 offset = Main.rand.NextVector2CircularEdge(1f, 1f) * 50f;
+                        Dust d = Dust.NewDustPerfect(player.Center + offset, DustID.IceTorch,
+                            offset.SafeNormalize(Vector2.Zero) * 6f, 150, default, 1.4f);
+                        d.noGravity = true;
+                    }
+                }
+            }
         }
     }
 }
