@@ -392,6 +392,104 @@ Items: {
 			These bonuses will stay between weapon swaps, but gradually fade when not your active weapon
 			''' */
 	}
+
+	EclipseBreastplate: {
+		// DisplayName: Eclipse Breastplate
+		/* Tooltip:
+			'''
+			30% decreased non-radiant damage
+			30% increased radiant damage
+			8% increased radiant critical strike chance
+			15% increased damage reduction
+			Healing spells will heal an additional 2 life
+			''' */
+	}
+
+	EclipseGreaves: {
+		// DisplayName: Eclipse Greaves
+		/* Tooltip:
+			'''
+			25% decreased non-radiant damage
+			25% increased radiant damage
+			4% increased radiant critical strike chance
+			15% decreased mana cost
+			20% increased movement speed
+			Healing spells will heal an additional 1 life
+			''' */
+	}
+
+	EclipseHelm: {
+		// DisplayName: Eclipse Helm
+		/* Tooltip:
+			'''
+			20% decreased non-radiant damage
+			20% increased radiant damage
+			3% increased radiant critical strike chance
+			life regeneration begins faster
+			''' */
+	}
+
+	NecrosingerAnkles: {
+		// DisplayName: Necrosinger Ankles
+		/* Tooltip:
+			'''
+			10% increased symphonic damage
+			4% increased symphonic critical strike chance
+			15% increased movement speed
+			''' */
+	}
+
+	NecrosingerRibs: {
+		// DisplayName: Necrosinger Ribs
+		/* Tooltip:
+			'''
+			14% increased symphonic damage
+			4% increased symphonic critical strike chance
+			Increases the chance for inspiration notes to drop by 10%
+			Increases the duration of your symphonic empowerments by 3 seconds
+			''' */
+	}
+
+	NecrosingerSkull: {
+		// DisplayName: Necrosinger Skull
+		/* Tooltip:
+			'''
+			5% increased symphonic playing speed
+			4% increased symphonic critical strike chance
+			Increased inspiration regeneration rate by 15%
+			''' */
+	}
+
+	SuperCellCirclet: {
+		// DisplayName: Super Cell Circlet
+		/* Tooltip:
+			'''
+			15% increased rogue damage
+			33% chance not to consume rogue items
+			Increases your maximum technique points by 2
+			+110 maximum stealth
+			''' */
+	}
+
+	SuperCellGuard: {
+		// DisplayName: Super Cell Guard
+		/* Tooltip:
+			'''
+			15% increased rogue damage
+			10% increased rogue weapon speed
+			30% increased rogue weapon velocity
+			''' */
+	}
+
+	SuperCellSabatons: {
+		// DisplayName: Super Cell Sabatons
+		/* Tooltip:
+			'''
+			12.5% increased rogue damage
+			20% increased rogue weapon critical strike chance
+			15% increased movement speed
+			''' */
+	}
 }
 
 Projectiles: {
