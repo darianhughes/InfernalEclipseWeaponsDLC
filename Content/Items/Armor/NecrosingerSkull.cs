@@ -62,7 +62,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
 
             recipe.AddIngredient(thorium.Find<ModItem>("HallowedChapeau").Type, 1);
             recipe.AddIngredient(ItemID.AdamantiteBar, 10);
-            recipe.AddIngredient(ItemID.SoulofNight, 10);
+            recipe.AddIngredient(thorium.Find<ModItem>("SoulofPlight").Type, 10);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {
@@ -84,7 +84,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
 
             recipe2.AddIngredient(thorium.Find<ModItem>("HallowedChapeau").Type, 1);
             recipe2.AddIngredient(ItemID.TitaniumBar, 10);
-            recipe2.AddIngredient(ItemID.SoulofNight, 10);
+            recipe2.AddIngredient(thorium.Find<ModItem>("SoulofPlight").Type, 10);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod2))
             {

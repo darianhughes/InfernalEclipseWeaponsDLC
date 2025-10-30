@@ -65,7 +65,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
 
             recipe.AddIngredient(ItemID.HallowedGreaves);
             recipe.AddIngredient(ItemID.AdamantiteBar, 10);
-            recipe.AddIngredient(ItemID.SoulofNight, 10);
+            recipe.AddIngredient(ItemID.SoulofLight, 10);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {
@@ -87,7 +87,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
 
             recipe2.AddIngredient(ItemID.HallowedGreaves);
             recipe2.AddIngredient(ItemID.TitaniumBar, 10);
-            recipe2.AddIngredient(ItemID.SoulofNight, 10);
+            recipe2.AddIngredient(ItemID.SoulofLight, 10);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod2))
             {

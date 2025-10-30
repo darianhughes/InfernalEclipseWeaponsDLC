@@ -63,12 +63,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
             Recipe recipe = CreateRecipe();
 
             recipe.AddIngredient(ItemID.HallowedPlateMail);
-            recipe.AddIngredient(ItemID.AdamantiteBar, 10);
-            recipe.AddIngredient(ItemID.SoulofNight, 10);
+            recipe.AddIngredient(ItemID.AdamantiteBar, 12);
+            recipe.AddIngredient(ItemID.SoulofLight, 15);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {
-                    recipe.AddIngredient(consolariaMod.Find<ModItem>("SoulofBlight").Type, 10);
+                    recipe.AddIngredient(consolariaMod.Find<ModItem>("SoulofBlight").Type, 15);
             }
             else
             {
@@ -85,12 +85,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
             Recipe recipe2 = CreateRecipe();
 
             recipe2.AddIngredient(ItemID.HallowedPlateMail);
-            recipe2.AddIngredient(ItemID.TitaniumBar, 10);
-            recipe2.AddIngredient(ItemID.SoulofNight, 10);
+            recipe2.AddIngredient(ItemID.TitaniumBar, 12);
+            recipe2.AddIngredient(ItemID.SoulofLight, 15);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod2))
             {
-                recipe2.AddIngredient(consolariaMod2.Find<ModItem>("SoulofBlight").Type, 10);
+                recipe2.AddIngredient(consolariaMod2.Find<ModItem>("SoulofBlight").Type, 15);
             }
             else
             {

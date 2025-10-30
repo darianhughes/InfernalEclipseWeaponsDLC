@@ -52,6 +52,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
         public override void AddRecipes()
         {
             Mod consolaria = null;
+            Mod thorium = ModLoader.GetMod("ThoriumMod");
 
             // Try to safely get Calamity and Ragnarok
             ModLoader.TryGetMod("Consolaria", out consolaria);
@@ -60,7 +61,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
 
             recipe.AddIngredient(ItemID.HallowedGreaves);
             recipe.AddIngredient(ItemID.AdamantiteBar, 10);
-            recipe.AddIngredient(ItemID.SoulofNight, 10);
+            recipe.AddIngredient(thorium.Find<ModItem>("SoulofPlight").Type, 10);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {
@@ -82,7 +83,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
 
             recipe2.AddIngredient(ItemID.HallowedGreaves);
             recipe2.AddIngredient(ItemID.TitaniumBar, 10);
-            recipe2.AddIngredient(ItemID.SoulofNight, 10);
+            recipe2.AddIngredient(thorium.Find<ModItem>("SoulofPlight").Type, 10);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod2))
             {
