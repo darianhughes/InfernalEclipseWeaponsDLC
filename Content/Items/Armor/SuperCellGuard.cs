@@ -16,6 +16,7 @@ using ThoriumMod.Utilities;
 using Microsoft.Xna.Framework;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NukePros;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
+using InfernalEclipseWeaponsDLC.Content.Buffs;
 using ThoriumMod.Sounds;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
@@ -38,15 +39,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
             ((Entity)((ModItem)this).Item).height = 18;
             ((ModItem)this).Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             ((ModItem)this).Item.rare = 7;
-            ((ModItem)this).Item.defense = 21;
+            ((ModItem)this).Item.defense = 14;
         }
 
         public override void UpdateEquip(Player player)
         {
             ref StatModifier damage = ref player.GetDamage(DamageClass.Throwing);
-            damage += 0.15f;
-            player.GetAttackSpeed(DamageClass.Throwing) += 0.1f;
+            damage += 0.10f;
+            player.GetAttackSpeed(DamageClass.Throwing) += 0.2f;
             player.ThrownVelocity += 0.3f;
+
+            player.GetModPlayer<SuperCellFlightTimePlayer>().hasSuperCellGuardEquipped = true;
         }
 
         public override void AddRecipes()
