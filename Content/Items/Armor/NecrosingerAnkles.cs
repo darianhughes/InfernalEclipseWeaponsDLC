@@ -38,15 +38,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
             ((Entity)((ModItem)this).Item).height = 18;
             ((ModItem)this).Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             ((ModItem)this).Item.rare = 7;
-            ((ModItem)this).Item.defense = 20;
+            ((ModItem)this).Item.defense = 14;
         }
 
         public override void UpdateEquip(Player player)
         {
             ref StatModifier damage = ref player.GetDamage((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance);
             damage += 0.1f;
-            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += 4f;
-            player.moveSpeed += 0.15f;
+            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += 5f;
+            player.moveSpeed += 0.2f;
         }
 
         public override void AddRecipes()

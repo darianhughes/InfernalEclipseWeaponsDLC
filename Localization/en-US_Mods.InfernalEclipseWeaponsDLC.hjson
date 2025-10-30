@@ -397,11 +397,12 @@ Items: {
 		DisplayName: Eclipse Breastplate
 		Tooltip:
 			'''
-			30% decreased non-radiant damage
-			30% increased radiant damage
+			20% decreased non-radiant damage
+			20% increased radiant damage
 			8% increased radiant critical strike chance
+			5% increased healing and radiant cast speed
 			15% increased damage reduction
-			Healing spells will heal an additional 2 life
+			Healing spells will heal an additional 3 life
 			'''
 	}
 
@@ -409,12 +410,12 @@ Items: {
 		DisplayName: Eclipse Greaves
 		Tooltip:
 			'''
-			25% decreased non-radiant damage
-			25% increased radiant damage
+			16% decreased non-radiant damage
+			16% increased radiant damage
 			4% increased radiant critical strike chance
 			15% decreased mana cost
 			20% increased movement speed
-			Healing spells will heal an additional 1 life
+			Healing spells will heal an additional 2 life
 			'''
 	}
 
@@ -422,8 +423,8 @@ Items: {
 		DisplayName: Eclipse Helm
 		Tooltip:
 			'''
-			20% decreased non-radiant damage
-			20% increased radiant damage
+			16% decreased non-radiant damage
+			16% increased radiant damage
 			3% increased radiant critical strike chance
 			life regeneration begins faster
 			'''
@@ -434,8 +435,8 @@ Items: {
 		Tooltip:
 			'''
 			10% increased symphonic damage
-			4% increased symphonic critical strike chance
-			15% increased movement speed
+			5% increased symphonic critical strike chance
+			20% increased movement speed
 			'''
 	}
 
@@ -444,7 +445,7 @@ Items: {
 		Tooltip:
 			'''
 			14% increased symphonic damage
-			4% increased symphonic critical strike chance
+			5% increased symphonic critical strike chance
 			Increases the chance for inspiration notes to drop by 10%
 			Increases the duration of your symphonic empowerments by 3 seconds
 			'''
@@ -454,8 +455,9 @@ Items: {
 		DisplayName: Necrosinger Skull
 		Tooltip:
 			'''
-			5% increased symphonic playing speed
-			4% increased symphonic critical strike chance
+			5% increased symphonic damage
+			10% increased symphonic playing speed
+			5% increased symphonic critical strike chance
 			Increased inspiration regeneration rate by 15%
 			'''
 	}
@@ -464,8 +466,7 @@ Items: {
 		DisplayName: Super Cell Circlet
 		Tooltip:
 			'''
-			15% increased rogue damage
-			33% chance not to consume rogue items
+			10% increased rogue damage
 			Increases your maximum technique points by 2
 			+110 maximum stealth
 			'''
@@ -485,7 +486,7 @@ Items: {
 		DisplayName: Super Cell Sabatons
 		Tooltip:
 			'''
-			12.5% increased rogue damage
+			5% increased rogue damage
 			20% increased rogue weapon critical strike chance
 			15% increased movement speed
 			'''

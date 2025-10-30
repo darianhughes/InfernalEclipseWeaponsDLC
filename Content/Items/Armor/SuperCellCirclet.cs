@@ -47,7 +47,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
             ((Entity)((ModItem)this).Item).height = 18;
             ((ModItem)this).Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             ((ModItem)this).Item.rare = 7;
-            ((ModItem)this).Item.defense = 15;
+            ((ModItem)this).Item.defense = 14;
         }
 
         public override void UpdateEquip(Player player)
@@ -55,8 +55,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
             CalamityPlayer calamityPlayer = player.Calamity();
 
             ref StatModifier damage = ref player.GetDamage(DamageClass.Throwing);
-            damage += 0.2f;
-            player.ThrownCost33 = true;
+            damage += 0.10f;
             calamityPlayer.rogueStealthMax += 1.1f;
             player.GetThoriumPlayer().techPointsMax += 2;
             player.Calamity().wearingRogueArmor = true;

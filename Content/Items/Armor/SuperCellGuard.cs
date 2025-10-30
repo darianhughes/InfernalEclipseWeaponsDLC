@@ -38,7 +38,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
             ((Entity)((ModItem)this).Item).height = 18;
             ((ModItem)this).Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             ((ModItem)this).Item.rare = 7;
-            ((ModItem)this).Item.defense = 22;
+            ((ModItem)this).Item.defense = 21;
         }
 
         public override void UpdateEquip(Player player)

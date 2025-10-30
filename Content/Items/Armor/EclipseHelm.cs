@@ -38,16 +38,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
             ((Entity)((ModItem)this).Item).height = 18;
             ((ModItem)this).Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             ((ModItem)this).Item.rare = 7;
-            ((ModItem)this).Item.defense = 18;
+            ((ModItem)this).Item.defense = 15;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.GetThoriumPlayer();
             ref StatModifier damage = ref player.GetDamage(DamageClass.Generic);
-            damage -= 0.2f;
+            damage -= 0.16f;
             ref StatModifier damage2 = ref player.GetDamage((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance);
-            damage2 += 0.4f;
+            damage2 += 0.32f;
             player.lifeRegenTime += 10f;
             player.GetCritChance((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 3f;
         }
