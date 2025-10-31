@@ -380,6 +380,118 @@ Items: {
 			'It's so cold it feels like my lungs are bursting'
 			'''
 	}
+
+	FroststeelGong: {
+		DisplayName: Froststeel Gong
+		Tooltip:
+			'''
+			Allows you to rythmically bang the gong
+			Successfully timing 3 hits will also release a burst of 8 freezing vibrations outwards
+			Successfully timing hits will steadily increase its damage and empowerment level
+			Mistiming these hits will decrease these bonuses greatly and cost 10 inspiration
+			These bonuses will stay between weapon swaps, but gradually fade when not your active weapon
+			'''
+	}
+
+	EclipseBreastplate: {
+		DisplayName: Eclipse Breastplate
+		Tooltip:
+			'''
+			20% decreased non-radiant damage
+			20% increased radiant damage
+			8% increased radiant critical strike chance
+			5% increased healing and radiant cast speed
+			15% increased damage reduction
+			Healing spells will heal an additional 3 life
+			'''
+	}
+
+	EclipseGreaves: {
+		DisplayName: Eclipse Greaves
+		Tooltip:
+			'''
+			16% decreased non-radiant damage
+			16% increased radiant damage
+			4% increased radiant critical strike chance
+			15% decreased mana cost
+			20% increased movement speed
+			Healing spells will heal an additional 2 life
+			'''
+	}
+
+	EclipseHelm: {
+		DisplayName: Eclipse Helm
+		Tooltip:
+			'''
+			16% decreased non-radiant damage
+			16% increased radiant damage
+			3% increased radiant critical strike chance
+			life regeneration begins faster
+			'''
+	}
+
+	NecrosingerAnkles: {
+		DisplayName: Necrosinger Ankles
+		Tooltip:
+			'''
+			10% increased symphonic damage
+			5% increased symphonic critical strike chance
+			20% increased movement speed
+			'''
+	}
+
+	NecrosingerRibs: {
+		DisplayName: Necrosinger Ribs
+		Tooltip:
+			'''
+			14% increased symphonic damage
+			5% increased symphonic critical strike chance
+			Increases the chance for inspiration notes to drop by 10%
+			Increases the duration of your symphonic empowerments by 3 seconds
+			'''
+	}
+
+	NecrosingerSkull: {
+		DisplayName: Necrosinger Skull
+		Tooltip:
+			'''
+			5% increased symphonic damage
+			10% increased symphonic playing speed
+			5% increased symphonic critical strike chance
+			Increased inspiration regeneration rate by 15%
+			'''
+	}
+
+	SuperCellCirclet: {
+		DisplayName: Super Cell Circlet
+		Tooltip:
+			'''
+			5% increased rogue damage
+			Increases your maximum technique points by 2
+			+110 maximum stealth
+			'''
+	}
+
+	SuperCellGuard: {
+		DisplayName: Super Cell Guard
+		Tooltip:
+			'''
+			10% increased rogue damage
+			20% increased rogue weapon speed
+			30% increased rogue weapon velocity
+			increases wing flight time by 15%
+			'''
+	}
+
+	SuperCellSabatons: {
+		DisplayName: Super Cell Sabatons
+		Tooltip:
+			'''
+			5% increased rogue damage
+			10% increased rogue weapon critical strike chance
+			30% increased movement speed
+			'''
+	}
 }
 
 Projectiles: {
@@ -472,6 +584,7 @@ Projectiles: {
 	BarrenGardenProHoming.DisplayName: Barren Garden Pro Homing
 	MothwingDaggerPro.DisplayName: Mothwing Dagger Pro
 	IlluminantBolt.DisplayName: Illuminant Bolt
+	FroststeelPulse.DisplayName: Froststeel Pulse
 }
 
 Buffs: {
