@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -10,17 +6,11 @@ using Terraria.ModLoader;
 using Terraria;
 using ThoriumMod.Empowerments;
 using ThoriumMod;
-using ThoriumMod.Items;
 using ThoriumMod.Items.BardItems;
 using Microsoft.Xna.Framework;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NukePros;
-using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using ThoriumMod.Sounds;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
-using CalamityMod.NPCs.Leviathan;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Items.Accessories;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 
@@ -62,7 +52,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.autoReuse = false; // optional: single strike per use
             Item.damage = 600;
             Item.knockBack = 4f;
-            Item.UseSound = ThoriumSounds.Cymbals;
+            Item.UseSound = ThoriumSounds.Gong_Sound;
             Item.rare = ModContent.RarityType<Violet>();
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             InspirationCost = 10;

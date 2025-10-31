@@ -466,7 +466,7 @@ Items: {
 		// DisplayName: Super Cell Circlet
 		/* Tooltip:
 			'''
-			7.5% increased rogue damage
+			5% increased rogue damage
 			Increases your maximum technique points by 2
 			+110 maximum stealth
 			''' */
@@ -476,7 +476,7 @@ Items: {
 		// DisplayName: Super Cell Guard
 		/* Tooltip:
 			'''
-			12.5% increased rogue damage
+			10% increased rogue damage
 			20% increased rogue weapon speed
 			30% increased rogue weapon velocity
 			increases wing flight time by 15%
