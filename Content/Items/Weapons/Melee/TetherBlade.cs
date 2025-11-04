@@ -122,14 +122,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee
 
             recipe.AddTile(TileID.Anvils);
             recipe.AddIngredient(ItemID.Gladius);
-            if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
-            {
-                recipe.AddIngredient(thorium.Find<ModItem>("ValadiumIngot").Type, 8);
-            }
-            else
-                recipe.AddIngredient(ItemID.HallowedBar, 8);
             recipe.AddIngredient(ItemID.CrystalShard, 12);
             recipe.AddIngredient(ItemID.SoulofLight, 5);
+            recipe.AddIngredient(ItemID.UnicornHorn);
             recipe.Register();
         }
     }
