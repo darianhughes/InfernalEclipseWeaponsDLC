@@ -75,13 +75,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
         {
             Recipe recipe = CreateRecipe();
 
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile(ModLoader.HasMod("CalamityMod") ? TileID.Anvils : TileID.MythrilAnvil);
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thorium))
             {
-                recipe.AddIngredient(thorium.Find<ModItem>("LodeStoneIngot").Type, 8);
+                recipe.AddIngredient(thorium.Find<ModItem>("LodeStoneIngot").Type, 5);
             }
-            else
-                recipe.AddIngredient(ItemID.MeteoriteBar, 8);
+            recipe.AddIngredient(ItemID.MeteoriteBar, thorium != null ? 10 : 15);
             recipe.AddIngredient(ItemID.CrystalShard, 15);
             recipe.AddIngredient(ItemID.SoulofLight, 10);
             recipe.AddIngredient(ItemID.FallenStar, 5);
