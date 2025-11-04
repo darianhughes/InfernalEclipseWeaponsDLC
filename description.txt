@@ -5,9 +5,9 @@ This mod can be played on its own and doesn't require the main mod to run.
 The Infernal Eclipse of Ragnarok: Weapon DLC is a mod that aims to fill in the weak spots of progression with new, exciting items.
 
 It currently adds the following:
-	- 1 Melee weapon
-	- 2 Ranged weapons
-	- 2 Mage weapons
+	- 6 Melee weapons
+	- 3 Ranged weapons
+	- 3 Mage weapons
 	- 1 Summoner weapon
 	- 1 Rogue/Thrower weapon
 	- 18 Bard weapons
@@ -21,7 +21,7 @@ This mod also has combatability with Consolaria & Secrets of the Shadows.
 
 If you have any other issues please report them in the discord (https://discord.gg/RXdTXbKY).
 
-Special thanks to Feldy & TacoConKvass for helping develop some of this mods items, & Pil for some of the mods sprites!
+Special thanks to Feldy, TacoConKvass, Verveine for helping develop some of this mods items, & Pil for some of the mods sprites!
 
 Simplified Chinese localization done by Pudd1ng.
 

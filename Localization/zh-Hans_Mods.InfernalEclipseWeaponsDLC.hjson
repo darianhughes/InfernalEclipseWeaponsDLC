@@ -492,6 +492,56 @@ Items: {
 			30% increased movement speed
 			''' */
 	}
+
+	ShadowflameAxe: {
+		// DisplayName: Shadowflame Reaper
+		// Tooltip: Releases homing shadowflame projectiles every three swings
+	}
+
+	TetherBlade: {
+		// DisplayName: Tetherblade
+		/* Tooltip:
+			'''
+			Throw the blade towards the cursor by right clicking
+			The blade will linger for a few seconds after throwing it
+			Right click again to teleport to the blade before the blade disapears
+			After teleporting the blade will stab at all nearby enemies, dealing tripple damage
+			''' */
+	}
+
+	LightChain: {
+		// DisplayName: Luminant Tether
+		/* Tooltip:
+			'''
+			Clicking an enemy links it to a player
+			The chains deal damage once every second
+			If you move to far away from the target you are chained to, the chain will break
+			Up to 3 enemies can be chained to you
+			''' */
+	}
+
+	StormCrossbow: {
+		// DisplayName: Stormbreaker Crossbow
+		// Tooltip: Turns wooden arrows into storm bolts that will bounce towards nearby enemies
+	}
+
+	ObsidianSickle: {
+		// DisplayName: Obsidian Sickle
+		/* Tooltip:
+			'''
+			Shoots an dark sickle
+			'Not an artificial intelligence, but an actual idiot.'
+			''' */
+	}
+
+	StarScepter: {
+		// DisplayName: Star Scepter
+		/* Tooltip:
+			'''
+			Summons up to 5 orbiting stars around the player
+			Each star will continously attack the nearest enemy, with bosses being priortized
+			''' */
+	}
 }
 
 Projectiles: {
@@ -585,6 +635,15 @@ Projectiles: {
 	MothwingDaggerPro.DisplayName: 蛾翼短刀
 	IlluminantBolt.DisplayName: 荧光飞弹
 	// FroststeelPulse.DisplayName: Froststeel Pulse
+	// LightChainProjectile.DisplayName: Light Chain Projectile
+	// StarScepterBolt.DisplayName: Star Scepter Bolt
+	// StarScepterStar.DisplayName: Star Scepter Star
+	// ObsidianSickleProjectile.DisplayName: Obsidian Sickle Projectile
+	// ShadowflameAxeBolt.DisplayName: Shadowflame Axe Bolt
+	// ShadowflameAxeProjectile.DisplayName: Shadowflame Axe Projectile
+	// TetherBladeProjectile.DisplayName: Tether Blade Projectile
+	// TetherBladeProjectileBlink.DisplayName: Tether Blade Projectile Blink
+	// StormCrossbowArrow.DisplayName: Storm Crossbow Arrow
 }
 
 Buffs: {
@@ -634,4 +693,22 @@ ItemTooltip: {
 	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲
 	NeonRipperLore2: 借此他打造了两件武器：第一件是一柄能够吸收灵气的镰刀，正如卡米的能力一般。
 	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
+	// VerveineItem: "'An item from the orchid's blessing...'"
+}
+
+Configs: {
+	WeaponConfig: {
+		// DisplayName: Weapon Config
+		// Headers.VerveineWeapons: Verveine Weapons
+
+		AIGenedWeapons: {
+			// Label: AI Generated Weapon Concepts
+			// Tooltip: Toggles whether if the AI Generated weapon concpets from Verveine's 'Which AI Makes the Best Terraria Weapons?' are loaded
+		}
+
+		GitGudWeapon: {
+			// Label: GitGudWO Weapon Concept
+			// Tooltip: Toggles whether if the weapon concpet made by GitGudWO from Verveine's 'Which AI Makes the Best Terraria Weapons?' is loaded
+		}
+	}
 }
