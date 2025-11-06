@@ -27,7 +27,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<MothwingDaggerPro>();
-            Item.shootSpeed = 14f;
+            Item.shootSpeed = 4f;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.rare = ItemRarityID.Blue;
             Item.value = CalamityGlobalItem.RarityBlueBuyPrice;

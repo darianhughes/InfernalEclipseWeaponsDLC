@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -17,20 +18,35 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
 
         private int helixRot;
         private int activationTimer; // 🟢 Counts up to 60 ticks (1 second)
-        private bool activated => activationTimer >= 30;
+        private bool activated => activationTimer >= 90;
+
+        private static Texture2D TextureGlow;
+        private static Texture2D TextureGlow2;
+        public List<Vector2> OldPosition;
+        public List<float> OldRotation;
+        public Color DrawColor;
+        private bool fadingOut => Projectile.ai[1] == 1f;
 
         public override void SetDefaults()
         {
             Projectile.width = 12;
             Projectile.height = 12;
             Projectile.friendly = true;
-            Projectile.penetrate = 1;
-            Projectile.timeLeft = 180;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 540;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
             Projectile.alpha = 20;
             Projectile.scale = 1.1f;
+            Projectile.extraUpdates = 3;
+            TextureGlow ??= ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Projectiles/MagicPro/StarScepter/StarScepterBolt_Glow", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+            TextureGlow2 ??= ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Projectiles/MagicPro/StarScepter/StarScepterBolt_Glow2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+            OldPosition = new List<Vector2>();
+            OldRotation = new List<float>();
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = -1;
+            DrawColor = new Color(255, 250, 127);
         }
 
         public override void AI()
@@ -44,6 +60,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
             // Gentle drift
             Projectile.velocity *= 0.99f;
 
+            /*
             // Small helix dust trail
             Vector2 helixOffset = HelixOffset();
             int dustIndex = Dust.NewDust(
@@ -58,6 +75,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
             Dust dust = Main.dust[dustIndex];
             dust.noGravity = true;
             dust.velocity *= 0.1f;
+            */
 
             // 🔸 Disable damage & homing for the first second
             if (!activated)
@@ -69,7 +87,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
             // Once active:
             Projectile.friendly = true;
             float homingRange = 600f;
-            float turnSpeed = 0.1f;
+            float turnSpeed = 0.033f;
 
             NPC target = FindClosestNPC(homingRange);
             if (target != null)
@@ -81,10 +99,27 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
                     turnSpeed
                 ) * Projectile.velocity.Length();
 
-                Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 6f;
+                Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.Zero) * 2f;
             }
 
+            // Record old positions for trail
+            OldPosition.Add(Projectile.Center);
+            OldRotation.Add(Projectile.rotation);
+
+            if (OldPosition.Count > 30) // or fewer if you want a shorter trail
+            {
+                OldPosition.RemoveAt(0);
+                OldRotation.RemoveAt(0);
+            }
+
+
             Projectile.rotation = Projectile.velocity.ToRotation();
+
+            if (fadingOut)
+            {
+                Projectile.velocity *= 0.5f; // slow it down
+                return; // skip normal logic while fading
+            }
         }
 
         private Vector2 HelixOffset()
@@ -114,8 +149,18 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
             return closest;
         }
 
-        public override void OnKill(int timeLeft)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            // trigger fade-out
+            Projectile.ai[1] = 1f;
+            Projectile.friendly = false;
+            Projectile.tileCollide = false;
+
+            // Optional: shorten remaining life so it fades quickly
+            if (Projectile.timeLeft > 30)
+                Projectile.timeLeft = 30;
+
+            /*
             for (int i = 0; i < 10; i++)
             {
                 Dust d = Dust.NewDustDirect(
@@ -131,32 +176,60 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
                 );
                 d.noGravity = true;
             }
+            */
 
             SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-            Vector2 drawOrigin = texture.Size() * 0.5f;
-            Vector2 drawPos = Projectile.Center - Main.screenPosition;
+            Player player = Main.player[Projectile.owner];
+            SpriteBatch spriteBatch = Main.spriteBatch;
+            Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
 
-            Color color = Color.Lerp(Color.Cyan, Color.LightGreen, 0.5f) * 0.8f;
+            // Start additive blending
+            spriteBatch.End();
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
 
-            for (int i = 0; i < 5; i++)
+            float colorMult = 1f;
+            if (Projectile.timeLeft < 20)
+                colorMult *= Projectile.timeLeft / 20f;
+
+            // Define your gradient start and end colors
+            Color startColor = new Color(0, 180, 255); // light blue
+            Color endColor = new Color(0, 255, 120);   // bright green
+
+            // Draw trail
+            for (int i = 0; i < OldPosition.Count; i++)
             {
-                Vector2 offset = HelixOffset() * (0.2f * i);
-                Main.EntitySpriteDraw(
-                    texture,
-                    drawPos + offset,
+                float progress = (float)i / (OldPosition.Count - 1);
+                Color trailColor = Color.Lerp(startColor, endColor, progress); // green → blue
+                trailColor *= 0.03f * (i + 1) * colorMult; // fade with trail length
+
+                Vector2 drawPosition2 = OldPosition[i] - Main.screenPosition;
+                spriteBatch.Draw(
+                    TextureGlow,
+                    drawPosition2,
                     null,
-                    color * (1f - i * 0.15f),
-                    Projectile.rotation,
-                    drawOrigin,
-                    Projectile.scale * (1.1f - i * 0.05f),
-                    SpriteEffects.None
+                    trailColor,
+                    OldRotation[i],
+                    TextureGlow.Size() * 0.5f,
+                    Projectile.scale * 0.8f,
+                    SpriteEffects.None,
+                    0f
                 );
             }
+
+            // Main glow burst and base texture
+            Vector2 drawPosition = Projectile.Center - Main.screenPosition;
+            Color centerGlowColor = Color.Lerp(startColor, endColor, 0.5f) * (0.6f * colorMult); // mid-tone blend
+
+            spriteBatch.Draw(TextureGlow2, drawPosition, null, centerGlowColor, Projectile.ai[1], TextureGlow2.Size() * 0.5f, Projectile.scale * 1.5f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, drawPosition, null, Color.White * colorMult, Projectile.rotation, texture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0f);
+
+            // End additive pass and resume normal alpha blending
+            spriteBatch.End();
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
 
             return false;
         }
