@@ -43,13 +43,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
 
         public override void UpdateEquip(Player player)
         {
-            player.GetThoriumPlayer();
+            ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             ref StatModifier damage = ref player.GetDamage(DamageClass.Generic);
             damage -= 0.16f;
             ref StatModifier damage2 = ref player.GetDamage((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance);
             damage2 += 0.32f;
             player.lifeRegenTime += 10f;
             player.GetCritChance((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 3f;
+            thoriumPlayer.healBonus += 2;
         }
 
         public override void AddRecipes()

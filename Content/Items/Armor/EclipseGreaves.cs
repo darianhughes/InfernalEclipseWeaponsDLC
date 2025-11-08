@@ -50,7 +50,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
             damage2 += 0.32f;
             player.manaCost -= 0.15f;
             player.moveSpeed += 0.25f;
-            thoriumPlayer.healBonus += 2;
+            thoriumPlayer.healBonus += 3;
             player.GetCritChance((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 4f;
         }
 
