@@ -1,4 +1,4 @@
-using CalamityMod.Items;
+﻿using CalamityMod.Items;
 using CalamityMod;
 using CalamityMod.Projectiles.Magic;
 using InfernalEclipseWeaponsDLC.Utilities;
@@ -17,7 +17,12 @@ using ThoriumMod.Utilities;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityMod.CustomRecipes;
-using static System.Net.Mime.MediaTypeNames;
+using Terraria.Audio;
+using static Terraria.GameContent.Animations.IL_Actions.Sprites;
+using System.IO;
+using System.Linq;
+using CalamityMod.Projectiles.Melee;
+using System.Runtime.InteropServices;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 {
@@ -28,9 +33,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override void SetStaticDefaults()
         {
-            // Use the proper texture path
-            inventoryTexture = Mod.Assets.Request<Texture2D>("Content/Items/Weapons/Healer/Defibrillanator_Inventory", AssetRequestMode.ImmediateLoad);
-            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+            inventoryTexture = Mod.Assets.Request<Texture2D>(
+                "Content/Items/Weapons/Healer/Defibrillanator_Inventory",
+                AssetRequestMode.ImmediateLoad
+            );
         }
 
         public override void SetDefaults()
@@ -38,15 +44,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.Size = new Vector2(10, 10);
             Item.value = Item.sellPrice(gold: 3);
 
-            Item.damage = 10;
+            Item.damage = 56;
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Item.noMelee = true;
             Item.mana = 3;
             radiantLifeCost = 3;
-            Item.damage = 33;
 
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.useTime = 16;
+            Item.useAnimation = 16;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.autoReuse = true;
 
@@ -54,7 +59,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
             Item.UseSound = SoundID.Item24;
 
-            Item.shoot = ModContent.ProjectileType<LightningArc>();
+            Item.shoot = ModContent.ProjectileType<DamagingLightningArc>();
             Item.shootSpeed = 8f;
 
             isHealer = true;
@@ -65,26 +70,22 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             CalamityGlobalItem modItem = Item.Calamity();
             modItem.UsesCharge = true;
             modItem.MaxCharge = 50f;
-            modItem.ChargePerUse = 0.04f;
+            modItem.ChargePerUse = 0.02f;
         }
 
         public override bool CanUseItem(Player player)
         {
-            // Handle right-click (alt function)
+            var modPlayer = player.GetModPlayer<DefibrillanatorPlayer>();
+
+            radiantLifeCost = modPlayer.fullyCharged ? 0 : 3;
+
+            // Right-click: heal mode (only if fully charged)
             if (player.altFunctionUse == 2)
             {
-                // Right-click = heal arc no Radiant cost
-                radiantLifeCost = 0;
+                return modPlayer.fullyCharged;
             }
-            else
-            {
-                // Left-click = attack arc normal cost
-                radiantLifeCost = 3;
-            }
-
-            return base.CanUseItem(player);
+            return true;
         }
-
 
         public override bool AltFunctionUse(Player player) => true;
 
@@ -92,15 +93,66 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         {
             if (player.altFunctionUse == 2)
                 type = ModContent.ProjectileType<HealingLightningArc>();
-            position += velocity;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            var modPlayer = player.GetModPlayer<DefibrillanatorPlayer>();
 
-            Projectile projectile = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, player.whoAmI);
-            projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-            return false;
+            // --- Charging mode (Left-click) ---
+            if (player.altFunctionUse != 2)
+            {
+                if (!modPlayer.fullyCharged)
+                {
+                    // Increment charge
+                    modPlayer.defibrillanatorCharge++;
+
+                    // Charging feedback
+                    SoundEngine.PlaySound(SoundID.Item93, player.Center);
+                    Dust.NewDust(player.Center, 10, 10, DustID.Electric, 0f, -2f, 150, Color.LightCyan, 1.3f);
+                    Dust.NewDust(player.Center, 10, 10, DustID.Torch, 0f, -2f, 150, Color.White, 1.3f);
+
+                    // Cap & trigger full charge
+                    if (modPlayer.defibrillanatorCharge >= 5)
+                    {
+                        modPlayer.defibrillanatorCharge = 5;
+                        modPlayer.fullyCharged = true;
+
+                        for (int i = 0; i < 5; i++)
+                        {
+                            Dust.NewDust(player.Center, 10, 10, DustID.Electric, Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f), 150, Color.White, 0.75f);
+                            Dust.NewDust(player.Center, 10, 10, DustID.Torch, Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f), 150, Color.White, 0.75f);
+                        }
+                        SoundEngine.PlaySound(SoundID.Item93, player.Center);
+                    }
+
+                    // No projectile fired during charge
+                    return false;
+                }
+
+                // Fully charged but left-clicking → normal firing behavior (discharge shot)
+                radiantLifeCost = 0;
+            }
+
+            // --- Discharge (Right-click OR fully charged left-click) ---
+            if (modPlayer.fullyCharged)
+            {
+                int shots = 5;
+                modPlayer.fullyCharged = false;
+                modPlayer.defibrillanatorCharge = 0;
+
+                SoundEngine.PlaySound(SoundID.Item122, player.Center);
+
+                for (int i = 0; i < shots; i++)
+                {
+                    Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(5f));
+                    Vector2 shootPos = position + perturbedSpeed;
+                    Projectile proj = Projectile.NewProjectileDirect(source, position, perturbedSpeed, type, damage, knockback, player.whoAmI);
+                    proj.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
+                }
+            }
+
+            return false; // handled manually
         }
 
         public override void AddRecipes()
@@ -117,20 +169,18 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            float customScale = scale * 0.75f; // shrink to 75% of normal
-
+            float customScale = scale * 0.75f;
             Main.EntitySpriteDraw(
                 inventoryTexture.Value,
                 position,
                 inventoryTexture.Value.Bounds,
                 drawColor,
                 0f,
-                inventoryTexture.Value.Bounds.Size() / 2f, // center origin
+                inventoryTexture.Value.Bounds.Size() / 2f,
                 customScale,
                 SpriteEffects.None
             );
-
-            return false; // prevent default drawing
+            return false;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
@@ -138,13 +188,54 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Main.EntitySpriteDraw(inventoryTexture.Value, Item.position, inventoryTexture.Value.Bounds, lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None);
             return false;
         }
+
+        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            var player = Main.LocalPlayer;
+            var modPlayer = player.GetModPlayer<DefibrillanatorPlayer>();
+
+            // Pass frame correctly
+            DefibrillanatorDrawHelper.DrawChargeBarInInventory(spriteBatch, position, frame, modPlayer.defibrillanatorCharge, scale);
+        }
     }
 
+    public static class DefibrillanatorDrawHelper
+    {
+        public static void DrawChargeBarInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, float charge, float scale)
+        {
+            if (charge <= 0f) return;
+
+            Texture2D barBG = ModContent.Request<Texture2D>("CalamityMod/UI/MiscTextures/GenericBarBack", AssetRequestMode.ImmediateLoad).Value;
+            Texture2D barFG = ModContent.Request<Texture2D>("CalamityMod/UI/MiscTextures/GenericBarFront", AssetRequestMode.ImmediateLoad).Value;
+
+            Vector2 barOrigin = barBG.Size() * 0.5f;
+
+            // Position below the item slot
+            float yOffset = -8f;
+            Vector2 drawPos = position + Vector2.UnitY * scale * ((float)frame.Height - yOffset);
+
+            // Crop the foreground based on charge
+            Rectangle frameCrop = new Rectangle(0, 0, (int)(charge / 5f * barFG.Width), barFG.Height);
+
+            // Smooth lerp color (you can change to any color you like)
+            float t = (float)((Math.Sin(Main.GlobalTimeWrappedHourly * 2f) + 1f) / 2f);
+            Color color = Color.Lerp(new Color(135, 206, 250), Color.Gold, t);
+
+            float barScale = 0.75f;
+
+            // Draw background
+            spriteBatch.Draw(barBG, drawPos, null, color, 0f, barOrigin, scale * barScale, SpriteEffects.None, 0f);
+            // Draw foreground
+            spriteBatch.Draw(barFG, drawPos, frameCrop, color * 0.8f, 0f, barOrigin, scale * barScale, SpriteEffects.None, 0f);
+        }
+    }
+
+
+    // --- Projectiles ---
     [ExtendsFromMod("CalamityMod")]
     public class HealingLightningArc : LightningArc
     {
-        public HashSet<Player> healedAlready = [];
-
+        public HashSet<Player> healedAlready = new();
         public int prevX;
 
         public override void SetDefaults()
@@ -153,13 +244,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Projectile.damage = 0;
             Projectile.friendly = false;
             Projectile.hostile = false;
+            Projectile.timeLeft = 10;
         }
 
         public override void AI()
         {
             Player owner = Main.player[Projectile.owner];
 
-            // --- Dust + light ---
             if (Main.rand.NextBool(3))
             {
                 Dust.NewDustPerfect(
@@ -171,16 +262,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                     1.2f
                 ).noGravity = true;
             }
+
             Lighting.AddLight(Projectile.Center, 1.0f, 0.85f, 0.4f);
 
-            // --- One-time setup ---
             if (Projectile.localAI[0] == 0f)
             {
                 AdjustMagnitude(ref Projectile.velocity);
                 Projectile.localAI[0] = 1f;
             }
 
-            // --- Find teammate target ---
             Player target = null;
             float closestDist = 200f;
             for (int i = 0; i < Main.maxPlayers; i++)
@@ -200,27 +290,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 }
             }
 
-            // --- Arc path simulation ---
             Vector2 arcVec;
             float jitterScale = 10f;
 
             if (target != null)
             {
-                // Pull the arc direction slightly toward target
                 Vector2 toTarget = target.Center - Projectile.Center;
                 float dist = toTarget.Length();
                 toTarget.Normalize();
-
-                // Add random jitter to keep lightning-like arcs
                 arcVec = toTarget * dist * 0.15f + new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)) * jitterScale;
             }
             else
             {
-                // No target � purely random arcing forward
                 arcVec = Projectile.velocity * 5f + new Vector2(Main.rand.Next(-5, 6), Main.rand.Next(-5, 6)) * 5f;
             }
 
-            // --- Draw arc dust trail ---
             Vector2 start = Projectile.Center;
             for (int j = 0; j < 20; j++)
             {
@@ -229,10 +313,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 start += arcVec / 20f;
             }
 
-            // --- Advance projectile position along the arc ---
             Projectile.position = start;
 
-            // --- Heal teammates on contact ---
             for (int i = 0; i < Main.maxPlayers; i++)
             {
                 Player p = Main.player[i];
@@ -242,7 +324,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                     {
                         if (Projectile.Hitbox.Intersects(p.Hitbox))
                         {
-                            HealTeammateThorium(owner, p, baseHeal: 5);
+                            HealTeammateThorium(owner, p, 5);
                             Projectile.Kill();
                             break;
                         }
@@ -257,25 +339,156 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             if (healer == target) return;
             if (healer.team == 0 || healer.team != target.team) return;
 
-            if (baseHeal <= 0 && healer.GetModPlayer<ThoriumPlayer>().healBonus <= 0)
-                return; // Nothing to heal
+            if (baseHeal <= 0 && healer.GetModPlayer<ThoriumPlayer>().healBonus <= 0) return;
 
-            HealerHelper.HealPlayer(
-                healer,
-                target,
-                healAmount: baseHeal, // <-- don't add healBonus here
-                recoveryTime: 60,
-                healEffects: true
-            );
+            HealerHelper.HealPlayer(healer, target, baseHeal, 60, true);
         }
 
         private void AdjustMagnitude(ref Vector2 vector)
         {
-            float length = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-            if (length > 6f)
+            float length = vector.Length();
+            if (length > 6f) vector *= 6f / length;
+        }
+    }
+
+    [ExtendsFromMod("CalamityMod")]
+    public class DamagingLightningArc : LightningArc
+    {
+        public HashSet<Player> healedAlready = new();
+        public int prevX;
+
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            Projectile.friendly = true;
+            Projectile.hostile = false;
+            Projectile.penetrate = 1;
+            Projectile.timeLeft = 10;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 30;
+        }
+
+        public override void AI()
+        {
+            Player owner = Main.player[Projectile.owner];
+
+            if (Main.rand.NextBool(3))
             {
-                vector *= 6f / length;
+                Dust.NewDustPerfect(
+                    Projectile.Center,
+                    DustID.Electric,
+                    Projectile.velocity * -0.25f,
+                    150,
+                    Color.Cyan,
+                    1.2f
+                ).noGravity = true;
             }
+
+            Lighting.AddLight(Projectile.Center, 0.4f, 0.6f, 1.2f);
+
+            if (Projectile.localAI[0] == 0f)
+            {
+                AdjustMagnitude(ref Projectile.velocity);
+                Projectile.localAI[0] = 1f;
+            }
+
+            NPC target = null;
+            float closestDist = 200f;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC npc = Main.npc[i];
+                if (npc.CanBeChasedBy(this))
+                {
+                    float dist = Vector2.Distance(Projectile.Center, npc.Center);
+                    if (dist < closestDist)
+                    {
+                        closestDist = dist;
+                        target = npc;
+                    }
+                }
+            }
+
+            Vector2 arcVec;
+            float jitterScale = 10f;
+            if (target != null)
+            {
+                Vector2 toTarget = target.Center - Projectile.Center;
+                float dist = toTarget.Length();
+                toTarget.Normalize();
+                arcVec = toTarget * dist * 0.15f + new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)) * jitterScale;
+            }
+            else
+            {
+                arcVec = Projectile.velocity * 5f + new Vector2(Main.rand.Next(-5, 6), Main.rand.Next(-5, 6)) * 5f;
+            }
+
+            Vector2 start = Projectile.Center;
+            for (int j = 0; j < 20; j++) start += arcVec / 20f;
+            for (int j = 0; j < 20; j++)
+            {
+                int dust = Dust.NewDust(start, 0, 0, DustID.Electric, 0f, 0f, 0, Color.LightBlue, 0.75f);
+                Main.dust[dust].noGravity = true;
+            }
+
+            Projectile.position = start;
+        }
+
+        private void AdjustMagnitude(ref Vector2 vector)
+        {
+            float length = vector.Length();
+            if (length > 6f) vector *= 6f / length;
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.Electrified, 180);
+        }
+    }
+
+    // --- Player Data ---
+    public class DefibrillanatorPlayer : ModPlayer
+    {
+        public int defibrillanatorCharge;
+        public bool fullyCharged;
+
+        public override void PostUpdate()
+        {
+            if (fullyCharged)
+            {
+                Lighting.AddLight(Player.Center, 0.2f, 0.4f, 1.0f);
+                if (Main.rand.NextBool(5))
+                    Dust.NewDust(Player.Center, 10, 10, DustID.Electric, 0, 0, 150, Color.Cyan, 0.75f);
+            }
+        }
+    }
+
+    // --- Charge bar (player) ---
+    public class DefibrillanatorChargeLayer : PlayerDrawLayer
+    {
+        public override Position GetDefaultPosition() => new AfterParent(PlayerDrawLayers.Head);
+
+        protected override void Draw(ref PlayerDrawSet drawInfo)
+        {
+            Player player = drawInfo.drawPlayer;
+            var modPlayer = player.GetModPlayer<DefibrillanatorPlayer>();
+
+            if (player.HeldItem.ModItem is not Defibrillanator) return;
+            if (modPlayer.defibrillanatorCharge <= 0) return;
+
+            Texture2D barBG = ModContent.Request<Texture2D>("CalamityMod/UI/MiscTextures/GenericBarBack", AssetRequestMode.ImmediateLoad).Value;
+            Texture2D barFG = ModContent.Request<Texture2D>("CalamityMod/UI/MiscTextures/GenericBarFront", AssetRequestMode.ImmediateLoad).Value;
+
+            Vector2 barOrigin = barBG.Size() * 0.5f;
+            float barScale = 0.95f;
+            Vector2 drawPos = player.Top + Vector2.UnitY * (-16f) - Main.screenPosition;
+
+            Rectangle frameCrop = new Rectangle(0, 0, (int)(modPlayer.defibrillanatorCharge / 5f * barFG.Width), barFG.Height);
+
+            float t = (float)((Math.Sin(Main.GlobalTimeWrappedHourly * 2f) + 1f) / 2f);
+            Color color = Color.Lerp(new Color(135, 206, 250), Color.Gold, t);
+
+            Main.spriteBatch.Draw(barBG, drawPos, null, color, 0f, barOrigin, barScale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(barFG, drawPos, frameCrop, color * 0.8f, 0f, barOrigin, barScale, SpriteEffects.None, 0f);
         }
     }
 }

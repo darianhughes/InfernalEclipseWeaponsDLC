@@ -415,7 +415,7 @@ Items: {
 			4% increased radiant critical strike chance
 			15% decreased mana cost
 			20% increased movement speed
-			Healing spells will heal an additional 2 life
+			Healing spells will heal an additional 3 life
 			''' */
 	}
 
@@ -427,6 +427,7 @@ Items: {
 			16% increased radiant damage
 			3% increased radiant critical strike chance
 			life regeneration begins faster
+			Healing spells will heal an additional 2 life
 			''' */
 	}
 
@@ -551,6 +552,7 @@ Projectiles: {
 	Magic: {
 		WhiteScythe.DisplayName: 洁白之镰
 		HealingLightningArc.DisplayName: 治疗性电弧
+		// DamagingLightningArc.DisplayName: Damaging Lightning Arc
 	}
 
 	TwoPathsPro2.DisplayName: 神冥歧径

@@ -294,8 +294,10 @@ Items: {
 		DisplayName: Defibrillanator
 		Tooltip:
 			'''
-			Shoots overcharged bolts of homing lightning foward
-			Right click to shoot healing bolts, consuming just mana
+			Left click to consume health and generate charge, reaching full charge at 5
+			Left clicking with full charge will fire a burst of damaging short range homing lightning
+			Right clicking with full charge will fire a burst of healing short range homing lightning
+			'Clear!'
 			'''
 	}
 
@@ -415,7 +417,7 @@ Items: {
 			4% increased radiant critical strike chance
 			15% decreased mana cost
 			20% increased movement speed
-			Healing spells will heal an additional 2 life
+			Healing spells will heal an additional 3 life
 			'''
 	}
 
@@ -427,6 +429,7 @@ Items: {
 			16% increased radiant damage
 			3% increased radiant critical strike chance
 			life regeneration begins faster
+			Healing spells will heal an additional 2 life
 			'''
 	}
 
@@ -551,6 +554,7 @@ Projectiles: {
 	Magic: {
 		WhiteScythe.DisplayName: White Scythe
 		HealingLightningArc.DisplayName: Healing Lightning Arc
+		DamagingLightningArc.DisplayName: Damaging Lightning Arc
 	}
 
 	TwoPathsPro2.DisplayName: Two Paths
