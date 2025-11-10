@@ -146,6 +146,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 if (npc.type == sots.Find<ModNPC>("Glowmoth").Type)
                 {
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<MothwingDagger>(), 5));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<IlluminantCross>(), 5));
                 }
             }
 

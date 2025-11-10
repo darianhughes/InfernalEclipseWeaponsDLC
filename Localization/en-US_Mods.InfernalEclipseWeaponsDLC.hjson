@@ -545,6 +545,16 @@ Items: {
 			Each star will continously attack the nearest enemy, with bosses being priortized
 			'''
 	}
+
+	IlluminantCross: {
+		DisplayName: Illuminant Cross
+		Tooltip:
+			'''
+			Charges a burst of illuminant light on the cursor
+			Charging the burst increases the size and damage greatly
+			Bursts released at full charge will release 3 illuminant bolts and heal allies
+			'''
+	}
 }
 
 Projectiles: {
@@ -648,6 +658,7 @@ Projectiles: {
 	TetherBladeProjectile.DisplayName: Tether Blade Projectile
 	TetherBladeProjectileBlink.DisplayName: Tether Blade Projectile Blink
 	StormCrossbowArrow.DisplayName: Storm Crossbow Arrow
+	IlluminantCrossPro.DisplayName: Illuminant Cross Pro
 }
 
 Buffs: {

@@ -87,7 +87,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
             // Once active:
             Projectile.friendly = true;
             float homingRange = 600f;
-            float turnSpeed = 0.033f;
+            float turnSpeed = 0.066f;
 
             NPC target = FindClosestNPC(homingRange);
             if (target != null)

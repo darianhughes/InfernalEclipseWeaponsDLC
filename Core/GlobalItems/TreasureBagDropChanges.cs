@@ -105,6 +105,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 if (item.type == sots.Find<ModItem>("GlowmothBag").Type)
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MothwingDagger>(), 5));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<IlluminantCross>(), 5));
                 }
             }
 

@@ -97,7 +97,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro
 
             // 🔹 Gentle homing logic
             float homingRange = 800f;
-            float turnSpeed = 0.025f;
+            float turnSpeed = 0.01f;
             NPC target = null;
 
             // Find the closest valid target within range
