@@ -71,6 +71,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             modItem.UsesCharge = true;
             modItem.MaxCharge = 50f;
             modItem.ChargePerUse = 0.02f;
+
+            Item.noUseGraphic = true;
         }
 
         public override bool CanUseItem(Player player)
