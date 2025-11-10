@@ -231,6 +231,23 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
                             }
                         }
                     }
+
+                    if (empower >= 5)
+                    {
+                        for (int i = 0; i < Main.maxPlayers; i++)
+                        {
+                            Player target = Main.player[i];
+                            if (target.active && !target.dead && CanHitPlayer(target))
+                            {
+                                float distance = Vector2.Distance(Projectile.Center, target.Center);
+                                if (distance < 45 + empower * 14) // same as your burst radius
+                                {
+                                    HealTeammateThorium(player, target, baseHeal: 5);
+                                }
+                            }
+                        }
+                    }
+
                 }
 
                 // 🔹 Empower-based burst ring effect
@@ -316,7 +333,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
             // Only heal teammates, not self
             if (player.team != 0 && player.team == target.team && target.whoAmI != player.whoAmI && empower >= 5)
             {
-                HealTeammateThorium(player, target, baseHeal: 3); // base 0 + Thorium bonus
+                HealTeammateThorium(player, target, baseHeal: 5); // base 0 + Thorium bonus
             }
 
             // Only apply debuff if this is a PvP hit
@@ -328,7 +345,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
             {
                 if (!hasHealedThisBurst && empower >= 5)
                 {
-                    int healAmount = 3;
+                    int healAmount = 5;
                     player.statLife += healAmount;
                     if (player.statLife > player.statLifeMax2)
                         player.statLife = player.statLifeMax2;

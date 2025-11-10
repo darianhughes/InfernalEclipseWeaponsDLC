@@ -48,7 +48,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             isHealer = true;
             healType = HealType.Ally;
-            healAmount = 3;
+            healAmount = 5;
             healDisplay = true;
         }
 
