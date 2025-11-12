@@ -101,12 +101,22 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             return false;
         }
 
-        public override void HoldItemFrame(Player player)
+        public override Vector2? HoldoutOffset()
         {
-            player.itemLocation += new Vector2(-18, 18f) * player.Directions;
+            return new Vector2(-24, 24);
         }
 
-        public override void UseItemFrame(Player player) => HoldItemFrame(player);
+        public override void HoldItemFrame(Player player)
+        {
+            player.itemLocation += new Vector2(-24, 24) * player.Directions;
+        }
+
+        public override void UseStyle(Player player, Rectangle heldItemFrame)
+        {
+            Vector2 offset = new Vector2(-24, 24f) * player.Directions;
+
+            player.itemLocation += offset;
+        }
 
         public override void BardModifyTooltips(List<TooltipLine> tooltips)
         {

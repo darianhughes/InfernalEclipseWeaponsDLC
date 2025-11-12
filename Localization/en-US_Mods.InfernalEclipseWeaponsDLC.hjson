@@ -555,6 +555,11 @@ Items: {
 			Bursts released at full charge will release 3 illuminant bolts and heal allies
 			'''
 	}
+
+	GlowstringBiwa: {
+		DisplayName: Glowstring Biwa
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -659,6 +664,8 @@ Projectiles: {
 	TetherBladeProjectileBlink.DisplayName: Tether Blade Projectile Blink
 	StormCrossbowArrow.DisplayName: Storm Crossbow Arrow
 	IlluminantCrossPro.DisplayName: Illuminant Cross Pro
+	GlowstringBiwaPro.DisplayName: Glowstring Biwa Pro
+	GlowstringBeam.DisplayName: Glowstring Beam
 }
 
 Buffs: {
