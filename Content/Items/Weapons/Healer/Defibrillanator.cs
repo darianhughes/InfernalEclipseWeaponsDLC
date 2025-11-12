@@ -73,6 +73,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             modItem.ChargePerUse = 0.02f;
 
             Item.noUseGraphic = true;
+
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
 
         public override bool CanUseItem(Player player)
@@ -81,11 +83,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             radiantLifeCost = modPlayer.fullyCharged ? 0 : 3;
 
-            // Right-click: heal mode (only if fully charged)
-            if (player.altFunctionUse == 2)
-            {
-                return modPlayer.fullyCharged;
-            }
             return true;
         }
 
@@ -102,43 +99,40 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             var modPlayer = player.GetModPlayer<DefibrillanatorPlayer>();
 
             // --- Charging mode (Left-click) ---
-            if (player.altFunctionUse != 2)
+            if (!modPlayer.fullyCharged)
             {
-                if (!modPlayer.fullyCharged)
+                // Increment charge
+                modPlayer.defibrillanatorCharge++;
+
+                // Charging feedback
+                SoundEngine.PlaySound(SoundID.Item93, player.Center);
+                Dust.NewDust(player.Center, 10, 10, DustID.Electric, 0f, -2f, 150, Color.LightCyan, 1.3f);
+                Dust.NewDust(player.Center, 10, 10, DustID.Torch, 0f, -2f, 150, Color.White, 1.3f);
+
+                // Cap & trigger full charge
+                if (modPlayer.defibrillanatorCharge >= 5)
                 {
-                    // Increment charge
-                    modPlayer.defibrillanatorCharge++;
+                    modPlayer.defibrillanatorCharge = 5;
+                    modPlayer.fullyCharged = true;
 
-                    // Charging feedback
-                    SoundEngine.PlaySound(SoundID.Item93, player.Center);
-                    Dust.NewDust(player.Center, 10, 10, DustID.Electric, 0f, -2f, 150, Color.LightCyan, 1.3f);
-                    Dust.NewDust(player.Center, 10, 10, DustID.Torch, 0f, -2f, 150, Color.White, 1.3f);
-
-                    // Cap & trigger full charge
-                    if (modPlayer.defibrillanatorCharge >= 5)
+                    for (int i = 0; i < 5; i++)
                     {
-                        modPlayer.defibrillanatorCharge = 5;
-                        modPlayer.fullyCharged = true;
-
-                        for (int i = 0; i < 5; i++)
-                        {
-                            Dust.NewDust(player.Center, 10, 10, DustID.Electric, Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f), 150, Color.White, 0.75f);
-                            Dust.NewDust(player.Center, 10, 10, DustID.Torch, Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f), 150, Color.White, 0.75f);
-                        }
-                        SoundEngine.PlaySound(SoundID.Item93, player.Center);
+                        Dust.NewDust(player.Center, 10, 10, DustID.Electric, Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f), 150, Color.White, 0.75f);
+                        Dust.NewDust(player.Center, 10, 10, DustID.Torch, Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f), 150, Color.White, 0.75f);
                     }
-
-                    // No projectile fired during charge
-                    return false;
+                    SoundEngine.PlaySound(SoundID.Item93, player.Center);
                 }
 
-                // Fully charged but left-clicking → normal firing behavior (discharge shot)
-                radiantLifeCost = 0;
+                // No projectile fired during charge
+                return false;
             }
-
-            // --- Discharge (Right-click OR fully charged left-click) ---
-            if (modPlayer.fullyCharged)
+            else
             {
+                if (player.altFunctionUse != 2)
+                {
+                    radiantLifeCost = 0;
+                }
+
                 int shots = 5;
                 modPlayer.fullyCharged = false;
                 modPlayer.defibrillanatorCharge = 0;
