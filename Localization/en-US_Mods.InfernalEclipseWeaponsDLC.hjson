@@ -467,9 +467,9 @@ Items: {
 
 	SuperCellCirclet: {
 		DisplayName: Super Cell Circlet
-		Tooltip:
+		Tooltip: 5% increased rogue damage
+		SetBonus:
 			'''
-			5% increased rogue damage
 			Increases your maximum technique points by 2
 			+110 maximum stealth
 			'''

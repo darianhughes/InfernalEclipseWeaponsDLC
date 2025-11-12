@@ -26,6 +26,7 @@ using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Potions;
+using InfernalEclipseWeaponsDLC.Core;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
 {
@@ -55,22 +56,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
 
         public override void AddRecipes()
         {
-            Mod consolaria = null;
             Mod thorium = ModLoader.GetMod("ThoriumMod");
-
-            // Try to safely get Calamity and Ragnarok
-            ModLoader.TryGetMod("Consolaria", out consolaria);
-
 
             Recipe recipe = CreateRecipe();
 
             recipe.AddIngredient(thorium.Find<ModItem>("HallowedCowl").Type, 1);
-            recipe.AddIngredient(ItemID.AdamantiteBar, 10);
+            recipe.AddRecipeGroup(RecipeGroups.Titanium, 12);
             recipe.AddIngredient(ItemID.SoulofLight, 10);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {
-                    recipe.AddIngredient(consolariaMod.Find<ModItem>("SoulofBlight").Type, 10);
+                recipe.AddIngredient(consolariaMod.Find<ModItem>("SoulofBlight").Type, 10);
             }
             else
             {
@@ -78,35 +74,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
                 recipe.AddIngredient(ItemID.SoulofSight, 5);
                 recipe.AddIngredient(ItemID.SoulofMight, 5);
                 recipe.AddIngredient(ItemID.SoulofFright, 5);
-                    recipe.AddIngredient(ItemID.CursedFlame, 8);
+                recipe.AddIngredient(ItemID.CursedFlame, 8);
             }
 
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
-
-            Recipe recipe2 = CreateRecipe();
-
-            recipe2.AddIngredient(thorium.Find<ModItem>("HallowedCowl").Type, 1);
-            recipe2.AddIngredient(ItemID.TitaniumBar, 10);
-            recipe2.AddIngredient(ItemID.SoulofLight, 10);
-
-            if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod2))
-            {
-                recipe2.AddIngredient(consolariaMod2.Find<ModItem>("SoulofBlight").Type, 10);
-            }
-            else
-            {
-                recipe2.AddIngredient<AureusCell>(10);
-                recipe2.AddIngredient(ItemID.SoulofSight, 5);
-                recipe2.AddIngredient(ItemID.SoulofMight, 5);
-                recipe2.AddIngredient(ItemID.SoulofFright, 5);
-                recipe2.AddIngredient(ItemID.CursedFlame, 8);
-            }
-
-            recipe2.AddTile(TileID.MythrilAnvil);
-            recipe2.Register();
-
-            base.AddRecipes();
         }
     }
 }
