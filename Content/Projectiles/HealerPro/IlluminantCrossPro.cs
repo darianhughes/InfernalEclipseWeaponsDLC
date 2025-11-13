@@ -75,6 +75,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
         public override void AI()
         {
             Player player = Main.player[((ModProjectile)this).Projectile.owner];
+
+            //Charging code
             int dustType = DustID.BlueCrystalShard;
             float scale = 3.5f + (float)empower * 0.5f;
             int num6 = Dust.NewDust(((Entity)((ModProjectile)this).Projectile).position, ((Entity)((ModProjectile)this).Projectile).width, ((Entity)((ModProjectile)this).Projectile).height, dustType, 0f, 0f, 100, default(Color), 0.5f + (float)empower * 0.1f);
@@ -82,12 +84,55 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
             obj.color = new Color(80, 200, 255);
             obj.noGravity = true;
             obj.velocity *= 0.75f;
+
+
+            if (Main.rand.NextBool(2)) // 50% chance to spawn the mushroom dust
+            {
+                Color[] mushroomColors = new Color[]
+                {
+        Color.LightSeaGreen,
+        Color.Blue
+                };
+
+                int mushroomDustCount = 1; // small scaling with empower
+                float spawnRadius = 25f; // start further out with more empower
+
+                for (int i = 0; i < mushroomDustCount; i++)
+                {
+                    Color chosenColor = mushroomColors[Main.rand.Next(mushroomColors.Length)];
+                    Vector2 direction = Main.rand.NextVector2CircularEdge(1f, 1f).SafeNormalize(Vector2.UnitY);
+
+                    // spawn around the projectile, not at the center
+                    Vector2 spawnPos = Projectile.Center + direction * spawnRadius;
+
+                    int dustIndex = Dust.NewDust(
+                        spawnPos,
+                        0, 0,
+                        DustID.Cloud,
+                        0f, 0f, 100,
+                        chosenColor,
+                        0.7f + empower * 0.1f
+                    );
+
+                    Dust d = Main.dust[dustIndex];
+                    d.noGravity = true;
+
+                    // velocity inward toward the projectile center
+                    d.velocity = -direction * Main.rand.NextFloat(2f, 2.5f);
+
+                    d.fadeIn = 0.6f;
+                    d.velocity *= Main.rand.NextFloat(0.9f, 1.3f);
+                }
+            }
+
             int num7 = Main.rand.Next(-20, 21);
             int num8 = Main.rand.Next(-20, 21);
             obj.position.X += num7;
             obj.position.Y += num8;
             obj.velocity.X = (float)(-num7) * (0.035f + (float)empower * 0.0065f);
             obj.velocity.Y = (float)(-num8) * (0.035f + (float)empower * 0.0065f);
+
+
             int interval = (int)(12f / player.GetTotalAttackSpeed((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance));
             SoundStyle val;
             if (((ModProjectile)this).Projectile.ai[1]++ >= (float)interval)
@@ -251,7 +296,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
                 }
 
                 // 🔹 Empower-based burst ring effect
-                int burstDustCount = 10 + empower * 7; // more dust with higher empower
+                int burstDustCount = 10 + empower * 8; // more dust with higher empower
                 float burstSpeed = 1.2f + empower * 1.2f; // faster dusts with more empower
                 Color[] colors = new Color[] { Color.LightSeaGreen, Color.Blue }; // mix of colors
 
@@ -276,7 +321,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
                         direction.Y * burstSpeed,
                         100,
                         chosenColor,
-                        1f
+                        1.2f
                     );
 
                     Dust d = Main.dust[dustIndex];

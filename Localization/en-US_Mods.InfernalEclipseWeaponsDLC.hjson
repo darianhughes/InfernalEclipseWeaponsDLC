@@ -558,7 +558,7 @@ Items: {
 
 	GlowstringBiwa: {
 		DisplayName: Glowstring Biwa
-		Tooltip: ""
+		Tooltip: Fires 2 illuminant orbs connected together by a string of light
 	}
 }
 

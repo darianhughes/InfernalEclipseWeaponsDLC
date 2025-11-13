@@ -40,7 +40,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.useStyle = ItemUseStyleID.Guitar;
 
             Item.DamageType = ModContent.GetInstance<BardDamage>();
-            Item.damage = 10;
+            Item.damage = 24;
             Item.knockBack = 4f;
             Item.noMelee = true;
 

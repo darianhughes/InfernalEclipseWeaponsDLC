@@ -17,7 +17,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     public class GlowstringBeam : ModProjectile
     {
-        public override string Texture => "CalamityMod/ExtraTextures/Lasers/UltimaRayMid"; // thin horizontal beam texture
+        public override string Texture => "CalamityMod/ExtraTextures/Lasers/UltimaRayMid";
+
+        // --- Easy-to-edit offset from projectile centers ---
+        private const float BeamOffset = 12f; // pixels from projectile center
 
         public override void SetDefaults()
         {
@@ -28,11 +31,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Projectile.timeLeft = 300;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 40;
         }
 
         public override void AI()
         {
-            // Get partner projectiles
             Projectile p1 = Main.projectile[(int)Projectile.ai[0]];
             Projectile p2 = Main.projectile[(int)Projectile.ai[1]];
 
@@ -42,13 +46,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                 return;
             }
 
-            Vector2 start = p1.Center;
-            Vector2 end = p2.Center;
+            // --- Calculate beam with offset ---
+            Vector2 direction = (p2.Center - p1.Center).SafeNormalize(Vector2.Zero);
+            Vector2 start = p1.Center + direction * BeamOffset;
+            Vector2 end = p2.Center - direction * BeamOffset;
             Vector2 diff = end - start;
 
             Projectile.Center = start + diff / 2f;
             Projectile.width = (int)diff.Length();
-            Projectile.height = 2; // beam thickness
+            Projectile.height = 1;
             Projectile.rotation = diff.ToRotation();
         }
 
@@ -59,8 +65,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
             if (!p1.active || !p2.active) return false;
 
-            Vector2 start = p1.Center;
-            Vector2 end = p2.Center;
+            Vector2 direction = (p2.Center - p1.Center).SafeNormalize(Vector2.Zero);
+            Vector2 start = p1.Center + direction * BeamOffset;
+            Vector2 end = p2.Center - direction * BeamOffset;
 
             float collisionPoint = 0f;
             return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), start, end, Projectile.height, ref collisionPoint);
@@ -74,38 +81,87 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             if (!p1.active || !p2.active)
                 return false;
 
-            Vector2 start = p1.Center;
-            Vector2 end = p2.Center;
+            Vector2 direction = (p2.Center - p1.Center).SafeNormalize(Vector2.Zero);
+            Vector2 start = p1.Center + direction * BeamOffset;
+            Vector2 end = p2.Center - direction * BeamOffset;
             Vector2 diff = end - start;
+            float length = diff.Length();
 
             Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
-
-            // The beam should be centered between the two projectiles
-            Vector2 midPoint = (start + end) / 2f;
-
-            // Origin = texture center so it stretches equally both ways
+            float rotation = direction.ToRotation() - MathHelper.PiOver2;
             Vector2 origin = new Vector2(tex.Width / 2f, tex.Height / 2f);
 
-            // Scale: X = beam thickness, Y = length relative to texture height
-            Vector2 scale = new Vector2(2.5f, diff.Length() / tex.Height);
+            // --- PULSE ---
+            // Brightness and width pulse together
+            float pulse = (float)Math.Sin(Main.GlobalTimeWrappedHourly * 3f) * 0.5f + 0.5f;
+            Color pulseColor = Color.White * MathHelper.Lerp(0.35f, 0.9f, pulse);
 
-            // Rotation is along the direction of the line
-            float rotation = diff.ToRotation() - MathHelper.PiOver2;
+            // Slight width growth with pulse (1.0 → 1.3)
+            float widthPulse = 1.0f + MathHelper.Lerp(0f, 0.3f, pulse);
 
-            // Draw the beam with 50% opacity
-            Main.EntitySpriteDraw(
-                tex,
-                midPoint - Main.screenPosition,
-                null,
-                Color.White * 0.5f,
-                rotation,
-                origin,
-                scale,
-                SpriteEffects.None,
-                0
-            );
+            int segments = 3;
+            for (int i = 0; i < segments; i++)
+            {
+                float t;
+                float thickness;
+                float alpha;
 
-            return false; // Prevent default drawing
+                if (i == 0) // left segment
+                {
+                    t = 0.05f;
+                    thickness = 0.5f;
+                    alpha = 1f;
+                }
+                else if (i == 2) // right segment
+                {
+                    t = 0.95f;
+                    thickness = 0.5f;
+                    alpha = 1f;
+                }
+                else // center
+                {
+                    t = 0.5f;
+                    thickness = 1f;
+                    alpha = 1f;
+                }
+
+                Vector2 segmentCenter = Vector2.Lerp(start, end, t);
+                float segLength = (i == 1) ? length * 0.8f : length * 0.1f;
+
+                // Apply pulsing width
+                Vector2 scale = new Vector2(thickness * widthPulse, segLength / tex.Height);
+                Color segmentColor = pulseColor * alpha;
+
+                Main.spriteBatch.Draw(
+                    tex,
+                    segmentCenter - Main.screenPosition,
+                    null,
+                    segmentColor,
+                    rotation,
+                    origin,
+                    scale,
+                    SpriteEffects.None,
+                    0f
+                );
+
+                // White glow overlay (also pulsing in width)
+                Vector2 glowScale = new Vector2(thickness * 1.1f * widthPulse, segLength / tex.Height);
+                Color glowColor = Color.White * (0.1f * alpha);
+
+                Main.spriteBatch.Draw(
+                    tex,
+                    segmentCenter - Main.screenPosition,
+                    null,
+                    glowColor,
+                    rotation,
+                    origin,
+                    glowScale,
+                    SpriteEffects.None,
+                    0f
+                );
+            }
+
+            return false;
         }
     }
 }
