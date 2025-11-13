@@ -106,6 +106,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MothwingDagger>(), 5));
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<IlluminantCross>(), 5));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GlowstringBiwa>(), 5));
                 }
             }
 

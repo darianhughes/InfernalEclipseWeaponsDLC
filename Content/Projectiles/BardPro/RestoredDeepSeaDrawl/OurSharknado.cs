@@ -28,7 +28,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaD
 
         public bool shouldSpawnProjs = true;
 
-        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
 
         public void SetSeaCreatureSpawning(bool enable)
         {

@@ -18,7 +18,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaD
         const int FRAME_TIME = 8;
         const float TAU_OVER_FIVE = MathHelper.TwoPi / 5;
 
-        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
         public override void SetBardDefaults()
         {
             Projectile.damage = 50;

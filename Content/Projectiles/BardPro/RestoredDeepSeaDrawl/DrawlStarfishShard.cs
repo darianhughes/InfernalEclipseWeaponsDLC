@@ -15,7 +15,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaD
 {
     public class DrawlStarfishShard : BardProjectile
     {
-        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
         public override void SetBardDefaults()
         {
             Projectile.damage = 45;

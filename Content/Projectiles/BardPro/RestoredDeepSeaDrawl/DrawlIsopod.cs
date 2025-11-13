@@ -14,7 +14,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaD
 {
     public class DrawlIsopod : BardProjectile
     {
-        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
         public override void SetBardDefaults()
         {
             Projectile.damage = 60;

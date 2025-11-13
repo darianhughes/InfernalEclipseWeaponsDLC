@@ -24,7 +24,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         public const float typhoonSpread = MathHelper.PiOver4 / 2; // 22.5 degrees
         public const int altUseCdMax = 30;
 
-        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
 
         public override void SetStaticDefaults()
         {

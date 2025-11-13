@@ -16,7 +16,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
     public class DeepSeaDrawl : BardItem
     {
-        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
 
         public override void SetStaticDefaults()
         {
@@ -39,7 +39,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.useTime = 40;
             Item.useAnimation = 40;
             Item.knockBack = 1.5f;
-            Item.damage = 65;
+            Item.damage = 60;
             Item.shootSpeed = 14f;
 
             Item.rare = ItemRarityID.Orange;
