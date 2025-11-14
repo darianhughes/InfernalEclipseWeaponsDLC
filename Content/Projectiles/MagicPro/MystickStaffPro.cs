@@ -58,10 +58,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
             if (target.IsHostile())
             {
                 Player player = Main.player[Projectile.owner];
-                player.statLife += 1;
+                player.statLife += 10;
                 if (player.statLife > player.statLifeMax2)
                     player.statLife = player.statLifeMax2;
-                player.HealEffect(1, true);
+                player.HealEffect(10, true);
             }
 
             //Arckane Staff Debuffs
