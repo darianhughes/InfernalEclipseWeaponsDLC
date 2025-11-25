@@ -114,7 +114,8 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
             {
                 if (item.type == thorium.Find<ModItem>("TheGrandThunderBirdTreasureBag").Type)
                 {
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandThunderWhip>(), 5));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandThunderWhip>(), 4));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormCarver>(), 4));
                 }
 
                 if (item.type == thorium.Find<ModItem>("LichTreasureBag").Type)

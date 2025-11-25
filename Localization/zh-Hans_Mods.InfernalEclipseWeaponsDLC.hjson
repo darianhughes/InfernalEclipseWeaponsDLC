@@ -558,6 +558,16 @@ Items: {
 		// DisplayName: Glowstring Biwa
 		// Tooltip: Fires 2 illuminant orbs connected together by a string of light
 	}
+
+	StormCarver: {
+		// DisplayName: Storm Carver
+		/* Tooltip:
+			'''
+			This scythe is swung directionally instead of spun
+			Carves out storm gusts from hit tiles
+			'Strike the Earth!'
+			''' */
+	}
 }
 
 Projectiles: {
@@ -664,6 +674,8 @@ Projectiles: {
 	// IlluminantCrossPro.DisplayName: Illuminant Cross Pro
 	// GlowstringBiwaPro.DisplayName: Glowstring Biwa Pro
 	// GlowstringBeam.DisplayName: Glowstring Beam
+	// StormTalonPro.DisplayName: Storm Talon Pro
+	// StormCarverPro.DisplayName: Storm Carver Pro
 }
 
 Buffs: {

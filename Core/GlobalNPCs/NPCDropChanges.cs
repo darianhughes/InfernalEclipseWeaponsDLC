@@ -155,7 +155,8 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
             {
                 if (npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type)
                 {
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GrandThunderWhip>(), 5));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GrandThunderWhip>(), 4));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<StormCarver>(), 4));
                 }
 
                 if (npc.type == thorium.Find<ModNPC>("Lich").Type)
