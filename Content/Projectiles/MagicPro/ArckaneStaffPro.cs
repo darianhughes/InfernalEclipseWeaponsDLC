@@ -42,8 +42,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             //Magick Staff Debuffs
-            target.AddBuff(69, 120, false);
-            target.AddBuff(31, 90, false);
+            target.AddBuff(BuffID.Ichor, 120, false);
+            target.AddBuff(BuffID.Confused, 90, false);
             target.AddBuff(BuffID.OnFire, 300, false);
             target.AddBuff(BuffID.Frostburn, 300, false);
             target.AddBuff(BuffID.Poisoned, 300, false);
