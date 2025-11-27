@@ -50,7 +50,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro
             Rectangle frame = texture.Frame(verticalFrames: Main.projFrames[Projectile.type], frameY: Projectile.frame);
             Vector2 origin = new(TextureAssets.Projectile[Projectile.type].Value.Width / 2, TextureAssets.Projectile[Projectile.type].Value.Height / Main.projFrames[Projectile.type] / 2);
             int count = 10;
-            if (CalamityConfig.Instance.Afterimages)
+            if (CalamityClientConfig.Instance.Afterimages)
             {
                 for (int i = 1; i < count; i += 2)
                 {
