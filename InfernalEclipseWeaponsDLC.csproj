@@ -9,7 +9,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Reference Include="CalamityMod">
-	    <HintPath>..\ModAssemblies\CalamityMod_v2.0.5.dll</HintPath>
+	    <HintPath>..\ModAssemblies\CalamityMod_v2.0.7.1.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Daybreak">
 	    <HintPath>..\ModAssemblies\Daybreak_v1.6.2.dll</HintPath>

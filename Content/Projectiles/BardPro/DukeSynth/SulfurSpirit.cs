@@ -98,7 +98,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.DukeSynth
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                int radius = 60;
+                //int radius = 60;
                 // Explosion damage
                 Projectile.NewProjectile(
                     Projectile.GetSource_Death(),
