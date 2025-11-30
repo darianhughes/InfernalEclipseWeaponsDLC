@@ -236,7 +236,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
                 if (base.Projectile.localAI[0] > 20f && Main.rand.NextBool())
                 {
-                    Dust dust = Dust.NewDustPerfect(base.Projectile.Center + Main.rand.NextVector2Circular(5f, 5f), 66);
+                    Dust dust = Dust.NewDustPerfect(base.Projectile.Center + Main.rand.NextVector2Circular(5f, 5f), DustID.RainbowTorch);
                     dust.scale = Main.rand.NextFloat(0.7f, 1.5f);
                     dust.velocity = base.Projectile.velocity * Main.rand.NextFloat(-3f, 3f);
                     dust.noGravity = true;
@@ -275,7 +275,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                         GeneralParticleHandler.SpawnParticle(new DirectionalPulseRing(base.Projectile.Center, Vector2.Zero, mainColor, new Vector2(1f, 1f), Main.rand.NextFloat(12f, 25f), 0f, 0.5f, 15));
                         for (int i = 0; i < 6; i++)
                         {
-                            Dust dust2 = Dust.NewDustPerfect(base.Projectile.Center, 66);
+                            Dust dust2 = Dust.NewDustPerfect(base.Projectile.Center, DustID.RainbowTorch);
                             dust2.scale = Main.rand.NextFloat(0.6f, 1.1f);
                             dust2.velocity = new Vector2(6f, 6f).RotatedByRandom(100.0) * Main.rand.NextFloat(0.05f, 0.8f);
                             dust2.noGravity = true;
@@ -333,7 +333,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                 {
                     if (Main.rand.NextBool(5))
                     {
-                        Dust dust3 = Dust.NewDustPerfect(base.Projectile.Center + Main.rand.NextVector2Circular(5f, 5f), 66);
+                        Dust dust3 = Dust.NewDustPerfect(base.Projectile.Center + Main.rand.NextVector2Circular(5f, 5f), DustID.RainbowTorch);
                         dust3.scale = Main.rand.NextFloat(0.8f, 1.4f);
                         dust3.velocity = -base.Projectile.velocity * Main.rand.NextFloat(0.2f, 0.5f);
                         dust3.noGravity = true;
@@ -369,7 +369,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                 base.Projectile.Kill();
                 for (int i = 0; i <= 9; i++)
                 {
-                    Dust dust = Dust.NewDustPerfect(base.Projectile.Center, 66);
+                    Dust dust = Dust.NewDustPerfect(base.Projectile.Center, DustID.RainbowTorch);
                     dust.scale = Main.rand.NextFloat(0.4f, 1.1f);
                     dust.velocity = (base.Projectile.velocity * 4f).RotateRandom(0.60000002384185791) * Main.rand.NextFloat(0.2f, 0.9f);
                     dust.noGravity = true;
@@ -418,7 +418,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         {
             for (int i = 0; i <= 15; i++)
             {
-                Dust dust = Dust.NewDustPerfect(base.Projectile.Center, 66);
+                Dust dust = Dust.NewDustPerfect(base.Projectile.Center, DustID.RainbowTorch);
                 dust.scale = Main.rand.NextFloat(0.4f, 1.4f);
                 dust.velocity = (base.Projectile.velocity * 4f).RotateRandom(0.60000002384185791) * Main.rand.NextFloat(0.2f, 0.9f);
                 dust.noGravity = true;
