@@ -12,6 +12,7 @@ using CalamityMod.NPCs.OldDuke;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic;
 using CalamityMod.NPCs.AquaticScourge;
 using CalamityMod;
 using Terraria.ID;
@@ -157,6 +158,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 {
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GrandThunderWhip>(), 4));
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<StormCarver>(), 4));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GrandAmplifier>(), 4));
                 }
 
                 if (npc.type == thorium.Find<ModNPC>("Lich").Type)

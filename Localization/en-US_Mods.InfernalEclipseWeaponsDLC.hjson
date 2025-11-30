@@ -570,6 +570,16 @@ Items: {
 			'Strike the Earth!'
 			'''
 	}
+
+	GrandAmplifier: {
+		DisplayName: Grand Amplifier
+		Tooltip:
+			'''
+			Left click to fire a small thunderbolt that inflicts electrified
+			Right click to amplify the electrify debuff on all nearby enemies
+			Amplifying the debuff will remove the debuff but deal a burst of high damage
+			'''
+	}
 }
 
 Projectiles: {
@@ -678,6 +688,8 @@ Projectiles: {
 	GlowstringBeam.DisplayName: Glowstring Beam
 	StormTalonPro.DisplayName: Storm Talon Pro
 	StormCarverPro.DisplayName: Storm Carver Pro
+	GrandAmplifierPro.DisplayName: Grand Amplifier Pro
+	GrandAmplifierPro2.DisplayName: Grand Amplifier Pro2
 }
 
 Buffs: {

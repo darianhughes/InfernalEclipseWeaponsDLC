@@ -6,6 +6,7 @@ using CalamityMod.Items.TreasureBags;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic;
 using CalamityMod.Items.Fishing.SulphurCatches;
 using CalamityMod;
 using ThoriumMod.Items.Depths;
@@ -116,6 +117,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandThunderWhip>(), 4));
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormCarver>(), 4));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandAmplifier>(), 4));
                 }
 
                 if (item.type == thorium.Find<ModItem>("LichTreasureBag").Type)
