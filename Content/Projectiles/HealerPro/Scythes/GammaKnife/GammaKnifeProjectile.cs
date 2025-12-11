@@ -22,10 +22,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
 {
     public class GammaKnifeProjectile : ScythePro
     {
-        /// <summary>
-        ///     The lifespan of the projectile, in ticks.
-        /// </summary>
-        public int LIFESPAN = 40;
+        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/GammaKnife";
 
         /// <summary>
         ///     Gets the asset for the glowmask texture of the projectile.
@@ -62,7 +59,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
 
             Projectile.penetrate = -1;
 
-            Projectile.timeLeft = LIFESPAN;
+            Projectile.timeLeft = (int)Projectile.ai[1];
 
             Projectile.localNPCHitCooldown = 10;
             Projectile.idStaticNPCHitCooldown = 10;
@@ -83,6 +80,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
 
             Projectile.direction = direction;
             Projectile.spriteDirection = direction;
+            Projectile.scale *= Owner.GetAdjustedItemScale(Owner.HeldItem);
         }
 
         public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -138,32 +136,43 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
 
         public override bool PreAI()
         {
-            if (!Owner.active || Owner.dead || Owner.noItems || Owner.CCed)
+            Player owner = Owner;
+
+            if (!owner.active || owner.dead || owner.noItems || owner.CCed)
             {
                 Projectile.Kill();
                 return false;
             }
 
-            // Calculate aim angle
-            Vector2 toMouse = Main.MouseWorld - Owner.Center;
+            // === Attack-speed-based lifespan ===
+            if (Projectile.ai[1] <= 0)
+            {
+                Projectile.Kill();
+                return false;
+            }
+
+            Projectile.timeLeft = (int)Projectile.ai[1];
+            Projectile.ai[1]--;
+
+            // === Swing progress (0 → 1) ===
+            float t = 1f - Projectile.ai[1] / Projectile.ai[0];
+            t = 1f - MathF.Pow(1f - t, 3); // your cubic ease
+
+            // === Rotation code stays identical ===
+            Vector2 toMouse = Main.MouseWorld - owner.Center;
             float aimAngle = toMouse.ToRotation();
-
-            float t = 1f - Projectile.timeLeft / (float)LIFESPAN; // 0 → 1
-
-            // Choose curve for faster start
-            t = 1f - MathF.Pow(1f - t, 3); // cubic ease-out
 
             float startSwing = MathHelper.ToRadians(-60f);
             float endSwing = MathHelper.ToRadians(150f);
 
             swingOffset = MathHelper.Lerp(startSwing, endSwing, t);
 
-            Projectile.rotation = Projectile.spriteDirection == 1
+            Projectile.rotation =
+                Projectile.spriteDirection == 1
                 ? aimAngle + swingOffset
                 : MathHelper.Pi + aimAngle - swingOffset;
 
-            // Keep projectile centered on player
-            Projectile.Center = Owner.Center;
+            Projectile.Center = owner.Center;
 
             if (!Owner.active || Owner.dead || Owner.noItems || Owner.CCed)
             {
@@ -188,14 +197,25 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
+            float itemScale = Owner.GetAdjustedItemScale(Owner.HeldItem);
+
             // Calculate the blade tip position
-            Vector2 hitboxPos = Projectile.Center - new Vector2(-32f * Projectile.direction, 64f).RotatedBy(Projectile.rotation);
+            Vector2 hitboxPos = Projectile.Center -
+                new Vector2((-32f * Owner.GetAdjustedItemScale(Owner.HeldItem)) * Projectile.direction, 64f).RotatedBy(Projectile.rotation);
 
-            // Make a rectangle around that point for collision only
-            int size = 64;
-            Rectangle bladeHitbox = new Rectangle((int)(hitboxPos.X - size / 2), (int)(hitboxPos.Y - size / 2), size, size);
+            // Base size of the hitbox
+            int baseSize = 64;
 
-            // Check collision against target
+            // Scale the hitbox
+            float scaledSize = baseSize * itemScale;
+
+            Rectangle bladeHitbox = new Rectangle(
+                (int)(hitboxPos.X - scaledSize / 2f),
+                (int)(hitboxPos.Y - scaledSize / 2f),
+                (int)scaledSize,
+                (int)scaledSize
+            );
+
             return bladeHitbox.Intersects(targetHitbox);
         }
 
@@ -236,7 +256,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
             }
 
             // Spawn crescent moon slash a third of the way into swing
-            if (!crescentFired && Projectile.timeLeft <= LIFESPAN * 3 / 4)
+            if (!crescentFired && Projectile.ai[1] <= Projectile.ai[0] * 0.75f)
             {
                 Player owner = Main.player[Projectile.owner];
 
@@ -269,7 +289,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
 
         private void UpdateSwing()
         {
-            var multiplier = 1f - Projectile.timeLeft / (float)LIFESPAN;
+            var multiplier = 1f - Projectile.ai[1] / Projectile.ai[0];
             var progress = multiplier * multiplier * multiplier;
 
             /*
@@ -288,7 +308,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
             Projectile.rotation = Projectile.rotation.AngleLerp(rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0f), 0.2f);
             */
 
-            Projectile.scale = MathHelper.SmoothStep(1.2f, 0f, progress);
+            float itemScale = Owner.GetAdjustedItemScale(Owner.HeldItem);
+            Projectile.scale = MathHelper.SmoothStep(1.2f, 0f, progress) * itemScale;
         }
 
         private void UpdateOwner()

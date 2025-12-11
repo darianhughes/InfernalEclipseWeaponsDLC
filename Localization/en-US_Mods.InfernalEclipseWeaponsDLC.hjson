@@ -596,8 +596,8 @@ Items: {
 		Tooltip:
 			'''
 			Ignores 15 points of defence
-			Left click to swing the knife, firing a wave of gamma radiation
-			The wave will deal heavy damage at close range but dissipate as it travels
+			Left click to swing the knife directionally, firing a high intensity slash of gamma radiation
+			The slash will deal heavy damage at close range but dissipate as it travels
 			Right click to throw the knife, which will explode and return on collision with an enemy or tile
 			The knife cannot be used while thrown
 			'''

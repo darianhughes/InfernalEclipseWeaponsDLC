@@ -35,11 +35,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
             float t = 1f - Projectile.timeLeft / 20f;
 
             // Scale down over time
-            float scale = MathHelper.SmoothStep(1f, 0.5f, t);
+            float scale = MathHelper.SmoothStep(1f, 0.3f, t);
             Projectile.scale = scale;
 
             // Reduce damage over time
-            Projectile.damage = (int)(Projectile.damage * (1f - t * 0.5f));
+            Projectile.damage = (int)(Projectile.damage * (1f - t * 0.3f));
 
             // Crescent parameters
             int dustCount = 12;                  // How many dust particles in the arc

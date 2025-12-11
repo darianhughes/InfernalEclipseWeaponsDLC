@@ -25,6 +25,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
 {
     public class GammaKnifeThrownProjectile : ModProjectile
     {
+        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/GammaKnife";
+
         /// <summary>
         ///     The lifespan of the projectile, in ticks.
         /// </summary>
@@ -265,13 +267,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
             var rotation = Projectile.rotation;
 
             if (Projectile.direction == -1)
-            {
                 rotation += MathHelper.Pi;
-            }
 
             var position = Projectile.Center - new Vector2(0f, 16f).RotatedBy(Projectile.rotation);
             var velocity = rotation.ToRotationVector2() * 16f;
 
+            if (airTime < 1)
+                return;
             SpawnDustEffects(in position, in velocity);
         }
 

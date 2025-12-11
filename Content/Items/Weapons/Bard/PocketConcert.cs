@@ -18,6 +18,8 @@ using ThoriumMod.Sounds;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using static System.Net.Mime.MediaTypeNames;
+using CalamityMod.CustomRecipes;
+using CalamityMod.Items.Materials;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -55,6 +57,34 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
 
             InspirationCost = 1;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient<MysteriousCircuitry>(12)
+                .AddIngredient<DubiousPlating>(18)
+                .AddIngredient<UelibloomBar>(8)
+                .AddIngredient(ItemID.LunarBar, 4)
+                .AddTile(TileID.LunarCraftingStation)
+                .AddCondition(ArsenalTierGatedRecipe.ConstructRecipeCondition(4, out Func<bool> condition), condition)
+                .Register();
+
+            if (ModLoader.TryGetMod("CatalystMod", out Mod catalyst))
+            {
+                if (catalyst.TryFind("MetanovaBar", out ModItem metaNovaBar))
+                {
+                    // Catalyst-specific recipe using MetanovaBar instead of Uelibloom
+                    CreateRecipe()
+                        .AddIngredient<MysteriousCircuitry>(12)
+                        .AddIngredient<DubiousPlating>(18)
+                        .AddIngredient(metaNovaBar.Type, 4)
+                        .AddIngredient(ItemID.LunarBar, 4)
+                        .AddTile(TileID.LunarCraftingStation)
+                        .AddCondition(ArsenalTierGatedRecipe.ConstructRecipeCondition(4, out Func<bool> condition2), condition2)
+                        .Register();
+                }
+            }
         }
     }
 }
