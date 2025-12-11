@@ -11,19 +11,21 @@ using ThoriumMod.Projectiles.Bard;
 using ThoriumMod;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
+using Terraria.ID;
+using CalamityMod.Buffs.DamageOverTime;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.PocketConcert
 {
     public class MusicalNoteProjectile : BardProjectile
     {
         public static readonly Color[] Colors =
-        [
-            new Color(70, 229, 255),
-        new Color(238, 57, 252),
-        new Color(66, 255, 78),
-        new Color(255, 81, 72),
-        new Color(255, 233, 52),
-    ];
+    {
+        new Color(70, 229, 255),   // Blue
+        new Color(238, 57, 252),   // Purple
+        new Color(66, 255, 78),    // Green
+        new Color(255, 81, 72),    // Red
+        new Color(255, 233, 52),   // Yellow
+    };
 
         private Color Color => Colors[Projectile.frame];
 
@@ -48,13 +50,53 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.PocketConcert
 
             Projectile.timeLeft = 60;
             Projectile.penetrate = 2;
+
+            Projectile.localNPCHitCooldown = 40;
+            Projectile.idStaticNPCHitCooldown = 40;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.ownerHitCheck = true;
+            Projectile.usesIDStaticNPCImmunity = false;
         }
+
+        private int DebuffID;
 
         public override void OnSpawn(IEntitySource source)
         {
             base.OnSpawn(source);
 
             Projectile.frame = Main.rand.Next(Main.projFrames[Type]);
+
+            // Assign debuff based on frame/color
+            switch (Projectile.frame)
+            {
+                case 0: // Blue
+                    DebuffID = BuffID.Electrified;
+                    break;
+                case 1: // Purple
+                    DebuffID = BuffID.ShadowFlame;
+                    break;
+                case 2: // Green
+                    DebuffID = ModContent.BuffType<Plague>();
+                    break;
+                case 3: // Red
+                    DebuffID = ModContent.BuffType<BrimstoneFlames>();
+                    break;
+                case 4: // Yellow
+                    DebuffID = BuffID.Ichor;
+                    break;
+                default:
+                    DebuffID = 0;
+                    break;
+            }
+        }
+
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (DebuffID > 0)
+            {
+                int duration = 180;
+                target.AddBuff(DebuffID, duration);
+            }
         }
 
         public override void OnKill(int timeLeft)

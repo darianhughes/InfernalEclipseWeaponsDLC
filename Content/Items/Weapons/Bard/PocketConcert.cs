@@ -20,6 +20,8 @@ using CalamityMod.Rarities;
 using static System.Net.Mime.MediaTypeNames;
 using CalamityMod.CustomRecipes;
 using CalamityMod.Items.Materials;
+using ThoriumMod.Utilities;
+using ThoriumMod.Items.BardItems;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -34,7 +36,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetBardDefaults()
         {
-            Item.damage = 60;
+            Item.damage = 110;
 
             Item.autoReuse = true;
             Item.noMelee = true;
@@ -51,12 +53,53 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
             ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
             ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 190f;
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.1f;
+            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.025f;
 
             Item.rare = ModContent.RarityType<Turquoise>();
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
 
             InspirationCost = 1;
+        }
+
+        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source,
+    Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            // Use Thorium's helper to get the player's empowerment data
+            ThoriumPlayer tPlayer = player.GetModPlayer<ThoriumPlayer>();
+
+            // EmpowermentData is internal, so we use reflection
+            EmpowermentData empData = (EmpowermentData)typeof(ThoriumPlayer)
+                .GetField("Empowerments", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                .GetValue(tPlayer);
+
+            // Count empowerments at level >= 2
+            int highLevelEmpowerments = 0;
+            foreach (EmpowermentTimer timer in empData.Timers.Values)
+            {
+                if (timer.level >= 2)
+                    highLevelEmpowerments++;
+            }
+
+            // Fire 1 + N projectiles
+            int totalProjectiles = 1 + highLevelEmpowerments;
+
+            for (int i = 0; i < totalProjectiles; i++)
+            {
+                Vector2 perturbed = velocity.RotatedByRandom(MathHelper.ToRadians(20f));
+                perturbed *= 1f - (Main.rand.NextFloat() * 0.1f);
+
+                Projectile.NewProjectile(
+                    source,
+                    position,
+                    perturbed,
+                    type,
+                    damage,
+                    knockback,
+                    player.whoAmI
+                );
+            }
+
+            return false; // prevent default single shot
         }
 
         public override void AddRecipes()

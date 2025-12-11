@@ -20,6 +20,7 @@ using ThoriumMod.Projectiles.Scythe;
 using ThoriumMod.Tiles;
 using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
+using Terraria.DataStructures;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaKnife
 {
@@ -125,6 +126,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
 
             Projectile.ArmorPenetration = 15;
+        }
+
+        public override void OnSpawn(IEntitySource source)
+        {
+            Projectile.velocity *= 3f;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

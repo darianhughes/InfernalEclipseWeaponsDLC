@@ -83,7 +83,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
             Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 190f;
-            Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.1f;
+            Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.05f;
 
             Item.rare = ModContent.RarityType<Turquoise>();
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
@@ -113,7 +113,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             bool alt = player.HasAltFunctionUse();
 
-            Item.shootSpeed = alt ? 14f : 6f;
             Item.shoot = alt ? thrownProj : swingProj;
 
             return true;
