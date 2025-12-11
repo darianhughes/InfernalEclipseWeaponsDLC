@@ -50,7 +50,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.UseSound = ThoriumSounds.SunflareString_Sound;
             InspirationCost = 1;
             Item.rare = ModContent.RarityType<Turquoise>();
-            Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
+            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
         }
 
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

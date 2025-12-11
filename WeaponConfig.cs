@@ -18,5 +18,8 @@ namespace InfernalEclipseWeaponsDLC
         [DefaultValue(true)]
         [ReloadRequired]
         public bool GitGudWeapon;
+
+        [DefaultValue(false)]
+        public bool EnableScreenEffects;
     }
 }

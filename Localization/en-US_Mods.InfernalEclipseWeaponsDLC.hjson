@@ -580,6 +580,28 @@ Items: {
 			Amplifying the debuff will remove the debuff but deal a burst of high damage
 			'''
 	}
+
+	PocketConcert: {
+		DisplayName: Pocket Concert
+		Tooltip:
+			'''
+			Releases music notes of varying colors
+			Music notes will inflict a variety of debuffs based on the notes color
+			Release an additional music note for each unique empowerment you have at level 2 or higher
+			'''
+	}
+
+	GammaKnife: {
+		DisplayName: Gamma Knife
+		Tooltip:
+			'''
+			Ignores 15 points of defence
+			Left click to swing the knife, firing a wave of gamma radiation
+			The wave will deal heavy damage at close range but dissipate as it travels
+			Right click to throw the knife, which will explode and return on collision with an enemy or tile
+			The knife cannot be used while thrown
+			'''
+	}
 }
 
 Projectiles: {
@@ -690,6 +712,11 @@ Projectiles: {
 	StormCarverPro.DisplayName: Storm Carver Pro
 	GrandAmplifierPro.DisplayName: Grand Amplifier Pro
 	GrandAmplifierPro2.DisplayName: Grand Amplifier Pro2
+	MusicalNoteProjectile.DisplayName: Musical Note Projectile
+	GammaExplosionProjectile.DisplayName: Gamma Explosion Projectile
+	GammaKnifeProjectile.DisplayName: Gamma Knife Projectile
+	GammaKnifeThrownProjectile.DisplayName: Gamma Knife Thrown Projectile
+	GammaSlashProjectile.DisplayName: Gamma Slash Projectile
 }
 
 Buffs: {
@@ -738,6 +765,11 @@ Configs: {
 		GitGudWeapon: {
 			Label: GitGudWO Weapon Concept
 			Tooltip: Toggles whether if the weapon concpet made by GitGudWO from Verveine's 'Which AI Makes the Best Terraria Weapons?' is loaded
+		}
+
+		EnableScreenEffects: {
+			Label: Enable Screen Effects
+			Tooltip: ""
 		}
 	}
 }
