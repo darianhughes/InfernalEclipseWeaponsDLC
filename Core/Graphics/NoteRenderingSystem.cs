@@ -11,23 +11,17 @@ namespace InfernalEclipseWeaponsDLC.Core.Graphics
     public sealed class NoteRenderingSystem : ModSystem
     {
         public static readonly Matrix Scale = Matrix.CreateScale(0.5f, 0.5f, 1f);
-
         public static readonly Color Color = new(255, 255, 255);
 
         public static RenderTarget2D Target { get; private set; }
-
-        public static List<Action> Actions { get; private set; }
-
+        private static List<Action> _actions;
+        private static readonly object _actionLock = new();
         public static Asset<Effect> Effect { get; private set; }
 
         public override void PostSetupContent()
         {
             base.PostSetupContent();
-
-            if (Main.dedServ)
-            {
-                return;
-            }
+            if (Main.dedServ) return;
 
             Effect = ModContent.Request<Effect>("InfernalEclipseWeaponsDLC/Assets/Effects/Outline", AssetRequestMode.ImmediateLoad);
         }
@@ -35,128 +29,111 @@ namespace InfernalEclipseWeaponsDLC.Core.Graphics
         public override void Load()
         {
             base.Load();
+            if (Main.dedServ) return;
 
-            Actions = new List<Action>();
+            _actions = new List<Action>();
 
-            Main.RunOnMainThread
-            (
-                static () =>
-                {
-                    Target = new RenderTarget2D
-                    (
-                        Main.graphics.GraphicsDevice,
-                        Main.screenWidth / 2,
-                        Main.screenHeight / 2
-                    );
-                }
-            );
+            Main.RunOnMainThread(() =>
+            {
+                Target = new RenderTarget2D(Main.graphics.GraphicsDevice, Main.screenWidth / 2, Main.screenHeight / 2);
+            });
 
             On_Main.CheckMonoliths += Main_CheckMonoliths_FillBuffer;
             On_Main.DrawProjectiles += Main_DrawProjectiles_DrawBuffer;
-
             Main.OnResolutionChanged += Main_OnResolutionChanged_ResizeBuffer;
         }
 
         public override void Unload()
         {
             base.Unload();
+            if (Main.dedServ) return;
 
             Main.OnResolutionChanged -= Main_OnResolutionChanged_ResizeBuffer;
+            On_Main.CheckMonoliths -= Main_CheckMonoliths_FillBuffer;
+            On_Main.DrawProjectiles -= Main_DrawProjectiles_DrawBuffer;
 
-            Main.RunOnMainThread
-            (
-                static () =>
-                {
-                    Target?.Dispose();
-                    Target = null;
-                }
-            );
+            Main.RunOnMainThread(() =>
+            {
+                Target?.Dispose();
+                Target = null;
+            });
 
-            Actions?.Clear();
-            Actions = null;
+            lock (_actionLock)
+            {
+                _actions?.Clear();
+                _actions = null;
+            }
+
+            Effect = null;
         }
 
         public static void Queue(Action action)
         {
-            Actions.Add(action);
+            if (Main.dedServ || action == null) return;
+            lock (_actionLock)
+                _actions.Add(action);
         }
 
         private static void Main_CheckMonoliths_FillBuffer(On_Main.orig_CheckMonoliths orig)
         {
             orig();
-
             FillBuffer();
         }
 
         private static void FillBuffer()
         {
-            if (Target == null || Target.IsDisposed)
-            {
-                return;
-            }
+            if (Main.dedServ || Target == null || Target.IsDisposed) return;
 
             var device = Main.graphics.GraphicsDevice;
-
             var bindings = device.GetRenderTargets();
 
             device.SetRenderTarget(Target);
             device.Clear(Color.Transparent);
 
-            Main.spriteBatch.Begin
-            (
-                SpriteSortMode.Immediate,
-                BlendState.AlphaBlend,
-                SamplerState.PointClamp,
-                DepthStencilState.None,
-                RasterizerState.CullNone,
-                null,
-                Scale
-            );
+            Main.spriteBatch.Begin(SpriteSortMode.Immediate,
+                                   BlendState.AlphaBlend,
+                                   SamplerState.PointClamp,
+                                   DepthStencilState.None,
+                                   RasterizerState.CullNone,
+                                   null,
+                                   Scale);
 
-            foreach (var action in Actions)
+            lock (_actionLock)
             {
-                action?.Invoke();
+                foreach (var action in _actions)
+                    action?.Invoke();
+
+                _actions.Clear();
             }
 
             Main.spriteBatch.End();
-
             device.SetRenderTargets(bindings);
-
-            Actions.Clear();
         }
 
         private static void Main_DrawProjectiles_DrawBuffer(On_Main.orig_DrawProjectiles orig, Main self)
         {
             DrawBuffer();
-
             orig(self);
         }
 
         private static void DrawBuffer()
         {
-            if (Target == null || Target.IsDisposed)
-            {
-                return;
-            }
+            if (Main.dedServ || Target == null || Target.IsDisposed || Effect?.Value == null) return;
 
             var shader = Effect.Value;
 
-            Main.spriteBatch.Begin
-            (
-                SpriteSortMode.Deferred,
-                BlendState.AlphaBlend,
-                SamplerState.PointClamp,
-                DepthStencilState.None,
-                RasterizerState.CullNone,
-                shader,
-                Main.GameViewMatrix.TransformationMatrix
-            );
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred,
+                                   BlendState.AlphaBlend,
+                                   SamplerState.PointClamp,
+                                   DepthStencilState.None,
+                                   RasterizerState.CullNone,
+                                   shader,
+                                   Main.GameViewMatrix.TransformationMatrix);
 
-            shader.Parameters["uImageSize0"].SetValue(Target.Size());
-            shader.Parameters["uColor"].SetValue(Color.ToVector3());
+            shader.Parameters["uImageSize0"]?.SetValue(Target.Size());
+            shader.Parameters["uColor"]?.SetValue(Color.ToVector3());
 
             Main.spriteBatch.Draw(Target, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
-
             Main.spriteBatch.End();
         }
 
@@ -167,25 +144,13 @@ namespace InfernalEclipseWeaponsDLC.Core.Graphics
 
         private static void ResizeBuffer(Vector2 size)
         {
-            if (Target == null || Target.IsDisposed)
+            if (Main.dedServ) return;
+
+            Main.RunOnMainThread(() =>
             {
-                return;
-            }
-
-            Main.RunOnMainThread
-            (
-                () =>
-                {
-                    Target?.Dispose();
-
-                    Target = new RenderTarget2D
-                    (
-                        Main.graphics.GraphicsDevice,
-                        (int)(size.X / 2f),
-                        (int)(size.Y / 2f)
-                    );
-                }
-            );
+                Target?.Dispose();
+                Target = new RenderTarget2D(Main.graphics.GraphicsDevice, (int)(size.X / 2f), (int)(size.Y / 2f));
+            });
         }
     }
 }
