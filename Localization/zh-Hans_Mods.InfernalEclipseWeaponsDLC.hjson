@@ -574,8 +574,8 @@ Items: {
 		/* Tooltip:
 			'''
 			Left click to fire a small thunderbolt that inflicts electrified
-			Right click to amplify the electrify debuff on all nearby enemies
-			Amplifying the debuff will remove the debuff but deal a burst of high damage
+			Right click to amplify all nearby enemies with the electrified debuff
+			Amplifying will remove the electrified debuff but deal a burst of high damage
 			''' */
 	}
 
@@ -715,6 +715,7 @@ Projectiles: {
 	// GammaKnifeProjectile.DisplayName: Gamma Knife Projectile
 	// GammaKnifeThrownProjectile.DisplayName: Gamma Knife Thrown Projectile
 	// GammaSlashProjectile.DisplayName: Gamma Slash Projectile
+	// GrandAmplifierLightning.DisplayName: Grand Amplifier Lightning
 }
 
 Buffs: {

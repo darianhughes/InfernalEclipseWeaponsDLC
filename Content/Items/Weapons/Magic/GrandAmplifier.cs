@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod.Items;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic

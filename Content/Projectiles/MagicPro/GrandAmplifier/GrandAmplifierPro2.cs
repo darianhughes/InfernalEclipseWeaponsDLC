@@ -7,8 +7,9 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
 {
     public class GrandAmplifierPro2 : ModProjectile
     {
@@ -73,33 +74,25 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
                 if (calNPC.electrified <= 0)
                     continue; // skip NPCs without Electrified
 
-                // Spawn Electrosphere projectile
-                int proj = Projectile.NewProjectile(
+                Vector2 spawnPos = npc.Center + new Vector2(0f, -150f);
+
+                int proj2 = Projectile.NewProjectile(
                     Projectile.GetSource_FromThis(),
-                    npc.Center,
+                    spawnPos,
                     Vector2.Zero,
-                    ProjectileID.Electrosphere,
+                    ModContent.ProjectileType<GrandAmplifierLightning>(),
                     player.HeldItem.damage,
                     0f,
-                    player.whoAmI
+                    player.whoAmI,
+                    npc.whoAmI
                 );
 
-                if (proj >= 0 && proj < Main.maxProjectiles)
-                {
-                    Projectile p = Main.projectile[proj];
-                    p.timeLeft = 30;
-                    p.DamageType = DamageClass.Magic;
-                    spawnedAny = true;
-                }
-
+                // === REMOVE ELECTRIFIED ===
                 if (npc.HasBuff(BuffID.Electrified))
-                {
                     npc.DelBuff(BuffID.Electrified);
-                }
+
                 if (calNPC.electrified > 0)
-                {
                     calNPC.electrified = 0;
-                }
             }
 
             if (spawnedAny)

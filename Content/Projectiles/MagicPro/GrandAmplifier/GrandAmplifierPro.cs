@@ -6,7 +6,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
+namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
 {
     public class GrandAmplifierPro : ModProjectile
     {
