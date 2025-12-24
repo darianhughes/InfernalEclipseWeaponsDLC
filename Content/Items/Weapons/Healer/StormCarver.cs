@@ -38,7 +38,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         {
             SetDefaultsToScythe();
 
-            Item.damage = 14;
+            Item.damage = 16;
             scytheSoulCharge = 2;
             Item.width = 70;
             Item.height = 82;

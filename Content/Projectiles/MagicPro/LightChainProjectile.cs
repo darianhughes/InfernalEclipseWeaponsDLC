@@ -16,7 +16,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
         private static Texture2D TextureChainBack;
         private static Texture2D TextureChainFront;
 
-        public const float MaxRange = 320f; // 20 tiles 
+        public const float MaxRange = 480f; // 320 = 20 tiles 
 
         public override bool IsLoadingEnabled(Mod mod)
         {

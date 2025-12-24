@@ -215,8 +215,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
 
         public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            //Magick Staff Debuffs
-            target.AddBuff(BuffID.Electrified, 90, false);
+            target.AddBuff(BuffID.Electrified, 120, false);
         }
 
         private void SpawnThunderGust(Player player)
@@ -329,7 +328,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
         {
             if (fromScythe)
             {
-                target.AddBuff(BuffID.Electrified, 60); // 1 second electrified
+                target.AddBuff(BuffID.Electrified, 120);
             }
         }
     }

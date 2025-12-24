@@ -266,6 +266,7 @@ Items: {
 			Grants 3 soul essence on direct hit
 			Hitting enemies will generate electrifying nanobots
 			Right Click to throw the scythe, which will curve on it's way back
+			The scythe deals 30% more damage when thrown
 			'''
 	}
 
@@ -576,8 +577,8 @@ Items: {
 		Tooltip:
 			'''
 			Left click to fire a small thunderbolt that inflicts electrified
-			Right click to amplify the electrify debuff on all nearby enemies
-			Amplifying the debuff will remove the debuff but deal a burst of high damage
+			Right click to amplify all nearby enemies with the electrified debuff
+			Amplifying will remove the electrified debuff but deal a burst of high damage
 			'''
 	}
 

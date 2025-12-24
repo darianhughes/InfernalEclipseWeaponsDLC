@@ -20,7 +20,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.DamageType = DamageClass.Magic;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.damage = 25;
+            Item.damage = 27;
             Item.width = 44;
             Item.height = 44;
             Item.useTime = 60;

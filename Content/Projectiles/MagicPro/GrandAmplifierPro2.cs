@@ -1,4 +1,5 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -34,10 +35,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-            const float range = 800f;
+            const float range = 400f;
 
             // Optional: Dust ring for visuals
-            int points = 80;
+            int points = 40;
             for (int i = 0; i < points; i++)
             {
                 float angle = MathHelper.ToRadians(360f * i / points);
@@ -67,7 +68,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
                 if (distance > range)
                     continue;
 
-                if (!npc.HasBuff(BuffID.Electrified))
+                var calNPC = npc.Calamity();
+
+                if (calNPC.electrified <= 0)
                     continue; // skip NPCs without Electrified
 
                 // Spawn Electrosphere projectile
@@ -89,7 +92,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
                     spawnedAny = true;
                 }
 
-                npc.DelBuff(BuffID.Electrified); // remove Electrified
+                if (npc.HasBuff(BuffID.Electrified))
+                {
+                    npc.DelBuff(BuffID.Electrified);
+                }
+                if (calNPC.electrified > 0)
+                {
+                    calNPC.electrified = 0;
+                }
             }
 
             if (spawnedAny)

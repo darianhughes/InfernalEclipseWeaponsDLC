@@ -28,6 +28,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetStaticDefaults()
         {
+            Empowerments.AddInfo<Damage>(2);
             Empowerments.AddInfo<CriticalStrikeChance>(3);
             Empowerments.AddInfo<AttackSpeed>(2);
             // Right click support

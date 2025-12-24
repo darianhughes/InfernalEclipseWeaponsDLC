@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ModLoader;
 using InfernalEclipseWeaponsDLC.Common;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.ShadowflameAxePro;
+using CalamityMod;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee
 {
@@ -21,9 +22,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.autoReuse = false;
-            Item.DamageType = DamageClass.Melee;
+            Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.damage = 83;
+            Item.damage = 113;
             Item.width = 52;
             Item.height = 38;
             Item.useTime = 40;

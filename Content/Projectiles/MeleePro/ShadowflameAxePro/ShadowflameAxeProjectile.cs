@@ -6,6 +6,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using CalamityMod;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.ShadowflameAxePro
 {
@@ -23,7 +24,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.ShadowflameAxeP
 
         public override void SetDefaults()
         {
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
             Projectile.width = 50;
             Projectile.height = 50;
             Projectile.friendly = true;
@@ -37,6 +38,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.ShadowflameAxeP
             OldPosition = new List<Vector2>();
             OldRotation = new List<float>();
             Projectile.netImportant = true;
+
+            Projectile.scale = 1.25f;
         }
         public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI) => overPlayers.Add(index);
 
@@ -53,13 +56,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.ShadowflameAxeP
             switch (Projectile.ai[0])
             {
                 case 0:  // down swing
-                    rotation = Projectile.ai[2] - MathHelper.Pi * owner.direction - (Projectile.ai[1] + 40) * 0.045f * owner.direction;
+                    rotation = Projectile.ai[2] - MathHelper.Pi * owner.direction - (Projectile.ai[1] + 50f) * 0.045f * owner.direction;
                     break;
                 case 1:  // up swing
-                    rotation = Projectile.ai[2] + MathHelper.Pi * owner.direction + (Projectile.ai[1] + 40) * 0.045f * owner.direction;
+                    rotation = Projectile.ai[2] + MathHelper.Pi * owner.direction + (Projectile.ai[1] + 50f) * 0.045f * owner.direction;
                     break;
                 case 2:  // circle + spawn projectiles
-                    rotation = Projectile.ai[2] - MathHelper.PiOver2 * owner.direction - (Projectile.ai[1] + 70) * 0.066f * owner.direction;
+                    rotation = Projectile.ai[2] - MathHelper.PiOver2 * owner.direction - (Projectile.ai[1] + 60f) * 0.066f * owner.direction;
                     if (Projectile.ai[1] < 50 && Projectile.localAI[0] == 1)
                     {
                         Projectile.ResetLocalNPCHitImmunity();
@@ -80,7 +83,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.ShadowflameAxeP
             }
 
             Vector2 shoulderOffset = new Vector2(-6 * owner.direction, 0); // Aligns the weapon with the player shoulder center
-            Projectile.Center = owner.Center + Vector2.UnitY.RotatedBy(rotation) * 40f + shoulderOffset;
+            Projectile.Center = owner.Center + Vector2.UnitY.RotatedBy(rotation) * 50f + shoulderOffset;
             owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
             Projectile.rotation = (Projectile.Center - (owner.Center + shoulderOffset)).ToRotation() + MathHelper.PiOver4;
             Projectile.velocity = Vector2.UnitX * owner.direction * 0.0001f; // for knockback direction

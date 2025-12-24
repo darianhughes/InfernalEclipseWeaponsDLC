@@ -20,13 +20,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
 
         public override void SetDefaults()
         {
-            Item.damage = 20;
+            Item.damage = 12;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 10;
             Item.width = 44;
             Item.height = 58;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.useTime = 24;
+            Item.useAnimation = 24;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;

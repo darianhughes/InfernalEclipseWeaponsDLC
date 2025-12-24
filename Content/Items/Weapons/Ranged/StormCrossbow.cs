@@ -21,11 +21,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.DamageType = DamageClass.Ranged;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.damage = 59;
+            Item.damage = 30;
             Item.width = 50;
             Item.height = 22;
-            Item.useTime = 24;
-            Item.useAnimation = 24;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
             Item.knockBack = 0.1f;
             Item.rare = ItemRarityID.Pink;
             Item.value = Item.sellPrice(0, 1, 0, 0);
@@ -42,7 +42,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
         {
             if (type != 1) return;
             type = ModContent.ProjectileType<StormCrossbowArrow>();
-            damage = (int)(damage * 0.5f);
         }
 
         public override Vector2? HoldoutOffset()

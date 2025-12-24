@@ -33,14 +33,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
     [ExtendsFromMod("ThoriumMod")]
     public class NeonRipper : ScytheItem
     {
-        public static readonly float ThrowDistance = 180f; // customise here
+        public static readonly float ThrowDistance = 240f; // customise here
 
         public override void SetDefaults()
         {
             SetDefaultsToScythe();
             Item.shoot = ModContent.ProjectileType<NeonRipperPro>();
             scytheSoulCharge = 3;
-            Item.damage = 30;
+            Item.damage = 35;
             Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
             Item.rare = ItemRarityID.Yellow;
 
@@ -81,7 +81,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                         position,
                         throwVel,
                         type,
-                        damage,
+                        (int)MathF.Round(damage * 1.3f),
                         knockback,
                         player.whoAmI,
                         (Main.rand.Next(2, 5) + 1) * 0.1f, // ai[0]
