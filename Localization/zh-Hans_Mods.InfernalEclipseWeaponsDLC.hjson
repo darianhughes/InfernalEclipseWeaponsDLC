@@ -574,8 +574,8 @@ Items: {
 		/* Tooltip:
 			'''
 			Left click to fire a small thunderbolt that inflicts electrified
-			Right click to amplify all nearby enemies with the electrified debuff
-			Amplifying will remove the electrified debuff but deal a burst of high damage
+			Right click to summon lightning above all nearby enemies with the electrified debuff
+			This lightning will remove the electrified debuff but deal a burst of high damage
 			''' */
 	}
 
