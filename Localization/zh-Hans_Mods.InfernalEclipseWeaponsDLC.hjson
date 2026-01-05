@@ -521,4 +521,6 @@ ItemTooltip: {
 	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲
 	NeonRipperLore2: 借此他打造了两件武器：第一件是一柄能够吸收灵气的镰刀，正如卡米的能力一般。
 	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
+	SearingSpearTip: 150% 基础伤害
+	ArcticSpearTip: 115% 基础伤害
 }
