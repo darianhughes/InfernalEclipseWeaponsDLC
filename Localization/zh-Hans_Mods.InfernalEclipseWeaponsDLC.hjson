@@ -301,11 +301,11 @@ Items: {
 
 	ArckaneStaff: {
 		Tooltip: 释放一枚过载的元素能量弹
-		DisplayName: 奥能法杖
+		DisplayName: 奥谬法杖
 	}
 
 	MystickStaff: {
-		DisplayName: 秘能法杖
+		DisplayName: 神异法杖
 		Tooltip:
 			'''
 			释放一枚汇聚所有已知元素的超能能量弹
