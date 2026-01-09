@@ -603,6 +603,11 @@ Items: {
 			The knife cannot be used while thrown
 			'''
 	}
+
+	MiniaturizedRequiemEngine: {
+		DisplayName: Miniaturized Requiem Engine
+		Tooltip: Has three modes of fire that can be cycled between on right click
+	}
 }
 
 Projectiles: {
@@ -719,6 +724,9 @@ Projectiles: {
 	GammaKnifeThrownProjectile.DisplayName: Gamma Knife Thrown Projectile
 	GammaSlashProjectile.DisplayName: Gamma Slash Projectile
 	GrandAmplifierLightning.DisplayName: Grand Amplifier Lightning
+	MiniaturizedRequiemEngineGatlingPro.DisplayName: Miniaturized Requiem Engine Gatling Pro
+	MiniaturizedRequiemEngineLaserPro.DisplayName: Miniaturized Requiem Engine Laser Pro
+	MiniaturizedRequiemEngineTheBigOnePro.DisplayName: Miniaturized Requiem Engine The Big One Pro
 }
 
 Buffs: {
@@ -752,6 +760,24 @@ ItemTooltip: {
 	NeonRipperLore2: In doing so he created two weapons: the first of which being a sycthe that could absorb aura, much like Kami's ability.
 	PBGBardALore2: In doing so he created two weapons: the second of which being a guitar that shot colorful microwaves.
 	VerveineItem: "'An item from the orchid's blessing...'"
+	EngineGatling:
+		'''
+		Gatling mode:
+		Holding fire will gradually reduce weapon spread and increase fire rate to a cap
+		Shots can pierce up to four times
+		'''
+	EngineLaser:
+		'''
+		Laser mode:
+		Fires an infinitely piercing laser that leaves behind a trail of lingering damage
+		'''
+	EngineTheBigOne:
+		'''
+		'The Big One' mode:
+		Fires a massive orb of condensed energy that will detonate after some time
+		The detonation will do more damage to foes closer to it's centre
+		Only one 'Big One' can exist at a time
+		'''
 }
 
 Configs: {

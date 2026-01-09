@@ -1,0 +1,251 @@
+﻿using System;
+using System.Collections.Generic;
+using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Rarities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedRequiemEngine;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using ThoriumMod.PlayerLayers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
+{
+    public class MiniaturizedRequiemEngine : ModItem
+    {
+        public enum RequiemFireMode
+        {
+            Gatling = 0,
+            Laser = 1,
+            TheBigOne = 2
+        }
+
+        public RequiemFireMode fireMode;
+
+        public override void SetDefaults()
+        {
+            Item.damage = 110;
+            Item.DamageType = DamageClass.Magic;
+            Item.mana = 6;
+            Item.width = 76;
+            Item.height = 32;
+            Item.useTime = 25;
+            Item.useAnimation = 25;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = true;
+            Item.knockBack = 7f;
+            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.autoReuse = true;
+            Item.UseSound = SoundID.Item43;
+            Item.shoot = ModContent.ProjectileType<MiniaturizedRequiemEngineGatlingPro>();
+            Item.shootSpeed = 12f;
+
+            Item.noUseGraphic = true;
+        }
+
+        public override bool AltFunctionUse(Player player) => true;
+
+        public override Vector2? HoldoutOffset() => new Vector2(-14f, -2f);
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2) // Right-click
+            {
+                fireMode = fireMode switch
+                {
+                    RequiemFireMode.Gatling => RequiemFireMode.Laser,
+                    RequiemFireMode.Laser => RequiemFireMode.TheBigOne,
+                    _ => RequiemFireMode.Gatling
+                };
+                SoundEngine.PlaySound(SoundID.MenuTick, player.Center);
+                return false; // Don't fire while switching
+            }
+
+            return base.CanUseItem(player);
+        }
+
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            damage *= fireMode switch
+            {
+                RequiemFireMode.Gatling => 1f,
+                RequiemFireMode.Laser => 2f,
+                RequiemFireMode.TheBigOne => 4f,
+                _ => 1f
+            };
+        }
+
+        public override float UseTimeMultiplier(Player player)
+        {
+            if (fireMode == RequiemFireMode.Gatling)
+                return player.GetModPlayer<RequiemEnginePlayer>().GatlingMultiplier;
+
+            return fireMode switch
+            {
+                RequiemFireMode.Laser => 2f,
+                RequiemFireMode.TheBigOne => 4f,
+                _ => 1f
+            };
+        }
+
+        public override float UseAnimationMultiplier(Player player) => UseTimeMultiplier(player);
+
+        public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
+        {
+            mult *= fireMode switch
+            {
+                RequiemFireMode.Gatling => 1f,
+                RequiemFireMode.Laser => 4f,
+                RequiemFireMode.TheBigOne => 8f,
+                _ => 1f
+            };
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            switch (fireMode)
+            {
+                case RequiemFireMode.Gatling:
+                    type = ModContent.ProjectileType<MiniaturizedRequiemEngineGatlingPro>();
+                    var mp = player.GetModPlayer<RequiemEnginePlayer>();
+                    mp.GatlingCharge = Math.Min(mp.GatlingCharge + 1, RequiemEnginePlayer.MaxCharge);
+                    float ramp = mp.GatlingCharge / (float)RequiemEnginePlayer.MaxCharge;
+                    float spreadDegrees = MathHelper.Lerp(35f, 5f, ramp);
+                    velocity = velocity.RotatedByRandom(MathHelper.ToRadians(spreadDegrees));
+                    break;
+                case RequiemFireMode.Laser:
+                    type = ModContent.ProjectileType<MiniaturizedRequiemEngineLaserPro>();
+                    break;
+                case RequiemFireMode.TheBigOne:
+                    type = ModContent.ProjectileType<MiniaturizedRequiemEngineTheBigOnePro>();
+                    break;
+            }
+
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            return false;
+        }
+
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            DrawTexture(spriteBatch, position, drawColor, scale);
+            return false;
+        }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            DrawTexture(spriteBatch, Item.position - Main.screenPosition + Item.Size * 0.5f, lightColor, scale);
+            return false;
+        }
+
+        private void DrawTexture(SpriteBatch spriteBatch, Vector2 position, Color color, float scale)
+        {
+            Texture2D tex = fireMode switch
+            {
+                RequiemFireMode.Gatling =>
+                    ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Items/Weapons/Magic/MiniaturizedRequiemEngineGatling").Value,
+                RequiemFireMode.Laser =>
+                    ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Items/Weapons/Magic/MiniaturizedRequiemEngineLaser").Value,
+                RequiemFireMode.TheBigOne =>
+                    ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Items/Weapons/Magic/MiniaturizedRequiemEngineTheBigOne").Value,
+                _ =>
+                    ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Items/Weapons/Magic/MiniaturizedRequiemEngineGatling").Value,
+            };
+            Vector2 origin = tex.Size() * 0.5f;
+            spriteBatch.Draw(tex, position, null, color, 0f, origin, scale, SpriteEffects.None, 0f);
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (fireMode == RequiemFireMode.Gatling)
+            {
+                tooltips.Add(new TooltipLine(Mod, "EngineGatling", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineGatling")) { OverrideColor = Color.HotPink });
+            }
+            else if (fireMode == RequiemFireMode.Laser)
+            {
+                tooltips.Add(new TooltipLine(Mod, "EngineLaser", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineLaser")) { OverrideColor = Color.Cyan });
+            }
+            else if (fireMode == RequiemFireMode.TheBigOne)
+            {
+                tooltips.Add(new TooltipLine(Mod, "EngineTheBigOne", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineTheBigOne")) { OverrideColor = Color.Yellow });
+            }
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient<CosmiliteBar>(10);
+            recipe.AddIngredient<AscendantSpiritEssence>(2);
+            recipe.AddTile(ModContent.TileType<CosmicAnvil>());
+            recipe.Register();
+        }
+    }
+
+    //PLAYER LAYER DRAW
+    public class MiniaturizedRequiemEngineDrawLayer : PlayerDrawLayer
+    {
+        public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.HeldItem);
+
+        public override bool GetDefaultVisibility(PlayerDrawSet drawInfo)
+            => drawInfo.drawPlayer.itemAnimation > 0 &&
+               drawInfo.drawPlayer.HeldItem.ModItem is MiniaturizedRequiemEngine;
+
+        protected override void Draw(ref PlayerDrawSet drawInfo)
+        {
+            Player player = drawInfo.drawPlayer;
+            var engine = (MiniaturizedRequiemEngine)player.HeldItem.ModItem;
+
+            Texture2D tex = ModContent.Request<Texture2D>(
+                engine.fireMode switch
+                {
+                    MiniaturizedRequiemEngine.RequiemFireMode.Gatling =>
+                        "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Magic/MiniaturizedRequiemEngineGatling",
+                    MiniaturizedRequiemEngine.RequiemFireMode.Laser =>
+                        "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Magic/MiniaturizedRequiemEngineLaser",
+                    _ =>
+                        "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Magic/MiniaturizedRequiemEngineTheBigOne"
+                }).Value;
+
+            Vector2 holdout = engine.HoldoutOffset() ?? Vector2.Zero;
+
+            // Mirror for left
+            if (player.direction == -1)
+            {
+                holdout.X = (-holdout.X * -4.5f);
+            }
+            holdout = holdout.RotatedBy(player.itemRotation);
+
+            Vector2 position = player.MountedCenter - Main.screenPosition + holdout;
+
+            Vector2 origin = new Vector2(player.direction == 1 ? 0f : tex.Width, tex.Height / 2f);
+
+
+            float rotation = player.itemRotation;
+            if (player.direction == -1)
+                rotation += MathHelper.Pi;
+
+            SpriteEffects effects = player.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipVertically;
+
+            DrawData data = new DrawData(
+                tex,
+                position,
+                null,
+                Lighting.GetColor((int)player.Center.X / 16, (int)player.Center.Y / 16),
+                rotation,
+                origin,
+                1f,
+                effects,
+                0f
+            );
+
+            drawInfo.DrawDataCache.Add(data);
+        }
+    }
+}
