@@ -1,6 +1,6 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
+﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -10,53 +10,174 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
 {
     public class MiniaturizedRequiemEngineGatlingPro : ModProjectile
     {
-        public override string Texture => "ThoriumMod/Projectiles/Boss/ThunderSpark";
+        public override string Texture => "InfernalEclipseWeaponsDLC/Assets/Textures/Empty";
+
+        private static Texture2D GlowTex;
+
+        private int hitCounter;
+        private bool FadingOut => Projectile.ai[1] == 1f;
 
         public override void SetStaticDefaults()
         {
-            Main.projFrames[((ModProjectile)this).Projectile.type] = 6;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 60;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
         public override void SetDefaults()
         {
-            Projectile.width = 30;
-            Projectile.height = 30;
-            Projectile.aiStyle = -1;
+            Projectile.width = 4;
+            Projectile.height = 4;
+
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Magic;
-            Projectile.penetrate = 1;
-            Projectile.timeLeft = 60;
-            Projectile.scale = 0.5f;
-        }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            target.AddBuff(BuffID.Electrified, 300, false);
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = true;
+
+            Projectile.alpha = 255;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 240;
+
+            Projectile.scale = 1.2f;
+            Projectile.extraUpdates = 10;
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 20;
+
+            GlowTex ??= ModContent.Request<Texture2D>(
+                "InfernalEclipseWeaponsDLC/Content/Projectiles/MagicPro/StarScepter/StarScepterBolt_Glow",
+                ReLogic.Content.AssetRequestMode.ImmediateLoad
+            ).Value;
         }
 
         public override void AI()
         {
-            // Dust
-            int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 15, 0f, 0f, 100, default, 1f);
-            Main.dust[dust].velocity *= 0.2f;
-            Main.dust[dust].noGravity = true;
-
-            // Rotation to velocity
-            if (Projectile.velocity.Length() > 0.1f)
-                Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
-
-            // Animation
-            Projectile.frameCounter++;
-            if (Projectile.frameCounter > 3)
+            if (FadingOut)
             {
-                Projectile.frame++;
-                Projectile.frameCounter = 0;
+                Projectile.velocity *= 0.5f;
+                Projectile.alpha += 15;
+                return;
             }
 
-            if (Projectile.frame >= Main.projFrames[Projectile.type])
+            Projectile.rotation = Projectile.velocity.ToRotation();
+
+            if (Projectile.alpha > 0)
+                Projectile.alpha -= 125;
+            if (Projectile.alpha < 0)
+                Projectile.alpha = 0;
+
+            float lightStrength = (255f - Projectile.alpha) / 255f;
+            Lighting.AddLight(
+                Projectile.Center,
+                1.0f * lightStrength,
+                0.25f * lightStrength,
+                0.7f * lightStrength
+            );
+
+            if (Projectile.velocity.Length() < 12f)
+                Projectile.velocity *= 1.0025f;
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            hitCounter++;
+
+            if (hitCounter >= 4 && !FadingOut)
             {
-                Projectile.frame = 0;
+                Projectile.ai[1] = 1f;
+                Projectile.friendly = false;
+                Projectile.tileCollide = false;
+                Projectile.velocity = Vector2.Zero;
+
+                if (Projectile.timeLeft > 30)
+                    Projectile.timeLeft = 30;
+
+                SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
             }
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            if (Projectile.alpha < 200)
+            {
+                int c = 255 - Projectile.alpha;
+                return new Color(c, c, c, 0);
+            }
+            return Color.Transparent;
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            SpriteBatch sb = Main.spriteBatch;
+            Texture2D tex = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+
+            Vector2 forward = Projectile.velocity.SafeNormalize(Vector2.UnitX);
+            float forwardOffset = -24f;
+
+            sb.End();
+            sb.Begin(
+                SpriteSortMode.Immediate,
+                BlendState.Additive,
+                Main.DefaultSamplerState,
+                DepthStencilState.None,
+                Main.Rasterizer,
+                null,
+                Main.Transform
+            );
+
+            float fadeMult = 1f;
+            if (Projectile.timeLeft < 20)
+                fadeMult = Projectile.timeLeft / 20f;
+
+            Color trailColor = new Color(255, 90, 200); // pink
+
+            // SMOOTH TRAIL USING oldPos
+            for (int i = 0; i < Projectile.oldPos.Length; i++)
+            {
+                float progress = 1f - i / (float)Projectile.oldPos.Length;
+                Color c = trailColor * progress * 0.95f * fadeMult;
+
+                Vector2 drawPos =
+                    Projectile.oldPos[i] + Projectile.Size * 0.5f - Main.screenPosition;
+
+                sb.Draw(
+                    GlowTex,
+                    drawPos,
+                    null,
+                    c,
+                    Projectile.rotation,
+                    GlowTex.Size() * 0.5f,
+                    Projectile.scale * progress,
+                    SpriteEffects.None,
+                    0f
+                );
+            }
+
+            // MAIN LASER HEAD
+            sb.Draw(
+                tex,
+                Projectile.Center - Main.screenPosition + forward * forwardOffset,
+                null,
+                Projectile.GetAlpha(lightColor),
+                Projectile.rotation,
+                tex.Size() * 0.5f,
+                Projectile.scale,
+                SpriteEffects.None,
+                0f
+            );
+
+            sb.End();
+            sb.Begin(
+                SpriteSortMode.Immediate,
+                BlendState.AlphaBlend,
+                Main.DefaultSamplerState,
+                DepthStencilState.None,
+                Main.Rasterizer,
+                null,
+                Main.Transform
+            );
+
+            return false;
         }
     }
 }

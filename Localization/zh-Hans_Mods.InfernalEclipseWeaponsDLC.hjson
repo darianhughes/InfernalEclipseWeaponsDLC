@@ -776,20 +776,20 @@ ItemTooltip: {
 	// VerveineItem: "'An item from the orchid's blessing...'"
 	/* EngineGatling:
 		'''
-		Gatling mode
+		Gatling mode:
 		Holding fire will gradually reduce weapon spread and increase fire rate to a cap
 		Shots can pierce up to four times
 		''' */
 	/* EngineLaser:
 		'''
-		Laser mode
+		Laser mode:
 		Fires an infinitely piercing laser that leaves behind a trail of lingering damage
 		''' */
 	/* EngineTheBigOne:
 		'''
-		'The Big One' mode
+		'The Big One' mode:
 		Fires a massive orb of condensed energy that will detonate after some time
-		The Detonation will do more damage to foes closer to it's centre
+		The detonation will do more damage to foes closer to it's centre
 		Only one 'Big One' can exist at a time
 		''' */
 }

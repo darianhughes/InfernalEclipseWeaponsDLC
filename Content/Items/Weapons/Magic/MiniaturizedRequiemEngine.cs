@@ -44,7 +44,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             Item.rare = ModContent.RarityType<DarkBlue>();
             Item.autoReuse = true;
-            Item.UseSound = SoundID.Item43;
+            Item.UseSound = SoundID.Item33;
             Item.shoot = ModContent.ProjectileType<MiniaturizedRequiemEngineGatlingPro>();
             Item.shootSpeed = 12f;
 
@@ -111,6 +111,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            float shootSpeedMultiplier = fireMode switch
+            {
+                RequiemFireMode.Gatling => 0.2f,
+                RequiemFireMode.Laser => 1f,
+                RequiemFireMode.TheBigOne => 0.75f,
+                _ => 1f
+            };
+
+            velocity *= shootSpeedMultiplier;
+
             switch (fireMode)
             {
                 case RequiemFireMode.Gatling:
@@ -128,6 +138,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
                     type = ModContent.ProjectileType<MiniaturizedRequiemEngineTheBigOnePro>();
                     break;
             }
+
+            float muzzleOffset = 36f;
+            Vector2 muzzlePosition = position + Vector2.Normalize(velocity) * muzzleOffset;
+
+            if (Collision.CanHit(position, 0, 0, muzzlePosition, 0, 0))
+                position = muzzlePosition;
 
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             return false;
@@ -166,11 +182,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
         {
             if (fireMode == RequiemFireMode.Gatling)
             {
-                tooltips.Add(new TooltipLine(Mod, "EngineGatling", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineGatling")) { OverrideColor = Color.HotPink });
+                tooltips.Add(new TooltipLine(Mod, "EngineGatling", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineGatling")) { OverrideColor = Color.DeepPink });
             }
             else if (fireMode == RequiemFireMode.Laser)
             {
-                tooltips.Add(new TooltipLine(Mod, "EngineLaser", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineLaser")) { OverrideColor = Color.Cyan });
+                tooltips.Add(new TooltipLine(Mod, "EngineLaser", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineLaser")) { OverrideColor = Color.CornflowerBlue });
             }
             else if (fireMode == RequiemFireMode.TheBigOne)
             {
