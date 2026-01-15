@@ -1,0 +1,43 @@
+[h1]Infernal Eclipse of Ragnarok: Weapon DLC[/h1]
+[h3]DLC-аддон для [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] Infernal Eclipse of Ragnarok[/url][/h3]
+[b]Этот мод можно использовать отдельно, для его работы не требуется основной мод.[/b]
+
+«Infernal Eclipse of Ragnarok: Weapon DLC» — это мод, цель которого — заполнить слабые места в прогрессии новыми интересными предметами, а также стать подходящим расширением для мода [url=https://steamcommunity.com/workshop/filedetails/?id=3142064272] Unofficial Calamity Bard & Healer[/url].
+
+На данный момент мод добавляет следующее:
+[list]
+	[*] 1 оружие ближнего боя
+	[*] 2 оружия стрелка
+	[*] 2 оружия мага
+	[*] 1 оружие призывателя
+	[*] 2 оружия разбойника/метателя
+	[*] 18 оружий барда
+	[*] 10 оружий целителя
+	[*] 2 мультиклассовых оружия
+	[*] 2 аксессуара
+[/list]
+
+Чтобы узнать больше об оружии, добавляемом этим модом, посетите официальную [url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/Weapons_(Weapons_DLC)] вики![/url]
+
+Рекомендуется использовать [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303&searchtext=recipe] Recipe Browser[/url], чтобы узнать, как получить новое оружие.
+
+У мода также есть совместимость с Consolaria и Secrets of the Shadows.
+
+Если у вас возникли проблемы, пожалуйста, сообщите о них на [url=https://discord.gg/tc5nZdRvaU] дискорд-сервере[/url]. 
+
+Также попробуйте:
+[list]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] Infernal Eclipse of Ragnaork[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3535746309] Thrower Unification[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3557455275&searchtext=Homeward+Ragnaork] Homeward Ragnaork[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url]
+[/list]
+
+Если вы хотите поддержать команду разработчиков, посетите нашу страницу на Patreon: https://www.patreon.com/c/InfernalEclipseofRagnarokTeam
+
+Отдельная благодарность Feldy и TacoConKvass за помощь в разработке некоторых предметов этого мода, [url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen[/url] за код тяжёлых кос и метания кос, а также Pil за некоторые спрайты мода!
+
+Перевод на упрощённый китайский выполнил [url=https://steamcommunity.com/id/426875391/] Pudd1ng[/url].
+Перевод на русский выполнил [url=https://steamcommunity.com/profiles/76561198852792195/] Aizen522 [/url].
+
+Создано командой Infernal Eclipse of Raganork

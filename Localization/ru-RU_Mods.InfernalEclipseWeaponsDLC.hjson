@@ -1,0 +1,509 @@
+Items: {
+	TwoPaths: {
+		DisplayName: Два пути
+		Tooltip:
+			'''
+			Даёт 4 эссенции души при прямом попадании
+			Нажмите ЛКМ, чтобы нанести полный урон по увеличенной площади
+			Нажмите ПКМ, чтобы расходовать ману и призвать белые косы, рассекающие врага
+			'''
+	}
+
+	TheParallel: {
+		Tooltip: ""
+		DisplayName: Параллель
+	}
+
+	SuperShotgun: {
+		Tooltip:
+			'''
+			Нажмите ПКМ, чтобы атаковать клинком дробовика, наносящий урон ближнего боя
+			'Что? Никогда не видел клинок на дробовике?'
+			'''
+		DisplayName: Куроклинок
+	}
+
+	BellBallad: {
+		DisplayName: Баллада о колокольчиках
+		Tooltip: ""
+	}
+
+	BirbSaxophone: {
+		DisplayName: Передатчик бёрба
+		Tooltip: "'Призовите силу Бамблбёрба!'"
+	}
+
+	DeepSeaDrawl: {
+		DisplayName: Протяжённая речь глубин
+		Tooltip:
+			'''
+			Лишь оболочка былой мощи. Его части разбросаны по всему свету.
+			Лишь на миг тебе кажется, что в кислотных пузырях вокруг видится проблеск надежды
+			'''
+	}
+
+	DeathsWhisper: {
+		Tooltip: ""
+		DisplayName: Шёпот смерти
+	}
+
+	BrimstoneHarp: {
+		Tooltip: ""
+		DisplayName: Серная арфа
+	}
+
+	NecroticChorus: {
+		DisplayName: Некротический хор
+		Tooltip:
+			'''
+			Призывает огоньки, которые наводятся на врагов
+			Нажмите ПКМ, чтобы атаковать Кровавым плевком
+			'''
+	}
+
+	DeusFlute: {
+		DisplayName: Флейта звездного ветра
+		Tooltip: ""
+	}
+
+	CorrodedCane: {
+		DisplayName: Прогнившая трость
+		Tooltip: ""
+	}
+
+	Weapons: {
+		Rogue: {
+			OcramKnife: {
+				Tooltip: При скрытном ударе призывает дополнительные демонические косы, которые наводятся на врагов по мере ускорения
+				DisplayName: Кинжал забытого
+			}
+
+			MothwingDagger: {
+				DisplayName: Кинжал мотылькового крыла
+				Tooltip:
+					'''
+					Бросает крылатый кинжал, с лёгким самонаведением
+					При скрытном ударе снаряды создают светящиеся болты
+					'''
+			}
+		}
+	}
+
+	TheBlight: {
+		DisplayName: Гниль
+		Tooltip: ""
+	}
+
+	GrandThunderWhip: {
+		Tooltip:
+			'''
+			5 урона от метки призывателя
+			При попадании накладывает дебафф «{$BuffName.Electrified}»
+			'''
+		DisplayName: Великий громовой хлыст
+	}
+
+	DukeSynth: {
+		DisplayName: Вирусная мудрость
+		Tooltip: "'Наконец-то он здесь!'"
+	}
+
+	SearingSpearTip: {
+		Tooltip: Копья выделяют сероводород, который обжигает противников при контакте.
+		DisplayName: Опаляющий наконечник копья
+	}
+
+	ArcticSpearTip: {
+		DisplayName: Арктический наконечник копья
+		Tooltip: Копья выпускают крионитовый наконечник, который не подвержен гравитации и пробивает до 5 раз.
+	}
+
+	DeepSeaDrawlShard1: {
+		DisplayName: Осколок мундштука
+		Tooltip:
+			'''
+			Мундштук Восстановленной протяжённой речи
+			Пермафрост в своих рассказах упоминал про свои встречи с племенем Яхщеров
+			Возможно, ему что-то известно
+			'''
+	}
+
+	DeepSeaDrawlShard2: {
+		DisplayName: Осколок колокольчика
+		Tooltip:
+			'''
+			Колокольчик Восстановленной протяжённой речи
+			Чтобы удержать эту силу от других, мундштук был запечатан в Темнице
+			Говорят, что ключ был сброшен в синие глубины внизу
+			'''
+	}
+
+	DeepSeaDrawlShard3: {
+		DisplayName: Осколок корпуса
+		Tooltip:
+			'''
+			Корпус Восстановленной протяжённой речи
+			Великое Горнило душ станет завершающим штрихом, дабы вернуть его мощь
+			Торопись, волны скоро обрушатся на твой зов
+			'''
+	}
+
+	Legacy: {
+		DisplayName: Рёв Окрама
+		Tooltip: ""
+	}
+
+	RestoredDeepSeaDrawl: {
+		DisplayName: Восстановленная протяжённая речь глубин
+		Tooltip:
+			'''
+			Призывает акулонадо, которое бросает в врагов морские обломки
+			Одновременно может существовать только один акулонадо
+			Нажмите ПКМ, чтобы атаковать тайфуном, тратя 2 вдохновения
+			'''
+	}
+
+	SulphuricShanty: {
+		DisplayName: Сернисто-морская песнь
+		Tooltip: ""
+	}
+
+	ExecutionersSword: {
+		DisplayName: Меч палача
+		Tooltip:
+			'''
+			Нажмите ЛКМ, чтобы взмахнуть мечом, восстанавливая 5 ед. здоровья при попадании
+			Нажмите ПКМ, чтобы метнуть меч, который вонзается в поражённого врага
+			Когда меч вонзён, он испускает светлую и тёмную энергию
+			Светлая энергия наводится на ближайших союзников и исцеляет здоровье на сумму, равное бонусному лечению
+			Тёмная энергия наводится на ближайших врагов, нанося урон
+			Одновременно можно метнуть только один меч
+			Обладает силой вершить Казнь
+			'Конфискация... и СМЕРТЬ!'
+			'''
+	}
+
+	ButchersBloodmaker: {
+		DisplayName: Создатель крови мясника
+		Tooltip:
+			'''
+			Выпускает веер из пуль и слегка наводящуюся кровавую стрелу
+			Нажмите ПКМ, чтобы потребить 50 ед. здоровья, впадая в Кровавую ярость на 10 секунд
+			Кровавая ярость увеличивает урон создателя крови на 25%, а кровавые стрелы накладывают дебафф «{$CalamityMod.Buffs.BurningBlood.DisplayName}»
+			'''
+	}
+
+	NukeWhistle: {
+		Tooltip: "'Легализуйте ядерные песни'"
+		DisplayName: Межконтинентальный баллистический свисток
+	}
+
+	ListoftheDamned: {
+		DisplayName: Список проклятых
+		Tooltip: Выпускает веер из 6 душ, которые спустя некоторое время разрываются вперёд, нанося двойной урон
+	}
+
+	AirPodShawty: {
+		DisplayName: Эйрпод детка
+		Tooltip:
+			'''
+			Может быстро выстрелить 2 раза перед перезарядкой
+			Нажмите ЛКМ, чтобы потребить вдохновение и выстрелить Эйрподом, который взрывается звуком при попадании
+			Урон Эйрпода увеличивается с потреблёнными патронами
+			Нажмите ПКМ, чтобы выстрелить дробью из пуль (не даёт усилений)
+			Эти пули зависят от улучшений барда и бонусов дальнего боя
+			'Эйрпод, детка, я уложу чела, выглядишь реально сасно'
+			'''
+	}
+
+	AcidBelcher: {
+		DisplayName: Кислотный изрыгатель
+		Tooltip: ""
+	}
+
+	ForeverHungry: {
+		DisplayName: Вечно голодный
+		Tooltip: Прожоры оставляют брызги крови при отскоке
+	}
+
+	BottleOfSouls: {
+		DisplayName: Бутылка душ
+		Tooltip:
+			'''
+			Выпускает из сосуда души ночи и света
+			Души ночи наводятся на врагов, наносят урон и накладывают дебафф «{$Buffs.ShadowFlame}»
+			Души света наводятся на союзников и исцеляют их, восстанавливая здоровье на сумму, равное бонусу к лечению
+			'''
+	}
+
+	SandSlasher: {
+		DisplayName: Шанти ушедших морей
+		Tooltip: При отскоке создаёт небольшие песчаные смерчи
+	}
+
+	DeepseaTrident: {
+		DisplayName: Змеевидная вилка
+		Tooltip: ""
+	}
+
+	Stick: {
+		DisplayName: Верховная палка абсолютной мощи и бесконечного разрушения
+		Tooltip:
+			'''
+			Острота V
+			Пробивание IV
+			Заговор огня II
+			Прочность III
+			Починка
+			'Эта зачарованная палка абсолютно легальна'
+			'''
+	}
+
+	NeonRipper: {
+		DisplayName: Неоновый жнец
+		Tooltip:
+			'''
+			Даёт 3 эссенции души при прямом попадании
+			Попадание по врагам генерирует электризующие наноботы
+			Нажмите ПКМ, чтобы метнуть косу, которая изгибается на обратном пути
+			'''
+	}
+
+	PlasmaOcarina: {
+		Tooltip:
+			'''
+			Выпускает веер из 3 плазменных лучей
+			Удерживайте ПКМ, чтобы зарядить мощную звуковую волну
+			[c/1FFBFF:'Я как-то пытался создавать инструменты, способные наносить урон.]
+			[c/1FFBFF:Это один из них, однако серийное производство так и не наладили]
+			[c/1FFBFF:поскольку армия Тирана не могла на них играть']
+			'''
+		DisplayName: Плазменная окарина
+	}
+
+	Infrariff: {
+		DisplayName: Инфрарифф
+		Tooltip:
+			'''
+			Создаёт светошоу из инфракрасных волн, которые наносят урон врагам при контакте
+			'Гитара для микроволнового светошоу, ну та самая'
+			'''
+	}
+
+	Defibrillanator: {
+		DisplayName: Дефибриллянатор
+		Tooltip:
+			'''
+			Стреляет самонаводящимися сверхзаряженными молниями
+			Нажмите ПКМ, чтобы выпустить исцеляющие разряды, расходуя  ману
+			'''
+	}
+
+	ArckaneStaff: {
+		Tooltip: Создаёт перегруженный заряд нестабильных элементов
+		DisplayName: Посох аркейна
+	}
+
+	MystickStaff: {
+		DisplayName: Мистический Посох
+		Tooltip:
+			'''
+			Создаёт сверхмощный заряд всех известных стихий
+			'Сколько ещё тебе надо!?'
+			'''
+	}
+
+	GloomSwitch: {
+		DisplayName: Мрачный переключатель
+		Tooltip:
+			'''
+			Скорострельный ПП, который выпускает отскакивающий проклятый пламенем каждые 15 выстрелов
+			Нажмите ПКМ, чтобы расходовать 200 маны, входя в Мрачный рывок на 10 секунд
+			Мрачный Рывок увеличивает скорость передвижения на 25% и уменьшает разброс выстрелов, пока оружие в руках
+			'''
+	}
+
+	AuricBrimfireCrosier: {
+		Tooltip:
+			'''
+			Извергает шары серной магии, образующие звездообразный узор
+			'Думаешь, только ведьма может читать такие заклинания?'
+			'''
+		DisplayName: Ауритовый серноогненный посох
+	}
+
+	CataclysmicGauntletVoid: {
+		DisplayName: Катаклизмическая перчатка
+		Tooltip:
+			'''
+			Наполняет ваши удары серной энергией для ближних ударов с высоким уроном
+			Имеет особый эффект, если Катастрофический длинный меч находится в соседней ячейке
+			'Катаклизм!'
+			'''
+	}
+
+	CataclysmicGauntlet: {
+		DisplayName: Катаклизмическая перчатка
+		Tooltip:
+			'''
+			Наполняет ваши удары серной энергией для ближних ударов с высоким уроном
+			Имеет особый эффект, если Катастрофический длинный меч находится в соседней ячейке
+			'Катаклизм!'
+			'''
+	}
+
+	CatastrophicLongbladeVoid: {
+		DisplayName: Катастрофический длинный меч
+		Tooltip:
+			'''
+			Выпускает вперёд катастрофический луч серной энергии
+			Имеет особый эффект, если Катаклизмическая перчатка находится в соседней ячейке
+			'''
+	}
+
+	CatastrophicLongblade: {
+		DisplayName: Катастрофический длинный меч
+		Tooltip:
+			'''
+			Выпускает вперёд катастрофический луч серной энергии
+			Имеет особый эффект, если Катаклизмическая перчатка находится в соседней ячейке
+			'''
+	}
+
+	BarrenGarden: {
+		DisplayName: Бесплодный сад
+		Tooltip:
+			'''
+			Нажмите ЛКМ, чтобы выпустить веер самонаводящихся, пробивающих и исцеляющих лепестков
+			Нажмите ПКМ, чтобы призвать большой замороженный лотос, который испускает чередующиеся разрушительные и исцеляющие энергии
+			Одновременно может быть активен только один замороженный лотос и длится он 30 секунд
+			'Так холодно, что кажется, будто лёгкие разрываются'
+			'''
+	}
+}
+
+Projectiles: {
+	TwoPathsPro.DisplayName: Два пути
+	BlackExplosion.DisplayName: Чёрный взрыв
+
+	Magic: {
+		WhiteScythe.DisplayName: Белая коса
+		HealingLightningArc.DisplayName: Целебная дуга молнии
+	}
+
+	TwoPathsPro2.DisplayName: Два пути
+	TheParallellPro.DisplayName: Параллель
+	BellBalladEleum.DisplayName: Баллада Колоколов: Элеум
+	BellBalladHavoc.DisplayName: Баллада Колоколов: Хаос
+	BellBalladSunlight.DisplayName: Баллада Колоколов: Солнечный Свет
+	BellBalladSunlightLaser.DisplayName: Луч Баллады Колоколов
+	BellBalladEleumBolt.DisplayName: Ледяной Снаряд Баллады Колоколов
+	BellBalladHavocSlash.DisplayName: Адский Удар Баллады Колоколов
+	SulfurSpirit.DisplayName: Серный Дух
+	DeepSeaDrawlPro.DisplayName: Глубинное Бурчание Про
+	HomingPlankton.DisplayName: Самонаводящийся Планктон
+	DeathsWhisperPro.DisplayName: Шёпот Смерти Про
+	BrimstoneHarpPro.DisplayName: Череп Адской Арфы
+	BirbSaxophonePro.DisplayName: Красная Молниеносная Перо
+	NecroticChorusPro.DisplayName: Некротический Хор Про
+	NecroticChorusWisp.DisplayName: Огонёк Некротического Хора
+	DeusFlutePro.DisplayName: Флейта Бога Про
+	DeusFluteStar.DisplayName: Звезда Флейты Бога
+	CorrodedCanePro.DisplayName: Проржавевший Посох Про
+	CorrodedCaneShark.DisplayName: Серный Шаркрон
+	OcramKnifeProSickle.DisplayName: Серп Кинжала Окрама Про
+	OcramKnifeProBolt.DisplayName: Снаряд Кинжала Окрама Про
+	OcramKnifePro.DisplayName: Кинжал Окрама Про
+	TheBlightProSickle.DisplayName: Серп Чумы Про
+	TheBlightProServantLaser.DisplayName: Луч Слуги Чумы Про
+	TheBlightProServant.DisplayName: Слуга Чумы Про
+	TheBlightProScythe.DisplayName: Коса Чумы Про
+	GrandThunderWhipProjectile.DisplayName: Снаряд Великой Громовой Плети
+	SulfurExplosionPro.DisplayName: Серный Взрыв Про
+	HydrogenSulfideProj.DisplayName: Сероводородный Снаряд
+	LegacyProBolt.DisplayName: Наследие Про: Снаряд
+	LegacyProSickle.DisplayName: Наследие Про: Серп
+	MiniScourge.DisplayName: Мини-Бич
+	DrawlEel.DisplayName: Угорь Бурчания
+	DrawlIsopod.DisplayName: Изопод Бурчания
+	DrawlStarfish.DisplayName: Морская Звезда Бурчания
+	DrawlStarfishShard.DisplayName: Осколок Морской Звезды Бурчания
+	OurSharknado.DisplayName: Наше Акулонадо
+	DarkEnergyProj.DisplayName: Снаряд Тёмной Энергии
+	ExecutionersSwordPro.DisplayName: Меч Палача Про
+	LightEnergyProj.DisplayName: Снаряд Светлой Энергии
+	LightSlashPro.DisplayName: Световой Удар Про
+	CryonicSpearTip.DisplayName: Крионический Наконечник
+	SuperShotgunStab.DisplayName: Удар Куроклинка
+	ExecutionersSwordSlashPro.DisplayName: Взмах Меча Палача Про
+	ExecutionersSwordLightEnergy.DisplayName: Светлая Энергия Меча Палача
+	ExecutionersSwordDarkEnergy.DisplayName: Тёмная Энергия Меча Палача
+	BloodShotFriendly.DisplayName: Кровавый Выстрел (дружественный)
+	NukePro.DisplayName: Ядерный Про
+	NukeMissile.DisplayName: Ядерная Ракета
+	ListoftheDamnedSoul_Orange.DisplayName: Душа из Списка Проклятых (оранжевая)
+	ListoftheDamnedSoul_Cyan.DisplayName: Душа из Списка Проклятых (сине-зелёная)
+	AirPod.DisplayName: Эйрпод
+	AirPodNote.DisplayName: Нота Эйрпода
+	BouncingHungry.DisplayName: Прыгучий прожора
+	HealingSoul.DisplayName: Исцеляющая Душа
+	DamagingSoul.DisplayName: Разрушительная Душа
+	ForeverHungryBlood.DisplayName: Кровь Вечно Голодного
+	AcidBelcherPro.DisplayName: Кислотный Изрыгатель Про
+	SandSlasherSandnado.DisplayName: Песчаный Смерч Песчаного Резака
+	SandSlasher_Projectile.DisplayName: Снаряд Песчаного Резака
+	DeepseaTrident_Projectile.DisplayName: Снаряд Глубоководного Трезубца
+	Nanodroid.DisplayName: Нанодроид
+	NeonRipperPro.DisplayName: Неоновый Разрушитель Про
+	InfrariffProjectile.DisplayName: Снаряд Инфрариффа
+	InfrariffLaser.DisplayName: Луч Инфрариффа
+	ColoredExplosion.DisplayName: Цветной Взрыв
+	Misc.BardPulseRiffleShot.DisplayName: Выстрел Импульсной Винтовки Барда
+	Staff_Projectile.DisplayName: Снаряд Посоха_
+	ArckaneStaffPro.DisplayName: Посох аркейна Про
+	MystickStaffPro.DisplayName: Мистический Про
+	HealerBrimstoneBarrage.DisplayName: Шквал Адского Пламени Целителя
+	SupremeCataclysmFist.DisplayName: Кулак Высшего Катаклизма
+	SupremeCatastropheSlash.DisplayName: Удар Высшего Катастрофа
+	SharknadoBolt.DisplayName: Снаряд Акулонадо
+	BarrenGardenHealingPro.DisplayName: Исцеляющий Снаряд Бесплодного Сада
+	BarrenGardenLotus.DisplayName: Лотос Бесплодного Сада
+	BarrenGardenPro.DisplayName: Бесплодный Сад Про
+	BarrenGardenProHoming.DisplayName: Самонаводящийся Снаряд Бесплодного Сада
+	MothwingDaggerPro.DisplayName: Кинжал Мотылькового Крыла Про
+	IlluminantBolt.DisplayName: Светящийся Снаряд
+}
+
+Buffs: {
+	DefaultSummonTag: {
+		DisplayName: Стандартная метка призывателя
+		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.DefaultSummonTag.Description
+	}
+
+	SwordStuckBuff: {
+		DisplayName: Застрявший меч
+		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.SwordStuckBuff.Description
+	}
+
+	BloodRageBuff: {
+		DisplayName: Кровавая ярость
+		Description: Урон создателя крови увеличен на 25%, а кровавые стрелы накладывают дебафф «{$CalamityMod.Buffs.BurningBlood.DisplayName}»
+	}
+}
+
+ItemTooltip: {
+	DuesFluteLore: Они обнаружили источник астральной инфекции и в попытке уничтожить его применили звёздное ядро к заражённому алтарю.
+	DuesFluteLore2: Однако алтарь отреагировал неожиданно... два огонька начали отталкиваться друг от друга, устремляясь в небо и открыв над ним разлом
+	DuesFluteLore3: То, что вышло из него, поистине было не от мира сего, но их восхищению не суждено было продлиться — слуга звёзд бросился на них.
+	UniversalLore1: Кос принял свой последний бой. Израсходовал все свои козыри. Он проиграл им. Однако это не значило, что Затмение проиграло.
+	UniversalLore2: Используя каждый остаток силы, что таился в его душе, он призвал истинного богоубийцу: Пожирателя богов.
+	ParallelLore1: Как он и ожидал, они убили Штормового ткача. Но у Коса был припасен еще один трюк в рукаве.
+	ParallelLore2: Внезапно, безо всякого предупреждения, Кос переместил всех в зазеркалье и призвал своего второго слугу: Сигнуса.
+	TwoSideLore1: Они преодолели Рагнарёк. Они уничтожили Затмение. Они пережили муссон слизи.
+	TwoSideLore2: Они стояли на границе бесконечности, и лишь тогда Рен спросил их: «Какой путь ты изберёшь?»
+	NeonRipperLore1: После поражения Голиафа Эрелиан решил переработать часть броневых пластин, что тот носил.
+	NeonRipperLore2: Так он создал два оружия: первым стала коса, способная поглощать ауру, подобно способности Ками.
+	PBGBardALore2: Так он создал два оружия: вторым стала гитара, стреляющая цветными микроволнами.
+	SearingSpearTip: 150% базового урона
+	ArcticSpearTip: 115% базового урона
+}
