@@ -36,7 +36,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
 
             Projectile.alpha = 255;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 240;
+            Projectile.timeLeft = 360;
 
             Projectile.scale = 1.2f;
             Projectile.extraUpdates = 10;

@@ -26,7 +26,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             isHealer = true;
 
             Item.width = 64;
-            Item.height = 68;
+            Item.height = 64;
 
             Item.useTime = 14;
             Item.useAnimation = 14;
@@ -45,7 +45,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.noMelee = false;
             Item.noUseGraphic = false;
 
-            Item.scale = 1f;
+            Item.scale = 1.25f;
         }
 
         public override bool AltFunctionUse(Player player) => true;

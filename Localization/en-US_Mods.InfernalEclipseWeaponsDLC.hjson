@@ -169,7 +169,7 @@ Items: {
 	}
 
 	ExecutionersSword: {
-		DisplayName: Executioner's Sword
+		DisplayName: Exorcist's Greatblade
 		Tooltip:
 			'''
 			Left click to swing the sword, restoring 5 life on hit
@@ -178,8 +178,6 @@ Items: {
 			Light energy will home onto nearby allies and heal life equal to bonus healing
 			Dark energy will home onto nearby enemies, dealing damage
 			Only one sword can be thrown at a time
-			Empowered to execute the Death Penalty
-			'Confiscation.... and DEATH!'
 			'''
 	}
 
