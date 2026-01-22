@@ -22,11 +22,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
         private const int GrowTime = 210;
         private const int HoldTime = 120;
         private const int ShrinkTime = 60;
+        private const int TinyHoldTime = 45;
 
-        private const int TotalLifetime = GrowTime + HoldTime + ShrinkTime;
+        private int SoundRepeatDelay = 30;
+
+        private const int TotalLifetime = GrowTime + HoldTime + ShrinkTime + TinyHoldTime;
+
         private const float ColorPulseSpeed = 0.04f;
-
-        private SlotId loopingSoundSlot;
 
         public override void SetStaticDefaults() => Main.projFrames[Projectile.type] = 1;
 
@@ -51,19 +53,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
         {
             Projectile.ai[0]++;
 
-            // Start looping sound once
-            if (!loopingSoundSlot.IsValid)
-            {
-                loopingSoundSlot = SoundEngine.PlaySound(WhirrSound, Projectile.Center);
-            }
+            // Fake looping vanilla sound
+            Projectile.localAI[1]++;
 
-            // Keep sound attached to projectile
-            if (SoundEngine.TryGetActiveSound(loopingSoundSlot, out ActiveSound activeSound))
+            if (Projectile.localAI[1] >= SoundRepeatDelay)
             {
-                activeSound.Position = Projectile.Center;
+                Projectile.localAI[1] = 0f;
 
-                // Optional: scale volume with size
-                activeSound.Volume = MathHelper.Clamp(Projectile.scale / 6f, 0.2f, 1f);
+                SoundEngine.PlaySound(
+                    SoundID.Item15 with
+                    {
+                        Volume = MathHelper.Clamp(Projectile.scale / 6f, 0.25f, 0.7f),
+                        PitchVariance = 0.05f
+                    },
+                    Projectile.Center
+                );
             }
 
             // Continuous rotation
@@ -85,21 +89,36 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
 
             // Scale phases
             float newScale;
-            if (Projectile.ai[0] <= GrowTime)
+
+            // Phase boundaries
+            int growEnd = GrowTime;
+            int holdEnd = growEnd + HoldTime;
+            int shrinkEnd = holdEnd + ShrinkTime;
+            int tinyEnd = shrinkEnd + TinyHoldTime;
+
+            if (Projectile.ai[0] <= growEnd)
             {
+                // Grow
                 float t = Projectile.ai[0] / (float)GrowTime;
                 float eased = MathHelper.SmoothStep(0f, 1f, t);
                 newScale = BaseScale * MaxScaleMultiplier * eased;
             }
-            else if (Projectile.ai[0] <= GrowTime + HoldTime)
+            else if (Projectile.ai[0] <= holdEnd)
             {
+                // Full-size hold
                 newScale = BaseScale * MaxScaleMultiplier;
+            }
+            else if (Projectile.ai[0] <= shrinkEnd)
+            {
+                // Shrink
+                float t = (Projectile.ai[0] - holdEnd) / (float)ShrinkTime;
+                float eased = t * t;
+                newScale = BaseScale * MaxScaleMultiplier * (1f - eased);
             }
             else
             {
-                float t = (Projectile.ai[0] - GrowTime - HoldTime) / (float)ShrinkTime;
-                float eased = t * t;
-                newScale = BaseScale * MaxScaleMultiplier * (1f - eased);
+                // Tiny hold before death
+                newScale = BaseScale * 0.05f; // tiny size (adjust if needed)
             }
 
             Projectile.scale = newScale;
@@ -119,12 +138,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
             );
         }
 
-        private static readonly SoundStyle WhirrSound = SoundID.Item15 with
-        {
-            IsLooped = true,
-            Volume = 0.6f
-        };
-
         // Optional: circular collision (like FroststeelPulse)
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
@@ -138,12 +151,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
             float lifeProgress = MathHelper.Clamp( Projectile.ai[0] / TotalLifetime, 0f, 1f);
 
             float damageScale = lifeProgress;
-
-            // Stop looping sound
-            if (SoundEngine.TryGetActiveSound(loopingSoundSlot, out ActiveSound activeSound))
-            {
-                activeSound.Stop();
-            }
 
             int scaledDamage = (int)(Projectile.damage * 2f * lifeProgress);
             scaledDamage = Math.Max(1, scaledDamage); // safety

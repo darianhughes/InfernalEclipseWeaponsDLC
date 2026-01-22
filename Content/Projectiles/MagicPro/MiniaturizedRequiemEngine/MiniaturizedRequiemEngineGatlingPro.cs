@@ -36,13 +36,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
 
             Projectile.alpha = 255;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 360;
+            Projectile.timeLeft = 720;
 
             Projectile.scale = 1.2f;
             Projectile.extraUpdates = 10;
 
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 20;
+            Projectile.localNPCHitCooldown = 60;
 
             GlowTex ??= ModContent.Request<Texture2D>(
                 "InfernalEclipseWeaponsDLC/Content/Projectiles/MagicPro/StarScepter/StarScepterBolt_Glow",

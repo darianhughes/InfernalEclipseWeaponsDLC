@@ -51,7 +51,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             Item.noMelee = true;
 
             Item.mana = 30;
-            radiantLifeCost = 10;
+            radiantLifeCost = 2;
 
             Item.rare = ModLoader.TryGetMod("NoxusBoss", out Mod noxus) ? noxus.Find<ModRarity>("LotusOfCreationRarity").Type : ModContent.RarityType<HotPink>();
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;

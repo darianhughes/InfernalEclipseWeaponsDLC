@@ -31,7 +31,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
 
         public override void SetDefaults()
         {
-            Item.damage = 110;
+            Item.damage = 500;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 6;
             Item.width = 76;
@@ -66,6 +66,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
                     _ => RequiemFireMode.Gatling
                 };
                 SoundEngine.PlaySound(SoundID.MenuTick, player.Center);
+                ShowModeChangeText(player);
+
                 return false; // Don't use while switching
             }
 
@@ -93,8 +95,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             damage *= fireMode switch
             {
                 RequiemFireMode.Gatling => 1f,
-                RequiemFireMode.Laser => 2f,
-                RequiemFireMode.TheBigOne => 8f,
+                RequiemFireMode.Laser => 0.8f,
+                RequiemFireMode.TheBigOne => 3f,
                 _ => 1f
             };
         }
@@ -228,6 +230,40 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             {
                 tooltips.Add(new TooltipLine(Mod, "EngineTheBigOne", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineTheBigOne")) { OverrideColor = Color.Yellow });
             }
+        }
+
+        private void ShowModeChangeText(Player player)
+        {
+            string text;
+            Color color;
+
+            switch (fireMode)
+            {
+                case RequiemFireMode.Gatling:
+                    text = "GATLING";
+                    color = Color.DeepPink;
+                    break;
+
+                case RequiemFireMode.Laser:
+                    text = "LASER";
+                    color = Color.CornflowerBlue;
+                    break;
+
+                case RequiemFireMode.TheBigOne:
+                    text = "THE BIG ONE";
+                    color = Color.Yellow;
+                    break;
+
+                default:
+                    return;
+            }
+
+            CombatText.NewText(
+                player.Hitbox,
+                color,
+                text,
+                dramatic: true
+            );
         }
 
         public override void AddRecipes()

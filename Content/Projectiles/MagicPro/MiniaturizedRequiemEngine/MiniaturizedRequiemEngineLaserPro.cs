@@ -66,12 +66,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
 
 
             // Spawn stationary helper projectile every frame
+            int damage = (int)(Projectile.damage / 3f);
+
             Projectile.NewProjectile(
                 Projectile.GetSource_FromAI(),
                 Projectile.Center,
                 Vector2.Zero,
                 ModContent.ProjectileType<MiniaturizedRequiemEngineLaserPro2>(),
-                Projectile.damage / 2,
+                damage,
                 0f,
                 Projectile.owner
             );

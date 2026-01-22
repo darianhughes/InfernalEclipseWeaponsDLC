@@ -45,7 +45,7 @@ public class MiniaturizedRequiemEngineTheBigOnePro3 : ModProjectile
     }
 
     Projectile.Opacity = (1f - (float)Math.Pow(LifetimeCompletion, 1.56)) * 0.4f;
-    Projectile.scale = MathHelper.Lerp(0.3f, 25f, LifetimeCompletion);
+    Projectile.scale = MathHelper.Lerp(0.3f, 35f, LifetimeCompletion);
     Projectile.rotation += Projectile.localAI[0] * 0.012f;
 }
 
