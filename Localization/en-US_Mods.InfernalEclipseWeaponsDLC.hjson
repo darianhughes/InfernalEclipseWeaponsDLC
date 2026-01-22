@@ -725,6 +725,9 @@ Projectiles: {
 	MiniaturizedRequiemEngineGatlingPro.DisplayName: Miniaturized Requiem Engine Gatling Pro
 	MiniaturizedRequiemEngineLaserPro.DisplayName: Miniaturized Requiem Engine Laser Pro
 	MiniaturizedRequiemEngineTheBigOnePro.DisplayName: Miniaturized Requiem Engine The Big One Pro
+	MiniaturizedRequiemEngineLaserPro2.DisplayName: Miniaturized Requiem Engine Laser Pro2
+	MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: Miniaturized Requiem Engine The Big One Pro2
+	MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: Miniaturized Requiem Engine The Big One Pro3
 }
 
 Buffs: {
@@ -768,6 +771,7 @@ ItemTooltip: {
 		'''
 		Laser mode:
 		Fires an infinitely piercing laser that leaves behind a trail of lingering damage
+		The laser can bounce off tiles up to 3 times
 		'''
 	EngineTheBigOne:
 		'''

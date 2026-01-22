@@ -7,9 +7,12 @@ using Terraria.ModLoader;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedRequiemEngine
 {
-    public class MiniaturizedRequiemEngineLaserPro : ModProjectile
+    public class MiniaturizedRequiemEngineLaserPro2 : ModProjectile
     {
-        private const int MaxBounces = 4;
+        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Projectiles/MagicPro/MiniaturizedRequiemEngine/MiniaturizedRequiemEngineLaserPro";
+
+        private const int MaxBounces = 3;
+        private const int InitialLifetime = 60;
 
         public override void SetStaticDefaults()
         {
@@ -24,8 +27,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Magic;
 
-            Projectile.penetrate = -1; // needed for bouncing
-            Projectile.timeLeft = 240;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 60;
 
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
@@ -39,6 +42,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
 
         public override void AI()
         {
+            // Rotate to velocity
+            if (Projectile.velocity.Length() > 0.1f)
+                Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+
             // Blue light glow
             Lighting.AddLight(
                 Projectile.Center,
@@ -64,38 +71,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
             Main.dust[dust].velocity *= 0.1f;
             */
 
+            // Shrink during second half of lifetime
+            float halfLife = InitialLifetime * 0.8f;
 
-            // Spawn stationary helper projectile every frame
-            Projectile.NewProjectile(
-                Projectile.GetSource_FromAI(),
-                Projectile.Center,
-                Vector2.Zero,
-                ModContent.ProjectileType<MiniaturizedRequiemEngineLaserPro2>(),
-                Projectile.damage / 2,
-                0f,
-                Projectile.owner
-            );
-        }
-
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            Projectile.ai[0]++;
-
-            if (Projectile.ai[0] >= MaxBounces)
+            if (Projectile.timeLeft < halfLife)
             {
-                Projectile.Kill();
-                return false;
+                float progress = Projectile.timeLeft / halfLife; // 1 - 0
+                Projectile.scale = 0.6f * MathHelper.Clamp(progress, 0f, 1f);
             }
 
-            // Bounce logic
-            if (Projectile.velocity.X != oldVelocity.X)
-                Projectile.velocity.X = -oldVelocity.X;
 
-            if (Projectile.velocity.Y != oldVelocity.Y)
-                Projectile.velocity.Y = -oldVelocity.Y;
-
-            //SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
-            return false;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -128,7 +113,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedReq
                 new Color(100, 160, 255, 180),
                 Projectile.rotation,
                 origin,
-                Projectile.scale * 1.0f,
+                Projectile.scale * 1.2f,
                 SpriteEffects.None,
                 0f
             );

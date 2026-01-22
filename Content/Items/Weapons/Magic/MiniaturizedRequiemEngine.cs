@@ -36,8 +36,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             Item.mana = 6;
             Item.width = 76;
             Item.height = 32;
-            Item.useTime = 25;
-            Item.useAnimation = 25;
+            Item.useTime = 15;
+            Item.useAnimation = 15;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 7f;
@@ -57,7 +57,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2) // Right-click
+            if (player.altFunctionUse == 2) // Right-click switches modes
             {
                 fireMode = fireMode switch
                 {
@@ -66,10 +66,26 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
                     _ => RequiemFireMode.Gatling
                 };
                 SoundEngine.PlaySound(SoundID.MenuTick, player.Center);
-                return false; // Don't fire while switching
+                return false; // Don't use while switching
             }
 
-            return base.CanUseItem(player);
+            // If in "The Big One" mode, check if projectile already exists
+            if (fireMode == RequiemFireMode.TheBigOne)
+            {
+                for (int i = 0; i < Main.maxProjectiles; i++)
+                {
+                    Projectile p = Main.projectile[i];
+                    if (p.active && p.owner == player.whoAmI &&
+                        (p.type == ModContent.ProjectileType<MiniaturizedRequiemEngineTheBigOnePro>() ||
+                         p.type == ModContent.ProjectileType<MiniaturizedRequiemEngineTheBigOnePro2>()))
+                    {
+                        // Already exists, block using the item entirely
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
@@ -78,7 +94,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             {
                 RequiemFireMode.Gatling => 1f,
                 RequiemFireMode.Laser => 2f,
-                RequiemFireMode.TheBigOne => 4f,
+                RequiemFireMode.TheBigOne => 8f,
                 _ => 1f
             };
         }
@@ -90,8 +106,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
 
             return fireMode switch
             {
-                RequiemFireMode.Laser => 2f,
-                RequiemFireMode.TheBigOne => 4f,
+                RequiemFireMode.Laser => 3f,
+                RequiemFireMode.TheBigOne => 1f,
                 _ => 1f
             };
         }
@@ -115,7 +131,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             {
                 RequiemFireMode.Gatling => 0.2f,
                 RequiemFireMode.Laser => 1f,
-                RequiemFireMode.TheBigOne => 0.75f,
+                RequiemFireMode.TheBigOne => 0.1f,
                 _ => 1f
             };
 
@@ -128,14 +144,34 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
                     var mp = player.GetModPlayer<RequiemEnginePlayer>();
                     mp.GatlingCharge = Math.Min(mp.GatlingCharge + 1, RequiemEnginePlayer.MaxCharge);
                     float ramp = mp.GatlingCharge / (float)RequiemEnginePlayer.MaxCharge;
-                    float spreadDegrees = MathHelper.Lerp(35f, 5f, ramp);
+                    float spreadDegrees = MathHelper.Lerp(25f, 5f, ramp);
                     velocity = velocity.RotatedByRandom(MathHelper.ToRadians(spreadDegrees));
                     break;
+
                 case RequiemFireMode.Laser:
                     type = ModContent.ProjectileType<MiniaturizedRequiemEngineLaserPro>();
                     break;
+
                 case RequiemFireMode.TheBigOne:
                     type = ModContent.ProjectileType<MiniaturizedRequiemEngineTheBigOnePro>();
+
+                    // Prevent firing if a Big One already exists
+                    bool alreadyExists = false;
+                    for (int i = 0; i < Main.maxProjectiles; i++)
+                    {
+                        Projectile p = Main.projectile[i];
+                        if (p.active && p.owner == player.whoAmI &&
+                            (p.type == ModContent.ProjectileType<MiniaturizedRequiemEngineTheBigOnePro>() ||
+                             p.type == ModContent.ProjectileType<MiniaturizedRequiemEngineTheBigOnePro2>()))
+                        {
+                            alreadyExists = true;
+                            break;
+                        }
+                    }
+
+                    if (alreadyExists)
+                        return false;
+
                     break;
             }
 
