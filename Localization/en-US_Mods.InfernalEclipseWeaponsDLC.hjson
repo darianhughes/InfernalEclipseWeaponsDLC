@@ -433,7 +433,7 @@ Items: {
 	}
 
 	NecrosingerAnkles: {
-		DisplayName: Necrosinger Ankles
+		DisplayName: Posthumous Ankles
 		Tooltip:
 			'''
 			10% increased symphonic damage
@@ -443,7 +443,7 @@ Items: {
 	}
 
 	NecrosingerRibs: {
-		DisplayName: Necrosinger Ribs
+		DisplayName: Posthumous Ribs
 		Tooltip:
 			'''
 			14% increased symphonic damage
@@ -454,7 +454,7 @@ Items: {
 	}
 
 	NecrosingerSkull: {
-		DisplayName: Necrosinger Skull
+		DisplayName: Posthumous Skull
 		Tooltip:
 			'''
 			5% increased symphonic damage
@@ -462,6 +462,7 @@ Items: {
 			5% increased symphonic critical strike chance
 			Increased inspiration regeneration rate by 15%
 			'''
+		SetBonus: im a funny note set bonus (someone please come up with something better)
 	}
 
 	SuperCellCirclet: {
@@ -728,6 +729,7 @@ Projectiles: {
 	MiniaturizedRequiemEngineLaserPro2.DisplayName: Miniaturized Requiem Engine Laser Pro2
 	MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: Miniaturized Requiem Engine The Big One Pro2
 	MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: Miniaturized Requiem Engine The Big One Pro3
+	NecrosingerNote.DisplayName: Necrosinger Note
 }
 
 Buffs: {

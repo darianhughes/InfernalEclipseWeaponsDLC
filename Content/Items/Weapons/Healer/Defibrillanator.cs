@@ -13,16 +13,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
-using ThoriumMod.Utilities;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityMod.CustomRecipes;
 using Terraria.Audio;
-using static Terraria.GameContent.Animations.IL_Actions.Sprites;
-using System.IO;
-using System.Linq;
-using CalamityMod.Projectiles.Melee;
-using System.Runtime.InteropServices;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 {

@@ -4,9 +4,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 
-namespace InfernalEclipseWeaponsDLC.Content.Buffs
+namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
 {
-    public class SuperCellFlightTimePlayer : ModPlayer
+    public class SuperCellPlayer : ModPlayer
     {
         public bool hasSuperCellGuardEquipped;
         public int superCellExtraWingTime;

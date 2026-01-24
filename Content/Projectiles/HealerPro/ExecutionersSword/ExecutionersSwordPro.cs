@@ -7,11 +7,11 @@ using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod;
 using Microsoft.Xna.Framework;
-using InfernalEclipseWeaponsDLC.Content.Buffs;
 using CalamityMod.Buffs.DamageOverTime;
 using Terraria.ID;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using InfernalEclipseWeaponsDLC.Content.Buffs;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword
 {

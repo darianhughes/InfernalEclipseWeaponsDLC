@@ -28,45 +28,45 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Potions;
 using InfernalEclipseWeaponsDLC.Core;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
+namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
 {
-    [AutoloadEquip(EquipType.Head)]
-    public class EclipseHelm : ModItem
+    [AutoloadEquip(EquipType.Body)]
+    public class EclipseBreastplate : ModItem
     {
         public override void SetDefaults()
         {
-            ((Entity)((ModItem)this).Item).width = 18;
-            ((Entity)((ModItem)this).Item).height = 18;
-            ((ModItem)this).Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            ((ModItem)this).Item.rare = 7;
-            ((ModItem)this).Item.defense = 15;
+            Item.width = 18;
+            Item.height = 18;
+            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
+            Item.rare = 7;
+            Item.defense = 25;
         }
 
         public override void UpdateEquip(Player player)
         {
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
             ref StatModifier damage = ref player.GetDamage(DamageClass.Generic);
-            damage -= 0.16f;
+            damage -= 0.2f;
             ref StatModifier damage2 = ref player.GetDamage((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance);
-            damage2 += 0.32f;
-            player.lifeRegenTime += 10f;
-            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 3f;
-            thoriumPlayer.healBonus += 2;
+            damage2 += 0.4f;
+            player.GetAttackSpeed((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 0.05f;
+            player.GetAttackSpeed((DamageClass)(object)ThoriumDamageBase<HealerTool>.Instance) += 0.05f;
+            thoriumPlayer.thoriumEndurance += 0.15f;
+            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 8f;
+            thoriumPlayer.healBonus += 3;
         }
 
         public override void AddRecipes()
         {
-            Mod thorium = ModLoader.GetMod("ThoriumMod");
-
             Recipe recipe = CreateRecipe();
 
-            recipe.AddIngredient(thorium.Find<ModItem>("HallowedCowl").Type, 1);
+            recipe.AddIngredient(ItemID.HallowedPlateMail);
             recipe.AddRecipeGroup(RecipeGroups.Titanium, 12);
-            recipe.AddIngredient(ItemID.SoulofLight, 10);
+            recipe.AddIngredient(ItemID.SoulofLight, 15);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {
-                recipe.AddIngredient(consolariaMod.Find<ModItem>("SoulofBlight").Type, 10);
+                recipe.AddIngredient(consolariaMod.Find<ModItem>("SoulofBlight").Type, 15);
             }
             else
             {

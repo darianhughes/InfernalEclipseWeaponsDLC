@@ -8,7 +8,7 @@ using CalamityMod.CalPlayer;
 using CalamityMod;
 using InfernalEclipseWeaponsDLC.Core;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
+namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
 {
     [AutoloadEquip(EquipType.Head)]
     public class SuperCellCirclet : ModItem

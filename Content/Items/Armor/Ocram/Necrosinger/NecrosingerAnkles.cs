@@ -1,39 +1,44 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using ThoriumMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Potions;
 using InfernalEclipseWeaponsDLC.Core;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
+namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
 {
+    [JITWhenModsEnabled("ThoriumMod")]
+    [ExtendsFromMod("ThoriumMod")]
     [AutoloadEquip(EquipType.Legs)]
-    public class SuperCellSabatons : ModItem
+    public class NecrosingerAnkles : ModItem
     {
         public override void SetDefaults()
         {
-            ((Entity)((ModItem)this).Item).width = 18;
-            ((Entity)((ModItem)this).Item).height = 18;
-            ((ModItem)this).Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            ((ModItem)this).Item.rare = 7;
-            ((ModItem)this).Item.defense = 12;
+            Item.width = 18;
+            Item.height = 18;
+            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
+            Item.rare = ItemRarityID.Lime;
+            Item.defense = 14;
         }
 
         public override void UpdateEquip(Player player)
         {
-            ref StatModifier damage = ref player.GetDamage(DamageClass.Throwing);
-            damage += 0.05f;
-            player.GetCritChance(DamageClass.Throwing) += 10f;
-            player.moveSpeed += 0.3f;
+            ref StatModifier damage = ref player.GetDamage((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance);
+            damage += 0.1f;
+            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += 5f;
+            player.moveSpeed += 0.2f;
         }
 
         public override void AddRecipes()
         {
+            Mod thorium = ModLoader.GetMod("ThoriumMod");
+
             Recipe recipe = CreateRecipe();
 
             recipe.AddIngredient(ItemID.HallowedGreaves);
             recipe.AddRecipeGroup(RecipeGroups.Titanium, 12);
-            recipe.AddIngredient(ItemID.SoulofFlight, 10);
+            recipe.AddIngredient(thorium.Find<ModItem>("SoulofPlight").Type, 10);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {

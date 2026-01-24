@@ -28,43 +28,41 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Potions;
 using InfernalEclipseWeaponsDLC.Core;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Armor
+namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
 {
-    [AutoloadEquip(EquipType.Head)]
-    public class NecrosingerSkull : ModItem
+    [AutoloadEquip(EquipType.Body)]
+    public class SuperCellGuard : ModItem
     {
         public override void SetDefaults()
         {
-            ((Entity)((ModItem)this).Item).width = 18;
-            ((Entity)((ModItem)this).Item).height = 18;
-            ((ModItem)this).Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            ((ModItem)this).Item.rare = 7;
-            ((ModItem)this).Item.defense = 12;
+            Item.width = 18;
+            Item.height = 18;
+            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
+            Item.rare = 7;
+            Item.defense = 14;
         }
 
         public override void UpdateEquip(Player player)
         {
-            ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-            ref StatModifier damage = ref player.GetDamage((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance);
-            damage += 0.05f;
-            player.GetAttackSpeed((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += 0.1f;
-            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += 5f;
-            thoriumPlayer.inspirationRegenBonus += 0.15f;
+            ref StatModifier damage = ref player.GetDamage(DamageClass.Throwing);
+            damage += 0.10f;
+            player.GetAttackSpeed(DamageClass.Throwing) += 0.2f;
+            player.ThrownVelocity += 0.3f;
+
+            player.GetModPlayer<SuperCellPlayer>().hasSuperCellGuardEquipped = true;
         }
 
         public override void AddRecipes()
         {
-            Mod thorium = ModLoader.GetMod("ThoriumMod");
-
             Recipe recipe = CreateRecipe();
 
-            recipe.AddIngredient(thorium.Find<ModItem>("HallowedChapeau").Type, 1);
+            recipe.AddIngredient(ItemID.HallowedPlateMail);
             recipe.AddRecipeGroup(RecipeGroups.Titanium, 12);
-            recipe.AddIngredient(thorium.Find<ModItem>("SoulofPlight").Type, 10);
+            recipe.AddIngredient(ItemID.SoulofFlight, 15);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {
-                recipe.AddIngredient(consolariaMod.Find<ModItem>("SoulofBlight").Type, 10);
+                recipe.AddIngredient(consolariaMod.Find<ModItem>("SoulofBlight").Type, 15);
             }
             else
             {
