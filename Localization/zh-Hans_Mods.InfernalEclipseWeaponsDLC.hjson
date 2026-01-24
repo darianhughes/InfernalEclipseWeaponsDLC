@@ -465,17 +465,18 @@ Items: {
 	}
 
 	SuperCellCirclet: {
-		// DisplayName: Super Cell Circlet
+		// DisplayName: Garuda Circlet
 		// Tooltip: 5% increased rogue damage
 		/* SetBonus:
 			'''
+			Grants rudimentary flight if not wearing any wings
 			Increases your maximum technique points by 2
 			+110 maximum stealth
 			''' */
 	}
 
 	SuperCellGuard: {
-		// DisplayName: Super Cell Guard
+		// DisplayName: Garuda Guard
 		/* Tooltip:
 			'''
 			10% increased rogue damage
@@ -486,7 +487,7 @@ Items: {
 	}
 
 	SuperCellSabatons: {
-		// DisplayName: Super Cell Sabatons
+		// DisplayName: Garuda Sabatons
 		/* Tooltip:
 			'''
 			5% increased rogue damage

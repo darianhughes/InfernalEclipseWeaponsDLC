@@ -7,12 +7,26 @@ using CalamityMod.Items.Potions;
 using CalamityMod.CalPlayer;
 using CalamityMod;
 using InfernalEclipseWeaponsDLC.Core;
+using System;
+using ReLogic.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
 {
     [AutoloadEquip(EquipType.Head)]
     public class SuperCellCirclet : ModItem
     {
+        public static int wingsSlot = -1;
+        public static Lazy<Asset<Texture2D>> wingAsset;
+
+        public override void Load()
+        {
+            wingsSlot = EquipLoader.AddEquipTexture(Mod, Texture + "_WingsFake", EquipType.Wings, null, Name + "_Wings", new SuperCellWings());
+            if (Main.dedServ)
+                return;
+            wingAsset = new Lazy<Asset<Texture2D>>(() => ModContent.Request<Texture2D>(Texture + "_Wings", AssetRequestMode.AsyncLoad));
+        }
+
         public override void SetStaticDefaults()
         {
             int equipSlot = EquipLoader.GetEquipSlot(Mod, Name, EquipType.Head);
@@ -42,6 +56,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
             player.setBonus = this.GetLocalizedValue("SetBonus");
             player.GetThoriumPlayer().techPointsMax += 2;
             player.Calamity().wearingRogueArmor = true;
+
+            const int supercellWingTime = 170;
+
+            if (player.wings <= 0 || player.wingTimeMax < supercellWingTime)
+            {
+                player.wings = wingsSlot;
+                player.wingsLogic = ArmorIDs.Wing.BeetleWings;
+                player.wingTimeMax = supercellWingTime;
+            }
         }
 
         public override void UpdateEquip(Player player)
@@ -75,6 +98,39 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
 
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
+        }
+    }
+
+    public class SuperCellWings : EquipTexture
+    {
+        public override bool WingUpdate(Player player, bool inUse)
+        {
+            const int frames = 4;
+            int frameTime;
+
+            if (inUse || player.jump > 0)
+                frameTime = 4;
+            else if (player.velocity.Y != 0f)
+                frameTime = !player.controlJump ? 6 : 9;
+            else
+            {
+                frameTime = 0;
+                player.wingFrame = 0;
+                player.wingFrameCounter = 0;
+                return true;
+            }
+
+            player.wingFrameCounter++;
+            if (player.wingFrameCounter >= frameTime)
+            {
+                player.wingFrameCounter = 0;
+                player.wingFrame++;
+
+                if (player.wingFrame >= frames)
+                    player.wingFrame = 0;
+            }
+
+            return true;
         }
     }
 }
