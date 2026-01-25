@@ -12,7 +12,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
-using ThoriumMod.Sounds;
+using ThoriumMod.Items.BossThePrimordials.Aqua;
+using ThoriumMod.Items.BossThePrimordials.Omni;
+using ThoriumMod.Items.BossThePrimordials.Slag;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic
 {
@@ -75,13 +77,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic
 
         public override void AddRecipes()
         {
-            return; // disabled for now
             if (ModLoader.TryGetMod("FargowiltasSouls", out _)) return;
 
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient<AuricBar>(10);
-            recipe.AddIngredient<AshesofAnnihilation>(8);
-            recipe.AddIngredient(ModLoader.TryGetMod("NoxusBoss", out Mod wotg) ? wotg.Find<ModItem>("MetallicChunk").Type : ModContent.ItemType<Rock>());
+            recipe.AddIngredient<ShadowspecBar>(10);
+            recipe.AddIngredient<AshesofCalamity>(8);
+            recipe.AddIngredient<InfernoEssence>();
+            recipe.AddIngredient<DeathEssence>();
+            recipe.AddIngredient<OceanEssence>();
+            //recipe.AddIngredient(ModLoader.TryGetMod("NoxusBoss", out Mod wotg) ? wotg.Find<ModItem>("MetallicChunk").Type : ModContent.ItemType<Rock>());
             recipe.AddTile<SCalAltar>();
             recipe.Register();
         }

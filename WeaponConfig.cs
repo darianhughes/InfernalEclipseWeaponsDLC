@@ -12,6 +12,7 @@ namespace InfernalEclipseWeaponsDLC
         [Header("General")]
 
         [DefaultValue(false)]
+        [ReloadRequired]
         public bool UnfinishedContent;
 
         [DefaultValue(false)]

@@ -665,6 +665,31 @@ ItemTooltip: {
 		The detonation will do more damage to foes closer to it's centre
 		Only one 'Big One' can exist at a time
 		''' */
+	// Playtester: - Playtester Item -
+	// Contributor: - Contributor Item -
+	// Donor: - Donor Item -
+	// DedTo: - Dedicated to {0} -
+
+	Dedicated: {
+		// Akira: Akira
+		// WH: WardrobeHummus
+		// Advantaje: Advantaje
+		// Tyr: Tyr
+		// Soltan: Soltan
+		// bryce: bryce27
+		// eviil81: evil81
+		// rose: ros�
+		// Jill: JillyFish
+		// Eduarrdo: Eduarrdo
+		// Mae: ma3allim
+		// Yob: Yob
+		// Pudding: Pudd1ng
+		// Ropro: Ropro0923
+		// cheese: cheesenuggets
+		// Puzzles: Mr. Puzzles
+		// cat: StarlightCat
+		// Goldsock: Goldsockz2
+	}
 }
 
 Projectiles: {

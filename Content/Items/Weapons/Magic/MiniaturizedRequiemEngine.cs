@@ -8,6 +8,7 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedRequiemEngine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -50,8 +51,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             Item.shootSpeed = 12f;
 
             Item.noUseGraphic = true;
-
-            Item.Calamity().donorItem = true;
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -234,9 +233,18 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
                 tooltips.Add(new TooltipLine(Mod, "EngineTheBigOne", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineTheBigOne")) { OverrideColor = Color.Yellow });
             }
 
-            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Goldsock")));
-            dedTo.OverrideColor = new Color(196, 35, 44);
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
+            if (Main.keyState.IsKeyDown(Keys.LeftShift))
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.Dedicated.Goldsock"))}\n{Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.Donor")}");
+                line5.OverrideColor = new Color(196, 35, 44);
+                tooltips.Add(line5);
+            }
+            else
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.Donor"));
+                line5.OverrideColor = new Color(196, 35, 44);
+                tooltips.Add(line5);
+            }
         }
 
         private void ShowModeChangeText(Player player)

@@ -1,15 +1,11 @@
-﻿using System;
+﻿using CalamityMod;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CalamityMod.Items;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
@@ -35,14 +31,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             Item.UseSound = SoundID.Item56;
             Item.shoot = ModContent.ProjectileType<MagicPurpleBouncyBall>();
             Item.shootSpeed = 2f;
-        }
 
-        /*
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2?(Vector2.Zero);
+            Item.Calamity().donorItem = true;
         }
-        */
 
         public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -52,7 +43,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             {
                 float speedMult = Main.rand.NextFloat(0.5f, 1.5f);
 
-                // Randomize slight spread in direction, e.g., ±5 degrees
                 float spread = MathHelper.ToRadians(25f);
                 float angle = Main.rand.NextFloat(-spread, spread);
 
@@ -69,7 +59,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
                 );
             }
 
-            return false; // Return false because we manually spawned projectiles
+            return false;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.bryce")));
+            dedTo.OverrideColor = new Color(196, 35, 44);
+            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
 
         public override void AddRecipes()
