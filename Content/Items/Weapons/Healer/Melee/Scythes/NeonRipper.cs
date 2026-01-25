@@ -120,14 +120,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
         public override string Texture => "InfernalEclipseWeaponsDLC/Content/Projectiles/HealerPro/Scythes/NeonRipperPro";
         public override void SafeSetDefaults()
         {
-            dustType = DustID.PurpleTorch;
-            dustCount = 4;
+            //dustType = DustID.PurpleTorch;
+            //dustCount = 4;
             scytheCount = 2;
-            Projectile.width = 215;
-            Projectile.height = 207;
-            dustOffset = new Vector2(-50, 11f);
+            Projectile.width = 182;
+            Projectile.height = 182;
+            //dustOffset = new Vector2(-50, 11f);
             fadeOutSpeed = 30;
             rotationSpeed = 0.25f;
+            Projectile.scale = 1.3f;
         }
 
         public override void SafeOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -214,20 +215,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 
             // Two forward-facing afterimages
             Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, cursedGreen,
-                Projectile.rotation, slashTexture.Size() / 2f, Projectile.scale * 2.95f,
+                Projectile.rotation, slashTexture.Size() / 2f, Projectile.scale * 2.35f,
                 Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
             Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, cursedGreen,
-                Projectile.rotation, slashTexture.Size() / 2f, Projectile.scale * 2.95f,
+                Projectile.rotation, slashTexture.Size() / 2f, Projectile.scale * 2.35f,
                 Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
             // Two mirrored afterimages (rotated by 180°)
             Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, cursedGreen,
-                Projectile.rotation + MathHelper.Pi, slashTexture.Size() / 2f, Projectile.scale * 2.95f,
+                Projectile.rotation + MathHelper.Pi, slashTexture.Size() / 2f, Projectile.scale * 2.35f,
                 Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
             Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, cursedGreen,
-                Projectile.rotation + MathHelper.Pi, slashTexture.Size() / 2f, Projectile.scale * 2.95f,
+                Projectile.rotation + MathHelper.Pi, slashTexture.Size() / 2f, Projectile.scale * 2.35f,
                 Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
             return false;
