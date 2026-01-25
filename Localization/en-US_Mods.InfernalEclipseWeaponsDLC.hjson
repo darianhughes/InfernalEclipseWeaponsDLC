@@ -609,6 +609,11 @@ Items: {
 		DisplayName: Miniaturized Requiem Engine
 		Tooltip: Has three modes of fire that can be cycled between on right click
 	}
+
+	MagicPurpleBouncyBalls: {
+		DisplayName: 27 Magic Purple Bouncy Balls
+		Tooltip: "'The purple energy hums with the power of 27 simultaneous mistakes'"
+	}
 }
 
 ItemTooltip: {
@@ -790,6 +795,7 @@ Projectiles: {
 	MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: Miniaturized Requiem Engine The Big One Pro2
 	MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: Miniaturized Requiem Engine The Big One Pro3
 	NecrosingerNote.DisplayName: Necrosinger Note
+	MagicPurpleBouncyBall.DisplayName: Magic Purple Bouncy Ball
 }
 
 Buffs: {
