@@ -13,11 +13,10 @@ using ThoriumMod.Projectiles.Healer;
 using ThoriumMod.Tiles;
 using System;
 using ThoriumMod.Buffs.Healer;
-using InfernalEclipseWeaponsDLC;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro;
 using Terraria.GameContent.RGB;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic
 {
     [ExtendsFromMod("ThoriumMod")]
     public class IlluminantCross : ThoriumItem

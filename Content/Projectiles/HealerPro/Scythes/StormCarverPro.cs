@@ -1,39 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ThoriumMod.Projectiles.Scythe;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.DataStructures;
-using ThoriumMod.Buffs;
-using CalamityMod;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro;
 using Terraria.ID;
-using CalamityMod.NPCs.TownNPCs;
 using Terraria.Audio;
-using Terraria.Localization;
 using ReLogic.Content;
 using System.IO;
-using ThoriumMod.Projectiles.Scythe;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
 {
     public class StormCarverPro : ScythePro
     {
-        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/StormCarver";
+        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/Melee/Scythes/StormCarver";
 
         public override void SafeSetDefaults()
         {
-            ((Entity)((ModProjectile)this).Projectile).width = 42;
-            ((Entity)((ModProjectile)this).Projectile).height = 70;
-            ((ModProjectile)this).Projectile.idStaticNPCHitCooldown = 8;
-            ((ModProjectile)this).Projectile.alpha = 255;
-            ((ModProjectile)this).Projectile.manualDirectionChange = true;
+            Projectile.width = 42;
+            Projectile.height = 70;
+            Projectile.idStaticNPCHitCooldown = 8;
+            Projectile.alpha = 255;
+            Projectile.manualDirectionChange = true;
         }
 
         public override bool PreAI()

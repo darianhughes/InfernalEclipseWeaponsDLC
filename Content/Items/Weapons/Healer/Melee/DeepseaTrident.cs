@@ -19,7 +19,7 @@ using CalamityMod.Projectiles.Magic;
 using CalamityMod.Buffs.DamageOverTime;
 using ThoriumMod;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee
 {
     [ExtendsFromMod("ThoriumMod", "CalamityMod")]
     public class DeepseaTrident : ThoriumItem
@@ -94,7 +94,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         public float RangeMax = 80;
         public float RangeMin = 40;
 
-        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/DeepseaTrident"; // replace with your actual path
+        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/Melee/DeepseaTrident";
 
         public override void SetDefaults()
         {
@@ -125,7 +125,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             if (Projectile.timeLeft == Math.Floor(halfDuration) && Main.myPlayer == Projectile.owner)
             {
                 IEntitySource source = Projectile.GetSource_FromAI();
-                Vector2 position = Projectile.Center - (Projectile.velocity * 4);
+                Vector2 position = Projectile.Center - Projectile.velocity * 4;
                 int damage = Projectile.damage;
                 float knockback = Projectile.knockBack;
                 float spread = MathHelper.ToRadians(30);
@@ -181,7 +181,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
-            Main.EntitySpriteDraw(texture, (Projectile.Center - (Projectile.velocity * 32)) - Main.screenPosition, null, lightColor, Projectile.rotation + MathHelper.ToRadians(45), texture.Size() / 2, Projectile.scale, SpriteEffects.None);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Projectile.velocity * 32 - Main.screenPosition, null, lightColor, Projectile.rotation + MathHelper.ToRadians(45), texture.Size() / 2, Projectile.scale, SpriteEffects.None);
             return false;
         }
     }
@@ -193,13 +193,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (projectile.localAI[0] == 1f &&
-               (projectile.type == ModContent.ProjectileType<BlueBubble>()))
+               projectile.type == ModContent.ProjectileType<BlueBubble>())
             {
                 target.AddBuff(ModContent.BuffType<RiptideDebuff>(), 60); // 1 second
             }
 
             if (projectile.localAI[0] == 1f &&
-               (projectile.type == ModContent.ProjectileType<ArcherfishShot>()))
+               projectile.type == ModContent.ProjectileType<ArcherfishShot>())
             {
                 target.AddBuff(ModContent.BuffType<RiptideDebuff>(), 180); // 3 second
             }

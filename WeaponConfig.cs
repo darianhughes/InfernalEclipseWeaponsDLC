@@ -12,6 +12,9 @@ namespace InfernalEclipseWeaponsDLC
         [Header("General")]
 
         [DefaultValue(false)]
+        public bool UnfinishedContent;
+
+        [DefaultValue(false)]
         public bool EnableScreenEffects;
 
         [Header("VerveineWeapons")]

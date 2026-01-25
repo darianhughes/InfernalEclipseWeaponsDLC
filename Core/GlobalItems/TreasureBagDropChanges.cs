@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.ModLoader;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 using CalamityMod.Items.TreasureBags;
-using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic;
@@ -12,6 +11,9 @@ using CalamityMod;
 using ThoriumMod.Items.Depths;
 using InfernalEclipseWeaponsDLC.Content.Items.Materials;
 using Terraria.ID;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 {

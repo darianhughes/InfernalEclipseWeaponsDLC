@@ -24,7 +24,7 @@ using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Tiles;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 {
     public class StormCarver : ScytheItem
     {
@@ -75,12 +75,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             {
                 swingDirection = 1;
             }
-            if (Main.myPlayer == ((Entity)player).whoAmI)
+            if (Main.myPlayer == player.whoAmI)
             {
-                float attackTime = ((player.itemAnimationMax <= 0) ? ((ModItem)this).Item.useAnimation : ((player.itemAnimationMax > player.itemTimeMax) ? player.itemTimeMax : player.itemAnimationMax));
-                int z = Projectile.NewProjectile((IEntitySource)(object)source, position, Vector2.Normalize(Main.MouseWorld - player.MountedCenter), type, damage, knockback, ((Entity)player).whoAmI, attackTime, attackTime, player.GetAdjustedItemScale(((ModItem)this).Item));
-                ((Entity)Main.projectile[z]).direction = swingDirection;
-                NetMessage.SendData(27, -1, -1, (NetworkText)null, z, 0f, 0f, 0f, 0, 0, 0);
+                float attackTime = player.itemAnimationMax <= 0 ? Item.useAnimation : player.itemAnimationMax > player.itemTimeMax ? player.itemTimeMax : player.itemAnimationMax;
+                int z = Projectile.NewProjectile((IEntitySource)(object)source, position, Vector2.Normalize(Main.MouseWorld - player.MountedCenter), type, damage, knockback, player.whoAmI, attackTime, attackTime, player.GetAdjustedItemScale(Item));
+                Main.projectile[z].direction = swingDirection;
+                NetMessage.SendData(27, -1, -1, null, z, 0f, 0f, 0f, 0, 0, 0);
             }
             swingDirection = -swingDirection;
             return false;

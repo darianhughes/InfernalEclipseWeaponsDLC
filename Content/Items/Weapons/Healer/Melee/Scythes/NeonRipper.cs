@@ -1,19 +1,10 @@
 using CalamityMod.CustomRecipes;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Rarities;
-using InfernalEclipseWeaponsDLC.Content.Projectiles;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -21,14 +12,11 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using ThoriumMod;
-using ThoriumMod.Items.BardItems;
-using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Projectiles.Healer;
 using ThoriumMod.Projectiles.Scythe;
-using ThoriumMod.Tiles;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 {
     [ExtendsFromMod("ThoriumMod")]
     public class NeonRipper : ScytheItem
@@ -46,9 +34,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
 
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 135f;
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.05f;
+            Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
+            Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 135f;
+            Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.05f;
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -92,7 +80,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 if (projIndex >= 0)
                     NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, projIndex);
             }
-            return false; // prevent vanilla shooting
+            return false;
         }
 
         public override float UseTimeMultiplier(Player player)
@@ -132,10 +120,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         public override string Texture => "InfernalEclipseWeaponsDLC/Content/Projectiles/HealerPro/Scythes/NeonRipperPro";
         public override void SafeSetDefaults()
         {
-            //dustType = DustID.PurpleTorch;
-            //dustCount = 4;
+            dustType = DustID.PurpleTorch;
+            dustCount = 4;
             scytheCount = 2;
-            Projectile.Size = new Vector2(226, 226);
+            Projectile.width = 215;
+            Projectile.height = 207;
             dustOffset = new Vector2(-50, 11f);
             fadeOutSpeed = 30;
             rotationSpeed = 0.25f;
@@ -165,16 +154,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 if (Projectile.ai[1] - Projectile.ai[2] > Projectile.timeLeft)
                     Projectile.timeLeft++;
 
-                float attackTime = (++Projectile.ai[2]) / Projectile.ai[1];
+                float attackTime = ++Projectile.ai[2] / Projectile.ai[1];
 
                 // Create circular orbit (unit circle)
-                Vector2 orbit = Utils.RotatedBy(Vector2.UnitX, attackTime * MathHelper.TwoPi, default);
+                Vector2 orbit = Vector2.UnitX.RotatedBy(attackTime * MathHelper.TwoPi, default);
 
                 // Stretch orbit based on velocity magnitude and ai[0] factor
                 orbit *= new Vector2(Projectile.velocity.Length(), Projectile.velocity.Length() * Projectile.ai[0] * Projectile.spriteDirection);
 
                 // Rotate orbit to match aim
-                orbit = Utils.RotatedBy(orbit, Projectile.velocity.ToRotation(), default);
+                orbit = orbit.RotatedBy(Projectile.velocity.ToRotation(), default);
 
                 // Offset from player and subtract initial throw velocity
                 Projectile.Center = player.MountedCenter + orbit - Projectile.velocity;
@@ -194,7 +183,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 return false; // Skip normal scythe AI
             }
 
-            return true; // Normal scythe AI for left-click swing
+            return true;
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -212,7 +201,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 Projectile.rotation + MathHelper.PiOver4 * Projectile.spriteDirection,
                 texture.Size() / 2f,
                 Projectile.scale,
-                (Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
                 0f
             );
 
@@ -221,28 +210,27 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                                 MathHelper.Lerp(0.15f, 0f, Projectile.alpha / 255f);
             cursedGreen.A = 0;
 
-            // Use your mod’s Slash_3 texture
             Texture2D slashTexture = (Texture2D)ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Assets/Textures/Slash_3");
 
             // Two forward-facing afterimages
             Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, cursedGreen,
                 Projectile.rotation, slashTexture.Size() / 2f, Projectile.scale * 2.95f,
-                (Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None), 0f);
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
             Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, cursedGreen,
                 Projectile.rotation, slashTexture.Size() / 2f, Projectile.scale * 2.95f,
-                (Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None), 0f);
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
             // Two mirrored afterimages (rotated by 180°)
             Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, cursedGreen,
                 Projectile.rotation + MathHelper.Pi, slashTexture.Size() / 2f, Projectile.scale * 2.95f,
-                (Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None), 0f);
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
             Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, cursedGreen,
                 Projectile.rotation + MathHelper.Pi, slashTexture.Size() / 2f, Projectile.scale * 2.95f,
-                (Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None), 0f);
+                Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
-            return false; // Suppress default drawing
+            return false;
         }
     }
 

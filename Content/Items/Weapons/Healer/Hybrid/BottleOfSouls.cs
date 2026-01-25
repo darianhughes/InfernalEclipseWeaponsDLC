@@ -11,7 +11,7 @@ using ThoriumMod.Projectiles.Healer;
 using System;
 using ThoriumMod.Buffs.Healer;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
 {
     [ExtendsFromMod("ThoriumMod")]
     public class BottleOfSouls : ThoriumItem

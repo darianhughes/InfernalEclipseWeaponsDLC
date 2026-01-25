@@ -21,7 +21,7 @@ using ThoriumMod.Items.BossThePrimordials.Dream;
 using CalamityMod;
 using Terraria.Localization;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 {
     public class TwoPaths : ScytheItem
     {

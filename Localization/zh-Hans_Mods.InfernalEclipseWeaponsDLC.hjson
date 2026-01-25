@@ -429,7 +429,7 @@ Items: {
 			life regeneration begins faster
 			Healing spells will heal an additional 2 life
 			''' */
-		// SetBonus: ooooh funny eclipse (someone please come up with something better)
+		// SetBonus: ""
 	}
 
 	NecrosingerAnkles: {
@@ -462,7 +462,7 @@ Items: {
 			5% increased symphonic critical strike chance
 			Increased inspiration regeneration rate by 15%
 			''' */
-		// SetBonus: im a funny note set bonus (someone please come up with something better)
+		// SetBonus: Music notes will orbit you, each blocking one projectile.
 	}
 
 	SuperCellCirclet: {
@@ -610,6 +610,58 @@ Items: {
 	}
 }
 
+ItemTooltip: {
+	DuesFluteLore: 他们找到了星辉瘟疫的源头。为了将其毁灭，他们将星核献奉于被污染的祭坛之上。
+	DuesFluteLore2: 然而，祭坛却作出了意想不到的反应……两道光辉相互碰撞，直冲苍穹，在头顶撕开一条裂隙。
+	DuesFluteLore3: 异界之物从裂隙中涌出。在他们惊叹之际，星辰的仆从已经迎面冲来。
+	UniversalLore1: 柯斯的最后一击消散了，招数已尽，败局已定。但是蚀光会拒绝落败。
+	UniversalLore2: 榨干灵魂中仅存的余力，他召唤出了真正的弑神凶灵——神明吞噬者。
+	ParallelLore1:
+		'''
+		正如他所料，他们击败了风暴编织者。
+		但柯斯还有一计。
+		'''
+	ParallelLore2:
+		'''
+		忽然间，在没有任何预警的情况下，众人被传送至镜像领域。
+		他的第二位仆从现身于虚无之中——神之使徒，西格纳斯
+		'''
+	TwoSideLore1:
+		'''
+		祂征服了诸神黄昏。
+		祂瓦解了蚀光会。
+		'''
+	TwoSideLore2:
+		'''
+		祂挺过了史莱姆季风。 
+		当祂立于无穷的边缘，
+		仁问：“你将行何路？”
+		'''
+	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲
+	NeonRipperLore2: 借此他打造了两件武器：第一件是一柄能够吸收灵气的镰刀，正如卡米的能力一般。
+	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
+	// VerveineItem: "'An item from the orchid's blessing...'"
+	/* EngineGatling:
+		'''
+		Gatling mode:
+		Holding fire will gradually reduce weapon spread and increase fire rate to a cap
+		Shots can pierce up to four times
+		''' */
+	/* EngineLaser:
+		'''
+		Laser mode:
+		Fires an infinitely piercing laser that leaves behind a trail of lingering damage
+		The laser can bounce off tiles up to 3 times
+		''' */
+	/* EngineTheBigOne:
+		'''
+		'The Big One' mode:
+		Fires a massive orb of condensed energy that will detonate after some time
+		The detonation will do more damage to foes closer to it's centre
+		Only one 'Big One' can exist at a time
+		''' */
+}
+
 Projectiles: {
 	TwoPathsPro.DisplayName: 神冥歧径
 	BlackExplosion.DisplayName: 暗黑爆破
@@ -750,62 +802,14 @@ Buffs: {
 	}
 }
 
-ItemTooltip: {
-	DuesFluteLore: 他们找到了星辉瘟疫的源头。为了将其毁灭，他们将星核献奉于被污染的祭坛之上。
-	DuesFluteLore2: 然而，祭坛却作出了意想不到的反应……两道光辉相互碰撞，直冲苍穹，在头顶撕开一条裂隙。
-	DuesFluteLore3: 异界之物从裂隙中涌出。在他们惊叹之际，星辰的仆从已经迎面冲来。
-	UniversalLore1: 柯斯的最后一击消散了，招数已尽，败局已定。但是蚀光会拒绝落败。
-	UniversalLore2: 榨干灵魂中仅存的余力，他召唤出了真正的弑神凶灵——神明吞噬者。
-	ParallelLore1:
-		'''
-		正如他所料，他们击败了风暴编织者。
-		但柯斯还有一计。
-		'''
-	ParallelLore2:
-		'''
-		忽然间，在没有任何预警的情况下，众人被传送至镜像领域。
-		他的第二位仆从现身于虚无之中——神之使徒，西格纳斯
-		'''
-	TwoSideLore1:
-		'''
-		祂征服了诸神黄昏。
-		祂瓦解了蚀光会。
-		'''
-	TwoSideLore2:
-		'''
-		祂挺过了史莱姆季风。 
-		当祂立于无穷的边缘，
-		仁问：“你将行何路？”
-		'''
-	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲
-	NeonRipperLore2: 借此他打造了两件武器：第一件是一柄能够吸收灵气的镰刀，正如卡米的能力一般。
-	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
-	// VerveineItem: "'An item from the orchid's blessing...'"
-	/* EngineGatling:
-		'''
-		Gatling mode:
-		Holding fire will gradually reduce weapon spread and increase fire rate to a cap
-		Shots can pierce up to four times
-		''' */
-	/* EngineLaser:
-		'''
-		Laser mode:
-		Fires an infinitely piercing laser that leaves behind a trail of lingering damage
-		The laser can bounce off tiles up to 3 times
-		''' */
-	/* EngineTheBigOne:
-		'''
-		'The Big One' mode:
-		Fires a massive orb of condensed energy that will detonate after some time
-		The detonation will do more damage to foes closer to it's centre
-		Only one 'Big One' can exist at a time
-		''' */
-}
-
 Configs: {
 	WeaponConfig: {
 		// DisplayName: Weapon Config
-		// Headers.VerveineWeapons: Verveine Weapons
+
+		Headers: {
+			// VerveineWeapons: Verveine Weapons
+			// General: General
+		}
 
 		AIGenedWeapons: {
 			// Label: AI Generated Weapon Concepts
@@ -819,6 +823,11 @@ Configs: {
 
 		EnableScreenEffects: {
 			// Label: Enable Screen Effects
+			// Tooltip: ""
+		}
+
+		UnfinishedContent: {
+			// Label: Unfinished Content
 			// Tooltip: ""
 		}
 	}

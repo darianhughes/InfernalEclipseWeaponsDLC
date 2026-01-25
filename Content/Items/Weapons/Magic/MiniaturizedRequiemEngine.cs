@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Rarities;
@@ -49,6 +50,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             Item.shootSpeed = 12f;
 
             Item.noUseGraphic = true;
+
+            Item.Calamity().donorItem = true;
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -230,6 +233,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             {
                 tooltips.Add(new TooltipLine(Mod, "EngineTheBigOne", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineTheBigOne")) { OverrideColor = Color.Yellow });
             }
+
+            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Goldsock")));
+            dedTo.OverrideColor = new Color(196, 35, 44);
+            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
         }
 
         private void ShowModeChangeText(Player player)

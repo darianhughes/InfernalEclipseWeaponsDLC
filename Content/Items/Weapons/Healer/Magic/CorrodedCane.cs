@@ -12,7 +12,7 @@ using ThoriumMod.Items;
 using ThoriumMod.Sounds;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic
 {
     public class CorrodedCane : ThoriumItem
     {

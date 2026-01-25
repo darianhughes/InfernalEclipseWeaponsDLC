@@ -22,7 +22,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
 {
     public class GammaKnifeProjectile : ScythePro
     {
-        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/GammaKnife";
+        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/Melee/Scythes/GammaKnife";
 
         /// <summary>
         ///     Gets the asset for the glowmask texture of the projectile.

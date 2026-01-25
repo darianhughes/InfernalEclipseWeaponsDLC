@@ -18,7 +18,7 @@ using CalamityMod.Items.Placeables;
 using CalamityMod.CustomRecipes;
 using Terraria.Audio;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
 {
     [ExtendsFromMod("ThoriumMod", "CalamityMod")]
     public class Defibrillanator : ThoriumItem
@@ -28,7 +28,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
         public override void SetStaticDefaults()
         {
             inventoryTexture = Mod.Assets.Request<Texture2D>(
-                "Content/Items/Weapons/Healer/Defibrillanator_Inventory",
+                "Content/Items/Weapons/Healer/Hybrid/Defibrillanator_Inventory",
                 AssetRequestMode.ImmediateLoad
             );
         }
@@ -202,7 +202,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             // Position below the item slot
             float yOffset = -8f;
-            Vector2 drawPos = position + Vector2.UnitY * scale * ((float)frame.Height - yOffset);
+            Vector2 drawPos = position + Vector2.UnitY * scale * (frame.Height - yOffset);
 
             // Crop the foreground based on charge
             Rectangle frameCrop = new Rectangle(0, 0, (int)(charge / 5f * barFG.Width), barFG.Height);
@@ -470,7 +470,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             Vector2 barOrigin = barBG.Size() * 0.5f;
             float barScale = 0.95f;
-            Vector2 drawPos = player.Top + Vector2.UnitY * (-16f) - Main.screenPosition;
+            Vector2 drawPos = player.Top + Vector2.UnitY * -16f - Main.screenPosition;
 
             Rectangle frameCrop = new Rectangle(0, 0, (int)(modPlayer.defibrillanatorCharge / 5f * barFG.Width), barFG.Height);
 

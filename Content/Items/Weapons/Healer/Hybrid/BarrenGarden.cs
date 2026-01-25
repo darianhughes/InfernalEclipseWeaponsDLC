@@ -21,7 +21,7 @@ using CalamityMod.CustomRecipes;
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
 {
     [ExtendsFromMod("ThoriumMod", "CalamityMod")]
     public class BarrenGarden : ThoriumItem
@@ -122,21 +122,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             float[] healingAngles = { -21f, 21f };
             foreach (float angle in healingAngles)
             {
-                Vector2 vel = Utils.RotatedBy(velocity, MathHelper.ToRadians(angle));
+                Vector2 vel = velocity.RotatedBy(MathHelper.ToRadians(angle));
                 Projectile.NewProjectile(source, position, vel * 0.975f, ModContent.ProjectileType<BarrenGardenHealingPro>(), 0, knockback, owner);
             }
 
             float[] homingAngles = { -17f, -13f, 13f, 17f };
             foreach (float angle in homingAngles)
             {
-                Vector2 vel = Utils.RotatedBy(velocity, MathHelper.ToRadians(angle));
+                Vector2 vel = velocity.RotatedBy(MathHelper.ToRadians(angle));
                 Projectile.NewProjectile(source, position, vel, ModContent.ProjectileType<BarrenGardenProHoming>(), damage, knockback, owner);
             }
 
             float[] normalAngles = { -9f, -3f, 3f, 9f };
             foreach (float angle in normalAngles)
             {
-                Vector2 vel = Utils.RotatedBy(velocity, MathHelper.ToRadians(angle));
+                Vector2 vel = velocity.RotatedBy(MathHelper.ToRadians(angle));
                 Projectile.NewProjectile(source, position, vel * 1.05f, ModContent.ProjectileType<BarrenGardenPro>(), damage, knockback, owner);
             }
 

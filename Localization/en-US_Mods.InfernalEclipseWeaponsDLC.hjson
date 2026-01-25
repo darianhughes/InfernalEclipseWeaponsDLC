@@ -463,7 +463,7 @@ Items: {
 			5% increased symphonic critical strike chance
 			Increased inspiration regeneration rate by 15%
 			'''
-		SetBonus: im a funny note set bonus (someone please come up with something better)
+		SetBonus: Music notes will orbit you, each blocking one projectile.
 	}
 
 	SuperCellCirclet: {
@@ -611,6 +611,64 @@ Items: {
 	}
 }
 
+ItemTooltip: {
+	DuesFluteLore: They had found the source of the Astral Infection, and in a attempt to destroy it they used the Starcore on the infected altar.
+	DuesFluteLore2: However, the altar had an unexpected reaction... two lights had started bouncing off each other heading the direction of the sky, opening a rift above it
+	DuesFluteLore3: What came out of it was truly something out of this world, but they appreciation had to be cut short as the servant of the stars rushed towards them.
+	UniversalLore1: Kos had made his final stand. Used all of his tricks up his sleeve. He had lost to them. However, it doesn't mean Eclipse had lost.
+	UniversalLore2: Using every inch of power he had remaining in his soul, he summoned the true god slayer: The Devourer of Gods.
+	ParallelLore1: To his expectation, they had slew the Storm Weaver. But Kos had another trick up his sleeve.
+	ParallelLore2: Suddenly, with no warning, Kos had transported everyone to the mirror realm and called upon his second servant: Signus.
+	TwoSideLore1: They overcame Ragnarok. They dismantled Eclipse. They survived the Slime Monsoon.
+	TwoSideLore2: They stood at the brink of infinity, which only then Ren asked them "which path will you choose?"
+	NeonRipperLore1: After the defeat of the Goliath, Erelian decided to repurpose some of the armor plating it wore.
+	NeonRipperLore2: In doing so he created two weapons: the first of which being a sycthe that could absorb aura, much like Kami's ability.
+	PBGBardALore2: In doing so he created two weapons: the second of which being a guitar that shot colorful microwaves.
+	VerveineItem: "'An item from the orchid's blessing...'"
+	EngineGatling:
+		'''
+		Gatling mode:
+		Holding fire will gradually reduce weapon spread and increase fire rate to a cap
+		Shots can pierce up to four times
+		'''
+	EngineLaser:
+		'''
+		Laser mode:
+		Fires an infinitely piercing laser that leaves behind a trail of lingering damage
+		The laser can bounce off tiles up to 3 times
+		'''
+	EngineTheBigOne:
+		'''
+		'The Big One' mode:
+		Fires a massive orb of condensed energy that will detonate after some time
+		The detonation will do more damage to foes closer to it's centre
+		Only one 'Big One' can exist at a time
+		'''
+
+	DedTo: - Dedicated to {0} -
+
+	Dedicated: {
+		Akira: Akira
+		WH: WardrobeHummus
+		Advantaje: Advantaje
+		Tyr: Tyr
+		Soltan: Soltan
+		bryce: bryce27
+		eviil81: evil81
+		rose: rosé
+		Jill: JillyFish
+		Eduarrdo: Eduarrdo
+		Mae: ma3allim
+		Yob: Yob
+		Pudding: Pudd1ng
+		Ropro: Ropro0923
+		cheese: cheesenuggets
+		Puzzles: Mr. Puzzles
+		cat: StarlightCat
+		Goldsock: Goldsockz2
+	}
+}
+
 Projectiles: {
 	TwoPathsPro.DisplayName: Two Paths
 	BlackExplosion.DisplayName: Black Explosion
@@ -751,45 +809,14 @@ Buffs: {
 	}
 }
 
-ItemTooltip: {
-	DuesFluteLore: They had found the source of the Astral Infection, and in a attempt to destroy it they used the Starcore on the infected altar.
-	DuesFluteLore2: However, the altar had an unexpected reaction... two lights had started bouncing off each other heading the direction of the sky, opening a rift above it
-	DuesFluteLore3: What came out of it was truly something out of this world, but they appreciation had to be cut short as the servant of the stars rushed towards them.
-	UniversalLore1: Kos had made his final stand. Used all of his tricks up his sleeve. He had lost to them. However, it doesn't mean Eclipse had lost.
-	UniversalLore2: Using every inch of power he had remaining in his soul, he summoned the true god slayer: The Devourer of Gods.
-	ParallelLore1: To his expectation, they had slew the Storm Weaver. But Kos had another trick up his sleeve.
-	ParallelLore2: Suddenly, with no warning, Kos had transported everyone to the mirror realm and called upon his second servant: Signus.
-	TwoSideLore1: They overcame Ragnarok. They dismantled Eclipse. They survived the Slime Monsoon.
-	TwoSideLore2: They stood at the brink of infinity, which only then Ren asked them "which path will you choose?"
-	NeonRipperLore1: After the defeat of the Goliath, Erelian decided to repurpose some of the armor plating it wore.
-	NeonRipperLore2: In doing so he created two weapons: the first of which being a sycthe that could absorb aura, much like Kami's ability.
-	PBGBardALore2: In doing so he created two weapons: the second of which being a guitar that shot colorful microwaves.
-	VerveineItem: "'An item from the orchid's blessing...'"
-	EngineGatling:
-		'''
-		Gatling mode:
-		Holding fire will gradually reduce weapon spread and increase fire rate to a cap
-		Shots can pierce up to four times
-		'''
-	EngineLaser:
-		'''
-		Laser mode:
-		Fires an infinitely piercing laser that leaves behind a trail of lingering damage
-		The laser can bounce off tiles up to 3 times
-		'''
-	EngineTheBigOne:
-		'''
-		'The Big One' mode:
-		Fires a massive orb of condensed energy that will detonate after some time
-		The detonation will do more damage to foes closer to it's centre
-		Only one 'Big One' can exist at a time
-		'''
-}
-
 Configs: {
 	WeaponConfig: {
 		DisplayName: Weapon Config
-		Headers.VerveineWeapons: Verveine Weapons
+
+		Headers: {
+			VerveineWeapons: Verveine Weapons
+			General: General
+		}
 
 		AIGenedWeapons: {
 			Label: AI Generated Weapon Concepts
@@ -803,6 +830,11 @@ Configs: {
 
 		EnableScreenEffects: {
 			Label: Enable Screen Effects
+			Tooltip: ""
+		}
+
+		UnfinishedContent: {
+			Label: Unfinished Content
 			Tooltip: ""
 		}
 	}

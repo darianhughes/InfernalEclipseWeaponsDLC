@@ -24,6 +24,9 @@
 	    <HintPath>..\ModAssemblies\ThoriumMod_v1.7.2.4.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Content\Items\Weapons\Healer\Tools\" />
+	</ItemGroup>
 
 	<!-- References -->
 

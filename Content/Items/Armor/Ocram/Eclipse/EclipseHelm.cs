@@ -6,17 +6,16 @@ using ThoriumMod.Utilities;
 using CalamityMod.Items;
 using CalamityMod.Items.Potions;
 using InfernalEclipseWeaponsDLC.Core;
-using InfernalEclipseWeaponsDLC.Core.Effects;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using Terraria.GameContent;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
 {
     [AutoloadEquip(EquipType.Head)]
     public class EclipseHelm : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return WeaponConfig.Instance.UnfinishedContent;
+        }
         public override void SetDefaults()
         {
             Item.width = 18;

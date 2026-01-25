@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using InfernalEclipseWeaponsDLC.Content.Dusts;
-using InfernalEclipseWeaponsDLC.Content.Items;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -9,16 +8,8 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.Graphics.CameraModifiers;
-using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
-using ThoriumMod.Items.BardItems;
-using ThoriumMod.Items.BossThePrimordials.Dream;
-using ThoriumMod.Items.HealerItems;
-using ThoriumMod.Projectiles.Healer;
-using ThoriumMod.Projectiles.Scythe;
-using ThoriumMod.Tiles;
-using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
 using Terraria.DataStructures;
 
@@ -26,7 +17,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
 {
     public class GammaKnifeThrownProjectile : ModProjectile
     {
-        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/GammaKnife";
+        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/Melee/Scythes/GammaKnife";
 
         /// <summary>
         ///     The lifespan of the projectile, in ticks.

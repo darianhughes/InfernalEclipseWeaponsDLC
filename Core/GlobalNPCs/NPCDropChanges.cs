@@ -9,7 +9,6 @@ using CalamityMod.NPCs.BrimstoneElemental;
 using CalamityMod.NPCs.Ravager;
 using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.OldDuke;
-using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic;
@@ -21,6 +20,9 @@ using CalamityMod.NPCs.SupremeCalamitas;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {

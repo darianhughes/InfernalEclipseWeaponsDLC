@@ -14,7 +14,7 @@ using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Sounds;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic
 {
     [ExtendsFromMod("ThoriumMod")]
     public class AuricBrimfireCrosier : ThoriumItem
@@ -64,7 +64,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
         public override bool CanUseItem(Player player)
         {
-            int lifeAfterUsing = player.statLife - (radiantLifeCost * 4);
+            int lifeAfterUsing = player.statLife - radiantLifeCost * 4;
             return lifeAfterUsing > 0;
         }
 
@@ -105,7 +105,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             TicksBeforeTurn = 25; // 3 seconds
 
             Projectile.Size = new Vector2(72, 72);
-            Projectile.timeLeft = (TicksBeforeTurn * 5) - 5; // Shortened a bit so that it doesn't hit the  player
+            Projectile.timeLeft = TicksBeforeTurn * 5 - 5; // Shortened a bit so that it doesn't hit the  player
             Projectile.penetrate = 5;
 
             Projectile.ignoreWater = true;
@@ -191,7 +191,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                     drawColor * Projectile.Opacity,
                     -angle + MathHelper.PiOver2,
                     vortexTexture.Size() * 0.5f,
-                    (Projectile.scale * (1 - i * 0.05f) * GlobalScale) * Projectile.Opacity, // 15% size
+                    Projectile.scale * (1 - i * 0.05f) * GlobalScale * Projectile.Opacity, // 15% size
                     SpriteEffects.None,
                     0
                 );
@@ -204,13 +204,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
                 Color.Black * Projectile.Opacity,
                 Projectile.rotation,
                 centerTexture.Size() * 0.5f,
-                (Projectile.scale * 0.9f * GlobalScale) * Projectile.Opacity, // 15% size
+                Projectile.scale * 0.9f * GlobalScale * Projectile.Opacity, // 15% size
                 SpriteEffects.None,
                 0
             );
 
             // Trail rendering
-            Texture2D texture2D13 = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            Texture2D texture2D13 = TextureAssets.Projectile[Projectile.type].Value;
             int num156 = texture2D13.Height / Main.projFrames[Projectile.type];
             int y3 = num156 * Projectile.frame;
             Rectangle rectangle = new(0, y3, texture2D13.Width, num156);

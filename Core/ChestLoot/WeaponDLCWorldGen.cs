@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CalamityMod.Tiles.Abyss;
 using InfernalEclipseWeaponsDLC.Content.Items.Materials;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
-using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee;
 using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Tiles;

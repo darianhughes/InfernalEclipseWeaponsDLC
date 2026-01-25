@@ -1,6 +1,5 @@
 ﻿using InfernalEclipseWeaponsDLC.Utilities;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -8,30 +7,14 @@ using Terraria.ModLoader;
 using CalamityMod.CustomRecipes;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Rarities;
-using InfernalEclipseWeaponsDLC.Content.Projectiles;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaKnife;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
-using Terraria.Localization;
 using ThoriumMod;
-using ThoriumMod.Items.BardItems;
-using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items.HealerItems;
-using ThoriumMod.Projectiles.Healer;
-using ThoriumMod.Projectiles.Scythe;
-using ThoriumMod.Tiles;
-using CalamityMod.Items.Potions;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 {
     public class GammaKnife : ScytheItem
     {

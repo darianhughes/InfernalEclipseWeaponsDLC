@@ -1,5 +1,5 @@
 ﻿using System;
-using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes;
 using Terraria.ModLoader;
 
 namespace InfernalEclipseWeaponsDLC.Core

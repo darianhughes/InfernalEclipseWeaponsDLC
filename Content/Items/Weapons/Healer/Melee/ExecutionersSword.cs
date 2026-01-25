@@ -12,7 +12,7 @@ using Terraria.DataStructures;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee
 {
     public class ExecutionersSword : ThoriumItem
     {

@@ -12,7 +12,7 @@ using ThoriumMod.Items;
 using ThoriumMod.Sounds;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic
 {
     public class ListoftheDamned : ThoriumItem
     {
@@ -63,10 +63,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
 
             for (int i = 0; i < numberProjectiles; i++)
             {
-                float offset = -spread / 2 + (spread / (numberProjectiles - 1)) * i;
+                float offset = -spread / 2 + spread / (numberProjectiles - 1) * i;
                 Vector2 perturbedSpeed = velocity.RotatedBy(offset).SafeNormalize(Vector2.UnitY) * baseSpeed;
 
-                int projType = (i % 2 == 0)
+                int projType = i % 2 == 0
                     ? ModContent.ProjectileType<ListoftheDamnedSoul_Cyan>()
                     : ModContent.ProjectileType<ListoftheDamnedSoul_Orange>();
 
