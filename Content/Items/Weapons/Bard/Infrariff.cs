@@ -33,8 +33,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetBardDefaults()
         {
-            Item.width = 44;
-            Item.height = 46;
+            Item.width = 56;
+            Item.height = 58;
 
             Item.useTime = 14;
             Item.useAnimation = 14;
@@ -103,17 +103,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-24, 24);
+            return new Vector2(-12, 12);
         }
 
         public override void HoldItemFrame(Player player)
         {
-            player.itemLocation += new Vector2(-24, 24) * player.Directions;
+            player.itemLocation += new Vector2(-12, 12) * player.Directions;
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
         {
-            Vector2 offset = new Vector2(-24, 24f) * player.Directions;
+            Vector2 offset = new Vector2(-12, 12) * player.Directions;
 
             player.itemLocation += offset;
         }
