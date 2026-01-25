@@ -1,32 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using ThoriumMod.Empowerments;
 using ThoriumMod;
-using ThoriumMod.Items;
-using ThoriumMod.Items.BardItems;
 using ThoriumMod.Utilities;
-using Microsoft.Xna.Framework;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NukePros;
-using InfernalEclipseWeaponsDLC.Core.NewFolder;
-using ThoriumMod.Sounds;
 using CalamityMod.Items;
-using CalamityMod.Rarities;
-using CalamityMod.NPCs.Leviathan;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Items.Accessories;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items.Materials;
 using CalamityMod.Items.Potions;
 using InfernalEclipseWeaponsDLC.Core;
+using InfernalEclipseWeaponsDLC.Core.Effects;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Terraria.DataStructures;
+using Terraria.GameContent;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
 {
@@ -38,8 +22,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
             Item.width = 18;
             Item.height = 18;
             Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            Item.rare = 7;
+            Item.rare = ItemRarityID.Lime;
             Item.defense = 15;
+        }
+
+        public override bool IsArmorSet(Item head, Item body, Item legs)
+        {
+            return body.type == ModContent.ItemType<EclipseBreastplate>() && legs.type == ModContent.ItemType<EclipseGreaves>();
+        }
+
+        public override void UpdateArmorSet(Player player)
+        {
+            player.setBonus = this.GetLocalization("SetBonus").Format();
+            var modPlayer = player.GetModPlayer<EclipsePlayer>();
+            //modPlayer.EclipseSet = true;
         }
 
         public override void UpdateEquip(Player player)

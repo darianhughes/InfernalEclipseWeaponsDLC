@@ -430,6 +430,7 @@ Items: {
 			life regeneration begins faster
 			Healing spells will heal an additional 2 life
 			'''
+		SetBonus: ""
 	}
 
 	NecrosingerAnkles: {
