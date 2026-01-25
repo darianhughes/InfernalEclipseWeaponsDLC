@@ -9,6 +9,11 @@ namespace InfernalEclipseWeaponsDLC
 
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
+        [Header("General")]
+
+        [DefaultValue(false)]
+        public bool EnableScreenEffects;
+
         [Header("VerveineWeapons")]
 
         [DefaultValue(true)]
@@ -18,8 +23,5 @@ namespace InfernalEclipseWeaponsDLC
         [DefaultValue(true)]
         [ReloadRequired]
         public bool GitGudWeapon;
-
-        [DefaultValue(false)]
-        public bool EnableScreenEffects;
     }
 }
