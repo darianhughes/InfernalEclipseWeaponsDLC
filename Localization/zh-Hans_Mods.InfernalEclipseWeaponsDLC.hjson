@@ -471,7 +471,7 @@ Items: {
 		/* SetBonus:
 			'''
 			Music notes will orbit you, each blocking one projectile before breaking
-			When broken, the ring of notes will refresh after 10 seconds
+			When broken, the ring of notes will refresh after 5 seconds
 			''' */
 	}
 

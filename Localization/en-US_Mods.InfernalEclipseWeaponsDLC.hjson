@@ -432,10 +432,10 @@ Items: {
 			'''
 		SetBonus:
 			'''
-			Summon the Eclipse to fight for you
-			The Eclipse will fire light and darkness when there are enemies nearby
+			Calls forth a condensed eclipse
+			The eclipse will fire light and darkness when there are enemies nearby
 			Light will home onto and heal nearby allies for the players bonus healing
-			Darkness will home onto enemies and deal damage
+			Darkness will home onto enemies and deal radiant damage
 			'''
 	}
 
