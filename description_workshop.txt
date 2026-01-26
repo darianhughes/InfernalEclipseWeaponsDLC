@@ -35,7 +35,7 @@ Also check out:
 
 If you want to support the development team, see our pateron page: https://www.patreon.com/c/InfernalEclipseofRagnarokTeam
 
-Special thanks to [url=https://steamcommunity.com/id/skitter5] Feldy[/url], [url=https://steamcommunity.com/id/taco_con_kvass] TacoConKvass[/url], & [url=https://steamcommunity.com/profiles/76561198041992238] Verveine[/url] for helping develop some of this mods items, [url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen[/url] for the heavy scythe & scythe throwing code & Pil for some of the mods sprites!
+Special thanks to [url=https://steamcommunity.com/id/skitter5] Feldy[/url], [url=https://steamcommunity.com/id/taco_con_kvass] TacoConKvass[/url], [url=https://steamcommunity.com/profiles/76561199098100065/myworkshopfiles/?appid=1281930] KainSett[/url], and [url=https://steamcommunity.com/profiles/76561198041992238] Verveine[/url] for helping develop some of this mods items, [url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen[/url] for the heavy scythe & scythe throwing code & Pil for some of the mods sprites!
 
 Simplified Chinese localization done by [url=https://steamcommunity.com/id/426875391/] Pudd1ng[/url].
 Russion localization done by Aizen522.

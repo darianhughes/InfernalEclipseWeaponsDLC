@@ -14,6 +14,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
+            return true;
             return WeaponConfig.Instance.UnfinishedContent;
         }
         public override void SetDefaults()

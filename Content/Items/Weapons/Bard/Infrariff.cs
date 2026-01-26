@@ -33,8 +33,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetBardDefaults()
         {
-            Item.width = 56;
-            Item.height = 58;
+            Item.width = 66;
+            Item.height = 66;
 
             Item.useTime = 14;
             Item.useAnimation = 14;

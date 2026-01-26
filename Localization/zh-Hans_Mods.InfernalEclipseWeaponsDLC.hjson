@@ -583,12 +583,12 @@ Items: {
 	}
 
 	PocketConcert: {
-		// DisplayName: Pocket Concert
+		// DisplayName: Mechamatone
 		/* Tooltip:
 			'''
 			Releases music notes of varying colors
 			Music notes will inflict a variety of debuffs based on the notes color
-			Release an additional music note for each unique empowerment you have at level 2 or higher
+			Releases an additional music note for each unique empowerment you have at level 2 or higher
 			''' */
 	}
 
@@ -814,6 +814,7 @@ Projectiles: {
 	// MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: Miniaturized Requiem Engine The Big One Pro3
 	// NecrosingerNote.DisplayName: Necrosinger Note
 	// MagicPurpleBouncyBall.DisplayName: Magic Purple Bouncy Ball
+	// EclipseEclipse.DisplayName: Eclipse Eclipse
 }
 
 Buffs: {

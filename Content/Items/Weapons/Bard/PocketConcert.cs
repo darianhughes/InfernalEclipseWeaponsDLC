@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,15 +8,10 @@ using ThoriumMod;
 using ThoriumMod.Items;
 using Microsoft.Xna.Framework;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.PocketConcert;
-using InfernalEclipseWeaponsDLC.Core.NewFolder;
-using ThoriumMod.Sounds;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
-using static System.Net.Mime.MediaTypeNames;
 using CalamityMod.CustomRecipes;
 using CalamityMod.Items.Materials;
-using ThoriumMod.Utilities;
-using ThoriumMod.Items.BardItems;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 {
@@ -41,8 +31,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.autoReuse = true;
             Item.noMelee = true;
 
-            Item.width = 32;
-            Item.height = 18;
+            Item.width = 34;
+            Item.height = 46;
 
             Item.useTime = 10;
             Item.useAnimation = 10;
@@ -51,9 +41,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.shootSpeed = 12f;
             Item.shoot = ModContent.ProjectileType<MusicalNoteProjectile>();
 
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 190f;
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.025f;
+            Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
+            Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 190f;
+            Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.025f;
 
             Item.rare = ModContent.RarityType<Turquoise>();
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
@@ -61,8 +51,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             InspirationCost = 1;
         }
 
-        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source,
-    Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             // Use Thorium's helper to get the player's empowerment data
             ThoriumPlayer tPlayer = player.GetModPlayer<ThoriumPlayer>();
@@ -100,6 +89,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             }
 
             return false; // prevent default single shot
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-6f, 0f);
         }
 
         public override void AddRecipes()

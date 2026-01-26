@@ -21,7 +21,7 @@ This mod also has combatability with Consolaria & Secrets of the Shadows.
 
 If you have any other issues please report them in the discord (https://discord.gg/RXdTXbKY).
 
-Special thanks to Feldy, TacoConKvass, Verveine for helping develop some of this mods items, & Pil for some of the mods sprites!
+Special thanks to Feldy, TacoConKvass, KainSett, and Verveine for helping develop some of this mods items, & Pil for some of the mods sprites!
 
 Simplified Chinese localization done by Pudd1ng.
 

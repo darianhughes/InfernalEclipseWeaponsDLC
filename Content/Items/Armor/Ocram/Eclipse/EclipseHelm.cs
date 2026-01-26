@@ -14,6 +14,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
+            return true;
             return WeaponConfig.Instance.UnfinishedContent;
         }
         public override void SetDefaults()
@@ -34,7 +35,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
         {
             player.setBonus = this.GetLocalization("SetBonus").Format();
             var modPlayer = player.GetModPlayer<EclipsePlayer>();
-            //modPlayer.EclipseSet = true;
+            modPlayer.EclipseSet = true;
         }
 
         public override void UpdateEquip(Player player)
