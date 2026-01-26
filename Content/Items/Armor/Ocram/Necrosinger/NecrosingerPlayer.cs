@@ -10,50 +10,107 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
         public bool NecrosingerSet;
 
         private int rechargeTimer;
+        private bool pendingRechargeReset;
+        private bool notesInitialized;
 
-        public const int RechargeDelay = 300;
+        int RechargeDelay = 300;
 
         public override void ResetEffects()
         {
+            if (!NecrosingerSet && notesInitialized)
+            {
+                KillAllNotes();
+                notesInitialized = false;
+            }
+
             NecrosingerSet = false;
         }
 
         public override void PostUpdate()
         {
+            // Tick cooldown regardless of set
             if (rechargeTimer > 0)
+            {
                 rechargeTimer--;
+
+                // Cooldown JUST finished this tick
+                if (rechargeTimer == 0 && pendingRechargeReset)
+                {
+                    if (NecrosingerSet && Player.whoAmI == Main.myPlayer)
+                    {
+                        ResetNotes();
+                        notesInitialized = true;
+                    }
+
+                    pendingRechargeReset = false;
+                }
+            }
 
             if (!NecrosingerSet)
                 return;
 
-            // Only the owning client should spawn the orbitals.
-            if (Player.whoAmI != Main.myPlayer)
-                return;
+            // Initial spawn (only once)
+            if (!notesInitialized &&
+                rechargeTimer == 0 &&
+                Player.whoAmI == Main.myPlayer)
+            {
+                ResetNotes();
+                notesInitialized = true;
+            }
+        }
 
-            // Count current orbitals.
+        private void ResetNotes()
+        {
             int noteType = ModContent.ProjectileType<NecrosingerNote>();
+
             int ownedNotes = Player.ownedProjectileCounts[noteType];
 
-            // If we’re missing any, only refill when recharge allows.
-            if (ownedNotes < 3 && rechargeTimer <= 0)
+            // Kill all existing notes
+            for (int i = 0; i < Main.maxProjectiles; i++)
             {
-                // Spawn enough to reach 3.
-                for (int i = ownedNotes; i < 3; i++)
-                {
-                    int p = Projectile.NewProjectile(
-                        Player.GetSource_FromThis(),
-                        Player.Center,
-                        Vector2.Zero,
-                        noteType,
-                        0,
-                        0f,
-                        Player.whoAmI,
-                        ai0: i,   // slot/index (0..2)
-                        ai1: 0f
-                    );
+                Projectile proj = Main.projectile[i];
 
-                    if (p >= 0 && p < Main.maxProjectiles)
-                        Main.projectile[p].netUpdate = true;
+                if (proj.active &&
+                    proj.owner == Player.whoAmI &&
+                    proj.type == noteType)
+                {
+                    proj.Kill();
+                }
+            }
+
+            // Spawn all 3 fresh notes
+            for (int i = 0; i < 3; i++)
+            {
+                int p = Projectile.NewProjectile(
+                    Player.GetSource_FromThis(),
+                    Player.Center,
+                    Vector2.Zero,
+                    noteType,
+                    0,
+                    0f,
+                    Player.whoAmI,
+                    ai0: i,
+                    ai1: 0f
+                );
+
+                if (p >= 0 && p < Main.maxProjectiles)
+                    Main.projectile[p].netUpdate = true;
+            }
+        }
+
+        private void KillAllNotes()
+        {
+            int noteType = ModContent.ProjectileType<NecrosingerNote>();
+
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile proj = Main.projectile[i];
+
+                if (proj.active &&
+                    proj.owner == Player.whoAmI &&
+                    proj.type == noteType)
+                {
+                    proj.Kill();
                 }
             }
         }
@@ -64,8 +121,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
         /// </summary>
         public void StartRecharge()
         {
-            if (rechargeTimer < RechargeDelay)
+            if (rechargeTimer <= 0)
+            {
                 rechargeTimer = RechargeDelay;
+                pendingRechargeReset = true;
+            }
         }
     }
 }

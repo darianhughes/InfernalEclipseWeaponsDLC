@@ -64,6 +64,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
                 player.wings = wingsSlot;
                 player.wingsLogic = ArmorIDs.Wing.BeetleWings;
                 player.wingTimeMax = supercellWingTime;
+                player.noFallDmg = true;
             }
         }
 
@@ -106,13 +107,23 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
         public override bool WingUpdate(Player player, bool inUse)
         {
             const int frames = 4;
+
+            // GLIDE STATE: hold last frame (frame 3)
+            if (player.wingsLogic > 0 && player.velocity.Y > 0f && !player.controlJump)
+            {
+                player.wingFrame = 2;           // hold frame 3
+                player.wingFrameCounter = 0;    // stop animation
+                return true;
+            }
+
+            // Normal animation logic
             int frameTime;
 
-            if (inUse || player.jump > 0)
+            if (player.velocity.Y < 0f || player.jump > 0) // flapping upwards
                 frameTime = 4;
-            else if (player.velocity.Y != 0f)
-                frameTime = !player.controlJump ? 6 : 9;
-            else
+            else if (player.velocity.Y != 0f) // falling normally
+                frameTime = 6;
+            else // standing
             {
                 frameTime = 0;
                 player.wingFrame = 0;

@@ -57,7 +57,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.ArmorPro
 
             Projectile.timeLeft = 2;
 
-            float above = MathF.Max(20f, player.height * 0.60f); // physics-only; no gfxOffY here
+            float above = MathF.Max(20f, player.height * 0.80f); // physics-only; no gfxOffY here
             Projectile.Center = player.Top + new Vector2(0f, -above);
             Projectile.velocity = Vector2.Zero;
 
@@ -82,7 +82,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.ArmorPro
                 if (best != -1)
                 {
                     Vector2 dir = (Main.npc[best].Center - Projectile.Center).SafeNormalize(Vector2.UnitY) * BoltSpeed;
-                    int dmg = 45;
+                    int dmg = 75;
                     int bolt = Projectile.NewProjectile(
                         Projectile.GetSource_FromThis(),
                         Projectile.Center,
@@ -125,7 +125,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.ArmorPro
 
             effect?.CurrentTechnique.Passes[0].Apply();
 
-            Main.spriteBatch.Draw(texture, player.Center - Main.screenPosition - new Vector2(0, 50 - player.gfxOffY), null, Color.White, 0, texture.Size() / 2, 0.13f, SpriteEffects.None, 0);
+            Main.spriteBatch.Draw(texture, player.Center - Main.screenPosition - new Vector2(0, 45 - player.gfxOffY), null, Color.White, 0, texture.Size() / 2, 0.13f, SpriteEffects.None, 0);
 
 
             Main.spriteBatch.End();

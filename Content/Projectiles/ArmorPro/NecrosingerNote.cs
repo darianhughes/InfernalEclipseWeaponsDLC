@@ -13,7 +13,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.ArmorPro
     public class NecrosingerNote : ModProjectile
     {
         // Orbit tuning
-        private const float OrbitRadius = 54f;
         private const float OrbitAngularSpeed = 0.045f; // radians per tick
         private const float FollowLerp = 0.25f;
 
@@ -67,7 +66,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.ArmorPro
             // Orbit by slot (ai[0] = 0..2)
             int slot = (int)Projectile.ai[0];
             float baseAngle = (Main.GameUpdateCount * OrbitAngularSpeed) + (MathHelper.TwoPi / 3f) * slot;
-            Vector2 desiredCenter = player.Center + baseAngle.ToRotationVector2() * OrbitRadius;
+            Vector2 desiredCenter = player.Center + baseAngle.ToRotationVector2() * 74;
 
             // Smooth follow
             Projectile.Center = Vector2.Lerp(Projectile.Center, desiredCenter, FollowLerp);
