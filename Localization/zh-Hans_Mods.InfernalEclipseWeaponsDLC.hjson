@@ -629,12 +629,12 @@ Items: {
 
 	MagicPurpleBouncyBalls: {
 		DisplayName: 魔紫弹跳球No.27
-		Tooltip: "“27次同时发生的错误，在紫色能量中嗡鸣”"
+		Tooltip: “27次同时发生的错误，在紫色能量中嗡鸣”
 	}
 
 	GarudaWings: {
 		DisplayName: 迦楼罗之翼
-		Tooltip: "“神祇坐骑之翼”"
+		Tooltip: “神祇坐骑之翼”
 	}
 }
 
@@ -668,19 +668,21 @@ ItemTooltip: {
 	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲
 	NeonRipperLore2: 借此他打造了两件武器：第一件是一柄能够吸收灵气的镰刀，正如卡米的能力一般。
 	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
-	VerveineItem: "“来自兰花的祝福之物……”"
+	VerveineItem: “来自兰花的祝福之物……”
 	EngineGatling:
 		'''
 		加特林模式：
 		持续射击将逐渐降低武器散布，并提高射速，直至上限
 		子弹最多可穿透4次
 		'''
+	// EngineGatlingMode: GATLING
 	EngineLaser:
 		'''
 		激光模式：
 		发射可无限穿透的激光，并在路径上留下持续伤害
 		激光最多可在物块间反弹3次
 		'''
+	// EngineLaserMode: LASER
 	EngineTheBigOne:
 		'''
 		“大先生”模式：
@@ -688,6 +690,7 @@ ItemTooltip: {
 		引爆时，越接近中心的敌人将受到越高伤害
 		同一时间只能存在一枚“大先生”
 		'''
+	// EngineTheBigOneMode: THE BIG ONE
 	Playtester: -测试者物品-
 	Contributor: -贡献者物品-
 	Donor: -捐赠者物品-

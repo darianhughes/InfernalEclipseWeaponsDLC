@@ -655,12 +655,14 @@ ItemTooltip: {
 		Holding fire will gradually reduce weapon spread and increase fire rate to a cap
 		Shots can pierce up to four times
 		'''
+	EngineGatlingMode: GATLING
 	EngineLaser:
 		'''
 		Laser mode:
 		Fires an infinitely piercing laser that leaves behind a trail of lingering damage
 		The laser can bounce off tiles up to 3 times
 		'''
+	EngineLaserMode: LASER
 	EngineTheBigOne:
 		'''
 		'The Big One' mode:
@@ -668,6 +670,7 @@ ItemTooltip: {
 		The detonation will do more damage to foes closer to it's centre
 		Only one 'Big One' can exist at a time
 		'''
+	EngineTheBigOneMode: THE BIG ONE
 	Playtester: - Playtester Item -
 	Contributor: - Contributor Item -
 	Donor: - Donor Item -
