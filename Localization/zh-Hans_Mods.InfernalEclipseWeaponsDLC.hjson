@@ -675,14 +675,14 @@ ItemTooltip: {
 		持续射击将逐渐降低武器散布，并提高射速，直至上限
 		子弹最多可穿透4次
 		'''
-	// EngineGatlingMode: GATLING
+	EngineGatlingMode: 加特林
 	EngineLaser:
 		'''
 		激光模式：
 		发射可无限穿透的激光，并在路径上留下持续伤害
 		激光最多可在物块间反弹3次
 		'''
-	// EngineLaserMode: LASER
+	EngineLaserMode: 激光
 	EngineTheBigOne:
 		'''
 		“大先生”模式：
@@ -690,7 +690,7 @@ ItemTooltip: {
 		引爆时，越接近中心的敌人将受到越高伤害
 		同一时间只能存在一枚“大先生”
 		'''
-	// EngineTheBigOneMode: THE BIG ONE
+	EngineTheBigOneMode: 大先生
 	Playtester: -测试者物品-
 	Contributor: -贡献者物品-
 	Donor: -捐赠者物品-
