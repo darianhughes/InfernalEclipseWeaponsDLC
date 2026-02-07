@@ -44,7 +44,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 7f;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<CosmicPurple>();
             Item.autoReuse = true;
             Item.UseSound = SoundID.Item33;
             Item.shoot = ModContent.ProjectileType<MiniaturizedRequiemEngineGatlingPro>();

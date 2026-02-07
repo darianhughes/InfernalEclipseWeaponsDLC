@@ -15,6 +15,7 @@ using CalamityMod.Items.Weapons.Melee;
 using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.Abyss;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Buffs.DamageOverTime;
 using ThoriumMod;

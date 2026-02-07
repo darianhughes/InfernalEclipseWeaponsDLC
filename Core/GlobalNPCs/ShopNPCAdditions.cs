@@ -15,7 +15,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
         public override void ModifyShop(NPCShop shop)
         {
             // istg, calamity is WHAT the hell is DILF that is not PERMAFROST
-            if (shop.NpcType == ModContent.NPCType<DILF>())
+            if (shop.NpcType == ModContent.NPCType<Archmage>())
             {
                 shop.Add(
                     new NPCShop.Entry(

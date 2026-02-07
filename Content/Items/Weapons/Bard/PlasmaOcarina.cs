@@ -59,7 +59,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             InspirationCost = 1;
 
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<CosmicPurple>();
 
             ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
             ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 250f;

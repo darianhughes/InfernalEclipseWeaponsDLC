@@ -15,6 +15,8 @@ using ThoriumMod;
 using ThoriumMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.Abyss;
+using CalamityMod.Items.Placeables.SunkenSea;
 using CalamityMod.CustomRecipes;
 using Terraria.Audio;
 

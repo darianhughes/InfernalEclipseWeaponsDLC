@@ -71,7 +71,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
 
                 var calNPC = npc.Calamity();
 
-                if (calNPC.electrified <= 0)
+                if (calNPC.electrified == false)
                     continue; // skip NPCs without Electrified
 
                 Vector2 spawnPos = npc.Center + new Vector2(0f, -150f);
@@ -91,8 +91,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
                 if (npc.HasBuff(BuffID.Electrified))
                     npc.DelBuff(BuffID.Electrified);
 
-                if (calNPC.electrified > 0)
-                    calNPC.electrified = 0;
+                if (calNPC.electrified == true)
+                    calNPC.electrified = false;
             }
 
             if (spawnedAny)

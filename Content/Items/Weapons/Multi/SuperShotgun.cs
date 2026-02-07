@@ -33,7 +33,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
 
             Item.width = 64;
             Item.height = 20;
-            Item.Calamity().canFirePointBlankShots = true;
 
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }

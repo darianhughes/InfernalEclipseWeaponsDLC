@@ -1,12 +1,14 @@
 ﻿using CalamityMod;
-using System.Collections.Generic;
+using CalamityMod.Utilities;
 using CalamityMod.Items;
+using System.Collections.Generic;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Input;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
 {
@@ -64,9 +66,18 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            TooltipLine dedTo = new TooltipLine(Mod, "Dedicated", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.bryce")));
-            dedTo.OverrideColor = new Color(196, 35, 44);
-            CalamityUtils.HoldShiftTooltip(tooltips, new TooltipLine[] { dedTo });
+            if (Main.keyState.IsKeyDown(Keys.LeftShift))
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.Dedicated.bryce"))}\n{Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.Donor")}");
+                line5.OverrideColor = new Color(196, 35, 44);
+                tooltips.Add(line5);
+            }
+            else
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.Donor"));
+                line5.OverrideColor = new Color(196, 35, 44);
+                tooltips.Add(line5);
+            }
         }
 
         public override void AddRecipes()

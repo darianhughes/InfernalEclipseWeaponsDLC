@@ -52,8 +52,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Multi
             {
                 ((ModItem)this).Item.holdStyle = 3;
             }
-
-            Item.Calamity().canFirePointBlankShots = true;
         }
 
         public override bool AltFunctionUse(Player player) => true;
