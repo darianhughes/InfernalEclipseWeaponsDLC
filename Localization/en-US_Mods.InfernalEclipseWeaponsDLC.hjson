@@ -855,6 +855,7 @@ ItemTooltip: {
 	PBGBardALore2: In doing so he created two weapons: the second of which being a guitar that shot colorful microwaves.
 	SearingSpearTip: 150% basic damage
 	ArcticSpearTip: 115% basic damage
+}
 	
 Configs: {
 	WeaponConfig: {

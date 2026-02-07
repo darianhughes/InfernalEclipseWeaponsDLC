@@ -875,6 +875,7 @@ ItemTooltip: {
 	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
 	SearingSpearTip: 150% 基础伤害
 	ArcticSpearTip: 115% 基础伤害
+}
 	
 Configs: {
 	WeaponConfig: {
