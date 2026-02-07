@@ -649,6 +649,54 @@ ItemTooltip: {
 	PBGBardALore2: Так он создал два оружия: вторым стала гитара, стреляющая цветными микроволнами.
 	SearingSpearTip: 150% базового урона
 	ArcticSpearTip: 115% базового урона
+	// VerveineItem: "'An item from the orchid's blessing...'"
+	/* EngineGatling:
+		'''
+		Gatling mode:
+		Holding fire will gradually reduce weapon spread and increase fire rate to a cap
+		Shots can pierce up to four times
+		''' */
+	// EngineGatlingMode: GATLING
+	/* EngineLaser:
+		'''
+		Laser mode:
+		Fires an infinitely piercing laser that leaves behind a trail of lingering damage
+		The laser can bounce off tiles up to 3 times
+		''' */
+	// EngineLaserMode: LASER
+	/* EngineTheBigOne:
+		'''
+		'The Big One' mode:
+		Fires a massive orb of condensed energy that will detonate after some time
+		The detonation will do more damage to foes closer to it's centre
+		Only one 'Big One' can exist at a time
+		''' */
+	// EngineTheBigOneMode: THE BIG ONE
+	// Playtester: - Playtester Item -
+	// Contributor: - Contributor Item -
+	// Donor: - Donor Item -
+	// DedTo: - Dedicated to {0} -
+
+	Dedicated: {
+		// Akira: Akira
+		// WH: WardrobeHummus
+		// Advantaje: Advantaje
+		// Tyr: Tyr
+		// Soltan: Soltan
+		// bryce: bryce27
+		// eviil81: evil81
+		// rose: ros�
+		// Jill: JillyFish
+		// Eduarrdo: Eduarrdo
+		// Mae: ma3allim
+		// Yob: Yob
+		// Pudding: Pudd1ng
+		// Ropro: Ropro0923
+		// cheese: cheesenuggets
+		// Puzzles: Mr. Puzzles
+		// cat: StarlightCat
+		// Goldsock: Goldsockz2
+	}
 }
 
 Projectiles: {
