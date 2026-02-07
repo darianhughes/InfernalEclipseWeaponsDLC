@@ -40,7 +40,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SulphuricShanty>(), 7));
                 }
 
-                if (item.type == ModContent.ItemType<BrimstoneWaifuBag>())
+                if (item.type == ModContent.ItemType<BrimstoneElementalBag>())
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimstoneHarp>(), 3));
                 }

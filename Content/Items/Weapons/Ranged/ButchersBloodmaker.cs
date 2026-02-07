@@ -37,8 +37,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
 
             Item.width = 64;
             Item.height = 20;
-
-            Item.Calamity().canFirePointBlankShots = true;
         }
 
         public override bool AltFunctionUse(Player player) => true;

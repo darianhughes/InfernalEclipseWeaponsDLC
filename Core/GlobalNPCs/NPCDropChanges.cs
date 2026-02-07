@@ -71,7 +71,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<TheParallel>(), 3));
                 }
 
-                if (npc.type == ModContent.NPCType<Bumblefuck>())
+                if (npc.type == ModContent.NPCType<Dragonfolly>())
                 {
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BirbSaxophone>(), 3));
                 }

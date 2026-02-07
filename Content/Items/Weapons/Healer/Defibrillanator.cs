@@ -16,6 +16,7 @@ using ThoriumMod.Items;
 using ThoriumMod.Utilities;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.SunkenSea;
 using CalamityMod.CustomRecipes;
 using static System.Net.Mime.MediaTypeNames;
 

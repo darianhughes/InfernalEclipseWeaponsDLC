@@ -9,6 +9,7 @@ using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using Terraria.Localization;
 using ThoriumMod.Items.BasicAccessories;
 using ThoriumMod.Items;
 

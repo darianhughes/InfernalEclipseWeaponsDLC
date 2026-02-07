@@ -36,8 +36,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
             Item.height = 11;
 
             Item.scale = 0.66f; // permanent small sprite
-
-            Item.Calamity().canFirePointBlankShots = true;
         }
 
         public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source,

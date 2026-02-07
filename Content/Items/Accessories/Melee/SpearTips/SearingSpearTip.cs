@@ -12,6 +12,7 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Items.BasicAccessories;
+using Terraria.Localization;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.SpearTips
 {
