@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.Items;
+﻿using CalamityMod.Items;
 using CalamityMod.Rarities;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void;
 using SOTS.Void;
@@ -15,7 +10,6 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria.Audio;
-using CalamityMod;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using InfernalEclipseWeaponsDLC.Core;
 

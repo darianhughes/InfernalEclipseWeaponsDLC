@@ -18,7 +18,7 @@
 	    <HintPath>..\ModAssemblies\Luminance_v1.0.13.dll</HintPath>
 	  </Reference>
 	  <Reference Include="SOTS">
-	    <HintPath>..\ModAssemblies\SOTS_v0.25.1.5.dll</HintPath>
+	    <HintPath>..\ModAssemblies\SOTS_v0.25.1.6.dll</HintPath>
 	  </Reference>
 	  <Reference Include="ThoriumMod">
 	    <HintPath>..\ModAssemblies\ThoriumMod_v1.7.2.5.dll</HintPath>
