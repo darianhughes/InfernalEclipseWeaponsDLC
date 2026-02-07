@@ -61,10 +61,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             Item.rare = ModContent.RarityType<CosmicPurple>();
 
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 250f;
-            ((ModItem)this).Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.75f;
-
             ((ModItem)this).Item.useStyle = ItemUseStyleID.Shoot;
             if (!ModLoader.HasMod("Look"))
             {

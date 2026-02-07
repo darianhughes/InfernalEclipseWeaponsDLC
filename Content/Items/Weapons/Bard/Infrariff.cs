@@ -51,10 +51,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.value = Item.buyPrice(0, 10, 0, 0);
             Item.rare = ItemRarityID.Yellow;
 
-            Item.GetGlobalItem<CalamityMod.Items.CalamityGlobalItem>().UsesCharge = true;
-            Item.GetGlobalItem<CalamityMod.Items.CalamityGlobalItem>().MaxCharge = 135f;
-            Item.GetGlobalItem<CalamityMod.Items.CalamityGlobalItem>().ChargePerUse = 0.05f;
-
             Item.shoot = ModContent.ProjectileType<InfrariffProjectile>();
             Item.shootSpeed = 1f;
 

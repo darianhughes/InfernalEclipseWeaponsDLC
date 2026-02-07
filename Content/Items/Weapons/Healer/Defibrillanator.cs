@@ -64,9 +64,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer
             healType = HealType.Ally;
 
             CalamityGlobalItem modItem = Item.Calamity();
-            modItem.UsesCharge = true;
-            modItem.MaxCharge = 50f;
-            modItem.ChargePerUse = 0.04f;
         }
 
         public override bool CanUseItem(Player player)
