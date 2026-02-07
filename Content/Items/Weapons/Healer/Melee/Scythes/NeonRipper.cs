@@ -33,10 +33,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
             Item.rare = ItemRarityID.Yellow;
 
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
-
-            Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
-            Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 135f;
-            Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.05f;
         }
 
         public override bool AltFunctionUse(Player player) => true;

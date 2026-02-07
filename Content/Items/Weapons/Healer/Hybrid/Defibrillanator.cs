@@ -63,11 +63,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
             healAmount = 5;
             healType = HealType.Ally;
 
-            CalamityGlobalItem modItem = Item.Calamity();
-            modItem.UsesCharge = true;
-            modItem.MaxCharge = 50f;
-            modItem.ChargePerUse = 0.02f;
-
             Item.noUseGraphic = true;
 
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
