@@ -385,255 +385,256 @@ Items: {
 	}
 
 	FroststeelGong: {
-		// DisplayName: Froststeel Gong
-		/* Tooltip:
+		DisplayName: 寒钢律钟
+		Tooltip:
 			'''
-			Allows you to rythmically bang the gong
-			Successfully timing 3 hits will also release a burst of 8 freezing vibrations outwards
-			Successfully timing hits will steadily increase its damage and empowerment level
-			Mistiming these hits will decrease these bonuses greatly and cost 10 inspiration
-			These bonuses will stay between weapon swaps, but gradually fade when not your active weapon
-			''' */
+			允许你富有节奏地敲响律钟
+			成功在计时区域击中3次会向四周释放8道寒冰冲击
+			成功在计时区域击中会不断增加它的伤害和咒音增幅等级
+			错失节拍会大幅降低这些加成并消耗10点灵感值
+			这些加成在切换武器后仍会保留，但若不是你激活的武器，加成会逐渐消散
+			'''
 	}
 
 	EclipseBreastplate: {
-		// DisplayName: Eclipse Breastplate
-		/* Tooltip:
+		DisplayName: 蚀日胸甲
+		Tooltip:
 			'''
-			20% decreased non-radiant damage
-			20% increased radiant damage
-			8% increased radiant critical strike chance
-			5% increased healing and radiant cast speed
-			15% increased damage reduction
-			Healing spells will heal an additional 3 life
-			''' */
+			降低20%非光辉伤害
+			增加20%光辉伤害
+			增加8%光辉暴击率
+			增加5%的治疗量和光辉施法速度
+			增加15%伤害减免
+			治疗法术会额外治疗3点生命值
+			'''
 	}
 
 	EclipseGreaves: {
-		// DisplayName: Eclipse Greaves
-		/* Tooltip:
+		DisplayName: 蚀日护腿
+		Tooltip:
 			'''
-			16% decreased non-radiant damage
-			16% increased radiant damage
-			4% increased radiant critical strike chance
-			15% decreased mana cost
-			20% increased movement speed
-			Healing spells will heal an additional 3 life
-			''' */
+			降低16%非光辉伤害
+			增加16%光辉伤害
+			增加4%光辉暴击率
+			减少15%魔力消耗
+			增加20%移动速度
+			治疗法术会额外治疗3点生命值
+			'''
 	}
 
 	EclipseHelm: {
-		// DisplayName: Eclipse Helm
-		/* Tooltip:
+		DisplayName: 蚀日头盔
+		Tooltip:
 			'''
-			16% decreased non-radiant damage
-			16% increased radiant damage
-			3% increased radiant critical strike chance
-			life regeneration begins faster
-			Healing spells will heal an additional 2 life
-			''' */
-		/* SetBonus:
+			降低16%非光辉伤害
+			增加16%光辉伤害
+			增加3%光辉暴击率
+			生命再生会更快开始
+			治疗法术会额外治疗2点生命值
 			'''
-			Summon the Eclipse to fight for you
-			The Eclipse will fire light and darkness when there are enemies nearby
-			Light will home onto and heal nearby allies for the players bonus healing
-			Darkness will home onto enemies and deal damage
-			''' */
+		SetBonus:
+			'''
+			召唤一轮日食为你而战
+			当附近有敌怪时，日食会发射光暗粒子攻击
+			光粒子会追踪并按额外治疗量治疗附近的队友
+			暗粒子会追踪并对敌怪造成伤害
+
+			'''
 	}
 
 	NecrosingerAnkles: {
-		// DisplayName: Posthumous Ankles
-		/* Tooltip:
+		DisplayName: 骸语缠踝
+		Tooltip:
 			'''
-			10% increased symphonic damage
-			5% increased symphonic critical strike chance
-			20% increased movement speed
-			''' */
+			增加10%音波伤害
+			增加5%音波暴击率
+			增加20%移动速度
+			'''
 	}
 
 	NecrosingerRibs: {
-		// DisplayName: Posthumous Ribs
-		/* Tooltip:
+		DisplayName: 骸语嵌肋
+		Tooltip:
 			'''
-			14% increased symphonic damage
-			5% increased symphonic critical strike chance
-			Increases the chance for inspiration notes to drop by 10%
-			Increases the duration of your symphonic empowerments by 3 seconds
-			''' */
+			增加14%音波伤害
+			增加5%音波暴击率
+			增加10%灵感音符掉落概率
+			增加3秒音波咒音增幅持续时间
+			'''
 	}
 
 	NecrosingerSkull: {
-		// DisplayName: Posthumous Skull
-		/* Tooltip:
+		DisplayName: 骸语颅冠
+		Tooltip:
 			'''
-			5% increased symphonic damage
-			10% increased symphonic playing speed
-			5% increased symphonic critical strike chance
-			Increased inspiration regeneration rate by 15%
-			''' */
-		/* SetBonus:
+			增加5%音波伤害
+			增加10%音波演奏速度
+			增加5%音波暴击率
+			增加15%灵感值再生速率
 			'''
-			Music notes will orbit you, each blocking one projectile before breaking
-			When broken, the ring of notes will refresh after 5 seconds
-			''' */
+		SetBonus:
+			'''
+			音符将环绕你盘旋，每个音符可抵挡一次射弹后碎裂
+			音符碎裂后，5秒将再次生成
+			'''
 	}
 
 	SuperCellCirclet: {
-		// DisplayName: Garuda Circlet
-		// Tooltip: 5% increased rogue damage
-		/* SetBonus:
+		DisplayName: 迦楼罗金箍
+		Tooltip: 增加5%盗贼伤害
+		SetBonus:
 			'''
-			Grants rudimentary flight if not wearing any wings
-			Increases your maximum technique points by 2
-			+110 maximum stealth
-			''' */
+			未装备翅膀时获得基础飞行能力
+			最大技巧值增加2
+			+110点最大潜行值
+			'''
 	}
 
 	SuperCellGuard: {
-		// DisplayName: Garuda Guard
-		/* Tooltip:
+		DisplayName: 迦楼罗护胄
+		Tooltip:
 			'''
-			10% increased rogue damage
-			20% increased rogue weapon speed
-			30% increased rogue weapon velocity
-			increases wing flight time by 15%
-			''' */
+			增加10%盗贼伤害
+			增加20%盗贼攻速
+			提高30%盗贼弹幕速度
+			增加15%飞行时间
+			'''
 	}
 
 	SuperCellSabatons: {
-		// DisplayName: Garuda Sabatons
-		/* Tooltip:
+		DisplayName: 迦楼罗胫靴
+		Tooltip:
 			'''
-			5% increased rogue damage
-			10% increased rogue weapon critical strike chance
-			30% increased movement speed
-			''' */
+			增加5%盗贼伤害
+			增加10%盗贼暴击率
+			增加30%移动速度
+			'''
 	}
 
 	ShadowflameAxe: {
-		// DisplayName: Shadowflame Reaper
-		// Tooltip: Releases homing shadowflame projectiles every three swings
+		DisplayName: 影焰处刑斧
+		Tooltip: 每三次攻击会释放一次追踪的暗影焰
 	}
 
 	TetherBlade: {
-		// DisplayName: Tetherblade
-		/* Tooltip:
+		DisplayName: 锚定之刃
+		Tooltip:
 			'''
-			Throw the blade towards the cursor by right clicking
-			The blade will linger for a few seconds after throwing it
-			Right click again to teleport to the blade before the blade disapears
-			After teleporting the blade will stab at all nearby enemies, dealing tripple damage
-			''' */
+			右键将刀刃投掷到光标位置
+			刀刃将在原地停留数秒
+			刀刃消失前再次右键可瞬移至其位置
+			瞬移后刀刃将刺击附近所有敌怪，造成三倍伤害
+			'''
 	}
 
 	LightChain: {
-		// DisplayName: Luminant Tether
-		/* Tooltip:
+		DisplayName: 光缚链
+		Tooltip:
 			'''
-			Clicking an enemy links it to a player
-			The chains deal damage once every second
-			If you move to far away from the target you are chained to, the chain will break
-			Up to 3 enemies can be chained to you
-			''' */
+			点击敌人可将其与自身以光链相连
+			光链每秒造成一次伤害
+			若与被链接的目标距离过远，光链将断裂
+			最多可同时链接3个敌人
+			'''
 	}
 
 	StormCrossbow: {
-		// DisplayName: Stormbreaker Crossbow
-		// Tooltip: Turns wooden arrows into storm bolts that will bounce towards nearby enemies
+		DisplayName: 裂风弩
+		Tooltip: 将木箭转化为在敌怪之间弹射的风暴箭
 	}
 
 	ObsidianSickle: {
-		// DisplayName: Obsidian Sickle
-		/* Tooltip:
+		DisplayName: 黑曜石镰刀
+		Tooltip:
 			'''
-			Shoots an dark sickle
-			'Not an artificial intelligence, but an actual idiot.'
-			''' */
+			发射一柄黑暗镰刃
+			“不是人工智能，是纯粹的蠢货”
+			'''
 	}
 
 	StarScepter: {
-		// DisplayName: Star Scepter
-		/* Tooltip:
+		DisplayName: 星辰权杖
+		Tooltip:
 			'''
-			Summons up to 5 orbiting stars around the player
-			Each star will continously attack the nearest enemy, with bosses being priortized
-			''' */
+			召唤最多5颗星辰环绕自身
+			每颗星辰将持续攻击最近的敌怪，并优先锁定Boss
+			'''
 	}
 
 	IlluminantCross: {
-		// DisplayName: Illuminant Cross
-		/* Tooltip:
+		DisplayName: 辉光圣十字
+		Tooltip:
 			'''
-			Charges a burst of illuminant light on the cursor
-			Charging the burst increases the size and damage greatly
-			Bursts released at full charge will release 3 illuminant bolts and heal allies
-			''' */
+			在光标位置蓄积一股辉光
+			蓄力将大幅提高辉光的范围与伤害
+			蓄力满释放时将额外发射3枚辉光弹并治疗友方
+			'''
 	}
 
 	GlowstringBiwa: {
-		// DisplayName: Glowstring Biwa
-		// Tooltip: Fires 2 illuminant orbs connected together by a string of light
+		DisplayName: 辉弦琵琶
+		Tooltip: 发射两枚由光弦相连的辉光球
 	}
 
 	StormCarver: {
-		// DisplayName: Storm Carver
-		/* Tooltip:
+		DisplayName: 风暴雕刻者
+		Tooltip:
 			'''
-			This scythe is swung directionally instead of spun
-			Carves out storm gusts from hit tiles
-			'Strike the Earth!'
-			''' */
+			这把镰刀是定向挥舞而不是旋转
+			从被命中的物块中刻出风暴
+			“击碎大地！”
+			'''
 	}
 
 	GrandAmplifier: {
-		// DisplayName: Grand Amplifier
-		/* Tooltip:
+		DisplayName: 雷鸣调谐叉
+		Tooltip:
 			'''
-			Left click to fire a small thunderbolt that inflicts electrified
-			Right click to summon lightning above all nearby enemies with the electrified debuff
-			This lightning will remove the electrified debuff but deal a burst of high damage
-			''' */
+			左键发射一道雷击，造成带电减益
+			右键在附近所有带电目标的上方召唤落雷
+			落雷将移除带电状态，并造成一次高额爆发伤害
+			'''
 	}
 
 	PocketConcert: {
-		// DisplayName: Mechamatone
-		/* Tooltip:
+		DisplayName: 机械增强电音蝌蚪
+		Tooltip:
 			'''
-			Releases music notes of varying colors
-			Music notes will inflict a variety of debuffs based on the notes color
-			Releases an additional music note for each unique empowerment you have at level 2 or higher
-			[c/1FFBFF:'Once I was dispatched to find that 'order of warriors' that call themselves trackers. When I did,]
-			[c/1FFBFF:one of the things they showed me an unique instrument shaped like a music note, but with a mouth.]
-			[c/1FFBFF:While odd, I was able to turn it into a weapon that is stronger based on number of the users]
-			[c/1FFBFF:other enhancements, however, it required me to make it much bigger than the original instrument.']
-			''' */
+			释放多种不同颜色的音符
+			音符将根据其颜色造成不同的减益
+			每拥有一种2级或以上的咒音增幅效果，会额外释放一枚音符
+			[c/1FFBFF:我曾被派去寻找那个自称“追猎者”的战士团体]
+			[c/1FFBFF:他们向我展示了一件奇怪的乐器，形如音符，却长着一张嘴]
+			[c/1FFBFF:尽管这东西十分怪异，我仍设法将其改造成了一件武器，其威力会随着使用者所拥有的其他强化数量而增强]
+			[c/1FFBFF:不过，这也迫使我将它的体型制造得远比原本的乐器更为庞大]
+			'''
 	}
 
 	GammaKnife: {
-		// DisplayName: Gamma Knife
-		/* Tooltip:
+		DisplayName: 伽马镰刃
+		Tooltip:
 			'''
-			Ignores 15 points of defence
-			Left click to swing the knife directionally, firing a high intensity slash of gamma radiation
-			The slash will deal heavy damage at close range but dissipate as it travels
-			Right click to throw the knife, which will explode and return on collision with an enemy or tile
-			The knife cannot be used while thrown
-			''' */
+			无视15点防御力
+			左键定向挥舞镰刃，释放一道高强度伽马辐射斩击
+			斩击在近距离造成极高伤害，但会随飞行距离逐渐衰减
+			右键投掷镰刃，命中敌人或物块时爆炸并返回
+			镰刃被投掷期间无法再次使用
+			'''
 	}
 
 	MiniaturizedRequiemEngine: {
-		// DisplayName: Miniaturized Requiem Engine
-		// Tooltip: Has three modes of fire that can be cycled between on right click
+		DisplayName: 微型安魂引擎
+		Tooltip: 右键可切换三种不同的射击模式
 	}
 
 	MagicPurpleBouncyBalls: {
-		// DisplayName: 27 Magic Purple Bouncy Balls
-		// Tooltip: "'The purple energy hums with the power of 27 simultaneous mistakes'"
+		DisplayName: 魔紫弹跳球No.27
+		Tooltip: “27次同时发生的错误，在紫色能量中嗡鸣”
 	}
 
 	GarudaWings: {
-		// DisplayName: Garuda Wings
-		// Tooltip: "'Wings of the divine mount'"
+		DisplayName: 迦楼罗之翼
+		Tooltip: “神祇坐骑之翼”
 	}
 }
 
@@ -667,50 +668,53 @@ ItemTooltip: {
 	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲
 	NeonRipperLore2: 借此他打造了两件武器：第一件是一柄能够吸收灵气的镰刀，正如卡米的能力一般。
 	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
-	// VerveineItem: "'An item from the orchid's blessing...'"
-	/* EngineGatling:
+	VerveineItem: “来自兰花的祝福之物……”
+	EngineGatling:
 		'''
-		Gatling mode:
-		Holding fire will gradually reduce weapon spread and increase fire rate to a cap
-		Shots can pierce up to four times
-		''' */
-	/* EngineLaser:
+		加特林模式：
+		持续射击将逐渐降低武器散布，并提高射速，直至上限
+		子弹最多可穿透4次
 		'''
-		Laser mode:
-		Fires an infinitely piercing laser that leaves behind a trail of lingering damage
-		The laser can bounce off tiles up to 3 times
-		''' */
-	/* EngineTheBigOne:
+	EngineGatlingMode: 加特林
+	EngineLaser:
 		'''
-		'The Big One' mode:
-		Fires a massive orb of condensed energy that will detonate after some time
-		The detonation will do more damage to foes closer to it's centre
-		Only one 'Big One' can exist at a time
-		''' */
-	// Playtester: - Playtester Item -
-	// Contributor: - Contributor Item -
-	// Donor: - Donor Item -
-	// DedTo: - Dedicated to {0} -
+		激光模式：
+		发射可无限穿透的激光，并在路径上留下持续伤害
+		激光最多可在物块间反弹3次
+		'''
+	EngineLaserMode: 激光
+	EngineTheBigOne:
+		'''
+		“大先生”模式：
+		发射一枚压缩能量构成的巨大能量球，并在一段时间后引爆
+		引爆时，越接近中心的敌人将受到越高伤害
+		同一时间只能存在一枚“大先生”
+		'''
+	EngineTheBigOneMode: 大先生
+	Playtester: -测试者物品-
+	Contributor: -贡献者物品-
+	Donor: -捐赠者物品-
+	DedTo: -献给{0}-
 
 	Dedicated: {
-		// Akira: Akira
-		// WH: WardrobeHummus
-		// Advantaje: Advantaje
-		// Tyr: Tyr
-		// Soltan: Soltan
-		// bryce: bryce27
-		// eviil81: evil81
-		// rose: ros�
-		// Jill: JillyFish
-		// Eduarrdo: Eduarrdo
-		// Mae: ma3allim
-		// Yob: Yob
-		// Pudding: Pudd1ng
-		// Ropro: Ropro0923
-		// cheese: cheesenuggets
-		// Puzzles: Mr. Puzzles
-		// cat: StarlightCat
-		// Goldsock: Goldsockz2
+		Akira: Akira
+		WH: WardrobeHummus
+		Advantaje: Advantaje
+		Tyr: Tyr
+		Soltan: Soltan
+		bryce: bryce27
+		eviil81: evil81
+		rose: rosé
+		Jill: JillyFish
+		Eduarrdo: Eduarrdo
+		Mae: ma3allim
+		Yob: Yob
+		Pudding: Pudd1ng
+		Ropro: Ropro0923
+		cheese: cheesenuggets
+		Puzzles: Mr. Puzzles
+		cat: StarlightCat
+		Goldsock: Goldsockz2
 	}
 }
 
@@ -721,7 +725,7 @@ Projectiles: {
 	Magic: {
 		WhiteScythe.DisplayName: 洁白之镰
 		HealingLightningArc.DisplayName: 治疗性电弧
-		// DamagingLightningArc.DisplayName: Damaging Lightning Arc
+		DamagingLightningArc.DisplayName: 伤害性电弧
 	}
 
 	TwoPathsPro2.DisplayName: 神冥歧径
@@ -805,38 +809,38 @@ Projectiles: {
 	BarrenGardenProHoming.DisplayName: 霜莲寒苑追踪弹幕
 	MothwingDaggerPro.DisplayName: 蛾翼短刀
 	IlluminantBolt.DisplayName: 荧光飞弹
-	// FroststeelPulse.DisplayName: Froststeel Pulse
-	// LightChainProjectile.DisplayName: Light Chain Projectile
-	// StarScepterBolt.DisplayName: Star Scepter Bolt
-	// StarScepterStar.DisplayName: Star Scepter Star
-	// ObsidianSickleProjectile.DisplayName: Obsidian Sickle Projectile
-	// ShadowflameAxeBolt.DisplayName: Shadowflame Axe Bolt
-	// ShadowflameAxeProjectile.DisplayName: Shadowflame Axe Projectile
-	// TetherBladeProjectile.DisplayName: Tether Blade Projectile
-	// TetherBladeProjectileBlink.DisplayName: Tether Blade Projectile Blink
-	// StormCrossbowArrow.DisplayName: Storm Crossbow Arrow
-	// IlluminantCrossPro.DisplayName: Illuminant Cross Pro
-	// GlowstringBiwaPro.DisplayName: Glowstring Biwa Pro
-	// GlowstringBeam.DisplayName: Glowstring Beam
-	// StormTalonPro.DisplayName: Storm Talon Pro
-	// StormCarverPro.DisplayName: Storm Carver Pro
-	// GrandAmplifierPro.DisplayName: Grand Amplifier Pro
-	// GrandAmplifierPro2.DisplayName: Grand Amplifier Pro2
-	// MusicalNoteProjectile.DisplayName: Musical Note Projectile
-	// GammaExplosionProjectile.DisplayName: Gamma Explosion Projectile
-	// GammaKnifeProjectile.DisplayName: Gamma Knife Projectile
-	// GammaKnifeThrownProjectile.DisplayName: Gamma Knife Thrown Projectile
-	// GammaSlashProjectile.DisplayName: Gamma Slash Projectile
-	// GrandAmplifierLightning.DisplayName: Grand Amplifier Lightning
-	// MiniaturizedRequiemEngineGatlingPro.DisplayName: Miniaturized Requiem Engine Gatling Pro
-	// MiniaturizedRequiemEngineLaserPro.DisplayName: Miniaturized Requiem Engine Laser Pro
-	// MiniaturizedRequiemEngineTheBigOnePro.DisplayName: Miniaturized Requiem Engine The Big One Pro
-	// MiniaturizedRequiemEngineLaserPro2.DisplayName: Miniaturized Requiem Engine Laser Pro2
-	// MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: Miniaturized Requiem Engine The Big One Pro2
-	// MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: Miniaturized Requiem Engine The Big One Pro3
-	// NecrosingerNote.DisplayName: Necrosinger Note
-	// MagicPurpleBouncyBall.DisplayName: Magic Purple Bouncy Ball
-	// EclipseEclipse.DisplayName: Eclipse Eclipse
+	FroststeelPulse.DisplayName: 霜钢脉冲
+	LightChainProjectile.DisplayName: 光链
+	StarScepterBolt.DisplayName: 星辰权杖弹
+	StarScepterStar.DisplayName: 星辰权杖星体
+	ObsidianSickleProjectile.DisplayName: 黑曜镰刀
+	ShadowflameAxeBolt.DisplayName: 暗焰处刑斧
+	ShadowflameAxeProjectile.DisplayName: 暗焰处刑斧
+	TetherBladeProjectile.DisplayName: 牵锚刃
+	TetherBladeProjectileBlink.DisplayName: 牵锚刃瞬移
+	StormCrossbowArrow.DisplayName: 裂风弩箭矢
+	IlluminantCrossPro.DisplayName: 辉耀圣十字
+	GlowstringBiwaPro.DisplayName: 辉弦琵琶
+	GlowstringBeam.DisplayName: 辉弦光束
+	StormTalonPro.DisplayName: 风暴利爪
+	StormCarverPro.DisplayName: 风暴雕刻者
+	GrandAmplifierPro.DisplayName: 雷鸣调谐叉
+	GrandAmplifierPro2.DisplayName: 雷鸣调谐叉
+	MusicalNoteProjectile.DisplayName: 音符
+	GammaExplosionProjectile.DisplayName: 伽马爆炸
+	GammaKnifeProjectile.DisplayName: 伽马镰
+	GammaKnifeThrownProjectile.DisplayName: 伽马镰投掷
+	GammaSlashProjectile.DisplayName: 伽马斩击
+	GrandAmplifierLightning.DisplayName: 雷鸣调谐叉落雷
+	MiniaturizedRequiemEngineGatlingPro.DisplayName: 微型安魂引擎加特林弹幕
+	MiniaturizedRequiemEngineLaserPro.DisplayName: 微型安魂引擎激光弹幕
+	MiniaturizedRequiemEngineTheBigOnePro.DisplayName: 微型安魂引擎大先生弹幕
+	MiniaturizedRequiemEngineLaserPro2.DisplayName: 微型安魂引擎激光弹幕
+	MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: 微型安魂引擎大先生弹幕
+	MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: 微型安魂引擎大先生弹幕
+	NecrosingerNote.DisplayName: 骸语音符
+	MagicPurpleBouncyBall.DisplayName: 魔法紫色弹跳球
+	EclipseEclipse.DisplayName: 日食蚀日
 }
 
 Buffs: {
@@ -874,31 +878,31 @@ ItemTooltip: {
 	
 Configs: {
 	WeaponConfig: {
-		// DisplayName: Weapon Config
+		DisplayName: 武器配置
 
 		Headers: {
-			// VerveineWeapons: Verveine Weapons
-			// General: General
+			VerveineWeapons: Verveine的武器
+			General: 通用
 		}
 
 		AIGenedWeapons: {
-			// Label: AI Generated Weapon Concepts
-			// Tooltip: Toggles whether if the AI Generated weapon concpets from Verveine's 'Which AI Makes the Best Terraria Weapons?' are loaded
+			Label: AI生成的武器概念
+			Tooltip: 切换是否加载Verveine的《Which AI Makes the Best Terraria Weapons?》中生成的 AI 武器概念
 		}
 
 		GitGudWeapon: {
-			// Label: GitGudWO Weapon Concept
-			// Tooltip: Toggles whether if the weapon concpet made by GitGudWO from Verveine's 'Which AI Makes the Best Terraria Weapons?' is loaded
+			Label: GitGudWO的武器概念
+			Tooltip: 切换是否加载来自Verveine的《Which AI Makes the Best Terraria Weapons?》中由GitGudWO制作的武器概念
 		}
 
 		EnableScreenEffects: {
-			// Label: Enable Screen Effects
-			// Tooltip: ""
+			Label: 启用屏幕特效
+			Tooltip: ""
 		}
 
 		UnfinishedContent: {
-			// Label: Unfinished Content
-			// Tooltip: ""
+			Label: 未完成内容
+			Tooltip: ""
 		}
 	}
 }

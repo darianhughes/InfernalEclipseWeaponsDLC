@@ -256,8 +256,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
                 target.DelBuff(BuffID.Electrified);
 
             var calNPC = target.Calamity();
-            if (calNPC.electrified > 0)
-                calNPC.electrified = 0;
+            if (calNPC.electrified = true)
+                calNPC.electrified = false;
         }
 
 

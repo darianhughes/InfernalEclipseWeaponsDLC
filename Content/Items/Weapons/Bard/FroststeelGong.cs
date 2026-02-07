@@ -53,7 +53,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.damage = 600;
             Item.knockBack = 4f;
             Item.UseSound = ThoriumSounds.Gong_Sound;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             InspirationCost = 10;
         }

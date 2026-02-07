@@ -48,7 +48,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
             Item.knockBack = 9f;
             Item.autoReuse = true;
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<CosmicPurple>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.UseSound = new Terraria.Audio.SoundStyle("CalamityMod/Sounds/Item/ExobladeBeamSlash");
             Item.shoot = ModContent.ProjectileType<SupremeCatastropheSlash>();
 

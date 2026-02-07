@@ -44,7 +44,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 7f;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<CosmicPurple>();
             Item.autoReuse = true;
             Item.UseSound = SoundID.Item33;
             Item.shoot = ModContent.ProjectileType<MiniaturizedRequiemEngineGatlingPro>();
@@ -255,17 +255,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             switch (fireMode)
             {
                 case RequiemFireMode.Gatling:
-                    text = "GATLING";
+                    text = Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineGatlingMode");
                     color = Color.DeepPink;
                     break;
 
                 case RequiemFireMode.Laser:
-                    text = "LASER";
+                    text = Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineLaserMode");
                     color = Color.CornflowerBlue;
                     break;
 
                 case RequiemFireMode.TheBigOne:
-                    text = "THE BIG ONE";
+                    text = Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.EngineTheBigOneMode");
                     color = Color.Yellow;
                     break;
 

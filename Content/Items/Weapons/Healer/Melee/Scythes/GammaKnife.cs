@@ -64,10 +64,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
 
-            Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
-            Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 190f;
-            Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.05f;
-
             Item.rare = ModContent.RarityType<Turquoise>();
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
         }

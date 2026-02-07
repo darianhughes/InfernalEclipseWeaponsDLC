@@ -8,6 +8,12 @@
 		
 	</PropertyGroup>
 	<ItemGroup>
+	  <AdditionalFiles Remove="Content\Items\Accessories\NewFolder\**" />
+	  <Compile Remove="Content\Items\Accessories\NewFolder\**" />
+	  <EmbeddedResource Remove="Content\Items\Accessories\NewFolder\**" />
+	  <None Remove="Content\Items\Accessories\NewFolder\**" />
+	</ItemGroup>
+	<ItemGroup>
 	  <Reference Include="CalamityMod">
 	    <HintPath>..\ModAssemblies\CalamityMod_v2.1.dll</HintPath>
 	  </Reference>
