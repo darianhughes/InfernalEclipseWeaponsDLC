@@ -9,6 +9,7 @@ using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using Terraria.Localization;
 using ThoriumMod.Items.BasicAccessories;
 using ThoriumMod.Items;
 
@@ -24,7 +25,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.SpearTips
 
         public override void SetDefaults()
         {
-            accDamage = "115% basic damage";
+            accDamage = Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.ArcticSpearTip");
             Item.width = 28;
             Item.height = 28;
             Item.value = CalamityGlobalItem.RarityLightPurpleBuyPrice;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.Abyss;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro;
 using Microsoft.Xna.Framework;
 using Terraria;

@@ -12,6 +12,7 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
 using ThoriumMod.Items.BasicAccessories;
+using Terraria.Localization;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.SpearTips
 {
@@ -25,7 +26,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.SpearTips
 
         public override void SetDefaults()
         {
-            accDamage = "150% basic damage";
+            accDamage = Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.SearingSpearTip");
             Item.width = 34;
             Item.height = 38;
             Item.value = CalamityGlobalItem.RarityYellowBuyPrice;

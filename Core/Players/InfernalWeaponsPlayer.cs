@@ -58,14 +58,14 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             if (ModLoader.HasMod("SOTS"))
             {
                 
-                if (Player.ActiveItem().type == Mod.Find<ModItem>("CataclysmicGauntletVoid").Type) //we have to do it this way since the item doesn't load without SOTS.
+                if (Player.HeldItem.type == Mod.Find<ModItem>("CataclysmicGauntletVoid").Type) //we have to do it this way since the item doesn't load without SOTS.
                 {
                     SupremeCataclysmFist.GenerateDustOnOwnerHand(Player);
                 }
             }
             else
             {
-                if (Player.ActiveItem().type == ModContent.ItemType<CataclysmicGauntlet>())
+                if (Player.HeldItem.type == ModContent.ItemType<CataclysmicGauntlet>())
                 {
                     SupremeCataclysmFist.GenerateDustOnOwnerHand(Player);
                 }

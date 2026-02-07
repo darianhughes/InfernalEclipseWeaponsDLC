@@ -14,9 +14,9 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables;
 using CalamityMod.CustomRecipes;
 using Terraria.Audio;
+using CalamityMod.Items.Placeables.SunkenSea;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
 {
@@ -60,11 +60,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
             healDisplay = true;
             healAmount = 5;
             healType = HealType.Ally;
-
-            CalamityGlobalItem modItem = Item.Calamity();
-            modItem.UsesCharge = true;
-            modItem.MaxCharge = 50f;
-            modItem.ChargePerUse = 0.02f;
 
             Item.noUseGraphic = true;
 

@@ -33,10 +33,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
             Item.rare = ItemRarityID.Yellow;
 
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
-
-            Item.GetGlobalItem<CalamityGlobalItem>().UsesCharge = true;
-            Item.GetGlobalItem<CalamityGlobalItem>().MaxCharge = 135f;
-            Item.GetGlobalItem<CalamityGlobalItem>().ChargePerUse = 0.05f;
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -222,7 +218,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
                 Projectile.rotation, slashTexture.Size() / 2f, Projectile.scale * 2.35f,
                 Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
 
-            // Two mirrored afterimages (rotated by 180°)
+            // Two mirrored afterimages (rotated by 180ï¿½)
             Main.EntitySpriteDraw(slashTexture, Projectile.Center - Main.screenPosition, null, cursedGreen,
                 Projectile.rotation + MathHelper.Pi, slashTexture.Size() / 2f, Projectile.scale * 2.35f,
                 Projectile.spriteDirection < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
