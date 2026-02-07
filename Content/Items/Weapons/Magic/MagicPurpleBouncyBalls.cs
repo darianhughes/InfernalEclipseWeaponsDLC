@@ -34,7 +34,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
             Item.shoot = ModContent.ProjectileType<MagicPurpleBouncyBall>();
             Item.shootSpeed = 2f;
 
-            Item.Calamity().donorItem = true;
+            //Item.Calamity().donorItem = true;
         }
 
         public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
