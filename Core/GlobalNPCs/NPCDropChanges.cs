@@ -67,7 +67,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 
             if (calamity != null)
             {
-                if (npc.type == calamity.Find<ModNPC>("ThiccWaifu").Type && console == null && WeaponConfig.Instance.AIGenedWeapons)
+                if (npc.type == ModContent.NPCType<BrimstoneElemental>() && console == null && WeaponConfig.Instance.AIGenedWeapons)
                 {
                     npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormCrossbow>(), 10));
                 }

@@ -380,6 +380,275 @@ Items: {
 			'Так холодно, что кажется, будто лёгкие разрываются'
 			'''
 	}
+
+	FroststeelGong: {
+		// DisplayName: Froststeel Gong
+		/* Tooltip:
+			'''
+			Allows you to rythmically bang the gong
+			Successfully timing 3 hits will also release a burst of 8 freezing vibrations outwards
+			Successfully timing hits will steadily increase its damage and empowerment level
+			Mistiming these hits will decrease these bonuses greatly and cost 10 inspiration
+			These bonuses will stay between weapon swaps, but gradually fade when not your active weapon
+			''' */
+	}
+
+	EclipseBreastplate: {
+		// DisplayName: Eclipse Breastplate
+		/* Tooltip:
+			'''
+			20% decreased non-radiant damage
+			20% increased radiant damage
+			8% increased radiant critical strike chance
+			5% increased healing and radiant cast speed
+			15% increased damage reduction
+			Healing spells will heal an additional 3 life
+			''' */
+	}
+
+	EclipseGreaves: {
+		// DisplayName: Eclipse Greaves
+		/* Tooltip:
+			'''
+			16% decreased non-radiant damage
+			16% increased radiant damage
+			4% increased radiant critical strike chance
+			15% decreased mana cost
+			20% increased movement speed
+			Healing spells will heal an additional 3 life
+			''' */
+	}
+
+	EclipseHelm: {
+		// DisplayName: Eclipse Helm
+		/* Tooltip:
+			'''
+			16% decreased non-radiant damage
+			16% increased radiant damage
+			3% increased radiant critical strike chance
+			life regeneration begins faster
+			Healing spells will heal an additional 2 life
+			''' */
+		/* SetBonus:
+			'''
+			Calls forth a condensed eclipse
+			The eclipse will fire light and darkness when there are enemies nearby
+			Light will home onto and heal nearby allies for the players bonus healing
+			Darkness will home onto enemies and deal radiant damage
+			''' */
+	}
+
+	NecrosingerAnkles: {
+		// DisplayName: Posthumous Ankles
+		/* Tooltip:
+			'''
+			10% increased symphonic damage
+			5% increased symphonic critical strike chance
+			20% increased movement speed
+			''' */
+	}
+
+	NecrosingerRibs: {
+		// DisplayName: Posthumous Ribs
+		/* Tooltip:
+			'''
+			14% increased symphonic damage
+			5% increased symphonic critical strike chance
+			Increases the chance for inspiration notes to drop by 10%
+			Increases the duration of your symphonic empowerments by 3 seconds
+			''' */
+	}
+
+	NecrosingerSkull: {
+		// DisplayName: Posthumous Skull
+		/* Tooltip:
+			'''
+			5% increased symphonic damage
+			10% increased symphonic playing speed
+			5% increased symphonic critical strike chance
+			Increased inspiration regeneration rate by 15%
+			''' */
+		/* SetBonus:
+			'''
+			Music notes will orbit you, each blocking one projectile before breaking
+			When broken, the ring of notes will refresh after 5 seconds
+			''' */
+	}
+
+	SuperCellCirclet: {
+		// DisplayName: Garuda Circlet
+		// Tooltip: 5% increased rogue damage
+		/* SetBonus:
+			'''
+			Grants rudimentary flight if not wearing any wings
+			Increases your maximum technique points by 2
+			+110 maximum stealth
+			''' */
+	}
+
+	SuperCellGuard: {
+		// DisplayName: Garuda Guard
+		/* Tooltip:
+			'''
+			10% increased rogue damage
+			20% increased rogue weapon speed
+			30% increased rogue weapon velocity
+			increases wing flight time by 15%
+			''' */
+	}
+
+	SuperCellSabatons: {
+		// DisplayName: Garuda Sabatons
+		/* Tooltip:
+			'''
+			5% increased rogue damage
+			10% increased rogue weapon critical strike chance
+			30% increased movement speed
+			''' */
+	}
+
+	ShadowflameAxe: {
+		// DisplayName: Shadowflame Reaper
+		// Tooltip: Releases homing shadowflame projectiles every three swings
+	}
+
+	TetherBlade: {
+		// DisplayName: Tetherblade
+		/* Tooltip:
+			'''
+			Throw the blade towards the cursor by right clicking
+			The blade will linger for a few seconds after throwing it
+			Right click again to teleport to the blade before the blade disapears
+			After teleporting the blade will stab at all nearby enemies, dealing tripple damage
+			''' */
+	}
+
+	LightChain: {
+		// DisplayName: Luminant Tether
+		/* Tooltip:
+			'''
+			Clicking an enemy links it to a player
+			The chains deal damage once every second
+			If you move to far away from the target you are chained to, the chain will break
+			Up to 3 enemies can be chained to you
+			''' */
+	}
+
+	StormCrossbow: {
+		// DisplayName: Stormbreaker Crossbow
+		// Tooltip: Turns wooden arrows into storm bolts that will bounce towards nearby enemies
+	}
+
+	ObsidianSickle: {
+		// DisplayName: Obsidian Sickle
+		/* Tooltip:
+			'''
+			Shoots an dark sickle
+			'Not an artificial intelligence, but an actual idiot.'
+			''' */
+	}
+
+	StarScepter: {
+		// DisplayName: Star Scepter
+		/* Tooltip:
+			'''
+			Summons up to 5 orbiting stars around the player
+			Each star will continously attack the nearest enemy, with bosses being priortized
+			''' */
+	}
+
+	IlluminantCross: {
+		// DisplayName: Illuminant Cross
+		/* Tooltip:
+			'''
+			Charges a burst of illuminant light on the cursor
+			Charging the burst increases the size and damage greatly
+			Bursts released at full charge will release 3 illuminant bolts and heal allies
+			''' */
+	}
+
+	GlowstringBiwa: {
+		// DisplayName: Glowstring Biwa
+		// Tooltip: Fires 2 illuminant orbs connected together by a string of light
+	}
+
+	StormCarver: {
+		// DisplayName: Storm Carver
+		/* Tooltip:
+			'''
+			This scythe is swung directionally instead of spun
+			Carves out storm gusts from hit tiles
+			'Strike the Earth!'
+			''' */
+	}
+
+	GrandAmplifier: {
+		// DisplayName: Grand Amplifier
+		/* Tooltip:
+			'''
+			Left click to fire a small thunderbolt that inflicts electrified
+			Right click to summon lightning above all nearby enemies with the electrified debuff
+			This lightning will remove the electrified debuff but deal a burst of high damage
+			''' */
+	}
+
+	PocketConcert: {
+		// DisplayName: Mechamatone
+		/* Tooltip:
+			'''
+			Releases music notes of varying colors
+			Music notes will inflict a variety of debuffs based on the notes color
+			Releases an additional music note for each unique empowerment you have at level 2 or higher
+			[c/1FFBFF:'Once I was dispatched to find that 'order of warriors' that call themselves trackers. When I did,]
+			[c/1FFBFF:one of the things they showed me an unique instrument shaped like a music note, but with a mouth.]
+			[c/1FFBFF:While odd, I was able to turn it into a weapon that is stronger based on number of the users]
+			[c/1FFBFF:other enhancements, however, it required me to make it much bigger than the original instrument.']
+			''' */
+	}
+
+	GammaKnife: {
+		// DisplayName: Gamma Knife
+		/* Tooltip:
+			'''
+			Ignores 15 points of defence
+			Left click to swing the knife directionally, firing a high intensity slash of gamma radiation
+			The slash will deal heavy damage at close range but dissipate as it travels
+			Right click to throw the knife, which will explode and return on collision with an enemy or tile
+			The knife cannot be used while thrown
+			''' */
+	}
+
+	MiniaturizedRequiemEngine: {
+		// DisplayName: Miniaturized Requiem Engine
+		// Tooltip: Has three modes of fire that can be cycled between on right click
+	}
+
+	MagicPurpleBouncyBalls: {
+		// DisplayName: 27 Magic Purple Bouncy Balls
+		// Tooltip: "'The purple energy hums with the power of 27 simultaneous mistakes'"
+	}
+
+	GarudaWings: {
+		// DisplayName: Garuda Wings
+		// Tooltip: "'Wings of the divine mount'"
+	}
+}
+
+ItemTooltip: {
+	DuesFluteLore: Они обнаружили источник астральной инфекции и в попытке уничтожить его применили звёздное ядро к заражённому алтарю.
+	DuesFluteLore2: Однако алтарь отреагировал неожиданно... два огонька начали отталкиваться друг от друга, устремляясь в небо и открыв над ним разлом
+	DuesFluteLore3: То, что вышло из него, поистине было не от мира сего, но их восхищению не суждено было продлиться — слуга звёзд бросился на них.
+	UniversalLore1: Кос принял свой последний бой. Израсходовал все свои козыри. Он проиграл им. Однако это не значило, что Затмение проиграло.
+	UniversalLore2: Используя каждый остаток силы, что таился в его душе, он призвал истинного богоубийцу: Пожирателя богов.
+	ParallelLore1: Как он и ожидал, они убили Штормового ткача. Но у Коса был припасен еще один трюк в рукаве.
+	ParallelLore2: Внезапно, безо всякого предупреждения, Кос переместил всех в зазеркалье и призвал своего второго слугу: Сигнуса.
+	TwoSideLore1: Они преодолели Рагнарёк. Они уничтожили Затмение. Они пережили муссон слизи.
+	TwoSideLore2: Они стояли на границе бесконечности, и лишь тогда Рен спросил их: «Какой путь ты изберёшь?»
+	NeonRipperLore1: После поражения Голиафа Эрелиан решил переработать часть броневых пластин, что тот носил.
+	NeonRipperLore2: Так он создал два оружия: первым стала коса, способная поглощать ауру, подобно способности Ками.
+	PBGBardALore2: Так он создал два оружия: вторым стала гитара, стреляющая цветными микроволнами.
+	SearingSpearTip: 150% базового урона
+	ArcticSpearTip: 115% базового урона
 }
 
 Projectiles: {
@@ -389,6 +658,7 @@ Projectiles: {
 	Magic: {
 		WhiteScythe.DisplayName: Белая коса
 		HealingLightningArc.DisplayName: Целебная дуга молнии
+		// DamagingLightningArc.DisplayName: Damaging Lightning Arc
 	}
 
 	TwoPathsPro2.DisplayName: Два пути
@@ -472,6 +742,38 @@ Projectiles: {
 	BarrenGardenProHoming.DisplayName: Самонаводящийся Снаряд Бесплодного Сада
 	MothwingDaggerPro.DisplayName: Кинжал Мотылькового Крыла Про
 	IlluminantBolt.DisplayName: Светящийся Снаряд
+	// FroststeelPulse.DisplayName: Froststeel Pulse
+	// LightChainProjectile.DisplayName: Light Chain Projectile
+	// StarScepterBolt.DisplayName: Star Scepter Bolt
+	// StarScepterStar.DisplayName: Star Scepter Star
+	// ObsidianSickleProjectile.DisplayName: Obsidian Sickle Projectile
+	// ShadowflameAxeBolt.DisplayName: Shadowflame Axe Bolt
+	// ShadowflameAxeProjectile.DisplayName: Shadowflame Axe Projectile
+	// TetherBladeProjectile.DisplayName: Tether Blade Projectile
+	// TetherBladeProjectileBlink.DisplayName: Tether Blade Projectile Blink
+	// StormCrossbowArrow.DisplayName: Storm Crossbow Arrow
+	// IlluminantCrossPro.DisplayName: Illuminant Cross Pro
+	// GlowstringBiwaPro.DisplayName: Glowstring Biwa Pro
+	// GlowstringBeam.DisplayName: Glowstring Beam
+	// StormTalonPro.DisplayName: Storm Talon Pro
+	// StormCarverPro.DisplayName: Storm Carver Pro
+	// GrandAmplifierPro.DisplayName: Grand Amplifier Pro
+	// GrandAmplifierPro2.DisplayName: Grand Amplifier Pro2
+	// MusicalNoteProjectile.DisplayName: Musical Note Projectile
+	// GammaExplosionProjectile.DisplayName: Gamma Explosion Projectile
+	// GammaKnifeProjectile.DisplayName: Gamma Knife Projectile
+	// GammaKnifeThrownProjectile.DisplayName: Gamma Knife Thrown Projectile
+	// GammaSlashProjectile.DisplayName: Gamma Slash Projectile
+	// GrandAmplifierLightning.DisplayName: Grand Amplifier Lightning
+	// MiniaturizedRequiemEngineGatlingPro.DisplayName: Miniaturized Requiem Engine Gatling Pro
+	// MiniaturizedRequiemEngineLaserPro.DisplayName: Miniaturized Requiem Engine Laser Pro
+	// MiniaturizedRequiemEngineTheBigOnePro.DisplayName: Miniaturized Requiem Engine The Big One Pro
+	// MiniaturizedRequiemEngineLaserPro2.DisplayName: Miniaturized Requiem Engine Laser Pro2
+	// MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: Miniaturized Requiem Engine The Big One Pro2
+	// MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: Miniaturized Requiem Engine The Big One Pro3
+	// NecrosingerNote.DisplayName: Necrosinger Note
+	// MagicPurpleBouncyBall.DisplayName: Magic Purple Bouncy Ball
+	// EclipseEclipse.DisplayName: Eclipse Eclipse
 }
 
 Buffs: {
@@ -491,19 +793,33 @@ Buffs: {
 	}
 }
 
-ItemTooltip: {
-	DuesFluteLore: Они обнаружили источник астральной инфекции и в попытке уничтожить его применили звёздное ядро к заражённому алтарю.
-	DuesFluteLore2: Однако алтарь отреагировал неожиданно... два огонька начали отталкиваться друг от друга, устремляясь в небо и открыв над ним разлом
-	DuesFluteLore3: То, что вышло из него, поистине было не от мира сего, но их восхищению не суждено было продлиться — слуга звёзд бросился на них.
-	UniversalLore1: Кос принял свой последний бой. Израсходовал все свои козыри. Он проиграл им. Однако это не значило, что Затмение проиграло.
-	UniversalLore2: Используя каждый остаток силы, что таился в его душе, он призвал истинного богоубийцу: Пожирателя богов.
-	ParallelLore1: Как он и ожидал, они убили Штормового ткача. Но у Коса был припасен еще один трюк в рукаве.
-	ParallelLore2: Внезапно, безо всякого предупреждения, Кос переместил всех в зазеркалье и призвал своего второго слугу: Сигнуса.
-	TwoSideLore1: Они преодолели Рагнарёк. Они уничтожили Затмение. Они пережили муссон слизи.
-	TwoSideLore2: Они стояли на границе бесконечности, и лишь тогда Рен спросил их: «Какой путь ты изберёшь?»
-	NeonRipperLore1: После поражения Голиафа Эрелиан решил переработать часть броневых пластин, что тот носил.
-	NeonRipperLore2: Так он создал два оружия: первым стала коса, способная поглощать ауру, подобно способности Ками.
-	PBGBardALore2: Так он создал два оружия: вторым стала гитара, стреляющая цветными микроволнами.
-	SearingSpearTip: 150% базового урона
-	ArcticSpearTip: 115% базового урона
+Configs: {
+	WeaponConfig: {
+		// DisplayName: Weapon Config
+
+		Headers: {
+			// VerveineWeapons: Verveine Weapons
+			// General: General
+		}
+
+		AIGenedWeapons: {
+			// Label: AI Generated Weapon Concepts
+			// Tooltip: Toggles whether if the AI Generated weapon concpets from Verveine's 'Which AI Makes the Best Terraria Weapons?' are loaded
+		}
+
+		GitGudWeapon: {
+			// Label: GitGudWO Weapon Concept
+			// Tooltip: Toggles whether if the weapon concpet made by GitGudWO from Verveine's 'Which AI Makes the Best Terraria Weapons?' is loaded
+		}
+
+		EnableScreenEffects: {
+			// Label: Enable Screen Effects
+			// Tooltip: ""
+		}
+
+		UnfinishedContent: {
+			// Label: Unfinished Content
+			// Tooltip: ""
+		}
+	}
 }
