@@ -13,7 +13,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Buffs
     {
         public override string Texture => "InfernalEclipseWeaponsDLC/Assets/Textures/Empty";
 
-        public static readonly int TagDamage = 5;
+        public static readonly int TagDamage = 3;
 
         public override void Update(Player player, ref int buffIndex)
         {

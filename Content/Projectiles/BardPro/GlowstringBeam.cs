@@ -28,7 +28,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Projectile.height = 2;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 300;
+            Projectile.timeLeft = 900;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.usesLocalNPCImmunity = true;

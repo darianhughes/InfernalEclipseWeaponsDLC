@@ -26,19 +26,24 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
             Item.width = 85;
             Item.height = 86;
             Item.damage = 10250;
-            Item.useStyle = ItemUseStyleID.Swing;
+
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.useTime = 49;
             Item.useAnimation = 49;
-            Item.useTurn = true;
+
+            Item.noUseGraphic = true;
+            Item.noMelee = true;
+            Item.channel = true;
+
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 9f;
             Item.autoReuse = true;
+
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.rare = ModContent.RarityType<BurnishedAuric>();
-            Item.UseSound = new Terraria.Audio.SoundStyle("CalamityMod/Sounds/Item/ExobladeBeamSlash");
-            Item.shoot = ModContent.ProjectileType<SupremeCatastropheSlash>();
 
-            Item.shootSpeed = 5f;
+            Item.shoot = ModContent.ProjectileType<CatastrophicLongbladeHoldoutVoid>();
+            Item.shootSpeed = 0f;
         }
 
         public override bool BeforeUseItem(Player player)
@@ -58,6 +63,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            /*
             bool nextTo = InventoryHelperMethods.HasNeighborItem(player, Item.type, ModContent.ItemType<CataclysmicGauntletVoid>());
             if (nextTo)
             {
@@ -86,6 +92,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
                 Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, Main.rand.Next(0, 2));
             }
             return false;
+            */
+            if (!player.ownedProjectileCounts[type].Equals(0))
+                return false;
+
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            return false;
         }
 
         public override int GetVoid(Player player)
@@ -103,6 +115,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
         {
+            /*
             var state = player.GetModPlayer<BladeSwingState>();
 
             if (player.itemAnimation == player.itemAnimationMax)
@@ -151,6 +164,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
                 player.itemRotation + MathHelper.ToRadians(-135f * state.useDirection));
 
             base.UseStyle(player, heldItemFrame);
+            */
         }
     }
 }

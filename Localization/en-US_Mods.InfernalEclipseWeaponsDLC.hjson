@@ -1,4 +1,4 @@
-﻿Items: {
+Items: {
 	TwoPaths: {
 		DisplayName: Two Paths
 		Tooltip:
@@ -97,7 +97,7 @@
 	GrandThunderWhip: {
 		Tooltip:
 			'''
-			5 summon tag damage
+			3 summon tag damage
 			Electrifies foes on hit
 			'''
 		DisplayName: Grand Thunder Whip
@@ -823,6 +823,8 @@ Projectiles: {
 	NecrosingerNote.DisplayName: Necrosinger Note
 	MagicPurpleBouncyBall.DisplayName: Magic Purple Bouncy Ball
 	EclipseEclipse.DisplayName: Eclipse Eclipse
+	CatastrophicLongbladeHoldout.DisplayName: Catastrophic Longblade Holdout
+	CatastrophicLongbladeHoldoutVoid.DisplayName: Catastrophic Longblade Holdout Void
 }
 
 Buffs: {

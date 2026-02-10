@@ -97,7 +97,7 @@ Items: {
 	GrandThunderWhip: {
 		Tooltip:
 			'''
-			5 урона от метки призывателя
+			3 урона от метки призывателя
 			При попадании накладывает дебафф «{$BuffName.Electrified}»
 			'''
 		DisplayName: Великий громовой хлыст
@@ -822,6 +822,8 @@ Projectiles: {
 	// NecrosingerNote.DisplayName: Necrosinger Note
 	// MagicPurpleBouncyBall.DisplayName: Magic Purple Bouncy Ball
 	// EclipseEclipse.DisplayName: Eclipse Eclipse
+	// CatastrophicLongbladeHoldout.DisplayName: Catastrophic Longblade Holdout
+	// CatastrophicLongbladeHoldoutVoid.DisplayName: Catastrophic Longblade Holdout Void
 }
 
 Buffs: {
