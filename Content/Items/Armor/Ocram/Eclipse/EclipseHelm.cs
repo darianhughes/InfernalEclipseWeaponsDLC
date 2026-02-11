@@ -12,11 +12,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
     [AutoloadEquip(EquipType.Head)]
     public class EclipseHelm : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return true;
-            return WeaponConfig.Instance.UnfinishedContent;
-        }
         public override void SetDefaults()
         {
             Item.width = 18;
