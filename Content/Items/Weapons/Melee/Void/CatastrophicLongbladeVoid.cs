@@ -11,15 +11,12 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using SOTS.Void;
 using System.Reflection;
 using InfernalEclipseWeaponsDLC.Core;
-using System;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
 {
     [ExtendsFromMod("SOTS")]
     public class CatastrophicLongbladeVoid : VoidItem
     {
-        private static bool VanillaShoot;
-        private static readonly MethodInfo MiItemCheckShoot = typeof(Player).GetMethod("ItemCheck_Shoot", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
         public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Melee/Void/CatastrophicLongblade";
         public override void SafeSetDefaults()
         {

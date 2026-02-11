@@ -1,19 +1,16 @@
-﻿using System;
-using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod;
 using CalamityMod.Projectiles.BaseProjectiles;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void;
 using InfernalEclipseWeaponsDLC.Core;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void
 {
+    [ExtendsFromMod("SOTS")]
+    [JITWhenModsEnabled("SOTS")]
     public class CatastrophicLongbladeHoldoutVoid : BaseCustomUseStyleProjectile, ILocalizedModType
     {
         public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Melee/Void/CatastrophicLongblade";
@@ -33,7 +30,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void
         public override void SetDefaults()
         {
             base.SetDefaults();
-            Projectile.DamageType = ModLoader.TryGetMod("SOTS", out Mod sots) ? sots.Find<DamageClass>("VoidMelee") : ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = ModLoader.GetMod("SOTS").Find<DamageClass>("VoidMelee");
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
         }
@@ -98,6 +95,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void
                 CanHit = false;
             }
 
+            bool swingingDown = Projectile.ai[1] * Owner.direction > 0;
+
             //Projectiles
             if (!firedMidSwing && progress >= 0.5f)
             {
@@ -125,7 +124,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void
                     Projectile.knockBack,
                     Projectile.owner,
                     0f,
-                    Main.rand.Next(0, 2)
+                    swingingDown ? 1f : 0f
                 );
 
                 // === Pellet logic (ported from Shoot) ===

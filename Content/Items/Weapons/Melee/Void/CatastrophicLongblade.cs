@@ -9,33 +9,16 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernalEclipseWeaponsDLC.Core;
-using System.Reflection;
-using System;
-using CalamityMod.Items.BaseItems;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
 {
-    public sealed class BladeSwingState : ModPlayer
-    {
-        public int swingDirection = 1;
-        public int useDirection = 1;
-        public float useRotation = 0f;
-        public bool pendingShoot = false;
-
-        public override void ResetEffects()
-        {
-        }
-    }
-
     public class CatastrophicLongblade : ModItem
     {
-        private static bool VanillaShoot;
-        private static readonly MethodInfo MiItemCheckShoot = typeof(Player).GetMethod("ItemCheck_Shoot", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
         public override bool IsLoadingEnabled(Mod mod)
         {
             return !ModLoader.HasMod("SOTS");
         }
+
         public override void SetDefaults()
         {
             Item.width = 85;
@@ -66,7 +49,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
             if (InventoryHelperMethods.HasNeighborItem(
                 player,
                 Item.type,
-                ModContent.ItemType<CataclysmicGauntletVoid>()))
+                ModContent.ItemType<CataclysmicGauntlet>()))
             {
                 Item.useTime = 24;
                 Item.useAnimation = 24;
