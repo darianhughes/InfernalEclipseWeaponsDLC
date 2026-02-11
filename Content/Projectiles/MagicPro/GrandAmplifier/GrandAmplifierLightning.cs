@@ -247,17 +247,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
                     p.usesLocalNPCImmunity = true;
                     p.localNPCHitCooldown = 40;
 
+                    p.GetGlobalProjectile<AmplifierElectrosphereGlobal>().spawnedByAmplifier = true;
+
                     p.netUpdate = true;
                 }
             }
 
+            /*
             // === REMOVE ELECTRIFIED ===
             if (target.HasBuff(BuffID.Electrified))
                 target.DelBuff(BuffID.Electrified);
 
             var calNPC = target.Calamity();
-            if (calNPC.electrified = true)
+            if (calNPC.electrified == true)
                 calNPC.electrified = false;
+            */
         }
 
 
@@ -296,6 +300,48 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
         {
             Projectile.localAI[0] = reader.ReadSingle();
             Projectile.localAI[1] = reader.ReadSingle();
+        }
+    }
+
+    public class AmplifierElectrosphereGlobal : GlobalProjectile
+    {
+        public override bool InstancePerEntity => true;
+
+        public bool spawnedByAmplifier;
+
+        public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (!spawnedByAmplifier)
+                return;
+
+            // Remove Electrified BEFORE Calamity sees it
+            int index = target.FindBuffIndex(BuffID.Electrified);
+            if (index != -1)
+                target.DelBuff(index);
+
+            target.Calamity().electrified = false;
+        }
+
+        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (!spawnedByAmplifier)
+                return;
+
+            if (target == null || !target.active)
+                return;
+
+            // Remove vanilla Electrified
+            int index = target.FindBuffIndex(BuffID.Electrified);
+            if (index != -1)
+                target.DelBuff(index);
+
+            // Force Calamity bool off
+            if (ModLoader.TryGetMod("CalamityMod", out _))
+            {
+                target.Calamity().electrified = false;
+            }
+
+            target.netUpdate = true;
         }
     }
 }

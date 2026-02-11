@@ -86,13 +86,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
                     player.whoAmI,
                     npc.whoAmI
                 );
-
+                /*
                 // === REMOVE ELECTRIFIED ===
                 if (npc.HasBuff(BuffID.Electrified))
                     npc.DelBuff(BuffID.Electrified);
 
                 if (calNPC.electrified == true)
                     calNPC.electrified = false;
+                */
             }
 
             if (spawnedAny)
