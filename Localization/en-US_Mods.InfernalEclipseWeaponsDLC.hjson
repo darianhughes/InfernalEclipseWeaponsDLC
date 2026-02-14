@@ -109,7 +109,7 @@ Items: {
 	}
 
 	SearingSpearTip: {
-		Tooltip: Spear weapons will release hydrogen sulfide that burns foes on contact.
+		Tooltip: Spear weapons will release hydrogen sulfide that burns foes on contact
 		DisplayName: Searing Spear Tip
 	}
 
