@@ -701,6 +701,11 @@ ItemTooltip: {
 		cat: StarlightCat
 		Goldsock: Goldsockz2
 	}
+
+	ThunderboltActionSniper: {
+		// DisplayName: Thunderbolt-Action sniper
+		// Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -828,6 +833,7 @@ Projectiles: {
 	EclipseEclipse.DisplayName: 日食蚀日
 	// CatastrophicLongbladeHoldout.DisplayName: Catastrophic Longblade Holdout
 	// CatastrophicLongbladeHoldoutVoid.DisplayName: Catastrophic Longblade Holdout Void
+	// VoidBolt.DisplayName: Void Bolt
 }
 
 Buffs: {
