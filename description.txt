@@ -24,5 +24,6 @@ If you have any other issues please report them in the discord (https://discord.
 Special thanks to Feldy, TacoConKvass, KainSett, and Verveine for helping develop some of this mods items, & Pil for some of the mods sprites!
 
 Simplified Chinese localization done by Pudd1ng.
+Russian localization done by Aizen522.
 
 Created by the Infernal Ecllipse of Raganork Team

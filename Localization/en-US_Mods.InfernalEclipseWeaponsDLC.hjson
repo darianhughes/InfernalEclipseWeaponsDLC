@@ -700,7 +700,7 @@ ItemTooltip: {
 	}
 
 	ThunderboltActionSniper: {
-		DisplayName: Thunderbolt-Action sniper
+		DisplayName: Thunderbolt-Action Sniper Rifle
 		Tooltip: ""
 	}
 }
