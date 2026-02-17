@@ -7,14 +7,14 @@ The Infernal Eclipse of Ragnarok: Weapon DLC is a mod that aims to fill in the w
 It currently adds the following:
 [list]
 	[*] 6 Melee weapons
-	[*] 3 Ranged weapons
-	[*] 3 Mage weapons
+	[*] 4 Ranged weapons
+	[*] 7 Mage weapons
 	[*] 1 Summoner weapon
 	[*] 2 Rogue/Thrower weapons
-	[*] 18 Bard weapons
-	[*] 10 Healer weapons
+	[*] 21 Bard weapons
+	[*] 14 Healer weapons
 	[*] 2 Multi-class weapons
-	[*] 2 accessories
+	[*] 3 accessories
 [/list]
 
 For more information on the weapons added by this mod, check out the official [url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/Weapons_(Weapons_DLC)] wiki![/url]
