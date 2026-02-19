@@ -6,14 +6,14 @@ The Infernal Eclipse of Ragnarok: Weapon DLC is a mod that aims to fill in the w
 
 It currently adds the following:
 	- 6 Melee weapons
-	- 3 Ranged weapons
-	- 3 Mage weapons
+	- 4 Ranged weapons
+	- 7 Mage weapons
 	- 1 Summoner weapon
-	- 1 Rogue/Thrower weapon
-	- 18 Bard weapons
-	- 10 Healer weapons
+	- 2 Rogue/Thrower weapon
+	- 21 Bard weapons
+	- 14 Healer weapons
 	- 2 Multi-class weapoons
-	- 2 accessories
+	- 3 accessories
 
 It is recommended to use Recipe Browser to see how to obtain the new weapons.
 

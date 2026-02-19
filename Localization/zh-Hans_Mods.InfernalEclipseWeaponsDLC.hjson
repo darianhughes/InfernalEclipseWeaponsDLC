@@ -844,9 +844,9 @@ Projectiles: {
 	NecrosingerNote.DisplayName: 骸语音符
 	MagicPurpleBouncyBall.DisplayName: 魔法紫色弹跳球
 	EclipseEclipse.DisplayName: 日食蚀日
-	// CatastrophicLongbladeHoldout.DisplayName: Catastrophic Longblade Holdout
-	// CatastrophicLongbladeHoldoutVoid.DisplayName: Catastrophic Longblade Holdout Void
-	// VoidBolt.DisplayName: Void Bolt
+	CatastrophicLongbladeHoldout.DisplayName: 灾难长刃
+	CatastrophicLongbladeHoldoutVoid.DisplayName: 灾难长刃
+	VoidBolt.DisplayName: 虚空雷霆
 }
 
 Buffs: {
