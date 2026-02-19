@@ -1,3 +1,5 @@
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -22,6 +24,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RangedPro.Void
             Projectile.velocity *= 2f;
             Projectile.extraUpdates = 25;
             Projectile.DamageType = ModLoader.TryGetMod("SOTS", out Mod sots) ? sots.Find<DamageClass>("VoidRanged") : DamageClass.Ranged;
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 40;
         }
         bool rising = true;
         public override void AI()
@@ -70,6 +75,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RangedPro.Void
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Electrified, 180);
+            target.AddBuff(ModContent.BuffType<StaticDischarge>(), 180);
         }
     }
 }

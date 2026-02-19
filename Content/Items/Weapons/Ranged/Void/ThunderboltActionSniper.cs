@@ -9,6 +9,7 @@ using Terraria.DataStructures;
 using Terraria.Audio;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.RangedPro.Void;
 using CalamityMod.Items.Materials;
+using CalamityMod.Projectiles.Ranged;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
 {
@@ -17,7 +18,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
         public override bool IsLoadingEnabled(Mod mod) => !ModLoader.HasMod("SOTS");
         public override void SetDefaults()
         {
-            Item.damage = 2990;
+            Item.damage = 1440;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 60;
             Item.useAnimation = 60;
@@ -32,7 +33,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
             Item.useAmmo = AmmoID.Bullet;
             Item.width = 120;
             Item.height = 34;
-            Item.crit = 30;
+            Item.crit = 26;
         }
         public override Vector2? HoldoutOffset() => new Vector2(-25, -2f);
         public override void HoldItem(Player player) => player.scope = true;
@@ -47,11 +48,18 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
             {
                 position += muzzleOffset;
             }
+
+            if (type == 14)
+            {
+                type = ProjectileID.BulletHighVelocity;
+            }
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             SoundEngine.PlaySound(CommonCalamitySounds.LargeWeaponFireSound with { Volume = 10f }, player.position);
             SoundEngine.PlaySound(SoundID.Thunder with { Volume = 10f }, player.position);
+
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<VoidBolt>(), damage, knockback, player.whoAmI);
 
             return true;
         }

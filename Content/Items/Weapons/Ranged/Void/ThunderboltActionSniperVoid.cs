@@ -22,7 +22,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
         public override bool IsLoadingEnabled(Mod mod) => ModLoader.HasMod("SOTS");
         public override void SafeSetDefaults()
         {
-            Item.damage = 2990;
+            Item.damage = 1660;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 60;
             Item.useAnimation = 60;
@@ -37,7 +37,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
             Item.useAmmo = AmmoID.Bullet;
             Item.width = 120;
             Item.height = 3;
-            Item.crit = 30;
+            Item.crit = 26;
         }
         public override int GetVoid(Player player) => 20;
 
@@ -54,6 +54,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
             {
                 position += muzzleOffset;
             }
+
+            if (type == 14)
+            {
+                type = ProjectileID.BulletHighVelocity;
+            }
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -61,9 +66,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
             SoundEngine.PlaySound(CommonCalamitySounds.LargeWeaponFireSound with { Volume = 10f }, player.position);
             SoundEngine.PlaySound(SoundID.Thunder with { Volume = 10f }, player.position);
 
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<VoidBolt>(), damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, (velocity / 2), ModContent.ProjectileType<VoidBolt>(), damage, knockback, player.whoAmI);
 
-            return false;
+            return true;
         }
 
         public override void AddRecipes()
