@@ -66,5 +66,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.RangedPro.Void
                 dust.noLight = true;
             }
         }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.Electrified, 180);
+        }
     }
 }

@@ -8,18 +8,16 @@ using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using Terraria.Audio;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.RangedPro.Void;
+using CalamityMod.Items.Materials;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
 {
-    // Recipe needed
-    // Balance needed
-    // Needs a description
     public class ThunderboltActionSniper : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod) => !ModLoader.HasMod("SOTS");
         public override void SetDefaults()
         {
-            Item.damage = 900;
+            Item.damage = 2990;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 60;
             Item.useAnimation = 60;
@@ -28,12 +26,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
             Item.knockBack = 6f;
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
             Item.rare = ModContent.RarityType<Turquoise>();
-        //    Item.autoReuse = false;
+            //Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<VoidBolt>();
             Item.shootSpeed = 6f;
-            Item.ammo = AmmoID.Bullet;
+            Item.useAmmo = AmmoID.Bullet;
             Item.width = 120;
             Item.height = 34;
+            Item.crit = 30;
         }
         public override Vector2? HoldoutOffset() => new Vector2(-25, -2f);
         public override void HoldItem(Player player) => player.scope = true;
@@ -51,13 +50,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            // So why does with just not increase volume?
             SoundEngine.PlaySound(CommonCalamitySounds.LargeWeaponFireSound with { Volume = 10f }, player.position);
             SoundEngine.PlaySound(SoundID.Thunder with { Volume = 10f }, player.position);
 
-        //    Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-
             return true;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ItemID.SniperRifle)
+                .AddIngredient<UelibloomBar>(5)
+                .AddIngredient<ArmoredShell>(3)
+                .AddTile(TileID.LunarCraftingStation)
+                .Register();
         }
     }
 }

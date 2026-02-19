@@ -636,6 +636,24 @@ Items: {
 		DisplayName: 迦楼罗之翼
 		Tooltip: “神祇坐骑之翼”
 	}
+
+	ThunderboltActionSniperVoid: {
+		// DisplayName: Thunderbolt Action Sniper Rifle
+		/* Tooltip:
+			'''
+			Shoots a lightning bolt imbued with void energy
+			Right click to zoom out
+			''' */
+	}
+
+	ThunderboltActionSniper: {
+		// DisplayName: Thunderbolt-Action Sniper Rifle
+		/* Tooltip:
+			'''
+			Shoots a lightning bolt imbued with void energy
+			Right click to zoom out
+			''' */
+	}
 }
 
 ItemTooltip: {
@@ -700,11 +718,6 @@ ItemTooltip: {
 		Puzzles: Mr. Puzzles
 		cat: StarlightCat
 		Goldsock: Goldsockz2
-	}
-
-	ThunderboltActionSniper: {
-		// DisplayName: Thunderbolt-Action sniper
-		// Tooltip: ""
 	}
 }
 

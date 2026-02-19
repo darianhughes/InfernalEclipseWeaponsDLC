@@ -9,20 +9,20 @@ using Terraria.DataStructures;
 using Terraria.Audio;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.RangedPro.Void;
 using SOTS.Void;
+using CalamityMod.Items.Materials;
+using SOTS.Items.Celestial;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
 {
+    [JITWhenModsEnabled("SOTS")]
     [ExtendsFromMod("SOTS")]
     public class ThunderboltActionSniperVoid : VoidItem
     {
-        // Recipe needed
-        // Balance needed
-        // Needs a description
         public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Ranged/Void/ThunderboltActionSniper";
         public override bool IsLoadingEnabled(Mod mod) => ModLoader.HasMod("SOTS");
         public override void SafeSetDefaults()
         {
-            Item.damage = 900;
+            Item.damage = 2990;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 60;
             Item.useAnimation = 60;
@@ -31,18 +31,16 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
             Item.knockBack = 6f;
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
             Item.rare = ModContent.RarityType<Turquoise>();
-            Item.autoReuse = false;
+            //Item.autoReuse = false;
             Item.shoot = ModContent.ProjectileType<VoidBolt>();
             Item.shootSpeed = 6f;
-            Item.ammo = AmmoID.Bullet;
+            Item.useAmmo = AmmoID.Bullet;
             Item.width = 120;
-            Item.height = 34;
+            Item.height = 3;
+            Item.crit = 30;
         }
-        public override int GetVoid(Player player)
-        {
-            // I don't play void. I have no idea how much this should be.
-            return 1;
-        }
+        public override int GetVoid(Player player) => 20;
+
         public override Vector2? HoldoutOffset() => new Vector2(-25, -2f);
         public override void HoldItem(Player player) => player.scope = true;
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -63,9 +61,19 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged.Void
             SoundEngine.PlaySound(CommonCalamitySounds.LargeWeaponFireSound with { Volume = 10f }, player.position);
             SoundEngine.PlaySound(SoundID.Thunder with { Volume = 10f }, player.position);
 
-            //    Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<VoidBolt>(), damage, knockback, player.whoAmI);
 
-            return true;
+            return false;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ItemID.SniperRifle)
+                .AddIngredient<SanguiteBar>(15)
+                .AddIngredient<ArmoredShell>(3)
+                .AddTile(TileID.LunarCraftingStation)
+                .Register();
         }
     }
 }
