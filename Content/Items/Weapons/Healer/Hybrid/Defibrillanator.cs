@@ -229,7 +229,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
             Projectile.damage = 0;
             Projectile.friendly = false;
             Projectile.hostile = false;
-            Projectile.timeLeft = 10;
+            Projectile.timeLeft = 14;
         }
 
         public override void AI()
@@ -348,7 +348,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 10;
+            Projectile.timeLeft = 14;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 30;
         }
