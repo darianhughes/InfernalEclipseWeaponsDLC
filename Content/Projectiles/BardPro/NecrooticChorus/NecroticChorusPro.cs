@@ -34,6 +34,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
             Projectile.penetrate = 1;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 30;
         }
 
         private bool spawned;

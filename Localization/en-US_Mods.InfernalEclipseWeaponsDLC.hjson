@@ -56,7 +56,7 @@ Items: {
 		DisplayName: Necrotic Chorus
 		Tooltip:
 			'''
-			Summons wisps that home onto foes
+			Summons up to 10 wisps that home onto foes
 			Right Click for an alternate blood spit attack
 			'''
 	}
