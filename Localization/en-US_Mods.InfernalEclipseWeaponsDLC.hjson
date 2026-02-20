@@ -272,7 +272,7 @@ Items: {
 		Tooltip:
 			'''
 			Shoots a spread of 3 plasma beams 
-			Hold right Click to charge a large damaging sound wave
+			Hold Right Click to charge a large damaging sound wave
 			[c/1FFBFF:'I once tried creating instruments that had to power to deal damage.]
 			[c/1FFBFF:This happens to be one of them, however these weapons were never mass produced]
 			[c/1FFBFF:because the Tyrant's army couldn't play them']
@@ -517,7 +517,7 @@ Items: {
 		DisplayName: Tetherblade
 		Tooltip:
 			'''
-			Throw the blade towards the cursor by right Clicking
+			Throw the blade towards the cursor by Right Clicking
 			The blade will linger for a few seconds after throwing it
 			Right Click again to teleport to the blade before the blade disapears
 			After teleporting the blade will stab at all nearby enemies, dealing tripple damage
@@ -621,7 +621,7 @@ Items: {
 
 	MiniaturizedRequiemEngine: {
 		DisplayName: Miniaturized Requiem Engine
-		Tooltip: Has three modes of fire that can be cycled between on right Click
+		Tooltip: Has three modes of fire that can be cycled between on Right Click
 	}
 
 	MagicPurpleBouncyBalls: {
