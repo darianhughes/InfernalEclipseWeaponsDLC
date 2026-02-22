@@ -29,7 +29,7 @@ Items: {
 	}
 
 	BirbSaxophone: {
-		DisplayName: Передатчик бёрба
+		DisplayName: Бёрбксофон
 		Tooltip: "'Призовите силу Бамблбёрба!'"
 	}
 
@@ -82,8 +82,8 @@ Items: {
 				DisplayName: Кинжал мотылькового крыла
 				Tooltip:
 					'''
-					Бросает крылатый кинжал, с лёгким самонаведением
-					При скрытном ударе снаряды создают светящиеся болты
+					Бросает крылатый кинжал, с лёгким наведением
+					При скрытном ударе снаряды создают светящиеся искры
 					'''
 			}
 		}
@@ -97,8 +97,8 @@ Items: {
 	GrandThunderWhip: {
 		Tooltip:
 			'''
-			5 урона от метки призывателя
-			При попадании накладывает дебафф «{$BuffName.Electrified}»
+			5 ед. урона от метки призывателя
+			При попадании накладывает дебафф [cbuff:Electrified]
 			'''
 		DisplayName: Великий громовой хлыст
 	}
@@ -123,7 +123,7 @@ Items: {
 		Tooltip:
 			'''
 			Мундштук Восстановленной протяжённой речи
-			Пермафрост в своих рассказах упоминал про свои встречи с племенем Яхщеров
+			Пермафрост в своих рассказах упоминал про свои встречи с племенем яхщеров
 			Возможно, ему что-то известно
 			'''
 	}
@@ -184,12 +184,12 @@ Items: {
 	}
 
 	ButchersBloodmaker: {
-		DisplayName: Создатель крови мясника
+		DisplayName: Кроводел мясника
 		Tooltip:
 			'''
-			Выпускает веер из пуль и слегка наводящуюся кровавую стрелу
-			Нажмите ПКМ, чтобы потребить 50 ед. здоровья, впадая в Кровавую ярость на 10 секунд
-			Кровавая ярость увеличивает урон создателя крови на 25%, а кровавые стрелы накладывают дебафф «{$CalamityMod.Buffs.BurningBlood.DisplayName}»
+			Выпускает разброс из пуль и слегка наводящуюся кровавую стрелу
+			При нажатии ПКМ, расходует 50 ед. здоровья, впадая в кровавую ярость на 10 секунд
+			Кровавая ярость увеличивает урон кроводела на 25%, а кровавые стрелы накладывают дебафф [cbuff:CalamityMod/BurningBlood]
 			'''
 	}
 
@@ -200,7 +200,7 @@ Items: {
 
 	ListoftheDamned: {
 		DisplayName: Список проклятых
-		Tooltip: Выпускает веер из 6 душ, которые спустя некоторое время разрываются вперёд, нанося двойной урон
+		Tooltip: Выпускает разброс из 6 душ, которые спустя некоторое время разрываются вперёд, нанося двойной урон
 	}
 
 	AirPodShawty: {
@@ -231,14 +231,14 @@ Items: {
 		Tooltip:
 			'''
 			Выпускает из сосуда души ночи и света
-			Души ночи наводятся на врагов, наносят урон и накладывают дебафф «{$Buffs.ShadowFlame}»
+			Души ночи наводятся на врагов, наносят урон и накладывают дебафф [cbuff:CalamityMod/Shadowflame]
 			Души света наводятся на союзников и исцеляют их, восстанавливая здоровье на сумму, равное бонусу к лечению
 			'''
 	}
 
 	SandSlasher: {
 		DisplayName: Шанти ушедших морей
-		Tooltip: При отскоке создаёт небольшие песчаные смерчи
+		Tooltip: При отскоке создаёт небольшие песчаные торнадо
 	}
 
 	DeepseaTrident: {
@@ -272,10 +272,10 @@ Items: {
 	PlasmaOcarina: {
 		Tooltip:
 			'''
-			Выпускает веер из 3 плазменных лучей
+			Выпускает разброс из 3 плазменных лучей
 			Удерживайте ПКМ, чтобы зарядить мощную звуковую волну
 			[c/1FFBFF:'Я как-то пытался создавать инструменты, способные наносить урон.]
-			[c/1FFBFF:Это один из них, однако серийное производство так и не наладили]
+			[c/1FFBFF:Это один из них, однако массовое производство так и не наладили]
 			[c/1FFBFF:поскольку армия Тирана не могла на них играть']
 			'''
 		DisplayName: Плазменная окарина
@@ -295,17 +295,17 @@ Items: {
 		Tooltip:
 			'''
 			Стреляет самонаводящимися сверхзаряженными молниями
-			Нажмите ПКМ, чтобы выпустить исцеляющие разряды, расходуя  ману
+			Нажмите ПКМ, чтобы выпустить исцеляющие разряды, расходуя ману
 			'''
 	}
 
 	ArckaneStaff: {
 		Tooltip: Создаёт перегруженный заряд нестабильных элементов
-		DisplayName: Посох аркейна
+		DisplayName: Чародейский посох
 	}
 
 	MystickStaff: {
-		DisplayName: Мистический Посох
+		DisplayName: Мистический посох
 		Tooltip:
 			'''
 			Создаёт сверхмощный заряд всех известных стихий
@@ -317,9 +317,9 @@ Items: {
 		DisplayName: Мрачный переключатель
 		Tooltip:
 			'''
-			Скорострельный ПП, который выпускает отскакивающий проклятый пламенем каждые 15 выстрелов
-			Нажмите ПКМ, чтобы расходовать 200 маны, входя в Мрачный рывок на 10 секунд
-			Мрачный Рывок увеличивает скорость передвижения на 25% и уменьшает разброс выстрелов, пока оружие в руках
+			Скорострельный ПП, который выпускает отскакивающее проклятое пламя каждые 15 выстрелов
+			При нажатии ПКМ, расходует 200 маны, входя в мрачный прорыв на 10 секунд
+			Мрачный прорыв увеличивает скорость передвижения на 25% и уменьшает разброс выстрелов, пока оружие в руках
 			'''
 	}
 
@@ -329,11 +329,11 @@ Items: {
 			Извергает шары серной магии, образующие звездообразный узор
 			'Думаешь, только ведьма может читать такие заклинания?'
 			'''
-		DisplayName: Ауритовый серноогненный посох
+		DisplayName: Ауритовый серно-огненный посох
 	}
 
 	CataclysmicGauntletVoid: {
-		DisplayName: Катаклизмическая перчатка
+		DisplayName: Катаклизмическая рукавица
 		Tooltip:
 			'''
 			Наполняет ваши удары серной энергией для ближних ударов с высоким уроном
@@ -343,7 +343,7 @@ Items: {
 	}
 
 	CataclysmicGauntlet: {
-		DisplayName: Катаклизмическая перчатка
+		DisplayName: Катаклизмическая рукавица
 		Tooltip:
 			'''
 			Наполняет ваши удары серной энергией для ближних ударов с высоким уроном
@@ -374,7 +374,7 @@ Items: {
 		DisplayName: Бесплодный сад
 		Tooltip:
 			'''
-			Нажмите ЛКМ, чтобы выпустить веер самонаводящихся, пробивающих и исцеляющих лепестков
+			Нажмите ЛКМ, чтобы выпустить разброс самонаводящихся, пробивающих и исцеляющих лепестков
 			Нажмите ПКМ, чтобы призвать большой замороженный лотос, который испускает чередующиеся разрушительные и исцеляющие энергии
 			Одновременно может быть активен только один замороженный лотос и длится он 30 секунд
 			'Так холодно, что кажется, будто лёгкие разрываются'
@@ -383,7 +383,7 @@ Items: {
 }
 
 Projectiles: {
-	TwoPathsPro.DisplayName: Два пути
+	TwoPathsPro.DisplayName: "{$Items.TwoPaths.DisplayName}"
 	BlackExplosion.DisplayName: Чёрный взрыв
 
 	Magic: {
@@ -391,35 +391,35 @@ Projectiles: {
 		HealingLightningArc.DisplayName: Целебная дуга молнии
 	}
 
-	TwoPathsPro2.DisplayName: Два пути
-	TheParallellPro.DisplayName: Параллель
-	BellBalladEleum.DisplayName: Баллада Колоколов: Элеум
-	BellBalladHavoc.DisplayName: Баллада Колоколов: Хаос
-	BellBalladSunlight.DisplayName: Баллада Колоколов: Солнечный Свет
-	BellBalladSunlightLaser.DisplayName: Луч Баллады Колоколов
-	BellBalladEleumBolt.DisplayName: Ледяной Снаряд Баллады Колоколов
-	BellBalladHavocSlash.DisplayName: Адский Удар Баллады Колоколов
-	SulfurSpirit.DisplayName: Серный Дух
-	DeepSeaDrawlPro.DisplayName: Глубинное Бурчание Про
+	TwoPathsPro2.DisplayName: "{$Items.TwoPaths.DisplayName}"
+	TheParallellPro.DisplayName: "{$Items.TheParallel.DisplayName}"
+	BellBalladEleum.DisplayName: Баллада о колокольчиках: Элеум
+	BellBalladHavoc.DisplayName: Баллада о колокольчиках: Хаос
+	BellBalladSunlight.DisplayName: Баллада о колокольчиках: Солнечный Свет
+	BellBalladSunlightLaser.DisplayName: Луч баллады о колокольчиках
+	BellBalladEleumBolt.DisplayName: Ледяной Снаряд баллады о колокольчиках
+	BellBalladHavocSlash.DisplayName: Адский Удар баллады о колокольчиках
+	SulfurSpirit.DisplayName: Сернистый Дух
+	DeepSeaDrawlPro.DisplayName: "{$Items.DeepSeaDrawl.DisplayName}"
 	HomingPlankton.DisplayName: Самонаводящийся Планктон
-	DeathsWhisperPro.DisplayName: Шёпот Смерти Про
-	BrimstoneHarpPro.DisplayName: Череп Адской Арфы
+	DeathsWhisperPro.DisplayName: "{$Items.DeathsWhisper.DisplayName}"
+	BrimstoneHarpPro.DisplayName: "{$Items.BrimstoneHarp.DisplayName}"
 	BirbSaxophonePro.DisplayName: Красная Молниеносная Перо
-	NecroticChorusPro.DisplayName: Некротический Хор Про
+	NecroticChorusPro.DisplayName: "{$Items.NecroticChoru.DisplayName}"
 	NecroticChorusWisp.DisplayName: Огонёк Некротического Хора
-	DeusFlutePro.DisplayName: Флейта Бога Про
-	DeusFluteStar.DisplayName: Звезда Флейты Бога
+	DeusFlutePro.DisplayName: "{$Items.DeusFlute.DisplayName}"
+	DeusFluteStar.DisplayName: Звезда Флейты звёздного ветра
 	CorrodedCanePro.DisplayName: Проржавевший Посох Про
 	CorrodedCaneShark.DisplayName: Серный Шаркрон
 	OcramKnifeProSickle.DisplayName: Серп Кинжала Окрама Про
 	OcramKnifeProBolt.DisplayName: Снаряд Кинжала Окрама Про
-	OcramKnifePro.DisplayName: Кинжал Окрама Про
+	OcramKnifePro.DisplayName: "{$Items.OcramKnife.DisplayName}"
 	TheBlightProSickle.DisplayName: Серп Чумы Про
 	TheBlightProServantLaser.DisplayName: Луч Слуги Чумы Про
 	TheBlightProServant.DisplayName: Слуга Чумы Про
 	TheBlightProScythe.DisplayName: Коса Чумы Про
-	GrandThunderWhipProjectile.DisplayName: Снаряд Великой Громовой Плети
-	SulfurExplosionPro.DisplayName: Серный Взрыв Про
+	GrandThunderWhipProjectile.DisplayName: "{$Items.GrandThunderWhip.DisplayName}"
+	SulfurExplosionPro.DisplayName: Сернистый Взрыв
 	HydrogenSulfideProj.DisplayName: Сероводородный Снаряд
 	LegacyProBolt.DisplayName: Наследие Про: Снаряд
 	LegacyProSickle.DisplayName: Наследие Про: Серп
@@ -487,7 +487,7 @@ Buffs: {
 
 	BloodRageBuff: {
 		DisplayName: Кровавая ярость
-		Description: Урон создателя крови увеличен на 25%, а кровавые стрелы накладывают дебафф «{$CalamityMod.Buffs.BurningBlood.DisplayName}»
+		Description: Урон кроводела увеличен на 25%, а кровавые стрелы накладывают дебафф [cbuff:CalamityMod/BurningBlood]
 	}
 }
 
