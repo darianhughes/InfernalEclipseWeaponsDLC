@@ -638,21 +638,21 @@ Items: {
 	}
 
 	ThunderboltActionSniperVoid: {
-		// DisplayName: Thunderbolt Action Sniper Rifle
-		/* Tooltip:
+		DisplayName: 雷霆战术狙击步枪
+		Tooltip:
 			'''
-			Shoots a lightning bolt imbued with void energy
-			Right click to zoom out
-			''' */
+			射出一束蕴含虚空能量的闪电
+			右键缩放视野
+			'''
 	}
 
 	ThunderboltActionSniper: {
-		// DisplayName: Thunderbolt-Action Sniper Rifle
-		/* Tooltip:
+		DisplayName: 雷霆战术狙击步枪
+		Tooltip:
 			'''
-			Shoots a lightning bolt imbued with void energy
-			Right click to zoom out
-			''' */
+			射出一束蕴含虚空能量的闪电
+			右键缩放视野
+			'''
 	}
 }
 
