@@ -309,17 +309,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
 
         public bool spawnedByAmplifier;
 
-        public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
+        public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (!spawnedByAmplifier)
-                return;
-
-            // Remove Electrified BEFORE Calamity sees it
-            int index = target.FindBuffIndex(BuffID.Electrified);
-            if (index != -1)
-                target.DelBuff(index);
-
-            target.Calamity().electrified = false;
+            if (projectile.type == ProjectileID.Electrosphere &&
+                projectile.ai[2] == 1f)
+            {
+                spawnedByAmplifier = true;
+            }
         }
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
@@ -327,21 +323,33 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
             if (!spawnedByAmplifier)
                 return;
 
-            if (target == null || !target.active)
-                return;
+            target.GetGlobalNPC<AmplifierNoElectrifiedGlobalNPC>().electrifiedBlockTimer = 6;
+        }
 
-            // Remove vanilla Electrified
-            int index = target.FindBuffIndex(BuffID.Electrified);
-            if (index != -1)
-                target.DelBuff(index);
+        public class AmplifierNoElectrifiedGlobalNPC : GlobalNPC
+        {
+            public override bool InstancePerEntity => true;
 
-            // Force Calamity bool off
-            if (ModLoader.TryGetMod("CalamityMod", out _))
+            public int electrifiedBlockTimer;
+
+            public override void ResetEffects(NPC npc)
             {
-                target.Calamity().electrified = false;
+                if (electrifiedBlockTimer > 0)
+                    electrifiedBlockTimer--;
             }
 
-            target.netUpdate = true;
+            public override void UpdateLifeRegen(NPC npc, ref int damage)
+            {
+                if (electrifiedBlockTimer <= 0)
+                    return;
+
+                int index = npc.FindBuffIndex(BuffID.Electrified);
+                if (index != -1)
+                    npc.DelBuff(index);
+
+                if (ModLoader.TryGetMod("CalamityMod", out _))
+                    npc.Calamity().electrified = false;
+            }
         }
     }
 }
