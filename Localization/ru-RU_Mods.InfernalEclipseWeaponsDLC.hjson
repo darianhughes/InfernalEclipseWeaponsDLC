@@ -516,9 +516,9 @@ Items: {
 		// DisplayName: Tetherblade
 		/* Tooltip:
 			'''
-			Throw the blade towards the cursor by right clicking
+			Throw the blade towards the cursor by Right Clicking
 			The blade will linger for a few seconds after throwing it
-			Right click again to teleport to the blade before the blade disapears
+			Right Click again to teleport to the blade before the blade disapears
 			After teleporting the blade will stab at all nearby enemies, dealing tripple damage
 			''' */
 	}
@@ -586,8 +586,8 @@ Items: {
 		// DisplayName: Grand Amplifier
 		/* Tooltip:
 			'''
-			Left click to fire a small thunderbolt that inflicts electrified
-			Right click to summon lightning above all nearby enemies with the electrified debuff
+			Left Click to fire a small thunderbolt that inflicts electrified
+			Right Click to summon lightning above all nearby enemies with the electrified debuff
 			This lightning will remove the electrified debuff but deal a burst of high damage
 			''' */
 	}
@@ -611,16 +611,16 @@ Items: {
 		/* Tooltip:
 			'''
 			Ignores 15 points of defence
-			Left click to swing the knife directionally, firing a high intensity slash of gamma radiation
+			Left Click to swing the knife directionally, firing a high intensity slash of gamma radiation
 			The slash will deal heavy damage at close range but dissipate as it travels
-			Right click to throw the knife, which will explode and return on collision with an enemy or tile
+			Right Click to throw the knife, which will explode and return on collision with an enemy or tile
 			The knife cannot be used while thrown
 			''' */
 	}
 
 	MiniaturizedRequiemEngine: {
 		// DisplayName: Miniaturized Requiem Engine
-		// Tooltip: Has three modes of fire that can be cycled between on right click
+		// Tooltip: Has three modes of fire that can be cycled between on Right Click
 	}
 
 	MagicPurpleBouncyBalls: {
@@ -637,8 +637,9 @@ Items: {
 		// DisplayName: Thunderbolt Action Sniper Rifle
 		/* Tooltip:
 			'''
-			Shoots a lightning bolt imbued with void energy
-			Right click to zoom out
+			Shoots a powerful, high velocity bullet
+			Also fires a lightning bolt imbued with void energy
+			Right Click to zoom out
 			''' */
 	}
 
@@ -646,8 +647,9 @@ Items: {
 		// DisplayName: Thunderbolt-Action Sniper Rifle
 		/* Tooltip:
 			'''
-			Shoots a lightning bolt imbued with void energy
-			Right click to zoom out
+			Shoots a powerful, high velocity bullet
+			Also fires a lightning bolt imbued with void energy
+			Right Click to zoom out
 			''' */
 	}
 }
