@@ -23,6 +23,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.BalladOfBells
             Projectile.timeLeft = 600;
             Projectile.tileCollide = false;
             Projectile.friendly = true;
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 40;
         }
 
         public override void AI()

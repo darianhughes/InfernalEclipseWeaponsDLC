@@ -97,7 +97,7 @@ Items: {
 	GrandThunderWhip: {
 		Tooltip:
 			'''
-			5点召唤标记伤害
+			3点召唤标记伤害
 			命中敌人时造成带电减益
 			'''
 		DisplayName: 惊雷鞭
@@ -383,6 +383,342 @@ Items: {
 			“冷彻心肺，如坠冰渊”
 			'''
 	}
+
+	FroststeelGong: {
+		DisplayName: 寒钢律钟
+		Tooltip:
+			'''
+			允许你富有节奏地敲响律钟
+			成功在计时区域击中3次会向四周释放8道寒冰冲击
+			成功在计时区域击中会不断增加它的伤害和咒音增幅等级
+			错失节拍会大幅降低这些加成并消耗10点灵感值
+			这些加成在切换武器后仍会保留，但若不是你激活的武器，加成会逐渐消散
+			'''
+	}
+
+	EclipseBreastplate: {
+		DisplayName: 蚀日胸甲
+		Tooltip:
+			'''
+			降低20%非光辉伤害
+			增加20%光辉伤害
+			增加8%光辉暴击率
+			增加5%的治疗量和光辉施法速度
+			增加15%伤害减免
+			治疗法术会额外治疗3点生命值
+			'''
+	}
+
+	EclipseGreaves: {
+		DisplayName: 蚀日护腿
+		Tooltip:
+			'''
+			降低16%非光辉伤害
+			增加16%光辉伤害
+			增加4%光辉暴击率
+			减少15%魔力消耗
+			增加20%移动速度
+			治疗法术会额外治疗3点生命值
+			'''
+	}
+
+	EclipseHelm: {
+		DisplayName: 蚀日头盔
+		Tooltip:
+			'''
+			降低16%非光辉伤害
+			增加16%光辉伤害
+			增加3%光辉暴击率
+			生命再生会更快开始
+			治疗法术会额外治疗2点生命值
+			'''
+		SetBonus:
+			'''
+			召唤一轮日食为你而战
+			当附近有敌怪时，日食会发射光暗粒子攻击
+			光粒子会追踪并按额外治疗量治疗附近的队友
+			暗粒子会追踪并对敌怪造成伤害
+
+			'''
+	}
+
+	NecrosingerAnkles: {
+		DisplayName: 骸语缠踝
+		Tooltip:
+			'''
+			增加10%音波伤害
+			增加5%音波暴击率
+			增加20%移动速度
+			'''
+	}
+
+	NecrosingerRibs: {
+		DisplayName: 骸语嵌肋
+		Tooltip:
+			'''
+			增加14%音波伤害
+			增加5%音波暴击率
+			增加10%灵感音符掉落概率
+			增加3秒音波咒音增幅持续时间
+			'''
+	}
+
+	NecrosingerSkull: {
+		DisplayName: 骸语颅冠
+		Tooltip:
+			'''
+			增加5%音波伤害
+			增加10%音波演奏速度
+			增加5%音波暴击率
+			增加15%灵感值再生速率
+			'''
+		SetBonus:
+			'''
+			音符将环绕你盘旋，每个音符可抵挡一次射弹后碎裂
+			音符碎裂后，5秒将再次生成
+			'''
+	}
+
+	SuperCellCirclet: {
+		DisplayName: 迦楼罗金箍
+		Tooltip: 增加5%盗贼伤害
+		SetBonus:
+			'''
+			未装备翅膀时获得基础飞行能力
+			最大技巧值增加2
+			+110点最大潜行值
+			'''
+	}
+
+	SuperCellGuard: {
+		DisplayName: 迦楼罗护胄
+		Tooltip:
+			'''
+			增加10%盗贼伤害
+			增加20%盗贼攻速
+			提高30%盗贼弹幕速度
+			增加15%飞行时间
+			'''
+	}
+
+	SuperCellSabatons: {
+		DisplayName: 迦楼罗胫靴
+		Tooltip:
+			'''
+			增加5%盗贼伤害
+			增加10%盗贼暴击率
+			增加30%移动速度
+			'''
+	}
+
+	ShadowflameAxe: {
+		DisplayName: 影焰处刑斧
+		Tooltip: 每三次攻击会释放一次追踪的暗影焰
+	}
+
+	TetherBlade: {
+		DisplayName: 锚定之刃
+		Tooltip:
+			'''
+			右键将刀刃投掷到光标位置
+			刀刃将在原地停留数秒
+			刀刃消失前再次右键可瞬移至其位置
+			瞬移后刀刃将刺击附近所有敌怪，造成三倍伤害
+			'''
+	}
+
+	LightChain: {
+		DisplayName: 光缚链
+		Tooltip:
+			'''
+			点击敌人可将其与自身以光链相连
+			光链每秒造成一次伤害
+			若与被链接的目标距离过远，光链将断裂
+			最多可同时链接3个敌人
+			'''
+	}
+
+	StormCrossbow: {
+		DisplayName: 裂风弩
+		Tooltip: 将木箭转化为在敌怪之间弹射的风暴箭
+	}
+
+	ObsidianSickle: {
+		DisplayName: 黑曜石镰刀
+		Tooltip:
+			'''
+			发射一柄黑暗镰刃
+			“不是人工智能，是纯粹的蠢货”
+			'''
+	}
+
+	StarScepter: {
+		DisplayName: 星辰权杖
+		Tooltip:
+			'''
+			召唤最多5颗星辰环绕自身
+			每颗星辰将持续攻击最近的敌怪，并优先锁定Boss
+			'''
+	}
+
+	IlluminantCross: {
+		DisplayName: 辉光圣十字
+		Tooltip:
+			'''
+			在光标位置蓄积一股辉光
+			蓄力将大幅提高辉光的范围与伤害
+			蓄力满释放时将额外发射3枚辉光弹并治疗友方
+			'''
+	}
+
+	GlowstringBiwa: {
+		DisplayName: 辉弦琵琶
+		Tooltip: 发射两枚由光弦相连的辉光球
+	}
+
+	StormCarver: {
+		DisplayName: 风暴雕刻者
+		Tooltip:
+			'''
+			这把镰刀是定向挥舞而不是旋转
+			从被命中的物块中刻出风暴
+			“击碎大地！”
+			'''
+	}
+
+	GrandAmplifier: {
+		DisplayName: 雷鸣调谐叉
+		Tooltip:
+			'''
+			左键发射一道雷击，造成带电减益
+			右键在附近所有带电目标的上方召唤落雷
+			落雷将移除带电状态，并造成一次高额爆发伤害
+			'''
+	}
+
+	PocketConcert: {
+		DisplayName: 机械增强电音蝌蚪
+		Tooltip:
+			'''
+			释放多种不同颜色的音符
+			音符将根据其颜色造成不同的减益
+			每拥有一种2级或以上的咒音增幅效果，会额外释放一枚音符
+			[c/1FFBFF:我曾被派去寻找那个自称“追猎者”的战士团体]
+			[c/1FFBFF:他们向我展示了一件奇怪的乐器，形如音符，却长着一张嘴]
+			[c/1FFBFF:尽管这东西十分怪异，我仍设法将其改造成了一件武器，其威力会随着使用者所拥有的其他强化数量而增强]
+			[c/1FFBFF:不过，这也迫使我将它的体型制造得远比原本的乐器更为庞大]
+			'''
+	}
+
+	GammaKnife: {
+		DisplayName: 伽马镰刃
+		Tooltip:
+			'''
+			无视15点防御力
+			左键定向挥舞镰刃，释放一道高强度伽马辐射斩击
+			斩击在近距离造成极高伤害，但会随飞行距离逐渐衰减
+			右键投掷镰刃，命中敌人或物块时爆炸并返回
+			镰刃被投掷期间无法再次使用
+			'''
+	}
+
+	MiniaturizedRequiemEngine: {
+		DisplayName: 微型安魂引擎
+		Tooltip: 右键可切换三种不同的射击模式
+	}
+
+	MagicPurpleBouncyBalls: {
+		DisplayName: 魔紫弹跳球No.27
+		Tooltip: “27次同时发生的错误，在紫色能量中嗡鸣”
+	}
+
+	GarudaWings: {
+		DisplayName: 迦楼罗之翼
+		Tooltip: “神祇坐骑之翼”
+	}
+
+	ThunderboltActionSniperVoid: {
+		DisplayName: 雷霆战术狙击步枪
+		Tooltip:
+			'''
+			射出一束蕴含虚空能量的闪电
+			右键缩放视野
+			'''
+	}
+
+	ThunderboltActionSniper: {
+		DisplayName: 雷霆战术狙击步枪
+		Tooltip:
+			'''
+			射出一束蕴含虚空能量的闪电
+			右键缩放视野
+			'''
+	}
+}
+
+ItemTooltip: {
+	DuesFluteLore: 他们找到了星辉瘟疫的源头。为了将其毁灭，他们将星核献奉于被污染的祭坛之上。
+	DuesFluteLore2: 然而，祭坛却作出了意想不到的反应……两道光辉相互碰撞，直冲苍穹，在头顶撕开一条裂隙。
+	DuesFluteLore3: 异界之物从裂隙中涌出。在他们惊叹之际，星辰的仆从已经迎面冲来。
+	UniversalLore1: 柯斯的最后一击消散了，招数已尽，败局已定。但是蚀光会拒绝落败。
+	UniversalLore2: 榨干灵魂中仅存的余力，他召唤出了真正的弑神凶灵——神明吞噬者。
+	ParallelLore1: 正如他所料，他们击败了风暴编织者。但柯斯还有一计。
+	ParallelLore2: 忽然间，在没有任何预警的情况下，众人被传送至镜像领域。他的第二位仆从现身于虚无之中——神之使徒，西格纳斯。
+	TwoSideLore1: 祂征服了诸神黄昏。祂瓦解了蚀光会。祂平息了史莱姆季风。
+	TwoSideLore2: 当祂立于无穷的边缘，仁方才问到：“你将行何路？”
+	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲
+	NeonRipperLore2: 借此他打造了两件武器：第一件是一柄能够吸收灵气的镰刀，正如卡米的能力一般。
+	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
+	SearingSpearTip: 150% 基础伤害
+	ArcticSpearTip: 115% 基础伤害
+	VerveineItem: “来自兰花的祝福之物……”
+	EngineGatling:
+		'''
+		加特林模式：
+		持续射击将逐渐降低武器散布，并提高射速，直至上限
+		子弹最多可穿透4次
+		'''
+	EngineGatlingMode: 加特林
+	EngineLaser:
+		'''
+		激光模式：
+		发射可无限穿透的激光，并在路径上留下持续伤害
+		激光最多可在物块间反弹3次
+		'''
+	EngineLaserMode: 激光
+	EngineTheBigOne:
+		'''
+		“大先生”模式：
+		发射一枚压缩能量构成的巨大能量球，并在一段时间后引爆
+		引爆时，越接近中心的敌人将受到越高伤害
+		同一时间只能存在一枚“大先生”
+		'''
+	EngineTheBigOneMode: 大先生
+	Playtester: -测试者物品-
+	Contributor: -贡献者物品-
+	Donor: -捐赠者物品-
+	DedTo: -献给{0}-
+
+	Dedicated: {
+		Akira: Akira
+		WH: WardrobeHummus
+		Advantaje: Advantaje
+		Tyr: Tyr
+		Soltan: Soltan
+		bryce: bryce27
+		eviil81: evil81
+		rose: rosé
+		Jill: JillyFish
+		Eduarrdo: Eduarrdo
+		Mae: ma3allim
+		Yob: Yob
+		Pudding: Pudd1ng
+		Ropro: Ropro0923
+		cheese: cheesenuggets
+		Puzzles: Mr. Puzzles
+		cat: StarlightCat
+		Goldsock: Goldsockz2
+	}
 }
 
 Projectiles: {
@@ -392,6 +728,7 @@ Projectiles: {
 	Magic: {
 		WhiteScythe.DisplayName: 洁白之镰
 		HealingLightningArc.DisplayName: 治疗性电弧
+		DamagingLightningArc.DisplayName: 伤害性电弧
 	}
 
 	TwoPathsPro2.DisplayName: 神冥歧径
@@ -475,6 +812,41 @@ Projectiles: {
 	BarrenGardenProHoming.DisplayName: 霜莲寒苑追踪弹幕
 	MothwingDaggerPro.DisplayName: 蛾翼短刀
 	IlluminantBolt.DisplayName: 荧光飞弹
+	FroststeelPulse.DisplayName: 霜钢脉冲
+	LightChainProjectile.DisplayName: 光链
+	StarScepterBolt.DisplayName: 星辰权杖弹
+	StarScepterStar.DisplayName: 星辰权杖星体
+	ObsidianSickleProjectile.DisplayName: 黑曜镰刀
+	ShadowflameAxeBolt.DisplayName: 暗焰处刑斧
+	ShadowflameAxeProjectile.DisplayName: 暗焰处刑斧
+	TetherBladeProjectile.DisplayName: 牵锚刃
+	TetherBladeProjectileBlink.DisplayName: 牵锚刃瞬移
+	StormCrossbowArrow.DisplayName: 裂风弩箭矢
+	IlluminantCrossPro.DisplayName: 辉耀圣十字
+	GlowstringBiwaPro.DisplayName: 辉弦琵琶
+	GlowstringBeam.DisplayName: 辉弦光束
+	StormTalonPro.DisplayName: 风暴利爪
+	StormCarverPro.DisplayName: 风暴雕刻者
+	GrandAmplifierPro.DisplayName: 雷鸣调谐叉
+	GrandAmplifierPro2.DisplayName: 雷鸣调谐叉
+	MusicalNoteProjectile.DisplayName: 音符
+	GammaExplosionProjectile.DisplayName: 伽马爆炸
+	GammaKnifeProjectile.DisplayName: 伽马镰
+	GammaKnifeThrownProjectile.DisplayName: 伽马镰投掷
+	GammaSlashProjectile.DisplayName: 伽马斩击
+	GrandAmplifierLightning.DisplayName: 雷鸣调谐叉落雷
+	MiniaturizedRequiemEngineGatlingPro.DisplayName: 微型安魂引擎加特林弹幕
+	MiniaturizedRequiemEngineLaserPro.DisplayName: 微型安魂引擎激光弹幕
+	MiniaturizedRequiemEngineTheBigOnePro.DisplayName: 微型安魂引擎大先生弹幕
+	MiniaturizedRequiemEngineLaserPro2.DisplayName: 微型安魂引擎激光弹幕
+	MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: 微型安魂引擎大先生弹幕
+	MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: 微型安魂引擎大先生弹幕
+	NecrosingerNote.DisplayName: 骸语音符
+	MagicPurpleBouncyBall.DisplayName: 魔法紫色弹跳球
+	EclipseEclipse.DisplayName: 日食蚀日
+	CatastrophicLongbladeHoldout.DisplayName: 灾难长刃
+	CatastrophicLongbladeHoldoutVoid.DisplayName: 灾难长刃
+	VoidBolt.DisplayName: 虚空雷霆
 }
 
 Buffs: {
@@ -494,19 +866,33 @@ Buffs: {
 	}
 }
 
-ItemTooltip: {
-	DuesFluteLore: 他们找到了星辉瘟疫的源头。为了将其毁灭，他们将星核献奉于被污染的祭坛之上。
-	DuesFluteLore2: 然而，祭坛却作出了意想不到的反应……两道光辉相互碰撞，直冲苍穹，在头顶撕开一条裂隙。
-	DuesFluteLore3: 异界之物从裂隙中涌出。在他们惊叹之际，星辰的仆从已经迎面冲来。
-	UniversalLore1: 柯斯的最后一击消散了，招数已尽，败局已定。但是蚀光会拒绝落败。
-	UniversalLore2: 榨干灵魂中仅存的余力，他召唤出了真正的弑神凶灵——神明吞噬者。
-	ParallelLore1: 正如他所料，他们击败了风暴编织者。但柯斯还有一计。
-	ParallelLore2: 忽然间，在没有任何预警的情况下，众人被传送至镜像领域。他的第二位仆从现身于虚无之中——神之使徒，西格纳斯。
-	TwoSideLore1: 祂征服了诸神黄昏。祂瓦解了蚀光会。祂平息了史莱姆季风。
-	TwoSideLore2: 当祂立于无穷的边缘，仁方才问到：“你将行何路？”
-	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲
-	NeonRipperLore2: 借此他打造了两件武器：第一件是一柄能够吸收灵气的镰刀，正如卡米的能力一般。
-	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
-	SearingSpearTip: 150% 基础伤害
-	ArcticSpearTip: 115% 基础伤害
+Configs: {
+	WeaponConfig: {
+		DisplayName: 武器配置
+
+		Headers: {
+			VerveineWeapons: Verveine的武器
+			General: 通用
+		}
+
+		AIGenedWeapons: {
+			Label: AI生成的武器概念
+			Tooltip: 切换是否加载Verveine的《Which AI Makes the Best Terraria Weapons?》中生成的 AI 武器概念
+		}
+
+		GitGudWeapon: {
+			Label: GitGudWO的武器概念
+			Tooltip: 切换是否加载来自Verveine的《Which AI Makes the Best Terraria Weapons?》中由GitGudWO制作的武器概念
+		}
+
+		EnableScreenEffects: {
+			Label: 启用屏幕特效
+			Tooltip: ""
+		}
+
+		UnfinishedContent: {
+			Label: 未完成内容
+			Tooltip: ""
+		}
+	}
 }

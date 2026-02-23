@@ -6,15 +6,15 @@ The Infernal Eclipse of Ragnarok: Weapon DLC is a mod that aims to fill in the w
 
 It currently adds the following:
 [list]
-	[*] 1 Melee weapon
-	[*] 2 Ranged weapons
-	[*] 2 Mage weapons
+	[*] 6 Melee weapons
+	[*] 4 Ranged weapons
+	[*] 7 Mage weapons
 	[*] 1 Summoner weapon
 	[*] 2 Rogue/Thrower weapons
-	[*] 18 Bard weapons
-	[*] 10 Healer weapons
+	[*] 21 Bard weapons
+	[*] 14 Healer weapons
 	[*] 2 Multi-class weapons
-	[*] 2 accessories
+	[*] 3 accessories
 [/list]
 
 For more information on the weapons added by this mod, check out the official [url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/Weapons_(Weapons_DLC)] wiki![/url]
@@ -35,7 +35,7 @@ Also check out:
 
 If you want to support the development team, see our pateron page: https://www.patreon.com/c/InfernalEclipseofRagnarokTeam
 
-Special thanks to Feldy & TacoConKvass for helping develop some of this mods items, [url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen[/url] for the heavy scythe & scythe throwing code & Pil for some of the mods sprites!
+Special thanks to [url=https://steamcommunity.com/id/skitter5] Feldy[/url], [url=https://steamcommunity.com/id/taco_con_kvass] TacoConKvass[/url], [url=https://steamcommunity.com/profiles/76561199098100065/myworkshopfiles/?appid=1281930] KainSett[/url], and [url=https://steamcommunity.com/profiles/76561198041992238] Verveine[/url] for helping develop some of this mods items, [url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen[/url] for the heavy scythe & scythe throwing code & Pil for some of the mods sprites!
 
 Simplified Chinese localization done by [url=https://steamcommunity.com/id/426875391/] Pudd1ng[/url].
 Russion localization done by Aizen522.

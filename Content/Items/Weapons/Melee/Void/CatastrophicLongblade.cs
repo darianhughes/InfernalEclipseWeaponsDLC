@@ -9,55 +9,47 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernalEclipseWeaponsDLC.Core;
-using System.Reflection;
-using System;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
 {
-    public sealed class BladeSwingState : ModPlayer
-    {
-        public int swingDirection = 1;
-        public int useDirection = 1;
-        public float useRotation = 0f;
-        public bool pendingShoot = false;
-
-        public override void ResetEffects()
-        {
-        }
-    }
-
     public class CatastrophicLongblade : ModItem
     {
-        private static bool VanillaShoot;
-        private static readonly MethodInfo MiItemCheckShoot = typeof(Player).GetMethod("ItemCheck_Shoot", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
         public override bool IsLoadingEnabled(Mod mod)
         {
             return !ModLoader.HasMod("SOTS");
         }
+
         public override void SetDefaults()
         {
             Item.width = 85;
             Item.height = 86;
             Item.damage = 9250;
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 48;
-            Item.useAnimation = 48;
-            Item.useTurn = true;
+
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useTime = 49;
+            Item.useAnimation = 49;
+
+            Item.noUseGraphic = true;
+            Item.noMelee = true;
+            Item.channel = true;
+
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 9f;
             Item.autoReuse = true;
-            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
-            Item.rare = ModContent.RarityType<CosmicPurple>();
-            Item.UseSound = new Terraria.Audio.SoundStyle("CalamityMod/Sounds/Item/ExobladeBeamSlash");
-            Item.shoot = ModContent.ProjectileType<SupremeCatastropheSlash>();
 
-            Item.shootSpeed = 5f;
+            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
+
+            Item.shoot = ModContent.ProjectileType<CatastrophicLongbladeHoldout>();
+            Item.shootSpeed = 0f;
         }
 
         public override bool CanUseItem(Player player)
         {
-            if (InventoryHelperMethods.HasNeighborItem(player, Item.type, ModContent.ItemType<CataclysmicGauntlet>()))
+            if (InventoryHelperMethods.HasNeighborItem(
+                player,
+                Item.type,
+                ModContent.ItemType<CataclysmicGauntlet>()))
             {
                 Item.useTime = 24;
                 Item.useAnimation = 24;
@@ -67,11 +59,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
                 Item.useTime = 48;
                 Item.useAnimation = 48;
             }
+
             return base.CanUseItem(player);
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            /*
             bool nextTo = InventoryHelperMethods.HasNeighborItem(player, Item.type, ModContent.ItemType<CataclysmicGauntlet>());
             if (nextTo)
             {
@@ -99,6 +93,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
             {
                 Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, Main.rand.Next(0, 2));
             }
+            */
+            if (!player.ownedProjectileCounts[type].Equals(0))
+                return false;
+
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             return false;
         }
 
@@ -112,6 +111,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)
         {
+            /*
             var state = player.GetModPlayer<BladeSwingState>();
 
             if (player.itemAnimation == player.itemAnimationMax)
@@ -160,6 +160,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
                 player.itemRotation + MathHelper.ToRadians(-135f * state.useDirection));
 
             base.UseStyle(player, heldItemFrame);
+            */
         }
     }
 }

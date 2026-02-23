@@ -34,7 +34,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
             Item.knockBack = 10f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.rare = ModContent.RarityType<CosmicPurple>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.shootSpeed = 5f;
             Item.shoot = ModContent.ProjectileType<SupremeCataclysmFist>();

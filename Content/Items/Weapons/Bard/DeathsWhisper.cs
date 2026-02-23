@@ -43,6 +43,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.useAnimation = 60;
             Item.knockBack = 1.5f;
             Item.damage = 5175;
+            Item.crit = 16;
             Item.shootSpeed = 22f;
 
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
