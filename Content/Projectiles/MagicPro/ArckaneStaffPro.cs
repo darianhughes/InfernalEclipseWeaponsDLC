@@ -55,7 +55,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
                 target.AddBuff(thor.Find<ModBuff>("MagickStaffDebuff").Type, 300, false);
             }
 
-            if (!target.IsHostile()) Main.player[Projectile.owner].statLife += 5;
+            if (target.IsHostile())
+            {
+                Player player = Main.player[Projectile.owner];
+                player.statLife += 5;
+                if (player.statLife > player.statLifeMax2)
+                    player.statLife = player.statLifeMax2;
+                player.HealEffect(5, true);
+            }
 
             //Arckane Staff Debuffs
             target.AddBuff(BuffID.CursedInferno, 300, false);

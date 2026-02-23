@@ -15,8 +15,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.BarrenGarden
 
         public override void SetDefaults()
         {
-            Projectile.width = 70;
-            Projectile.height = 164;
+            Projectile.width = 58;
+            Projectile.height = 74;
 
             // Draw adjustments — anchor from bottom center properly
             DrawOriginOffsetY = 1; // Move origin up to match bottom alignment

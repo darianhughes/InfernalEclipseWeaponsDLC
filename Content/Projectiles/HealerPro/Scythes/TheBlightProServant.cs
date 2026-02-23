@@ -1,4 +1,4 @@
-﻿using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
+﻿using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

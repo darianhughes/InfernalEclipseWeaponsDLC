@@ -57,12 +57,19 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(0, 0);
+            return new Vector2(-5, 5);
         }
 
         public override void HoldItemFrame(Player player)
         {
-            player.itemLocation += new Vector2(0, 0f) * player.Directions;
+            player.itemLocation += new Vector2(-5, 5f) * player.Directions;
+        }
+
+        public override void UseStyle(Player player, Rectangle heldItemFrame)
+        {
+            Vector2 offset = new Vector2(-5, 5f) * player.Directions;
+
+            player.itemLocation += offset;
         }
 
         public override void AddRecipes()

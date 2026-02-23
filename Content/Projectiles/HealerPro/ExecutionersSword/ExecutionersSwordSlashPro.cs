@@ -12,6 +12,7 @@ using ThoriumMod.Items.HealerItems;
 using CalamityMod.Buffs.DamageOverTime;
 using InfernalEclipseWeaponsDLC.Utilities;
 using System.Collections.Generic;
+using Terraria.Enums;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword
 {
@@ -90,6 +91,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                 dust.fadeIn = 0.5f + Main.rand.NextFloat() * 0.3f;
             }
 
+            DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
+            CutTiles();
 
             // Light at tip
             Lighting.AddLight(Projectile.Center, 0.8f, 0.7f, 0.2f);
@@ -112,6 +115,30 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             return Utils.IntersectsConeSlowMoreAccurate(targetHitbox, Projectile.Center, coneLength, coneRot, maxAngle);
         }
 
+        public override void CutTiles()
+        {
+            DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
+
+            float swingLength = 120f * Projectile.scale;
+            float step = MathHelper.ToRadians(4f); // 3°–5° works great
+            float arcRange = MathHelper.ToRadians(20f); // total ± arc range to cover
+            float cutWidth = Math.Max(Projectile.width * Projectile.scale * 1.4f, 24f);
+
+            // Sweep a short arc ahead of current rotation
+            for (float offset = -arcRange; offset <= arcRange; offset += step)
+            {
+                float rot = Projectile.rotation + offset;
+                Vector2 lineStart = Projectile.Center - rot.ToRotationVector2() * (swingLength * 0.1f);
+                Vector2 lineEnd = lineStart + rot.ToRotationVector2() * swingLength;
+
+                Utils.PlotTileLine(
+                    lineStart,
+                    lineEnd,
+                    cutWidth,
+                    DelegateMethods.CutTiles
+                );
+            }
+        }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

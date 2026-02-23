@@ -204,8 +204,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NecrooticChorus
 
         private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition)
         {
-            float speed = 8f;
-            float inertia = 20f;
+            float speed = 12f;
+            float inertia = 10f;
 
             if (foundTarget)
             {

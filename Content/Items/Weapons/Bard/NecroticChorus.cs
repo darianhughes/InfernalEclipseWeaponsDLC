@@ -54,7 +54,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override bool AltFunctionUse(Player player) => true;
 
-        public override bool CanShoot(Player player) => player.altFunctionUse == 2 || player.ownedProjectileCounts[Item.shoot] < 10;
+        public override bool CanPlayInstrument(Player player) => player.altFunctionUse == 2 || player.ownedProjectileCounts[Item.shoot] < 10;
 
         public override Vector2? HoldoutOffset()
         {

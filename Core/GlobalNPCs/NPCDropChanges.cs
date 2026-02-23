@@ -1,37 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 using CalamityMod.NPCs.Bumblebirb;
 using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.NPCs.Signus;
-using CalamityMod.Items.TreasureBags;
-using Terraria.UI;
 using CalamityMod.NPCs.BrimstoneElemental;
 using CalamityMod.NPCs.Ravager;
 using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.OldDuke;
-using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic;
 using CalamityMod.NPCs.AquaticScourge;
 using CalamityMod;
 using Terraria.ID;
 using CalamityMod.NPCs.DesertScourge;
 using CalamityMod.NPCs.SupremeCalamitas;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 {
     public class NPCDropChanges : GlobalNPC
     {
+        private bool droppedFromWaterContact = false;
+        public override bool InstancePerEntity => true;
+
+        public override void PostAI(NPC npc)
+        {
+            if (npc.type == NPCID.BlazingWheel && npc.active && !droppedFromWaterContact && WeaponConfig.Instance.AIGenedWeapons)
+            {
+                if (npc.wet && !npc.lavaWet && !npc.honeyWet && !npc.shimmerWet
+                    && Collision.WetCollision(npc.position, npc.width, npc.height))
+                {
+                    droppedFromWaterContact = true;
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
+                        Item.NewItem(npc.GetSource_Loot(), npc.getRect(), ModContent.ItemType<ObsidianSickle>());
+                }
+            }
+        }
+
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
+            Mod calamity;
+            Mod console;
+
+            ModLoader.TryGetMod("CalamityMod", out calamity);
+            ModLoader.TryGetMod("Consolaria", out console);
+
+            if (npc.type == NPCID.GoblinSummoner && WeaponConfig.Instance.AIGenedWeapons)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ShadowflameAxe>(), 10));
+            }
+
             if (npc.type == NPCID.WallofFlesh)
             {
                 npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<ForeverHungry>(), 3));
@@ -39,8 +65,13 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<BottleOfSouls>(), 3));
             }
 
-            if (ModLoader.TryGetMod("CalamityMod", out _))
+            if (calamity != null)
             {
+                if (npc.type == ModContent.NPCType<BrimstoneElemental>() && console == null && WeaponConfig.Instance.AIGenedWeapons)
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormCrossbow>(), 10));
+                }
+
                 if (npc.type == ModContent.NPCType<DesertScourgeHead>())
                 {
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<SandSlasher>(), 3));
@@ -98,8 +129,13 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 }
             }
 
-            if (ModLoader.TryGetMod("Consolaria", out Mod console))
+            if (console != null)
             {
+                if (npc.type == console.Find<ModNPC>("ArchWyvernHead").Type && WeaponConfig.Instance.AIGenedWeapons)
+                {
+                    npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormCrossbow>(), 10));
+                }
+
                 if (npc.type == console.Find<ModNPC>("Ocram").Type)
                 {
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<OcramKnife>(), 4));
@@ -113,6 +149,8 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
                 if (npc.type == sots.Find<ModNPC>("Glowmoth").Type)
                 {
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<MothwingDagger>(), 5));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<IlluminantCross>(), 5));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GlowstringBiwa>(), 5));
                 }
             }
 
@@ -120,7 +158,9 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
             {
                 if (npc.type == thorium.Find<ModNPC>("TheGrandThunderBird").Type)
                 {
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GrandThunderWhip>(), 5));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GrandThunderWhip>(), 4));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<StormCarver>(), 4));
+                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<GrandAmplifier>(), 4));
                 }
 
                 if (npc.type == thorium.Find<ModNPC>("Lich").Type)

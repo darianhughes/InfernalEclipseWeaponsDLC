@@ -4,17 +4,24 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using ThoriumMod.Items;
+using ThoriumMod.Empowerments;
+using ThoriumMod.Sounds;
+using ThoriumMod;
+using ThoriumMod.Projectiles.Bard;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaDrawl
 {
-    public class SharknadoBolt : ModProjectile
+    public class SharknadoBolt : BardProjectile
     {
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 3;
         }
 
-        public override void SetDefaults()
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
+
+        public override void SetBardDefaults()
         {
             Projectile.CloneDefaults(ProjectileID.Typhoon);
             AIType = ProjectileID.Typhoon;

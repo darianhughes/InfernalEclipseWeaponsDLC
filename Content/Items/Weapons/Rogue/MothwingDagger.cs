@@ -8,6 +8,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod.Tiles;
+using ThoriumMod.Items.Thorium;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
 {
@@ -27,7 +28,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<MothwingDaggerPro>();
-            Item.shootSpeed = 14f;
+            Item.shootSpeed = 4f;
             Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.rare = ItemRarityID.Blue;
             Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
@@ -52,6 +53,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
             if (!ModLoader.TryGetMod("SOTS", out Mod _))
             {
                 CreateRecipe()
+                    .AddIngredient<ThoriumDagger>(500)
                     .AddIngredient(ItemID.Obsidian, 20)
                     .AddIngredient(ItemID.GlowingMushroom, 50)
                     .AddTile(ModContent.TileType<ArcaneArmorFabricator>())

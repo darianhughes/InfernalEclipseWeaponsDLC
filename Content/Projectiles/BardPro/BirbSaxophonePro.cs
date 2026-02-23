@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -128,6 +129,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         public override bool? CanHitNPC(NPC target)
         {
+            if (target.friendly)
+                return false;
+
             return Projectile.Opacity > 0.1f;
         }
 
@@ -135,7 +139,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
         {
             if (hit.Damage > 0 && Projectile.Opacity > 0.1f)
             {
-                target.AddBuff(BuffID.Electrified, 60);
+                //target.AddBuff(BuffID.Electrified, 60);
+                target.AddBuff(ModContent.BuffType<VermillionFlux>(), 120);
             }
 
             if (hit.Crit)

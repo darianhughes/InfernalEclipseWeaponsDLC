@@ -3,14 +3,17 @@ using Terraria;
 using Terraria.ModLoader;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
 using CalamityMod.Items.TreasureBags;
-using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Summoner;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic;
 using CalamityMod.Items.Fishing.SulphurCatches;
 using CalamityMod;
 using ThoriumMod.Items.Depths;
 using InfernalEclipseWeaponsDLC.Content.Items.Materials;
 using Terraria.ID;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 {
@@ -105,6 +108,8 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 if (item.type == sots.Find<ModItem>("GlowmothBag").Type)
                 {
                     itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MothwingDagger>(), 5));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<IlluminantCross>(), 5));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GlowstringBiwa>(), 5));
                 }
             }
 
@@ -112,7 +117,9 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
             {
                 if (item.type == thorium.Find<ModItem>("TheGrandThunderBirdTreasureBag").Type)
                 {
-                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandThunderWhip>(), 5));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandThunderWhip>(), 4));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StormCarver>(), 4));
+                    itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GrandAmplifier>(), 4));
                 }
 
                 if (item.type == thorium.Find<ModItem>("LichTreasureBag").Type)

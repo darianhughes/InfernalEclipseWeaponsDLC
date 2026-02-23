@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod;
 using Microsoft.Xna.Framework;
-using InfernalEclipseWeaponsDLC.Content.Buffs;
 using CalamityMod.Buffs.DamageOverTime;
 using Terraria.ID;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using InfernalEclipseWeaponsDLC.Content.Buffs;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword
 {
@@ -21,7 +16,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
         private int stuckTarget = -1;
         private Vector2 offsetFromNPC;
 
-        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/ExecutionersSword";
+        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/Melee/ExecutionersSword";
         public override void SetDefaults()
         {
             Projectile.width = 32;

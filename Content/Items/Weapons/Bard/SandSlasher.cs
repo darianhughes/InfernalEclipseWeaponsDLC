@@ -56,12 +56,19 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(0, 0);
+            return new Vector2(-10, 10);
         }
 
         public override void HoldItemFrame(Player player)
         {
-            player.itemLocation += new Vector2(0, 0f) * player.Directions;
+            player.itemLocation += new Vector2(-10, 10) * player.Directions;
+        }
+
+        public override void UseStyle(Player player, Rectangle heldItemFrame)
+        {
+            Vector2 offset = new Vector2(-10, 10f) * player.Directions;
+
+            player.itemLocation += offset;
         }
     }
 
@@ -90,6 +97,22 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
+
+            // Sand trail effect
+            if (Main.rand.NextBool(2)) // spawn every other frame for performance
+            {
+                Vector2 dustPos = Projectile.Center - Projectile.velocity * 0.25f; // slightly behind
+                Dust dust = Dust.NewDustPerfect(
+                    dustPos,
+                    DustID.Sand,
+                    -Projectile.velocity * 0.1f + Main.rand.NextVector2Circular(0.3f, 0.3f), // trailing motion
+                    100,
+                    default,
+                    Main.rand.NextFloat(0.8f, 1.3f)
+                );
+                dust.noGravity = true;
+                dust.fadeIn = 1.1f;
+            }
         }
 
         public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -138,7 +161,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                 lightColor,
                 Projectile.rotation,
                 origin,
-                1f,
+                0.5f,
                 SpriteEffects.None,
                 0f
             );
@@ -187,6 +210,23 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         public override void OnSpawn(IEntitySource source)
         {
             Projectile.damage = Math.Max(Projectile.damage, 5);
+
+            // Play grenade bounce sound
+            SoundEngine.PlaySound(SoundID.Item14, Projectile.Center); // Grenade bounce sound
+
+            // Make a sand dust ring burst
+            int dustCount = 12;
+            float dustSpeed = 6f;
+
+            Vector2 bottomCenter = new Vector2(Projectile.Center.X, (Projectile.Bottom.Y - 24f));
+
+            for (int i = 0; i < dustCount; i++)
+            {
+                float angle = MathHelper.TwoPi * i / dustCount;
+                Vector2 velocity = angle.ToRotationVector2() * dustSpeed;
+                Dust dust = Dust.NewDustPerfect(bottomCenter, DustID.Sand, velocity, 100, default, Main.rand.NextFloat(1f, 1.5f));
+                dust.noGravity = true;
+            }
         }
 
         public override void AI()

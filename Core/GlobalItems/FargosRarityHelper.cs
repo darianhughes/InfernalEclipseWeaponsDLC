@@ -1,4 +1,4 @@
-﻿using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer;
+﻿using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic;
 using Luminance.Core.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

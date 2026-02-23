@@ -20,7 +20,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.RestoredDeepSeaD
         NPC attachVictim;
         int attachTime;
 
-        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Brass;
         public override void SetBardDefaults()
         {
             Projectile.damage = 50;
