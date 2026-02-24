@@ -31,7 +31,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic
             return base.IsLoadingEnabled(mod);
         }
 
-        public override string Texture => ModLoader.TryGetMod("FargowiltasSouls", out _) ? "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/AuricBrimfireCrosierSouls" : base.Texture;
+        public override string Texture => ModLoader.TryGetMod("FargowiltasSouls", out _) ? "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/Magic/AuricBrimfireCrosierSouls" : base.Texture;
 
         public override void SetStaticDefaults()
         {
