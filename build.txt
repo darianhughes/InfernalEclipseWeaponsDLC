@@ -5,5 +5,5 @@ modReferences = CalamityMod, ThoriumMod
 weakReferences = Luminance, Daybreak, SOTS
 hideCode = true
 hideResources = true
-homepage = https://discord.gg/RXdTXbKY
+homepage = https://discord.gg/tc5nZdRvaU
 buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .git\*, .github\*, LICENSE, README.md, .editorconfig, .gitignore, .gitattributes
