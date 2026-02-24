@@ -654,6 +654,11 @@ Items: {
 			右键缩放视野
 			'''
 	}
+
+	AllSeersGlass: {
+		// DisplayName: All Seers Glass
+		// Tooltip: ""
+	}
 }
 
 ItemTooltip: {

@@ -11,9 +11,9 @@ using Terraria.DataStructures;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using System.Security.Policy;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void;
+using Terraria.ID;
 
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 {
@@ -21,6 +21,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
     {
         public bool spearSearing;
         public bool spearArctic;
+        public bool minionCrits;
 
         const int shard2chance = 20;
 
@@ -31,6 +32,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         {
             spearSearing = false;
             spearArctic = false;
+            minionCrits = false;
         }
 
         public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
@@ -46,6 +48,18 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             if (!randomChanceSuccess || !goodEnoughLevel) return;
 
             itemDrop = ModContent.ItemType<DeepSeaDrawlShard2>();
+        }
+
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (proj.hostile)
+                return;
+
+            if (minionCrits && IsSummonDamage(proj))
+            {
+                if (Main.rand.Next(100) < ActualClassCrit(Player, DamageClass.Summon))
+                    modifiers.SetCrit();
+            }
         }
 
         public override void PostUpdateMiscEffects()
@@ -71,5 +85,24 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                 }
             }
         }
+
+        // thank you fargos
+        public static bool IsSummonDamage(Projectile projectile, bool includeMinionShot = true, bool includeWhips = true)
+        {
+            if (!includeWhips && ProjectileID.Sets.IsAWhip[projectile.type])
+                return false;
+
+            if (!includeMinionShot && (ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type]))
+                return false;
+
+            return projectile.CountsAsClass(DamageClass.Summon) || projectile.minion || projectile.sentry || projectile.minionSlots > 0 || ProjectileID.Sets.MinionSacrificable[projectile.type]
+                || (includeMinionShot && (ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type]))
+                || (includeWhips && ProjectileID.Sets.IsAWhip[projectile.type]);
+        }
+
+        public float ActualClassCrit(Player player, DamageClass damageClass)
+            => (damageClass == DamageClass.Summon || damageClass == DamageClass.SummonMeleeSpeed) && !(minionCrits)
+            ? 0
+            : player.GetTotalCritChance(damageClass);
     }
 }

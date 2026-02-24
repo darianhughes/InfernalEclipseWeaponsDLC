@@ -652,6 +652,11 @@ Items: {
 			Right Click to zoom out
 			''' */
 	}
+
+	AllSeersGlass: {
+		// DisplayName: All Seers Glass
+		// Tooltip: ""
+	}
 }
 
 ItemTooltip: {
