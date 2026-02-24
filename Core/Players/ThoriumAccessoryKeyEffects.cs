@@ -25,6 +25,7 @@ namespace InfernalEclipseWeaponsDLC.Core.Players
         }
     }
 
+    //TODO: make this work.
     public sealed class CameraFreezeSystem : ModSystem
     {
         public static bool Frozen { get; private set; }
