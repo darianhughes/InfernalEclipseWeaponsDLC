@@ -1,5 +1,7 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.Dusts;
+using CalamityMod.Dusts.WaterSplash;
 using InfernalEclipseWeaponsDLC.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,10 +11,11 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static CatalystMod.Effects.Begin;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
 {
+    [JITWhenModsEnabled("CalamityMod")]
+    [ExtendsFromMod("CalamityMod")]
     public class ArckaneGemPro : ModProjectile
     {
         public static readonly int[] dusts = new int[5]
@@ -147,6 +150,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
             return true;
         }
     }
+
+    [JITWhenModsEnabled("CalamityMod")]
+    [ExtendsFromMod("CalamityMod")]
     public class ArckaneScythe1Pro : ModProjectile
     {
         public ref float GemLocation => ref Projectile.ai[2];
@@ -198,6 +204,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
         }
 
     }
+
+    [JITWhenModsEnabled("CalamityMod")]
+    [ExtendsFromMod("CalamityMod")]
     public class ArckaneScythe2Pro : ModProjectile
     {
         public ref float GemLocation => ref Projectile.ai[2];

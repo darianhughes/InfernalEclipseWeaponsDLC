@@ -1,17 +1,15 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
-using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic;
+﻿using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static CatalystMod.Effects.Begin;
-using static Daybreak.Common.Features.Hooks.GlobalItemHooks;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
 {
+    [JITWhenModsEnabled("CalamityMod")]
+    [ExtendsFromMod("CalamityMod")]
     public class ArckaneStaffHoldout : ModProjectile
     {
         public ref float HoldTimer => ref Projectile.ai[0];

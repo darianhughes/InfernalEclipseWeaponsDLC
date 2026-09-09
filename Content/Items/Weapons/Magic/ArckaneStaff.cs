@@ -12,6 +12,8 @@ using Terraria.ModLoader;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic
 {
+    [JITWhenModsEnabled("CalamityMod")]
+    [ExtendsFromMod("CalamityMod")]
     public class ArckaneStaff : ModItem
     {
         public const int HoldoutDistance = 55;

@@ -56,7 +56,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
 
             //Arckane Staff Debuffs
             target.AddBuff(BuffID.CursedInferno, 300, false);
-            target.AddBuff(BuffID.Ichor, 120, false);
             target.AddBuff(ModContent.BuffType<Crumbling>(), 120, false);
             target.AddBuff(ModContent.BuffType<CrushDepth>(), 300, false);
             target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 300, false);
